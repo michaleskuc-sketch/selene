@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SELÉNÉ — Darčeková krabička · Design board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#FAF6F0; --pearl:#F4EFE6; --champagne:#EDE3D2;
+  --gold:#A98A57; --gold-deep:#8F7245; --ink:#2B2723; --muted:#7C7266;
+  --line:rgba(43,39,35,.12);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',system-ui,sans-serif;
+  --pad:clamp(20px,4vw,64px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);font-weight:300;color:var(--ink);background:var(--ivory);-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 var(--pad)}
+.eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-deep);font-weight:500}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12}
+
+/* Header */
+.ann{background:var(--ink);color:var(--ivory);text-align:center;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:9px 16px}
+.ann span{color:var(--gold)}
+header{border-bottom:1px solid var(--line);background:rgba(250,246,240,.95);position:sticky;top:0;z-index:50}
+.header-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:14px var(--pad)}
+.logo{grid-column:2;justify-self:center;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px}
+.logo svg{width:26px;height:26px}
+.logo .b{font-family:var(--serif);font-size:24px;letter-spacing:.3em;padding-left:.3em}
+.logo .t{font-size:8.5px;letter-spacing:.4em;padding-left:.4em;text-transform:uppercase;color:var(--gold-deep)}
+
+/* Hero */
+.board-hero{padding:clamp(44px,7vw,80px) var(--pad) clamp(24px,4vw,40px);text-align:center;border-bottom:1px solid var(--line)}
+.board-hero .eyebrow{display:block}
+.board-hero h1{font-size:clamp(30px,4vw,46px);margin-top:12px}
+.board-hero p{font-size:14px;color:var(--muted);max-width:60ch;margin:12px auto 0;line-height:1.7}
+
+/* Variant section */
+.variant{padding:clamp(48px,7vw,84px) var(--pad);border-bottom:1px solid var(--line)}
+.variant.dark{background:#1E1A16;color:var(--ivory)}
+.variant-head{max-width:1280px;margin:0 auto clamp(28px,3.5vw,44px);display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+.variant-head .kcode{font-family:var(--serif);font-size:15px;color:var(--gold-deep);letter-spacing:.06em}
+.variant.dark .variant-head .kcode{color:var(--gold)}
+.variant-head h2{font-size:clamp(24px,3vw,34px)}
+.variant-head .tag{font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;padding:5px 12px;border-radius:12px}
+.tag.best{background:rgba(169,138,87,.16);color:var(--gold-deep)}
+.variant.dark .tag.best{background:rgba(201,169,104,.2);color:#DCC087}
+.tag.alt{background:var(--pearl);color:var(--muted)}
+.variant.dark .tag.alt{background:rgba(255,255,255,.08);color:#C8BFB2}
+.variant-sub{max-width:1280px;margin:0 auto;font-size:13.5px;color:var(--muted);line-height:1.7;max-width:64ch}
+.variant.dark .variant-sub{color:#B7AC9C}
+
+.body-grid{max-width:1280px;margin:26px auto 0;display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(24px,3vw,44px);align-items:start}
+@media(max-width:900px){.body-grid{grid-template-columns:1fr}}
+
+.stage{background:var(--pearl);border-radius:2px;padding:clamp(18px,3vw,34px) clamp(10px,2vw,20px);display:flex;gap:8px;align-items:stretch;justify-content:center;flex-wrap:wrap}
+.variant.dark .stage{background:#141110}
+.box-slot{flex:1 1 240px;max-width:300px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.box-slot .cap{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.variant.dark .box-slot .cap{color:#8A8072}
+.box-svg{width:100%;height:auto}
+
+.spec{border:1px solid var(--line);border-radius:2px;padding:22px 24px}
+.variant.dark .spec{border-color:rgba(255,255,255,.14)}
+.spec dl{display:grid;grid-template-columns:auto 1fr;gap:9px 14px;font-size:12.5px}
+.spec dt{color:var(--muted);white-space:nowrap}
+.variant.dark .spec dt{color:#9A9082}
+.spec dd{color:var(--ink)}
+.variant.dark .spec dd{color:var(--ivory)}
+.spec .desc{font-size:13px;line-height:1.65;color:var(--ink);margin-bottom:16px}
+.variant.dark .spec .desc{color:#EDE6DA}
+.spec hr{border:none;border-top:1px solid var(--line);margin:16px 0}
+.variant.dark .spec hr{border-color:rgba(255,255,255,.12)}
+
+/* Recommendation */
+.reco{padding:clamp(48px,7vw,84px) var(--pad);text-align:center}
+.reco .box{max-width:760px;margin:0 auto;border:1px solid rgba(169,138,87,.3);background:rgba(169,138,87,.06);border-radius:2px;padding:clamp(30px,4vw,48px)}
+.reco h2{font-size:clamp(22px,3vw,30px);margin-top:10px}
+.reco p{font-size:13.5px;color:var(--muted);line-height:1.75;margin-top:14px;text-align:left}
+.reco .path{margin-top:22px;font-family:'Jost',monospace;font-size:12px;color:var(--gold-deep);background:#fff;border:1px solid var(--line);display:inline-block;padding:8px 16px;border-radius:2px}
+
+footer{padding:40px var(--pad);text-align:center;font-size:11.5px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="ann">SELÉNÉ <span>·</span> Darčeková krabička — design board</div>
+<header>
+  <div class="header-in">
+    <div></div>
+    <a class="logo" href="#">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" stroke="#A98A57" stroke-width="1.4"/></svg>
+      <span class="b">SELÉNÉ</span><span class="t">jewelry</span>
+    </a>
+    <div></div>
+  </div>
+</header>
+
+<div class="board-hero">
+  <span class="eyebrow">Design board · 3 varianty</span>
+  <h1>Darčeková krabička</h1>
+  <p>Darčekové balenie ku každej objednávke je náš diferenciátor — kľúčový fyzický brand moment. Tri smery na výber, každý v perspektívnom pohľade: zatvorená krabička s vrchnákom a otvorená krabička so šperkom na bavlnenej výplni.</p>
+</div>
+
+<!-- ============ K1 — IVORY + KOSÁK ============ -->
+<section class="variant">
+  <div class="variant-head">
+    <span class="kcode">K1</span>
+    <h2>Ivory · zlatý kosák · zlatá stuha</h2>
+    <span class="tag best">Odporúčané</span>
+  </div>
+  <p class="variant-sub">Priama väzba na logo systém — kosák je pečať značky, rovnaký SVG path ako vo favicone a headeri. Foil-stamp v gold-deep na ivory kartóne, saténová zlatá stuha. Najčistejšie a najuniverzálnejšie riešenie.</p>
+
+  <div class="body-grid">
+    <div class="stage">
+      <div class="box-slot">
+        <span class="cap">Zatvorená</span>
+        <svg class="box-svg" viewBox="0 0 340 320" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="k1c-sh" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter></defs>
+          <ellipse cx="190" cy="205" rx="112" ry="16" fill="#2B2723" opacity=".14" filter="url(#k1c-sh)"/>
+          <polygon points="255,45 300,120 300,154 255,79" fill="#DED0B5"/>
+          <polygon points="115,145 300,120 300,154 115,179" fill="#F1EADC"/>
+          <polygon points="70,70 255,45 300,120 115,145" fill="#FAF6F0"/>
+          <polygon points="70,70 255,45 300,120 115,145" fill="none" stroke="#C9B896" stroke-width="1"/>
+          <polygon points="115,145 300,120 300,154 115,179" fill="none" stroke="#C9B896" stroke-width="1"/>
+          <g transform="matrix(1.85,-0.25,0.45,0.75,70,70)">
+            <g transform="translate(27,22) scale(1.2)">
+              <path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#8F7245"/>
+              <path d="M27 10C20 13.5 16 19 16 24C16 29 20 34.5 27 38C23 34 21 29.5 21 24C21 18.5 23 14 27 10Z" fill="#C4A876" opacity=".45"/>
+            </g>
+          </g>
+          <g transform="matrix(1.85,-0.25,0.45,0.75,70,70)"><rect x="41" y="-2" width="18" height="104" fill="#A98A57"/><rect x="41" y="-2" width="6" height="104" fill="#8F7245" opacity=".45"/></g>
+          <g transform="matrix(1.85,-0.25,0,0.34,115,145)"><rect x="41" y="-2" width="18" height="104" fill="#A98A57"/><rect x="53" y="-2" width="6" height="104" fill="#8F7245" opacity=".4"/></g>
+          <g>
+            <path d="M205,129 C177,115 175,143 205,131 Z" fill="#A98A57"/>
+            <path d="M205,129 C233,115 235,143 205,131 Z" fill="#A98A57"/>
+            <path d="M205,129 C182,119 181,138 205,130 Z" fill="#8F7245" opacity=".3"/>
+            <path d="M205,129 C228,119 229,138 205,130 Z" fill="#8F7245" opacity=".3"/>
+            <rect x="199" y="123" width="12" height="14" rx="3" fill="#8F7245"/>
+            <path d="M201,133 L191,163 L199,159 Z" fill="#A98A57"/>
+            <path d="M209,133 L219,163 L211,159 Z" fill="#A98A57"/>
+          </g>
+        </svg>
+      </div>
+      <div class="box-slot">
+        <span class="cap">Otvorená</span>
+        <svg class="box-svg" viewBox="0 0 340 320" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="k1o-sh" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+            <clipPath id="k1o-cot"><rect x="0" y="0" width="100" height="100"/></clipPath>
+          </defs>
+          <ellipse cx="195" cy="245" rx="118" ry="18" fill="#2B2723" opacity=".14" filter="url(#k1o-sh)"/>
+          <ellipse cx="278" cy="72" rx="44" ry="9" fill="#2B2723" opacity=".08"/>
+          <polygon points="240,18 318,36 306,78 230,60" fill="#F1EADC" stroke="#C9B896" stroke-width="1"/>
+          <g transform="matrix(0.62,0.09,-0.09,0.34,240,18)"><g transform="translate(27,22) scale(1.2)"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#8F7245" opacity=".8"/></g></g>
+          <polygon points="255,35 300,110 300,195 255,120" fill="#DED0B5"/>
+          <polygon points="115,135 300,110 300,195 115,220" fill="#F1EADC"/>
+          <polygon points="70,60 255,35 300,110 115,135" fill="#DED0B5"/>
+          <g transform="matrix(1.85,-0.25,0.45,0.75,70,60)">
+            <g clip-path="url(#k1o-cot)">
+              <path d="M-5,22 Q15,6 35,20 Q55,4 75,18 Q95,6 105,22 L105,105 L-5,105 Z" fill="#FBF8F3"/>
+              <path d="M-5,38 Q20,24 40,36 Q60,20 80,34 Q100,24 105,38 L105,105 L-5,105 Z" fill="#F4EFE6"/>
+              <path d="M5,28 Q20,17 34,25" stroke="#E4DACB" stroke-width="1" fill="none" opacity=".6"/>
+              <path d="M45,22 Q60,12 74,20" stroke="#E4DACB" stroke-width="1" fill="none" opacity=".6"/>
+            </g>
+            <path d="M22,12 C36,26 28,42 42,52 S 56,66 52,78" stroke="#A98A57" stroke-width="1.4" fill="none"/>
+            <circle cx="52" cy="78" r="2" fill="none" stroke="#8F7245" stroke-width="1.2"/>
+            <g transform="translate(45,79) scale(0.55)"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#8F7245"/></g>
+            <path d="M60,60 l2,-4 l2,4 l4,2 l-4,2 l-2,4 l-2,-4 l-4,-2 Z" fill="#C4A876" opacity=".8"/>
+          </g>
+          <polygon points="70,60 255,35 300,110 115,135" fill="none" stroke="#8F7245" stroke-width="1" opacity=".45"/>
+          <polygon points="115,135 300,110 300,195 115,220" fill="none" stroke="#C9B896" stroke-width="1"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="spec">
+      <p class="desc">Kosáčik = pečať značky, nie dekorácia navyše. Funguje rovnako dobre pod Moon Silver aj Sun Gold produktom, číta sa čisto na unboxing fotke a je najjednoduchší (a najlacnejší) na foil-stamp razbu spomedzi troch variantov.</p>
+      <hr>
+      <dl>
+        <dt>Rozmery</dt><dd>9 × 9 × 4,2 cm</dd>
+        <dt>Materiál</dt><dd>matný linen-textured kartón, ivory</dd>
+        <dt>Motív</dt><dd>kosák, foil-stamp gold-deep</dd>
+        <dt>Zatváranie</dt><dd>nasadzovací vrchnák, magnet</dd>
+        <dt>Stuha</dt><dd>saténová, zlatá, 12 mm</dd>
+        <dt>Výplň</dt><dd>bavlnená vata + hodvábny papier</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============ K2 — CHAMPAGNE + KONŠTELÁCIA ============ -->
+<section class="variant">
+  <div class="variant-head">
+    <span class="kcode">K2</span>
+    <h2>Champagne · konštelácia · biela stuha</h2>
+    <span class="tag alt">Alternatíva</span>
+  </div>
+  <p class="variant-sub">Spojené hviezdne body namiesto priamej pečate — tajomnejšie, „vlastná konštelácia" príbeh. Champagne kartón s bielou saténovou stuhou pôsobí jemnejšie, viac giftový než signature.</p>
+
+  <div class="body-grid">
+    <div class="stage">
+      <div class="box-slot">
+        <span class="cap">Zatvorená</span>
+        <svg class="box-svg" viewBox="0 0 340 320" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="k2c-sh" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter></defs>
+          <ellipse cx="190" cy="205" rx="112" ry="16" fill="#2B2723" opacity=".14" filter="url(#k2c-sh)"/>
+          <polygon points="255,45 300,120 300,154 255,79" fill="#C7B58F"/>
+          <polygon points="115,145 300,120 300,154 115,179" fill="#E1D3BC"/>
+          <polygon points="70,70 255,45 300,120 115,145" fill="#EDE3D2"/>
+          <polygon points="70,70 255,45 300,120 115,145" fill="none" stroke="#C7B58F" stroke-width="1"/>
+          <polygon points="115,145 300,120 300,154 115,179" fill="none" stroke="#C7B58F" stroke-width="1"/>
+          <g transform="matrix(1.85,-0.25,0.45,0.75,70,70)">
+            <g transform="translate(15,15)">
+              <path d="M8,50 L35,28 L55,55 L82,15" stroke="#8F7245" stroke-width="1.2" fill="none" opacity=".8"/>
+              <circle cx="8" cy="50" r="2.6" fill="#8F7245"/>
+              <circle cx="35" cy="28" r="1.8" fill="#8F7245"/>
+              <circle cx="55" cy="55" r="2.2" fill="#8F7245"/>
+              <circle cx="82" cy="15" r="1.6" fill="#8F7245"/>
+            </g>
+          </g>
+          <g transform="matrix(1.85,-0.25,0.45,0.75,70,70)"><rect x="41" y="-2" width="18" height="104" fill="#FBFAF8"/><rect x="41" y="-2" width="6" height="104" fill="#E4DDCF" opacity=".7"/></g>
+          <g transform="matrix(1.85,-0.25,0,0.34,115,145)"><rect x="41" y="-2" width="18" height="104" fill="#FBFAF8"/><rect x="53" y="-2" width="6" height="104" fill="#E4DDCF" opacity=".6"/></g>
+          <g>
+            <path d="M205,129 C177,115 175,143 205,131 Z" fill="#FBFAF8"/>
+            <path d="M205,129 C233,115 235,143 205,131 Z" fill="#FBFAF8"/>
+            <path d="M205,129 C182,119 181,138 205,130 Z" fill="#D8D2C6" opacity=".5"/>
+            <path d="M205,129 C228,119 229,138 205,130 Z" fill="#D8D2C6" opacity=".5"/>
+            <rect x="199" y="123" width="12" height="14" rx="3" fill="#E4DDCF"/>
+            <path d="M201,133 L191,163 L199,159 Z" fill="#FBFAF8"/>
+            <path d="M209,133 L219,163 L211,159 Z" fill="#FBFAF8"/>
+          </g>
+        </svg>
+      </div>
+      <div class="box-slot">
+        <span class="cap">Otvorená</span>
+        <svg class="box-svg" viewBox="0 0 340 320" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="k2o-sh" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+            <clipPath id="k2o-cot"><rect x="0" y="0" width="100" height="100"/></clipPath>
+          </defs>
+          <ellipse cx="195" cy="245" rx="118" ry="18" fill="#2B2723" opacity=".14" filter="url(#k2o-sh)"/>
+          <ellipse cx="278" cy="72" rx="44" ry="9" fill="#2B2723" opacity=".08"/>
+          <polygon points="240,18 318,36 306,78 230,60" fill="#E1D3BC" stroke="#C7B58F" stroke-width="1"/>
+          <g transform="matrix(0.62,0.09,-0.09,0.34,240,18)"><g transform="translate(10,15)"><path d="M8,50 L28,32 L44,52 L64,20" stroke="#8F7245" stroke-width="1.4" fill="none" opacity=".7"/><circle cx="8" cy="50" r="2.4" fill="#8F7245"/><circle cx="44" cy="52" r="2" fill="#8F7245"/><circle cx="64" cy="20" r="1.8" fill="#8F7245"/></g></g>
+          <polygon points="255,35 300,110 300,195 255,120" fill="#C7B58F"/>
+          <polygon points="115,135 300,110 300,195 115,220" fill="#E1D3BC"/>
+          <polygon points="70,60 255,35 300,110 115,135" fill="#C7B58F"/>
+          <g transform="matrix(1.85,-0.25,0.45,0.75,70,60)">
+            <g clip-path="url(#k2o-cot)">
+              <path d="M-5,22 Q15,6 35,20 Q55,4 75,18 Q95,6 105,22 L105,105 L-5,105 Z" fill="#FBF8F3"/>
+              <path d="M-5,38 Q20,24 40,36 Q60,20 80,34 Q100,24 105,38 L105,105 L-5,105 Z" fill="#F4EFE6"/>
+              <path d="M5,28 Q20,17 34,25" stroke="#E4DACB" stroke-width="1" fill="none" opacity=".6"/>
+              <path d="M45,22 Q60,12 74,20" stroke="#E4DACB" stroke-width="1" fill="none" opacity=".6"/>
+            </g>
+            <path d="M22,12 C36,26 28,42 42,52 S 56,66 52,78" stroke="#A98A57" stroke-width="1.4" fill="none"/>
+            <circle cx="52" cy="78" r="2" fill="none" stroke="#8F7245" stroke-width="1.2"/>
+            <g transform="translate(45,79) scale(0.55)"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#8F7245"/></g>
+            <path d="M60,60 l2,-4 l2,4 l4,2 l-4,2 l-2,4 l-2,-4 l-4,-2 Z" fill="#C4A876" opacity=".8"/>
+          </g>
+          <polygon points="70,60 255,35 300,110 115,135" fill="none" stroke="#8F7245" stroke-width="1" opacity=".4"/>
+          <polygon points="115,135 300,110 300,195 115,220" fill="none" stroke="#C7B58F" stroke-width="1"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="spec">
+      <p class="desc">Jemnejšia, viac „darčeková" nálada — biela stuha na champagne pôsobí sviatočne, no menej signature než kosáčik. Konštelácia sa horšie razí (viac detailu, tenké línie), o niečo drahšia výroba.</p>
+      <hr>
+      <dl>
+        <dt>Rozmery</dt><dd>9 × 9 × 4,2 cm</dd>
+        <dt>Materiál</dt><dd>matný linen-textured kartón, champagne</dd>
+        <dt>Motív</dt><dd>konštelácia, foil-stamp gold-deep</dd>
+        <dt>Zatváranie</dt><dd>nasadzovací vrchnák, magnet</dd>
+        <dt>Stuha</dt><dd>saténová, biela, 12 mm</dd>
+        <dt>Výplň</dt><dd>bavlnená vata + hodvábny papier</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============ K3 — INK + FÁZA MESIACA ============ -->
+<section class="variant dark">
+  <div class="variant-head">
+    <span class="kcode">K3</span>
+    <h2>Hlboký ink · zlatá fáza mesiaca · zlatá stuha</h2>
+    <span class="tag alt">Alternatíva</span>
+  </div>
+  <p class="variant-sub">Kontrastný luxus — tmavá krabička s fázou mesiaca odkazuje priamo na Živé nebo widget. Vnútro podšité v tóne pearl, takže otvorenie krabičky je malé prekvapenie. Najsilnejší unboxing moment, no odkláňa sa od ivory/champagne rodiny — vhodné skôr ako limitovaná/night edícia.</p>
+
+  <div class="body-grid">
+    <div class="stage">
+      <div class="box-slot">
+        <span class="cap">Zatvorená</span>
+        <svg class="box-svg" viewBox="0 0 340 320" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="k3c-sh" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter></defs>
+          <ellipse cx="190" cy="205" rx="112" ry="16" fill="#000" opacity=".35" filter="url(#k3c-sh)"/>
+          <polygon points="255,45 300,120 300,154 255,79" fill="#16130F"/>
+          <polygon points="115,145 300,120 300,154 115,179" fill="#221E1A"/>
+          <polygon points="70,70 255,45 300,120 115,145" fill="#2B2723"/>
+          <polygon points="70,70 255,45 300,120 115,145" fill="none" stroke="#C9A968" stroke-width=".8" opacity=".4"/>
+          <polygon points="115,145 300,120 300,154 115,179" fill="none" stroke="#C9A968" stroke-width=".8" opacity=".3"/>
+          <g transform="matrix(1.85,-0.25,0.45,0.75,70,70)">
+            <g transform="translate(18,15)">
+              <circle cx="32" cy="35" r="24" fill="none" stroke="#C9A968" stroke-width="1.3"/>
+              <path d="M32,11a24,24 0 0 1 0,48 c-9,-7 -9,-41 0,-48z" fill="#C9A968"/>
+              <circle cx="8" cy="8" r="1.2" fill="#C9A968" opacity=".7"/>
+              <circle cx="58" cy="60" r="1" fill="#C9A968" opacity=".6"/>
+              <circle cx="60" cy="14" r="1.1" fill="#C9A968" opacity=".6"/>
+            </g>
+          </g>
+          <g transform="matrix(1.85,-0.25,0.45,0.75,70,70)"><rect x="41" y="-2" width="18" height="104" fill="#C9A968"/><rect x="41" y="-2" width="6" height="104" fill="#8F7245" opacity=".5"/></g>
+          <g transform="matrix(1.85,-0.25,0,0.34,115,145)"><rect x="41" y="-2" width="18" height="104" fill="#C9A968"/><rect x="53" y="-2" width="6" height="104" fill="#8F7245" opacity=".45"/></g>
+          <g>
+            <path d="M205,129 C177,115 175,143 205,131 Z" fill="#C9A968"/>
+            <path d="M205,129 C233,115 235,143 205,131 Z" fill="#C9A968"/>
+            <path d="M205,129 C182,119 181,138 205,130 Z" fill="#8F7245" opacity=".4"/>
+            <path d="M205,129 C228,119 229,138 205,130 Z" fill="#8F7245" opacity=".4"/>
+            <rect x="199" y="123" width="12" height="14" rx="3" fill="#8F7245"/>
+            <path d="M201,133 L191,163 L199,159 Z" fill="#C9A968"/>
+            <path d="M209,133 L219,163 L211,159 Z" fill="#C9A968"/>
+          </g>
+        </svg>
+      </div>
+      <div class="box-slot">
+        <span class="cap">Otvorená</span>
+        <svg class="box-svg" viewBox="0 0 340 320" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="k3o-sh" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+            <clipPath id="k3o-cot"><rect x="0" y="0" width="100" height="100"/></clipPath>
+          </defs>
+          <ellipse cx="195" cy="245" rx="118" ry="18" fill="#000" opacity=".35" filter="url(#k3o-sh)"/>
+          <ellipse cx="278" cy="72" rx="44" ry="9" fill="#000" opacity=".2"/>
+          <polygon points="240,18 318,36 306,78 230,60" fill="#221E1A" stroke="#C9A968" stroke-width=".8" opacity=".9"/>
+          <g transform="matrix(0.62,0.09,-0.09,0.34,240,18)"><g transform="translate(18,15)"><circle cx="32" cy="35" r="20" fill="none" stroke="#C9A968" stroke-width="1.6" opacity=".8"/><path d="M32,15a20,20 0 0 1 0,40 c-7,-6 -7,-34 0,-40z" fill="#C9A968" opacity=".8"/></g></g>
+          <polygon points="255,35 300,110 300,195 255,120" fill="#16130F"/>
+          <polygon points="115,135 300,110 300,195 115,220" fill="#221E1A"/>
+          <polygon points="70,60 255,35 300,110 115,135" fill="#F4EFE6"/>
+          <g transform="matrix(1.85,-0.25,0.45,0.75,70,60)">
+            <g clip-path="url(#k3o-cot)">
+              <path d="M-5,22 Q15,6 35,20 Q55,4 75,18 Q95,6 105,22 L105,105 L-5,105 Z" fill="#FBF8F3"/>
+              <path d="M-5,38 Q20,24 40,36 Q60,20 80,34 Q100,24 105,38 L105,105 L-5,105 Z" fill="#F4EFE6"/>
+              <path d="M5,28 Q20,17 34,25" stroke="#E4DACB" stroke-width="1" fill="none" opacity=".6"/>
+              <path d="M45,22 Q60,12 74,20" stroke="#E4DACB" stroke-width="1" fill="none" opacity=".6"/>
+            </g>
+            <path d="M22,12 C36,26 28,42 42,52 S 56,66 52,78" stroke="#C9A968" stroke-width="1.4" fill="none"/>
+            <circle cx="52" cy="78" r="2" fill="none" stroke="#8F7245" stroke-width="1.2"/>
+            <g transform="translate(45,79) scale(0.55)"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#8F7245"/></g>
+            <path d="M60,60 l2,-4 l2,4 l4,2 l-4,2 l-2,4 l-2,-4 l-4,-2 Z" fill="#C9A968" opacity=".85"/>
+          </g>
+          <polygon points="70,60 255,35 300,110 115,135" fill="none" stroke="#C9A968" stroke-width="1" opacity=".5"/>
+          <polygon points="115,135 300,110 300,195 115,220" fill="none" stroke="#C9A968" stroke-width=".8" opacity=".3"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="spec">
+      <p class="desc">Najsilnejší vizuálny moment, ale mimo hlavnej ivory/champagne rodiny — riziko, že pôsobí ako iná značka. Odporúčam držať ako voliteľnú „night edition" verziu (napr. k Moon Silver kolekcii), nie ako predvolenú krabičku.</p>
+      <hr>
+      <dl>
+        <dt>Rozmery</dt><dd>9 × 9 × 4,2 cm</dd>
+        <dt>Materiál</dt><dd>matný linen-textured kartón, ink</dd>
+        <dt>Motív</dt><dd>fáza mesiaca, foil-stamp gold</dd>
+        <dt>Vnútro</dt><dd>podšívka pearl — kontrast pri otvorení</dd>
+        <dt>Stuha</dt><dd>saténová, zlatá, 12 mm</dd>
+        <dt>Výplň</dt><dd>bavlnená vata + hodvábny papier</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ODPORÚČANIE ============ -->
+<section class="reco">
+  <div class="box">
+    <span class="eyebrow">Odporúčanie</span>
+    <h2>K1 — Ivory · zlatý kosák · zlatá stuha</h2>
+    <p>K1 je priama, jednoznačná voľba: kosáčik je už dnes pečaťou značky (favicon, header, newsletter), takže krabička sa stane rozšírením loga, nie novým motívom navyše. Foil-stamp kosáčika je aj výrobne najjednoduchší a najlacnejší zo všetkých troch návrhov, funguje rovnako dobre pri Moon Silver aj Sun Gold objednávke a drží sa presne v rámci ivory/champagne/gold palety bez rizika, že bude pôsobiť ako samostatná sub-značka.</p>
+    <p>K2 (konštelácia) nechať ako jemnejšiu darčekovú alternatívu, K3 (ink) zvážiť ako limitovanú „night" verziu pri špeciálnych príležitostiach — nie ako predvolené balenie.</p>
+    <div class="path">artifacts/selene/selene_cd_krabicka.html</div>
+  </div>
+</section>
+
+<footer>
+  <p>SELÉNÉ · Wil, s.r.o. — darčeková krabička, design board 2026</p>
+</footer>
+
+</body>
+</html>

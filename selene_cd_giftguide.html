@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darčekový sprievodca — SELÉNÉ</title>
+<meta name="description" content="SELÉNÉ darčekový sprievodca — nájdite ten pravý šperk podľa príležitosti a rozpočtu. Darčekové balenie zdarma ku každej objednávke.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FAF6F0;
+    --pearl:#F4EFE6;
+    --champagne:#EDE3D2;
+    --gold:#A98A57;
+    --gold-deep:#8F7245;
+    --ink:#2B2723;
+    --serif:'Cormorant Garamond', serif;
+    --sans:'Jost', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--ivory);
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;height:auto;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+  .container{max-width:1320px;margin:0 auto;padding:0 32px;}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.15;}
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:12px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+    font-weight:500;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:16px 36px;
+    font-size:12.5px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-weight:500;
+    transition:all .35s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--ink);
+    color:var(--ivory);
+    border:1px solid var(--ink);
+  }
+  .btn-primary:hover{background:transparent;color:var(--ink);}
+  .btn-outline{
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--ink);
+  }
+  .btn-outline:hover{background:var(--ink);color:var(--ivory);}
+  .btn-sm{padding:10px 22px;font-size:11px;letter-spacing:.14em;}
+
+  /* ---------- Announcement bar ---------- */
+  .announcement{
+    background:var(--ink);
+    color:var(--ivory);
+    text-align:center;
+    font-size:12px;
+    letter-spacing:.12em;
+    padding:11px 20px;
+    font-weight:300;
+  }
+  .announcement span{color:var(--gold);}
+
+  /* ---------- Header ---------- */
+  header{
+    background:var(--ivory);
+    border-bottom:1px solid rgba(43,39,35,.08);
+    position:sticky;
+    top:0;
+    z-index:100;
+  }
+  .header-inner{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    padding:22px 32px;
+    gap:20px;
+  }
+  .nav-left, .nav-right{
+    display:flex;
+    align-items:center;
+    gap:30px;
+  }
+  .nav-right{justify-content:flex-end;}
+  nav.nav-left a{
+    font-size:12.5px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    font-weight:400;
+    position:relative;
+    padding-bottom:4px;
+  }
+  nav.nav-left a::after{
+    content:'';
+    position:absolute;
+    left:0;bottom:0;
+    width:0;height:1px;
+    background:var(--gold);
+    transition:width .35s ease;
+  }
+  nav.nav-left a:hover::after{width:100%;}
+  nav.nav-left a.current::after{width:100%;}
+  .dd{position:relative;display:flex;align-items:center;gap:4px;}
+  .dd-trigger{
+    background:none;border:none;cursor:pointer;color:var(--gold-deep);
+    font-size:11px;padding:4px;display:grid;place-items:center;border-radius:50%;
+    transition:background .2s;
+  }
+  .dd-trigger:hover{background:var(--champagne);}
+  .dd-trigger svg{width:11px;height:11px;display:block;}
+  .dd-menu{
+    position:absolute;top:100%;left:0;min-width:210px;
+    background:var(--ivory);border:1px solid rgba(43,39,35,.1);
+    box-shadow:0 18px 44px rgba(43,39,35,.12);
+    padding:8px 0;border-radius:2px;
+    opacity:0;visibility:hidden;transform:translateY(8px);
+    transition:opacity .22s ease,transform .22s ease,visibility .22s;
+    z-index:80;
+  }
+  .dd:hover .dd-menu,.dd:focus-within .dd-menu{opacity:1;visibility:visible;transform:translateY(0);}
+  nav .dd-menu a{
+    display:block;padding:9px 20px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    font-weight:400;color:var(--ink);white-space:nowrap;
+  }
+  nav .dd-menu a:hover{background:var(--pearl);color:var(--gold-deep);}
+  .dd-menu .dd-head{font-family:var(--serif);font-style:italic;font-size:16px;text-transform:none;letter-spacing:.03em;color:var(--gold-deep);padding:4px 20px 10px;display:block;}
+  .logo-block{
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:2px;
+  }
+  .logo-block .moon-icon{width:26px;height:26px;margin-bottom:2px;}
+  .logo-block .brand{
+    font-family:var(--serif);
+    font-size:26px;
+    letter-spacing:.32em;
+    padding-left:.32em;
+    font-weight:500;
+  }
+  .logo-block .tagline{
+    font-size:9.5px;
+    letter-spacing:.32em;
+    padding-left:.32em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+  }
+  .icons{
+    display:flex;
+    gap:22px;
+    align-items:center;
+  }
+  .icons button{
+    display:flex;
+    align-items:center;
+    color:var(--ink);
+    transition:color .3s ease;
+  }
+  .icons button:hover{color:var(--gold-deep);}
+  .icons svg{width:19px;height:19px;}
+  .burger{display:none;}
+
+  /* ---------- Section headings ---------- */
+  .section{padding:110px 0;}
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 60px;
+  }
+  .section-head .eyebrow{display:block;margin-bottom:16px;}
+  .section-head h2{font-size:clamp(30px,4vw,44px);}
+  .section-head p{margin-top:16px;font-size:15.5px;color:#5c564c;line-height:1.6;}
+  .section.grey{background:var(--pearl);}
+
+  /* ---------- Astro deliaci prvok ---------- */
+  .div-astro{display:flex;align-items:center;justify-content:center;gap:14px;max-width:320px;margin:0 auto;padding:clamp(24px,3.5vw,44px) 0}
+  .div-astro .da-l,.div-astro .da-r{flex:1;height:1px}
+  .div-astro .da-l{background:linear-gradient(90deg,transparent,var(--gold))}
+  .div-astro .da-r{background:linear-gradient(90deg,var(--gold),transparent)}
+  .div-astro .da-d{width:4px;height:4px;border-radius:50%;background:var(--gold-deep);opacity:.75}
+  .div-astro .da-d.mid{width:6px;height:6px;background:var(--gold)}
+
+  /* ---------- Hero (gift guide) ---------- */
+  .gg-hero{
+    padding:96px 0 54px;
+    text-align:center;
+    background:linear-gradient(180deg, var(--ivory) 0%, var(--pearl) 100%);
+  }
+  .gg-hero .moon-crescent{width:52px;height:52px;margin:0 auto 26px;opacity:.9;}
+  .gg-hero .eyebrow{display:block;margin-bottom:18px;}
+  .gg-hero h1{font-size:clamp(38px,5.6vw,66px);margin-bottom:20px;color:var(--ink);}
+  .gg-hero h1 em{font-style:italic;color:var(--gold-deep);}
+  .gg-hero p.sub{
+    font-size:17px;
+    line-height:1.65;
+    color:#4a453e;
+    max-width:520px;
+    margin:0 auto;
+    font-weight:300;
+  }
+
+  /* ---------- Filters ---------- */
+  .filters-section{padding:56px 0 100px;}
+  .filter-block{margin-bottom:36px;}
+  .filter-block:last-child{margin-bottom:0;}
+  .filter-block .fb-label{
+    display:block;
+    text-align:center;
+    margin-bottom:18px;
+  }
+  .filter-row{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+  }
+  .filter-btn{
+    padding:11px 24px;
+    font-size:11.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    font-weight:400;
+    color:var(--ink);
+    background:transparent;
+    border:1px solid rgba(43,39,35,.22);
+    border-radius:2px;
+    transition:all .3s ease;
+  }
+  .filter-btn:hover{border-color:var(--ink);}
+  .filter-btn.active{background:var(--ink);color:var(--ivory);border-color:var(--ink);}
+
+  /* ---------- Product grid ---------- */
+  .prod-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:34px 24px;
+    margin-top:56px;
+  }
+  .gift-prod-card{display:flex;flex-direction:column;transition:opacity .3s ease;}
+  .gift-prod-card.is-hidden{display:none;}
+  .prod-img{
+    position:relative;
+    aspect-ratio:3/4;
+    overflow:hidden;
+    background:var(--champagne);
+    margin-bottom:18px;
+    display:block;
+  }
+  .prod-img img{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+    transition:opacity .45s ease, transform .6s ease;
+  }
+  .prod-img img.model{opacity:0;}
+  .gift-prod-card:hover .prod-img img.model{opacity:1;}
+  .gift-prod-card:hover .prod-img img:not(.model){opacity:0;}
+  .gift-prod-card:hover .prod-img img{transform:scale(1.04);}
+  .occasion-tag{
+    position:absolute;
+    top:14px;left:14px;
+    z-index:3;
+    background:var(--ivory);
+    color:var(--ink);
+    font-size:10px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    padding:6px 12px;
+    font-weight:500;
+  }
+  .prod-info{text-align:center;display:flex;flex-direction:column;align-items:center;flex:1;}
+  .prod-info .p-cat{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#948b7d;margin-bottom:6px;}
+  .prod-info h3{font-size:19px;font-weight:500;margin-bottom:8px;}
+  .prod-info .price{font-size:15px;color:var(--gold-deep);letter-spacing:.02em;margin-bottom:18px;}
+  .prod-info .btn{margin-top:auto;}
+
+  .empty-state{
+    display:none;
+    text-align:center;
+    padding:60px 20px;
+    color:#7a7268;
+  }
+  .empty-state.show{display:block;}
+  .empty-state p{font-size:15.5px;margin-bottom:22px;}
+
+  /* ---------- Gift box CTA ---------- */
+  .giftbox-section{background:var(--ink);color:var(--ivory);padding:100px 0;}
+  .giftbox-split{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:64px;
+  }
+  .giftbox-visual{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  }
+  .box-illustration{
+    position:relative;
+    width:min(300px,80%);
+    aspect-ratio:1/1;
+  }
+  .box-base{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(155deg, var(--champagne) 0%, var(--pearl) 100%);
+    border-radius:4px;
+  }
+  .box-lid{
+    position:absolute;
+    left:-4%;right:-4%;
+    top:0;
+    height:34%;
+    background:linear-gradient(155deg, #E4D6BC 0%, var(--champagne) 100%);
+    border-radius:4px;
+  }
+  .box-ribbon-v{
+    position:absolute;
+    left:50%;top:0;bottom:0;
+    width:10%;
+    transform:translateX(-50%);
+    background:var(--gold-deep);
+    opacity:.85;
+  }
+  .box-ribbon-h{
+    position:absolute;
+    left:0;right:0;top:34%;
+    height:10%;
+    background:var(--gold-deep);
+    opacity:.85;
+  }
+  .box-seal{
+    position:absolute;
+    left:50%;top:34%;
+    width:56px;height:56px;
+    transform:translate(-50%,-50%);
+    background:var(--ink);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 26px rgba(43,39,35,.35);
+  }
+  .box-seal svg{width:24px;height:24px;}
+  .giftbox-text .eyebrow{display:block;margin-bottom:18px;color:var(--gold);}
+  .giftbox-text h2{font-size:clamp(30px,4vw,44px);color:var(--ivory);margin-bottom:20px;}
+  .giftbox-text p{font-size:16px;line-height:1.75;color:#c9c2b5;max-width:440px;margin-bottom:32px;}
+  .giftbox-text .btn-outline{border-color:var(--ivory);color:var(--ivory);}
+  .giftbox-text .btn-outline:hover{background:var(--ivory);color:var(--ink);}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--pearl);
+    padding:80px 0 30px;
+  }
+  .footer-top{
+    display:grid;
+    grid-template-columns:1.4fr repeat(3,1fr);
+    gap:40px;
+    padding-bottom:60px;
+    border-bottom:1px solid rgba(43,39,35,.1);
+  }
+  .footer-brand .logo-block{align-items:flex-start;text-align:left;}
+  .footer-brand p{
+    margin-top:20px;
+    font-size:13.5px;
+    color:#6b6459;
+    line-height:1.7;
+    max-width:260px;
+  }
+  .footer-social{display:flex;gap:16px;margin-top:24px;}
+  .footer-social a{
+    width:34px;height:34px;
+    border:1px solid rgba(43,39,35,.2);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    transition:all .3s ease;
+  }
+  .footer-social a:hover{background:var(--ink);border-color:var(--ink);color:var(--ivory);}
+  .footer-social svg{width:15px;height:15px;}
+  .f-col h4{
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    margin-bottom:22px;
+    font-weight:500;
+    color:var(--ink);
+  }
+  .f-col ul li{margin-bottom:13px;}
+  .f-col ul li a{font-size:13.5px;color:#5c564c;transition:color .3s ease;}
+  .f-col ul li a:hover{color:var(--gold-deep);}
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:28px;
+    font-size:12px;
+    color:#948b7d;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .footer-bottom a{margin-left:20px;color:#948b7d;}
+  .footer-bottom a:hover{color:var(--gold-deep);}
+
+  /* ---------- Reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- Mobile menu ---------- */
+  .mobile-nav{
+    position:fixed;
+    inset:0;
+    background:var(--ivory);
+    z-index:200;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:30px;
+    transform:translateY(-100%);
+    transition:transform .45s ease;
+  }
+  .mobile-nav.open{transform:translateY(0);}
+  .mobile-nav a{font-family:var(--serif);font-size:26px;}
+  .mobile-close{position:absolute;top:26px;right:32px;font-size:28px;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:1080px){
+    .prod-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-top{grid-template-columns:1fr 1fr;gap:40px 20px;}
+    .giftbox-split{grid-template-columns:1fr;gap:40px;text-align:center;}
+    .giftbox-text p{margin-left:auto;margin-right:auto;}
+  }
+  @media (max-width:860px){
+    .nav-left{display:none;}
+    .burger{display:flex;}
+    .header-inner{grid-template-columns:auto 1fr auto;}
+    .section{padding:70px 0;}
+    .gg-hero{padding:70px 0 40px;}
+  }
+  @media (max-width:600px){
+    .prod-grid{grid-template-columns:1fr 1fr;gap:14px 12px;}
+    .container{padding:0 18px;}
+    .footer-top{grid-template-columns:1fr;gap:36px;}
+    .gg-hero h1{font-size:36px;}
+    .filter-row{gap:8px;}
+    .filter-btn{padding:9px 16px;font-size:10.5px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= ANNOUNCEMENT BAR ================= -->
+<div class="announcement">
+  Darčekové balenie ku každej objednávke <span>·</span> Doprava zdarma nad 59&nbsp;€
+</div>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="header-inner">
+    <nav class="nav-left">
+      <a href="selene_cd_katalog.html?cat=nausnice">Náušnice</a>
+      <a href="selene_cd_katalog.html?cat=nahrdelniky">Náhrdelníky</a>
+      <a href="selene_cd_katalog.html?cat=prstene">Prstene</a>
+      <div class="dd">
+        <a href="selene_cd_katalog.html?cat=naramy">Náramky</a>
+        <button class="dd-trigger" aria-label="Ďalšie kategórie" tabindex="0">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4l4 4 4-4"/></svg>
+        </button>
+        <div class="dd-menu">
+          <span class="dd-head">Ďalšie kategórie</span>
+          <a href="selene_cd_katalog.html?cat=anklety">Retiazky na nohu</a>
+          <a href="selene_cd_katalog.html?cat=retiazky">Retiazky</a>
+        </div>
+      </div>
+    </nav>
+
+    <a href="selene_cd_homepage.html" class="logo-block" aria-label="SELÉNÉ — domov">
+      <svg class="moon-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M42 8 C 30 12, 23 22, 23 32 C 23 42, 30 52, 42 56 C 36 50, 32 42, 32 32 C 32 22, 36 14, 42 8 Z" fill="#8F7245"/>
+      </svg>
+      <span class="brand">SELÉNÉ</span>
+      <span class="tagline">jewelry</span>
+    </a>
+
+    <div class="nav-right">
+      <nav class="nav-left" style="display:flex;">
+        <a href="selene_cd_giftguide.html" class="current">Darčeky</a>
+        <a href="selene_blog.html">Blog</a>
+      </nav>
+      <div class="icons">
+        <button aria-label="Hľadať">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
+        </button>
+        <button aria-label="Účet">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+        </button>
+        <a href="selene_cd_kosik.html" aria-label="Košík">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h12l-1.2 11.2a1 1 0 0 1-1 .8H8.2a1 1 0 0 1-1-.8L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        </a>
+        <button class="burger" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.add('open')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <span class="mobile-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</span>
+  <a href="selene_cd_katalog.html?cat=nausnice">Náušnice</a>
+  <a href="selene_cd_katalog.html?cat=nahrdelniky">Náhrdelníky</a>
+  <a href="selene_cd_katalog.html?cat=prstene">Prstene</a>
+  <a href="selene_cd_katalog.html?cat=naramy">Náramky</a>
+  <a href="selene_cd_katalog.html?cat=anklety">Retiazky na nohu</a>
+  <a href="selene_cd_katalog.html?cat=retiazky">Retiazky</a>
+  <a href="selene_cd_giftguide.html">Darčeky</a>
+  <a href="selene_blog.html">Blog</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="gg-hero">
+  <div class="container">
+    <svg class="moon-crescent" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" stroke="#A98A57" stroke-width="1.4" fill="none"/>
+    </svg>
+    <span class="eyebrow">Darčekový sprievodca</span>
+    <h1>Nájsť ten <em>pravý</em> darček</h1>
+    <p class="sub">Vyberte podľa príležitosti alebo rozpočtu — a nechajte na nás darčekové balenie, ktoré je súčasťou každej objednávky.</p>
+  </div>
+</section>
+
+<!-- ================= FILTRE + PRODUKTY ================= -->
+<section class="filters-section">
+  <div class="container">
+
+    <div class="filter-block reveal">
+      <span class="eyebrow fb-label">Podľa príležitosti</span>
+      <div class="filter-row" id="occasionFilters">
+        <button class="filter-btn active" data-occasion="all">Všetky</button>
+        <button class="filter-btn" data-occasion="narodeniny">Narodeniny</button>
+        <button class="filter-btn" data-occasion="meniny">Meniny</button>
+        <button class="filter-btn" data-occasion="vyrocie">Výročie</button>
+        <button class="filter-btn" data-occasion="vianoce">Vianoce</button>
+        <button class="filter-btn" data-occasion="sviatok">Sviatok</button>
+      </div>
+    </div>
+
+    <div class="filter-block reveal">
+      <span class="eyebrow fb-label">Podľa rozpočtu</span>
+      <div class="filter-row" id="budgetFilters">
+        <button class="filter-btn active" data-budget="all">Všetky</button>
+        <button class="filter-btn" data-budget="do30">Do 30 €</button>
+        <button class="filter-btn" data-budget="30-50">30 – 50 €</button>
+        <button class="filter-btn" data-budget="50-79">50 – 79 €</button>
+        <button class="filter-btn" data-budget="79plus">79 € a viac</button>
+      </div>
+    </div>
+
+    <div class="prod-grid" id="giftGrid">
+
+      <div class="gift-prod-card reveal" data-occasion="narodeniny" data-budget="30-50">
+        <a href="selene_cd_produkt.html?id=0" class="prod-img">
+          <span class="occasion-tag">Narodeniny</span>
+          <img src="img/nagosa_ear_0.jpg" alt="Mušľové náušnice s perlou">
+          <img src="img/model_earrings.jpg" alt="Mušľové náušnice s perlou na modelke" class="model">
+        </a>
+        <div class="prod-info">
+          <div class="p-cat">Sun Gold</div>
+          <h3>Mušľové náušnice s perlou</h3>
+          <div class="price">39 €</div>
+          <a href="selene_cd_produkt.html?id=0" class="btn btn-outline btn-sm">Darovať</a>
+        </div>
+      </div>
+
+      <div class="gift-prod-card reveal" data-occasion="meniny" data-budget="30-50">
+        <a href="selene_cd_produkt.html?id=23" class="prod-img">
+          <span class="occasion-tag">Meniny</span>
+          <img src="img/nagosa_neck_3.jpg" alt="Zlatá mašlička s perlou">
+          <img src="img/necklace_detail.jpg" alt="Zlatá mašlička s perlou detail" class="model">
+        </a>
+        <div class="prod-info">
+          <div class="p-cat">Sun Gold</div>
+          <h3>Zlatá mašlička s perlou</h3>
+          <div class="price">49 €</div>
+          <a href="selene_cd_produkt.html?id=23" class="btn btn-outline btn-sm">Darovať</a>
+        </div>
+      </div>
+
+      <div class="gift-prod-card reveal" data-occasion="vyrocie" data-budget="50-79">
+        <a href="selene_cd_produkt.html?id=36" class="prod-img">
+          <span class="occasion-tag">Výročie</span>
+          <img src="img/faire/perimade_1.jpg" alt="Opal Sun Moon prívesok 925">
+          <img src="img/pearl2.jpg" alt="Opal Sun Moon prívesok na modelke" class="model">
+        </a>
+        <div class="prod-info">
+          <div class="p-cat">Moon Silver</div>
+          <h3>Opal Sun Moon prívesok 925</h3>
+          <div class="price">59 €</div>
+          <a href="selene_cd_produkt.html?id=36" class="btn btn-outline btn-sm">Darovať</a>
+        </div>
+      </div>
+
+      <div class="gift-prod-card reveal" data-occasion="vianoce" data-budget="50-79">
+        <a href="selene_cd_produkt.html?id=38" class="prod-img">
+          <span class="occasion-tag">Vianoce</span>
+          <img src="img/faire/perimade_3.jpg" alt="Opal Sun Moon dvojretiazka 925">
+          <img src="img/hero_silver.jpg" alt="Opal Sun Moon dvojretiazka na modelke" class="model">
+        </a>
+        <div class="prod-info">
+          <div class="p-cat">Moon Silver</div>
+          <h3>Opal Sun Moon dvojretiazka 925</h3>
+          <div class="price">65 €</div>
+          <a href="selene_cd_produkt.html?id=38" class="btn btn-outline btn-sm">Darovať</a>
+        </div>
+      </div>
+
+      <div class="gift-prod-card reveal" data-occasion="vyrocie" data-budget="30-50">
+        <a href="selene_cd_produkt.html?id=40" class="prod-img">
+          <span class="occasion-tag">Výročie</span>
+          <img src="img/faire/rosies_11.jpg" alt="Baroková perla Rosy 18k">
+          <img src="img/hero_gold.jpg" alt="Baroková perla Rosy na modelke" class="model">
+        </a>
+        <div class="prod-info">
+          <div class="p-cat">Sun Gold</div>
+          <h3>Baroková perla Rosy 18k</h3>
+          <div class="price">49 €</div>
+          <a href="selene_cd_produkt.html?id=40" class="btn btn-outline btn-sm">Darovať</a>
+        </div>
+      </div>
+
+      <div class="gift-prod-card reveal" data-occasion="narodeniny" data-budget="do30">
+        <a href="selene_cd_produkt.html?id=46" class="prod-img">
+          <span class="occasion-tag">Narodeniny</span>
+          <img src="img/dottilove/rings_5.jpg" alt="Výrazný prsteň s zirkónmi">
+          <img src="img/ring2.jpg" alt="Výrazný prsteň s zirkónmi na ruke" class="model">
+        </a>
+        <div class="prod-info">
+          <div class="p-cat">Sun Gold</div>
+          <h3>Výrazný prsteň s zirkónmi</h3>
+          <div class="price">27 €</div>
+          <a href="selene_cd_produkt.html?id=46" class="btn btn-outline btn-sm">Darovať</a>
+        </div>
+      </div>
+
+      <div class="gift-prod-card reveal" data-occasion="meniny" data-budget="do30">
+        <a href="selene_cd_produkt.html?id=60" class="prod-img">
+          <span class="occasion-tag">Meniny</span>
+          <img src="img/dottilove/bracelets_12.jpg" alt="Náramok s 5 srdiečkami">
+          <img src="img/bracelet.jpg" alt="Náramok s 5 srdiečkami na ruke" class="model">
+        </a>
+        <div class="prod-info">
+          <div class="p-cat">Sun Gold</div>
+          <h3>Náramok s 5 srdiečkami</h3>
+          <div class="price">30 €</div>
+          <a href="selene_cd_produkt.html?id=60" class="btn btn-outline btn-sm">Darovať</a>
+        </div>
+      </div>
+
+      <div class="gift-prod-card reveal" data-occasion="narodeniny" data-budget="30-50">
+        <a href="selene_cd_produkt.html?id=22" class="prod-img">
+          <span class="occasion-tag">Narodeniny</span>
+          <img src="img/faire/rosies_12.jpg" alt="Broskyňové mesačné náušnice s perlou">
+          <img src="img/earrings2.jpg" alt="Broskyňové mesačné náušnice na modelke" class="model">
+        </a>
+        <div class="prod-info">
+          <div class="p-cat">Moon Silver</div>
+          <h3>Broskyňové mesačné náušnice s perlou</h3>
+          <div class="price">32 €</div>
+          <a href="selene_cd_produkt.html?id=22" class="btn btn-outline btn-sm">Darovať</a>
+        </div>
+      </div>
+
+      <div class="gift-prod-card reveal" data-occasion="sviatok" data-budget="do30">
+        <a href="selene_cd_produkt.html?id=66" class="prod-img">
+          <span class="occasion-tag">Sviatok</span>
+          <img src="img/dottilove/anklets_8.jpg" alt="Retiazka na nohu s perlou">
+          <img src="img/bracelet2.jpg" alt="Retiazka na nohu s perlou detail" class="model">
+        </a>
+        <div class="prod-info">
+          <div class="p-cat">Sun Gold</div>
+          <h3>Retiazka na nohu s perlou</h3>
+          <div class="price">23 €</div>
+          <a href="selene_cd_produkt.html?id=66" class="btn btn-outline btn-sm">Darovať</a>
+        </div>
+      </div>
+
+      <div class="gift-prod-card reveal" data-occasion="sviatok" data-budget="do30">
+        <a href="selene_cd_produkt.html?id=8" class="prod-img">
+          <span class="occasion-tag">Sviatok</span>
+          <img src="img/dottilove/hoops_9.jpg" alt="Pozlátené kruhy CZ 16 mm">
+          <img src="img/rings_5.jpg" alt="Pozlátené kruhy CZ detail" class="model">
+        </a>
+        <div class="prod-info">
+          <div class="p-cat">Sun Gold</div>
+          <h3>Pozlátené kruhy CZ 16 mm</h3>
+          <div class="price">25 €</div>
+          <a href="selene_cd_produkt.html?id=8" class="btn btn-outline btn-sm">Darovať</a>
+        </div>
+      </div>
+
+      <div class="gift-prod-card reveal" data-occasion="vyrocie" data-budget="50-79">
+        <a href="selene_cd_produkt.html?id=37" class="prod-img">
+          <span class="occasion-tag">Výročie</span>
+          <img src="img/faire/perimade_2.jpg" alt="Ružový kremeň Tulip 925">
+          <img src="img/bracelets_7.jpg" alt="Ružový kremeň Tulip detail" class="model">
+        </a>
+        <div class="prod-info">
+          <div class="p-cat">Moon Silver</div>
+          <h3>Ružový kremeň Tulip 925</h3>
+          <div class="price">55 €</div>
+          <a href="selene_cd_produkt.html?id=37" class="btn btn-outline btn-sm">Darovať</a>
+        </div>
+      </div>
+
+      <div class="gift-prod-card reveal" data-occasion="vianoce" data-budget="30-50">
+        <a href="selene_cd_produkt.html?id=28" class="prod-img">
+          <span class="occasion-tag">Vianoce</span>
+          <img src="img/dottilove/necklaces_6.jpg" alt="Náhrdelník so zlatým diskom 40 cm">
+          <img src="img/necklace_detail.jpg" alt="Náhrdelník so zlatým diskom detail" class="model">
+        </a>
+        <div class="prod-info">
+          <div class="p-cat">Sun Gold</div>
+          <h3>Náhrdelník so zlatým diskom 40 cm</h3>
+          <div class="price">31 €</div>
+          <a href="selene_cd_produkt.html?id=28" class="btn btn-outline btn-sm">Darovať</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="empty-state" id="emptyState">
+      <p>V tejto kombinácii filtrov nemáme žiadny darček. Skúste iný rozpočet, alebo si pozrite celý katalóg.</p>
+      <a href="selene_cd_katalog.html?cat=all" class="btn btn-outline">Zobraziť celý katalóg</a>
+    </div>
+
+  </div>
+</section>
+
+<div class="div-astro" aria-hidden="true"><span class="da-l"></span><span class="da-d"></span><span class="da-d mid"></span><span class="da-d"></span><span class="da-r"></span></div>
+
+<!-- ================= DARČEKOVÉ BALENIE ================= -->
+<section class="giftbox-section">
+  <div class="container">
+    <div class="giftbox-split">
+      <div class="giftbox-text reveal">
+        <span class="eyebrow">Súčasť každej objednávky</span>
+        <h2>Darčekové balenie zdarma</h2>
+        <p>Každý šperk SELÉNÉ posielame v pevnej krabičke s hodvábnou stuhou — pripravený darovať bez ďalšieho zabalenia. Bez príplatku, ku každej objednávke.</p>
+        <a href="selene_cd_krabicka.html" class="btn btn-outline">Pozrieť balenie</a>
+      </div>
+      <div class="giftbox-visual reveal">
+        <div class="box-illustration">
+          <div class="box-base"></div>
+          <div class="box-ribbon-v"></div>
+          <div class="box-ribbon-h"></div>
+          <div class="box-lid"></div>
+          <div class="box-seal">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M42 8 C 30 12, 23 22, 23 32 C 23 42, 30 52, 42 56 C 36 50, 32 42, 32 32 C 32 22, 36 14, 42 8 Z" fill="#A98A57"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="selene_cd_homepage.html" class="logo-block">
+          <svg class="moon-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M42 8 C 30 12, 23 22, 23 32 C 23 42, 30 52, 42 56 C 36 50, 32 42, 32 32 C 32 22, 36 14, 42 8 Z" fill="#8F7245"/>
+          </svg>
+          <span class="brand">SELÉNÉ</span>
+          <span class="tagline">jewelry</span>
+        </a>
+        <p>Slovenský šperkový ateliér inšpirovaný svetlom mesiaca a slnka. Pozlátené a rhodiované striebro 925, chirurgická oceľ.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M15 8h-2a2 2 0 0 0-2 2v10M8 13h5"/><circle cx="12" cy="12" r="9"/></svg></a>
+          <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M9 17c1-3 1.5-5 1.5-7a2.5 2.5 0 0 1 5 0c0 1.7-1 3-2.5 3"/></svg></a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h4>Obchod</h4>
+        <ul>
+          <li><a href="selene_cd_katalog.html?cat=nausnice">Náušnice</a></li>
+          <li><a href="selene_cd_katalog.html?cat=nahrdelniky">Náhrdelníky</a></li>
+          <li><a href="selene_cd_katalog.html?cat=prstene">Prstene</a></li>
+          <li><a href="selene_cd_katalog.html?cat=naramy">Náramky</a></li>
+          <li><a href="selene_cd_giftguide.html">Darčeky</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Blog</h4>
+        <ul>
+          <li><a href="#">Ako o šperk starať</a></li>
+          <li><a href="#">Sprievodca materiálmi</a></li>
+          <li><a href="#">Trendy sezóny</a></li>
+          <li><a href="#">Príbehy zákazníčok</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Značka</h4>
+        <ul>
+          <li><a href="#">O nás</a></li>
+          <li><a href="#">Remeslo</a></li>
+          <li><a href="#">Obchodné podmienky</a></li>
+          <li><a href="#">Ochrana súkromia</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:ahoj@selene.sk">ahoj@selene.sk</a></li>
+          <li><a href="#">Po–Pi 9:00–17:00</a></li>
+          <li><a href="#">Doprava a platba</a></li>
+          <li><a href="#">Vrátenie a výmena</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Wil, s.r.o. Všetky práva vyhradené.</span>
+      <div>
+        <a href="#">Obchodné podmienky</a>
+        <a href="#">Ochrana súkromia</a>
+        <a href="#">Kontakt</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach(el => io.observe(el));
+
+  // header shadow on scroll
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      header.style.boxShadow = '0 2px 18px rgba(43,39,35,.06)';
+    } else {
+      header.style.boxShadow = 'none';
+    }
+  });
+
+  // gift guide filters
+  (function(){
+    var occasionBtns = document.querySelectorAll('#occasionFilters .filter-btn');
+    var budgetBtns = document.querySelectorAll('#budgetFilters .filter-btn');
+    var cards = document.querySelectorAll('.gift-prod-card');
+    var emptyState = document.getElementById('emptyState');
+    var currentOccasion = 'all';
+    var currentBudget = 'all';
+
+    function applyFilters(){
+      var visible = 0;
+      cards.forEach(function(card){
+        var matchOccasion = currentOccasion === 'all' || card.dataset.occasion === currentOccasion;
+        var matchBudget = currentBudget === 'all' || card.dataset.budget === currentBudget;
+        var show = matchOccasion && matchBudget;
+        card.classList.toggle('is-hidden', !show);
+        if (show) visible++;
+      });
+      emptyState.classList.toggle('show', visible === 0);
+    }
+
+    occasionBtns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        occasionBtns.forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        currentOccasion = btn.dataset.occasion;
+        applyFilters();
+      });
+    });
+
+    budgetBtns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        budgetBtns.forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        currentBudget = btn.dataset.budget;
+        applyFilters();
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
