@@ -1,0 +1,6 @@
+<svg id="logo-4" width="130" height="130" viewBox="0 0 120 120" fill="none"><style>:root{--gold:#A98A57;--gold-deep:#8F7245;--pearl:#F4EFE6;--ivory:#FAF6F0;--champagne:#EDE3D2;--ink:#2B2723;--ink2:#211E1B;}</style>
+          <path d="M60 20 A40 40 0 0 1 60 100 A20 20 0 0 1 60 60 A20 20 0 0 1 60 20 Z" fill="var(--gold)"/>
+          <path d="M60 20 A40 40 0 0 0 60 100 A20 20 0 0 0 60 60 A20 20 0 0 0 60 20 Z" fill="var(--ink)"/>
+          <circle cx="60" cy="40" r="5" fill="var(--pearl)"/>
+          <circle cx="60" cy="80" r="5" fill="var(--gold)"/>
+        </svg>

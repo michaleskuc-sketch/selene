@@ -1,0 +1,5 @@
+<svg id="logo-5" width="130" height="130" viewBox="0 0 120 120" fill="none"><style>:root{--gold:#A98A57;--gold-deep:#8F7245;--pearl:#F4EFE6;--ivory:#FAF6F0;--champagne:#EDE3D2;--ink:#2B2723;--ink2:#211E1B;}</style>
+          <circle cx="60" cy="60" r="42" stroke="var(--ink)" stroke-width="2"/>
+          <path d="M48 44 A16 16 0 1 0 48 76 A12 12 0 1 1 48 44 Z" fill="var(--ink)"/>
+          <circle cx="78" cy="60" r="12" fill="var(--gold)"/>
+        </svg>

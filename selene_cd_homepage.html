@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SELÉNÉ — Šperky z pozláteného a rhodiovaného striebra</title>
+<meta name="description" content="SELÉNÉ — šperkový ateliér. Pozlátené striebro 925, rhodiované striebro a chirurgická oceľ. Mesiac pre striebro, slnko pre zlato — doprava zdarma nad 59 €.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FAF6F0;
+    --pearl:#F4EFE6;
+    --champagne:#EDE3D2;
+    --gold:#A98A57;
+    --gold-deep:#8F7245;
+    --ink:#2B2723;
+    --serif:'Cormorant Garamond', serif;
+    --sans:'Jost', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--ivory);
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;height:auto;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+  .container{max-width:1320px;margin:0 auto;padding:0 32px;}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.15;}
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:12px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+    font-weight:500;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:16px 36px;
+    font-size:12.5px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-weight:500;
+    transition:all .35s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--ink);
+    color:var(--ivory);
+    border:1px solid var(--ink);
+  }
+  .btn-primary:hover{background:transparent;color:var(--ink);}
+  .btn-outline{
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--ink);
+  }
+  .btn-outline:hover{background:var(--ink);color:var(--ivory);}
+  .btn-outline.on-dark{border-color:var(--ivory);color:var(--ivory);}
+  .btn-outline.on-dark:hover{background:var(--ivory);color:var(--ink);}
+
+  /* ---------- Announcement bar ---------- */
+  .announcement{
+    background:var(--ink);
+    color:var(--ivory);
+    text-align:center;
+    font-size:12px;
+    letter-spacing:.12em;
+    padding:11px 20px;
+    font-weight:300;
+  }
+  .announcement span{color:var(--gold);}
+
+  /* ---------- Header ---------- */
+  header{
+    background:var(--ivory);
+    border-bottom:1px solid rgba(43,39,35,.08);
+    position:sticky;
+    top:0;
+    z-index:100;
+  }
+  .header-inner{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    padding:22px 32px;
+    gap:20px;
+  }
+  .nav-left, .nav-right{
+    display:flex;
+    align-items:center;
+    gap:30px;
+  }
+  .nav-right{justify-content:flex-end;}
+  nav.nav-left a{
+    font-size:12.5px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    font-weight:400;
+    position:relative;
+    padding-bottom:4px;
+  }
+  nav.nav-left a::after{
+    content:'';
+    position:absolute;
+    left:0;bottom:0;
+    width:0;height:1px;
+    background:var(--gold);
+    transition:width .35s ease;
+  }
+  nav.nav-left a:hover::after{width:100%;}
+  .dd{position:relative;display:flex;align-items:center;gap:4px;}
+  .dd-trigger{
+    background:none;border:none;cursor:pointer;color:var(--gold-deep);
+    font-size:11px;padding:4px;display:grid;place-items:center;border-radius:50%;
+    transition:background .2s;
+  }
+  .dd-trigger:hover{background:var(--champagne);}
+  .dd-trigger svg{width:11px;height:11px;display:block;}
+  .dd-menu{
+    position:absolute;top:100%;left:0;min-width:210px;
+    background:var(--ivory);border:1px solid var(--line);
+    box-shadow:0 18px 44px rgba(43,39,35,.12);
+    padding:8px 0;border-radius:2px;
+    opacity:0;visibility:hidden;transform:translateY(8px);
+    transition:opacity .22s ease,transform .22s ease,visibility .22s;
+    z-index:80;
+  }
+  .dd:hover .dd-menu,.dd:focus-within .dd-menu{opacity:1;visibility:visible;transform:translateY(0);}
+  nav .dd-menu a{
+    display:block;padding:9px 20px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    font-weight:400;color:var(--ink);white-space:nowrap;
+  }
+  nav .dd-menu a:hover{background:var(--pearl);color:var(--gold-deep);}
+  .dd-menu .dd-head{font-family:var(--serif);font-style:italic;font-size:16px;text-transform:none;letter-spacing:.03em;color:var(--gold-deep);padding:4px 20px 10px;display:block;}
+  .logo-block{
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:2px;
+  }
+  .logo-block .moon-icon{width:26px;height:26px;margin-bottom:2px;}
+  .logo-block .brand{
+    font-family:var(--serif);
+    font-size:26px;
+    letter-spacing:.32em;
+    padding-left:.32em;
+    font-weight:500;
+  }
+  .logo-block .tagline{
+    font-size:9.5px;
+    letter-spacing:.32em;
+    padding-left:.32em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+  }
+  .icons{
+    display:flex;
+    gap:22px;
+    align-items:center;
+  }
+  .icons button{
+    display:flex;
+    align-items:center;
+    color:var(--ink);
+    transition:color .3s ease;
+  }
+  .icons button:hover{color:var(--gold-deep);}
+  .icons svg{width:19px;height:19px;}
+  .burger{display:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    min-height:88vh;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;
+    inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+    object-position:center 30%;
+  }
+  .hero-fade{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(90deg, var(--ivory) 0%, rgba(250,246,240,.88) 20%, rgba(250,246,240,.35) 42%, rgba(250,246,240,0) 62%);
+  }
+  .hero-content{
+    position:relative;
+    z-index:2;
+    max-width:560px;
+    padding:0 32px;
+    margin-left:min(6vw, 90px);
+  }
+  .hero-content .eyebrow{margin-bottom:22px;display:block;}
+  .hero-emblem{width:46px;height:46px;margin-bottom:20px;opacity:.92;}
+  .hero-content h1{
+    font-size:clamp(38px, 5.2vw, 64px);
+    margin-bottom:22px;
+    color:var(--ink);
+  }
+  .hero-content h1 em{font-style:italic;color:var(--gold-deep);}
+  /* ---------- Živé nebo widget ---------- */
+  .moon-widget{position:relative;width:min(250px,92vw);margin:0 auto;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#17171b 0%,#1d1c22 100%);border:1px solid rgba(212,190,150,.25);box-shadow:0 30px 80px rgba(20,18,24,.35);font-family:var(--sans);}
+  .moon-widget.hidden{display:none;}
+  .mw-close{position:absolute;top:10px;left:12px;z-index:4;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#cfc9bc;font-size:12px;line-height:1;display:grid;place-items:center;cursor:pointer;transition:all .25s;}
+  .mw-close:hover{background:rgba(255,255,255,.2);color:#fff;}
+  .moon-widget .mw-live{position:absolute;top:12px;right:12px;z-index:3;display:flex;align-items:center;gap:6px;font-size:8.5px;letter-spacing:.22em;font-weight:500;color:#e8e4da;background:rgba(255,255,255,.06);border:1px solid rgba(180,215,170,.35);padding:4px 9px;border-radius:20px;}
+  .moon-widget .mw-live .dot{width:5px;height:5px;border-radius:50%;background:#7fd08a;box-shadow:0 0 6px #7fd08a;animation:pulse 2.2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .moon-widget .mw-sky{position:relative;height:170px;background:radial-gradient(120% 90% at 30% 20%, #23222b 0%, #17171b 60%, #101014 100%);}
+  .moon-widget .mw-sky svg{position:absolute;inset:0;width:100%;height:100%;}
+  .moon-widget .mw-info{background:#2a2820;padding:14px 16px 13px;border-top:1px solid rgba(212,190,150,.18);}
+  .moon-widget .mw-phase{font-family:var(--serif);font-size:17px;letter-spacing:.03em;color:#efe9dc;display:flex;gap:6px;align-items:baseline;}
+  .moon-widget .mw-pct{font-size:12px;color:#b9a77f;}
+  .moon-widget .mw-sub{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#8a8374;margin-top:1px;}
+  .moon-widget .mw-brand{font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;color:#b9a77f;margin-top:9px;padding-top:8px;border-top:1px solid rgba(212,190,150,.14);}
+  .hero-content p.sub{
+    font-size:18px;
+    line-height:1.6;
+    color:#4a453e;
+    max-width:440px;
+    margin-bottom:38px;
+    font-weight:300;
+  }
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+
+  /* ---------- Perks ---------- */
+  .perks{
+    background:var(--pearl);
+    padding:38px 0;
+    border-bottom:1px solid rgba(43,39,35,.06);
+  }
+  .perks .container{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+  }
+  .perk{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    text-align:left;
+  }
+  .perk svg{width:26px;height:26px;flex-shrink:0;color:var(--gold-deep);}
+  .perk-text{display:flex;flex-direction:column;}
+  .perk-text .t{font-size:13px;letter-spacing:.03em;font-weight:500;}
+  .perk-text .s{font-size:11.5px;color:#7a7268;margin-top:2px;}
+
+  /* ---------- Section headings ---------- */
+  .section{padding:110px 0;}
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 60px;
+  }
+  .section-head .eyebrow{display:block;margin-bottom:16px;}
+  .section-head h2{font-size:clamp(30px,4vw,44px);}
+  .section-head p{margin-top:16px;font-size:15.5px;color:#5c564c;line-height:1.6;}
+
+  /* ---------- Astro deliaci prvok (A1) ---------- */
+.div-astro{display:flex;align-items:center;justify-content:center;gap:14px;max-width:320px;margin:0 auto;padding:clamp(24px,3.5vw,44px) 0}
+.div-astro .da-l,.div-astro .da-r{flex:1;height:1px}
+.div-astro .da-l{background:linear-gradient(90deg,transparent,var(--gold))}
+.div-astro .da-r{background:linear-gradient(90deg,var(--gold),transparent)}
+.div-astro .da-d{width:4px;height:4px;border-radius:50%;background:var(--gold-deep);opacity:.75}
+.div-astro .da-d.mid{width:6px;height:6px;background:var(--gold)}
+
+  .cat-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+  }
+  .cat-item{
+    position:relative;
+    aspect-ratio:3/4;
+    overflow:hidden;
+    background:var(--champagne);
+    cursor:pointer;
+  }
+  .cat-item img{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+    transition:opacity .45s ease, transform .6s ease;
+  }
+  .cat-item img.model{opacity:0;}
+  .cat-item:hover img.model{opacity:1;}
+  .cat-item:hover img:not(.model){opacity:0;}
+  .cat-item:hover img{transform:scale(1.04);}
+  .cat-label{
+    position:absolute;
+    left:0;right:0;bottom:0;
+    z-index:3;
+    padding:26px 22px;
+    background:linear-gradient(0deg, rgba(43,39,35,.55) 0%, rgba(43,39,35,0) 100%);
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+  }
+  .cat-label h3{color:#fff;font-size:22px;font-weight:500;}
+  .cat-label span{
+    color:#fff;
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    border-bottom:1px solid rgba(255,255,255,.6);
+    padding-bottom:2px;
+  }
+
+  /* ---------- Split kolekcie ---------- */
+  .split{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:0;
+  }
+  .split-img{
+    aspect-ratio:4/3;
+    overflow:hidden;
+  }
+  .split-img img{width:100%;height:100%;object-fit:cover;}
+  .split-text{padding:60px 80px;}
+  .split-text .eyebrow{display:block;margin-bottom:18px;}
+  .split-text h2{font-size:clamp(32px,4vw,46px);margin-bottom:22px;}
+  .coll-h{display:flex;align-items:center;gap:14px;}
+  .coll-ico{width:34px;height:34px;flex:0 0 auto;}
+  .split-text p{
+    font-size:16px;
+    line-height:1.75;
+    color:#4a453e;
+    max-width:440px;
+    margin-bottom:34px;
+  }
+  .split-reverse .split-text{order:1;}
+  .split-reverse .split-img{order:2;}
+
+  .section.grey{background:var(--pearl);}
+
+  /* ---------- Bestsellery ---------- */
+  .prod-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px 24px;
+  }
+  .prod-card .prod-img{
+    position:relative;
+    aspect-ratio:3/4;
+    overflow:hidden;
+    background:var(--champagne);
+    margin-bottom:18px;
+  }
+  .prod-img img{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+    transition:opacity .45s ease, transform .6s ease;
+  }
+  .prod-img img.model{opacity:0;}
+  .prod-card:hover .prod-img img.model{opacity:1;}
+  .prod-card:hover .prod-img img:not(.model){opacity:0;}
+  .prod-card:hover .prod-img img{transform:scale(1.04);}
+  .prod-tag{
+    position:absolute;
+    top:14px;left:14px;
+    z-index:3;
+    background:var(--ivory);
+    color:var(--ink);
+    font-size:10px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    padding:6px 12px;
+    font-weight:500;
+  }
+  .prod-tag.new{background:var(--ink);color:var(--ivory);}
+  .prod-info{text-align:center;}
+  .prod-info .p-cat{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#948b7d;margin-bottom:6px;}
+  .prod-info h3{font-size:19px;font-weight:500;margin-bottom:8px;}
+  .prod-info .price{font-size:15px;color:var(--gold-deep);letter-spacing:.02em;}
+
+  /* ---------- Video ---------- */
+  .video-section .split{align-items:stretch;}
+  .video-wrap{
+    position:relative;
+    aspect-ratio:16/9;
+    overflow:hidden;
+    background:var(--ink);
+  }
+  .video-wrap video{width:100%;height:100%;object-fit:cover;}
+
+  /* ---------- Recenzie ---------- */
+  .review-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:36px;
+  }
+  .review-card{
+    background:var(--ivory);
+    border:1px solid rgba(43,39,35,.1);
+    padding:44px 36px;
+    text-align:center;
+  }
+  .stars{color:var(--gold);font-size:15px;letter-spacing:3px;margin-bottom:22px;}
+  .review-card blockquote{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:19px;
+    line-height:1.6;
+    margin-bottom:24px;
+    color:var(--ink);
+  }
+  .review-name{font-size:13px;font-weight:500;letter-spacing:.03em;}
+  .review-city{font-size:11.5px;color:#948b7d;margin-top:3px;text-transform:uppercase;letter-spacing:.08em;}
+
+  /* ---------- Darčeky ---------- */
+  .gift-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  .gift-card{
+    position:relative;
+    aspect-ratio:1/1;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+    cursor:pointer;
+  }
+  .gift-card img{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+    transition:transform .6s ease;
+  }
+  .gift-card:hover img{transform:scale(1.05);}
+  .gift-overlay{
+    position:relative;
+    z-index:2;
+    width:100%;
+    padding:30px;
+    background:linear-gradient(0deg, rgba(43,39,35,.62) 0%, rgba(43,39,35,0) 100%);
+    color:#fff;
+  }
+  .gift-overlay .eyebrow{color:var(--champagne);margin-bottom:8px;display:block;}
+  .gift-overlay h3{font-size:24px;color:#fff;margin-bottom:14px;}
+  .gift-overlay a{
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    border-bottom:1px solid rgba(255,255,255,.6);
+    padding-bottom:3px;
+  }
+
+  /* ---------- Newsletter ---------- */
+  .newsletter{
+    background:var(--ink);
+    color:var(--ivory);
+    padding:100px 0;
+    text-align:center;
+  }
+  .newsletter .moon-icon{width:34px;height:34px;margin:0 auto 26px;color:var(--gold);}
+  .newsletter h2{font-size:clamp(28px,3.6vw,40px);margin-bottom:16px;color:var(--ivory);}
+  .newsletter p{font-size:15.5px;color:#c9c2b5;margin-bottom:38px;}
+  .newsletter-form{
+    display:flex;
+    justify-content:center;
+    gap:0;
+    max-width:440px;
+    margin:0 auto;
+  }
+  .newsletter-form input{
+    flex:1;
+    background:transparent;
+    border:1px solid rgba(250,246,240,.4);
+    border-right:none;
+    padding:16px 20px;
+    color:var(--ivory);
+    font-family:var(--sans);
+    font-size:14px;
+    font-weight:300;
+  }
+  .newsletter-form input::placeholder{color:#a39c8f;}
+  .newsletter-form input:focus{outline:none;border-color:var(--gold);}
+  .newsletter-form button{
+    background:var(--gold);
+    color:var(--ink);
+    padding:16px 30px;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-weight:500;
+    transition:background .3s ease;
+    white-space:nowrap;
+  }
+  .newsletter-form button:hover{background:var(--champagne);}
+  .newsletter-note{margin-top:18px;font-size:11.5px;color:#948b7d;}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--pearl);
+    padding:80px 0 30px;
+  }
+  .footer-top{
+    display:grid;
+    grid-template-columns:1.4fr repeat(3,1fr);
+    gap:40px;
+    padding-bottom:60px;
+    border-bottom:1px solid rgba(43,39,35,.1);
+  }
+  .footer-brand .logo-block{align-items:flex-start;text-align:left;}
+  .footer-brand p{
+    margin-top:20px;
+    font-size:13.5px;
+    color:#6b6459;
+    line-height:1.7;
+    max-width:260px;
+  }
+  .footer-social{display:flex;gap:16px;margin-top:24px;}
+  .footer-social a{
+    width:34px;height:34px;
+    border:1px solid rgba(43,39,35,.2);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    transition:all .3s ease;
+  }
+  .footer-social a:hover{background:var(--ink);border-color:var(--ink);color:var(--ivory);}
+  .footer-social svg{width:15px;height:15px;}
+  .f-col h4{
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    margin-bottom:22px;
+    font-weight:500;
+    color:var(--ink);
+  }
+  .f-col ul li{margin-bottom:13px;}
+  .f-col ul li a{font-size:13.5px;color:#5c564c;transition:color .3s ease;}
+  .f-col ul li a:hover{color:var(--gold-deep);}
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:28px;
+    font-size:12px;
+    color:#948b7d;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .footer-bottom a{margin-left:20px;color:#948b7d;}
+  .footer-bottom a:hover{color:var(--gold-deep);}
+
+  /* ---------- Reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- Mobile menu ---------- */
+  .mobile-nav{
+    position:fixed;
+    inset:0;
+    background:var(--ivory);
+    z-index:200;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:30px;
+    transform:translateY(-100%);
+    transition:transform .45s ease;
+  }
+  .mobile-nav.open{transform:translateY(0);}
+  .mobile-nav a{font-family:var(--serif);font-size:26px;}
+  .mobile-close{position:absolute;top:26px;right:32px;font-size:28px;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:1080px){
+    .cat-grid, .prod-grid{grid-template-columns:repeat(2,1fr);}
+    .perks .container{grid-template-columns:repeat(2,1fr);row-gap:26px;}
+    .review-grid{grid-template-columns:1fr;gap:24px;}
+    .gift-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr 1fr;gap:40px 20px;}
+  }
+  @media (max-width:860px){
+    .nav-left{display:none;}
+    .burger{display:flex;}
+    .header-inner{grid-template-columns:auto 1fr auto;}
+    .split, .split-reverse{grid-template-columns:1fr;}
+    .split-reverse .split-text{order:2;}
+    .split-reverse .split-img{order:1;}
+    .split-text{padding:44px 24px;}
+    .hero-content{margin-left:0;max-width:100%;}
+    .hero-fade{background:linear-gradient(0deg, var(--ivory) 8%, rgba(250,246,240,.55) 45%, rgba(250,246,240,.15) 100%);}
+    .hero{align-items:flex-end;min-height:92vh;}
+    .hero-content{padding-bottom:60px;}
+    .section{padding:70px 0;}
+  }
+  @media (max-width:600px){
+    .cat-grid, .prod-grid{grid-template-columns:1fr 1fr;gap:14px;}
+    .container{padding:0 18px;}
+    .perks .container{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;gap:36px;}
+    .newsletter-form{flex-direction:column;gap:10px;}
+    .newsletter-form input{border-right:1px solid rgba(250,246,240,.4);}
+    .split-text h2{font-size:30px;}
+    .hero-content h1{font-size:36px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= ANNOUNCEMENT BAR ================= -->
+<div class="announcement">
+  Darčekové balenie ku každej objednávke <span>·</span> Doprava zdarma nad 59&nbsp;€
+</div>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="header-inner">
+    <nav class="nav-left">
+      <a href="selene_cd_katalog.html?cat=nausnice">Náušnice</a>
+      <a href="selene_cd_katalog.html?cat=nahrdelniky">Náhrdelníky</a>
+      <a href="selene_cd_katalog.html?cat=prstene">Prstene</a>
+      <div class="dd">
+        <a href="selene_cd_katalog.html?cat=naramy">Náramky</a>
+        <button class="dd-trigger" aria-label="Ďalšie kategórie" tabindex="0">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4l4 4 4-4"/></svg>
+        </button>
+        <div class="dd-menu">
+          <span class="dd-head">Ďalšie kategórie</span>
+          <a href="selene_cd_katalog.html?cat=anklety">Retiazky na nohu</a>
+          <a href="selene_cd_katalog.html?cat=retiazky">Retiazky</a>
+        </div>
+      </div>
+    </nav>
+
+    <a href="selene_cd_homepage.html" class="logo-block" aria-label="SELÉNÉ — domov">
+      <svg class="moon-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M42 8 C 30 12, 23 22, 23 32 C 23 42, 30 52, 42 56 C 36 50, 32 42, 32 32 C 32 22, 36 14, 42 8 Z" fill="#8F7245"/>
+      </svg>
+      <span class="brand">SELÉNÉ</span>
+      <span class="tagline">jewelry</span>
+    </a>
+
+    <div class="nav-right">
+      <nav class="nav-left" style="display:flex;">
+        <a href="selene_cd_katalog.html?cat=all">Darčeky</a>
+        <a href="selene_blog.html">Blog</a>
+      </nav>
+      <div class="icons">
+        <button aria-label="Hľadať">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
+        </button>
+        <button aria-label="Účet">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+        </button>
+        <a href="selene_cd_kosik.html" aria-label="Košík">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h12l-1.2 11.2a1 1 0 0 1-1 .8H8.2a1 1 0 0 1-1-.8L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        </a>
+        <button class="burger" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.add('open')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <span class="mobile-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</span>
+  <a href="selene_cd_katalog.html?cat=nausnice">Náušnice</a>
+  <a href="selene_cd_katalog.html?cat=nahrdelniky">Náhrdelníky</a>
+  <a href="selene_cd_katalog.html?cat=prstene">Prstene</a>
+  <a href="selene_cd_katalog.html?cat=naramy">Náramky</a>
+  <a href="selene_cd_katalog.html?cat=anklety">Retiazky na nohu</a>
+  <a href="selene_cd_katalog.html?cat=retiazky">Retiazky</a>
+  <a href="selene_cd_katalog.html?cat=all">Darčeky</a>
+  <a href="selene_blog.html">Blog</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <img src="img/autumn_hero.jpg" alt="Ruka so zlatými šperkami medzi jesenným lístím" class="hero-bg">
+  <div class="hero-fade"></div>
+  <div class="hero-content">
+    <img src="img/sun-moon-orbit.svg" alt="" class="hero-emblem" aria-hidden="true">
+    <span class="eyebrow">Jesenná kolekcia</span>
+    <h1>Mesiac pre striebro.<br><em>Slnko</em> pre zlato.</h1>
+    <p class="sub">Šperk, ktorý nosí svetlo dňa aj ticho noci.</p>
+    <div class="hero-ctas">
+      <a href="#kolekcia-sun" class="btn btn-primary">Objaviť Sun Gold</a>
+      <a href="#kolekcia-moon" class="btn btn-outline">Objaviť Moon Silver</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PERKS ================= -->
+<section class="perks">
+  <div class="container">
+    <div class="perk">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="8" width="18" height="12" rx="1"/><path d="M3 8h18M12 8V4m-4 0h8" /><path d="M12 8v12"/></svg>
+      <div class="perk-text"><span class="t">Darčekové balenie</span><span class="s">Ku každej objednávke</span></div>
+    </div>
+    <div class="perk">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 12h13l-3-4M15 12l-3 4"/><path d="M15 6h3l4 4v6h-2"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>
+      <div class="perk-text"><span class="t">Doprava zdarma</span><span class="s">Nad 59 €</span></div>
+    </div>
+    <div class="perk">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+      <div class="perk-text"><span class="t">30 dní na výmenu</span><span class="s">Bez zbytočných otázok</span></div>
+    </div>
+    <div class="perk">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3l8 4v5c0 5-3.4 8.4-8 9-4.6-.6-8-4-8-9V7l8-4Z"/><path d="M9 12l2 2 4-4"/></svg>
+      <div class="perk-text"><span class="t">Poistená zásielka</span><span class="s">Bezpečne k vám domov</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Živé nebo widget (nad kategóriami) -->
+<div class="container" style="padding-top:56px;padding-bottom:8px;text-align:center">
+  <div class="moon-widget" id="moonWidget" aria-label="Živá fáza mesiaca">
+    <button class="mw-close" onclick="hideMoonWidget()" aria-label="Skryť widget">✕</button>
+    <div class="mw-live"><span class="dot"></span>ŽIVÉ</div>
+    <div class="mw-sky"><svg id="mwMoon" viewBox="0 0 120 170" preserveAspectRatio="xMidYMid meet"></svg></div>
+    <div class="mw-info">
+      <div class="mw-phase"><span id="mwPhaseName">Mesiac</span><span class="mw-pct" id="mwPhasePct">· 0 %</span></div>
+      <div class="mw-sub" id="mwPhaseSub">osvetlený</div>
+      <div class="mw-brand">SELÉNÉ · ŽIVÉ NEBO · NOC</div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= KATEGÓRIE ================= -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Nakupovať podľa kategórie</span>
+      <h2>Pre každý okamih</h2>
+    </div>
+    <div class="cat-grid">
+      <a href="selene_cd_katalog.html?cat=nausnice" class="cat-item reveal">
+        <img src="img/earrings.jpg" alt="Náušnice">
+        <img src="img/model_earrings.jpg" alt="Náušnice na modelke" class="model">
+        <div class="cat-label"><h3>Náušnice</h3><span>Zobraziť</span></div>
+      </a>
+      <a href="selene_cd_katalog.html?cat=nahrdelniky" class="cat-item reveal">
+        <img src="img/necklace_detail.jpg" alt="Náhrdelníky">
+        <img src="img/pearl2.jpg" alt="Náhrdelník na modelke" class="model">
+        <div class="cat-label"><h3>Náhrdelníky</h3><span>Zobraziť</span></div>
+      </a>
+      <a href="selene_cd_katalog.html?cat=prstene" class="cat-item reveal">
+        <img src="img/ring2.jpg" alt="Prstene">
+        <img src="img/rings_5.jpg" alt="Prstene na ruke" class="model">
+        <div class="cat-label"><h3>Prstene</h3><span>Zobraziť</span></div>
+      </a>
+      <a href="selene_cd_katalog.html?cat=naramy" class="cat-item reveal">
+        <img src="img/bracelet.jpg" alt="Náramky">
+        <img src="img/bracelets_7.jpg" alt="Náramky na ruke" class="model">
+        <div class="cat-label"><h3>Náramky</h3><span>Zobraziť</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KOLEKCIA MOON SILVER ================= -->
+<section class="section grey" id="kolekcia-moon">
+  <div class="split">
+    <div class="split-img reveal">
+      <img src="img/hero_silver.jpg" alt="Kolekcia Moon Silver">
+    </div>
+    <div class="split-text reveal">
+      <span class="eyebrow">Kolekcia</span>
+      <h2 class="coll-h"><img src="img/sun-moon-orbit.svg" alt="" class="coll-ico">Moon Silver</h2>
+      <p>Rhodiované striebro 925 s perlami — chladný, čistý lesk mesačného svitu. Jemné línie a organické tvary pre tichú eleganciu na každý deň.</p>
+      <a href="#" class="btn btn-outline">Zobraziť kolekciu</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KOLEKCIA SUN GOLD ================= -->
+<section class="section" id="kolekcia-sun">
+  <div class="split split-reverse">
+    <div class="split-text reveal">
+      <span class="eyebrow">Kolekcia</span>
+      <h2 class="coll-h"><img src="img/sun-moon-orbit.svg" alt="" class="coll-ico">Sun Gold</h2>
+      <p>Pozlátené striebro 925 v odtieni champagne — teplo slnečného svetla, ktoré nosíte na koži. Výrazné aj jemné kúsky pre chvíle, keď chcete žiariť.</p>
+      <a href="#" class="btn btn-outline">Zobraziť kolekciu</a>
+    </div>
+    <div class="split-img reveal">
+      <img src="img/sun_gold_collection.jpg" alt="Kolekcia Sun Gold">
+    </div>
+  </div>
+</section>
+
+<div class="div-astro" aria-hidden="true"><span class="da-l"></span><span class="da-d"></span><span class="da-d mid"></span><span class="da-d"></span><span class="da-r"></span></div>
+<!-- ================= BESTSELLERY ================= -->
+<section class="section grey">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Obľúbené kúsky</span>
+      <h2>Bestsellery</h2>
+      <p>Šperky, ktoré si naše zákazníčky vybrali najčastejšie.</p>
+    </div>
+    <div class="prod-grid">
+      <a class="prod-card reveal" href="selene_cd_produkt.html?id=0">
+        <div class="prod-img">
+          <span class="prod-tag">Bestseller</span>
+          <img src="img/earrings2.jpg" alt="Náušnice Aurelia">
+          <img src="img/model_earrings.jpg" alt="Náušnice Aurelia na modelke" class="model">
+        </div>
+        <div class="prod-info">
+          <div class="p-cat">Sun Gold</div>
+          <h3>Náušnice Aurelia</h3>
+          <div class="price">39 €</div>
+        </div>
+      </a>
+      <a class="prod-card reveal" href="selene_cd_produkt.html?id=23">
+        <div class="prod-img">
+          <span class="prod-tag new">Novinka</span>
+          <img src="img/pearl2.jpg" alt="Náhrdelník Selene Perla">
+          <img src="img/necklace_detail.jpg" alt="Náhrdelník detail" class="model">
+        </div>
+        <div class="prod-info">
+          <div class="p-cat">Moon Silver</div>
+          <h3>Náhrdelník Perla</h3>
+          <div class="price">45 €</div>
+        </div>
+      </a>
+      <a class="prod-card reveal" href="selene_cd_produkt.html?id=46">
+        <div class="prod-img">
+          <span class="prod-tag">Bestseller</span>
+          <img src="img/rings_5.jpg" alt="Prsteň Luna">
+          <img src="img/ring2.jpg" alt="Prsteň Luna detail" class="model">
+        </div>
+        <div class="prod-info">
+          <div class="p-cat">Moon Silver</div>
+          <h3>Prsteň Luna</h3>
+          <div class="price">29 €</div>
+        </div>
+      </a>
+      <a class="prod-card reveal" href="selene_cd_produkt.html?id=53">
+        <div class="prod-img">
+          <span class="prod-tag new">Novinka</span>
+          <img src="img/dottilove/bracelets_3.jpg" alt="Náramok Helios">
+          <img src="img/bracelets_7.jpg" alt="Náramok Helios na ruke" class="model">
+        </div>
+        <div class="prod-info">
+          <div class="p-cat">Sun Gold</div>
+          <h3>Náramok Helios</h3>
+          <div class="price">35 €</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VIDEO ================= -->
+<section class="section video-section">
+  <div class="split">
+    <div class="split-text reveal">
+      <span class="eyebrow">Selené v pohybe</span>
+      <h2>Svetlo, ktoré nosíte so sebou</h2>
+      <p>Každý šperk SELÉNÉ vzniká s pozornosťou na detail — od výberu materiálu až po posledné vyleštenie. Pozrite sa, ako naše kúsky ožívajú.</p>
+      <a href="#" class="btn btn-outline">Sledovať náš príbeh</a>
+    </div>
+    <div class="video-wrap reveal">
+      <video autoplay muted loop playsinline poster="img/brand_video_1.jpg">
+        <source src="img/brand_video_1.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REMESLO ================= -->
+<section class="section grey">
+  <div class="split split-reverse">
+    <div class="split-text reveal">
+      <span class="eyebrow">Remeslo</span>
+      <h2>Robené s citom pre detail</h2>
+      <p>Pracujeme s pozláteným striebrom 925, rhodiovaným striebrom a chirurgickou oceľou — materiálmi, ktoré vydržia roky nosenia bez straty lesku. Každý kúsok prechádza ručnou kontrolou v našej dielni na Slovensku.</p>
+      <a href="#" class="btn btn-outline">O našich materiáloch</a>
+    </div>
+    <div class="split-img reveal">
+      <img src="img/craftsmanship.jpg" alt="Klenotník pri práci">
+    </div>
+  </div>
+</section>
+
+<!-- ================= RECENZIE ================= -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Referencie</span>
+      <h2>Čo hovoria naše zákazníčky</h2>
+    </div>
+    <div class="review-grid">
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>„Náušnice Aurelia nosím takmer denne. Po troch mesiacoch vyzerajú stále ako nové — a balenie bolo nádherné."</blockquote>
+        <div class="review-name">Simona K.</div>
+        <div class="review-city">Bratislava</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>„Objednala som náhrdelník ako darček pre mamu a bola nadšená. Doprava rýchla, komunikácia bezchybná."</blockquote>
+        <div class="review-name">Zuzana P.</div>
+        <div class="review-city">Košice</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>„Konečne šperky, ktoré nešednú ani po umytí rúk. Kvalita zodpovedá cene aj vyššej."</blockquote>
+        <div class="review-name">Michaela T.</div>
+        <div class="review-city">Žilina</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DARČEKY ================= -->
+<section class="section grey">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Ideálny darček</span>
+      <h2>Nájdite ten pravý</h2>
+      <p>Podľa rozpočtu — s darčekovým balením vždy zdarma.</p>
+    </div>
+    <div class="gift-grid">
+      <div onclick="location.href='selene_cd_katalog.html?cat=all'" class="gift-card reveal">
+        <img src="img/dottilove/rings_3.jpg" alt="Darčeky do 50 €">
+        <div class="gift-overlay">
+          <span class="eyebrow">Do 50 €</span>
+          <h3>Malé gesto</h3>
+          <a href="selene_cd_katalog.html?cat=all">Zobraziť výber</a>
+        </div>
+      </div>
+      <div onclick="location.href='selene_cd_katalog.html?cat=all'" class="gift-card reveal">
+        <img src="img/pearl2.jpg" alt="Darčeky 50–79 €">
+        <div class="gift-overlay">
+          <span class="eyebrow">50 – 79 €</span>
+          <h3>Krásny darček</h3>
+          <a href="selene_cd_katalog.html?cat=all">Zobraziť výber</a>
+        </div>
+      </div>
+      <div onclick="location.href='selene_cd_katalog.html?cat=all'" class="gift-card reveal">
+        <img src="img/dottilove/necklaces_6.jpg" alt="Darčeky 79 € a viac">
+        <div class="gift-overlay">
+          <span class="eyebrow">79 € a viac</span>
+          <h3>Výnimočná chvíľa</h3>
+          <a href="selene_cd_katalog.html?cat=all">Zobraziť výber</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div-astro" aria-hidden="true"><span class="da-l"></span><span class="da-d"></span><span class="da-d mid"></span><span class="da-d"></span><span class="da-r"></span></div>
+<!-- ================= NEWSLETTER ================= -->
+<section class="newsletter">
+  <div class="container">
+    <svg class="moon-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M42 8 C 30 12, 23 22, 23 32 C 23 42, 30 52, 42 56 C 36 50, 32 42, 32 32 C 32 22, 36 14, 42 8 Z" fill="#8F7245"/>
+    </svg>
+    <h2>10 % na prvú objednávku</h2>
+    <p>Prihláste sa na odber a buďte prvá, kto sa dozvie o nových kolekciách.</p>
+    <form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Ďakujeme!';">
+      <input type="email" placeholder="Váš e-mail" required>
+      <button type="submit">Odoberať</button>
+    </form>
+    <p class="newsletter-note">Odberom súhlasíte so zasielaním noviniek. Kedykoľvek sa môžete odhlásiť.</p>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo-block">
+          <svg class="moon-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M42 8 C 30 12, 23 22, 23 32 C 23 42, 30 52, 42 56 C 36 50, 32 42, 32 32 C 32 22, 36 14, 42 8 Z" fill="#8F7245"/>
+          </svg>
+          <span class="brand">SELÉNÉ</span>
+          <span class="tagline">jewelry</span>
+        </a>
+        <p>Slovenský šperkový ateliér inšpirovaný svetlom mesiaca a slnka. Pozlátené a rhodiované striebro 925, chirurgická oceľ.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M15 8h-2a2 2 0 0 0-2 2v10M8 13h5"/><circle cx="12" cy="12" r="9"/></svg></a>
+          <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M9 17c1-3 1.5-5 1.5-7a2.5 2.5 0 0 1 5 0c0 1.7-1 3-2.5 3"/></svg></a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h4>Obchod</h4>
+        <ul>
+          <li><a href="#">Náušnice</a></li>
+          <li><a href="#">Náhrdelníky</a></li>
+          <li><a href="#">Prstene</a></li>
+          <li><a href="#">Náramky</a></li>
+          <li><a href="#">Darčeky</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Blog</h4>
+        <ul>
+          <li><a href="#">Ako o šperk starať</a></li>
+          <li><a href="#">Sprievodca materiálmi</a></li>
+          <li><a href="#">Trendy sezóny</a></li>
+          <li><a href="#">Príbehy zákazníčok</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Značka</h4>
+        <ul>
+          <li><a href="#">O nás</a></li>
+          <li><a href="#">Remeslo</a></li>
+          <li><a href="#">Obchodné podmienky</a></li>
+          <li><a href="#">Ochrana súkromia</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:ahoj@selene.sk">ahoj@selene.sk</a></li>
+          <li><a href="#">Po–Pi 9:00–17:00</a></li>
+          <li><a href="#">Doprava a platba</a></li>
+          <li><a href="#">Vrátenie a výmena</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Wil, s.r.o. Všetky práva vyhradené.</span>
+      <div>
+        <a href="#">Obchodné podmienky</a>
+        <a href="#">Ochrana súkromia</a>
+        <a href="#">Kontakt</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach(el => io.observe(el));
+
+  // header shadow on scroll
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      header.style.boxShadow = '0 2px 18px rgba(43,39,35,.06)';
+    } else {
+      header.style.boxShadow = 'none';
+    }
+  });
+</script>
+
+<script>
+/* SELÉNÉ — Živé nebo (moon phase widget) */
+(function(){
+  function phase(){var jd=Date.now()/86400000+2440587.5;var d=(jd-2451550.1)%29.53058867;if(d<0)d+=29.53058867;return d/29.53058867;}
+  var PH=[['Nov',0,.06],['Dorastajúci kosáčik',.06,.19],['Prvá štvrť',.19,.31],['Dorastajúci mesiac',.31,.44],['Spln',.44,.56],['Zubujúci mesiac',.56,.69],['Posledná štvrť',.69,.81],['Zubujúci kosáčik',.81,.94],['Nov',.94,1.01]];
+  function pName(k){for(var i=0;i<PH.length;i++){if(k>=PH[i][1]&&k<PH[i][2])return PH[i][0];}return 'Nov';}
+  function moonPath(k){
+    var r=44,cx=60,cy=60,n=26,pts=[],i,y,t,xb,xe;
+    var s=Math.cos(Math.PI*(1-2*k));
+    for(i=0;i<=n;i++){y=cy-r+2*r*i/n;t=Math.sqrt(Math.max(0,1-Math.pow((y-cy)/r,2)));xb=cx+s*r*t;pts.push([xb,y]);}
+    for(i=n;i>=0;i--){y=cy-r+2*r*i/n;t=Math.sqrt(Math.max(0,1-Math.pow((y-cy)/r,2)));xe=(k<.5)?cx+r*t:cx-r*t;pts.push([xe,y]);}
+    return 'M'+pts.map(function(p){return p[0].toFixed(1)+' '+p[1].toFixed(1);}).join('L')+'Z';
+  }
+  function stars(){
+    var s=[[14,22],[30,14],[52,9],[78,16],[96,10],[110,24],[8,58],[26,44],[42,66],[64,30],[88,42],[104,58],[18,96],[38,90],[58,80],[82,74],[100,92],[70,104],[34,120],[54,112],[90,120],[114,96],[120,44],[6,34]],out='';
+    for(var i=0;i<s.length;i++){var x=s[i][0],y=s[i][1],z=(i%3===0)?2.2:((i%3===1)?1.6:1.1),o=0.35+(i%5)*0.13;
+      out+='<path d="M'+x+' '+(y-z)+'L'+(x+z*.35)+' '+(y-z*.35)+'L'+(x+z)+' '+y+'L'+(x+z*.35)+' '+(y+z*.35)+'L'+x+' '+(y+z)+'L'+(x-z*.35)+' '+(y+z*.35)+'L'+(x-z)+' '+y+'L'+(x-z*.35)+' '+(y-z*.35)+'Z" fill="#fff" opacity="'+o.toFixed(2)+'"/>';}
+    return out;
+  }
+  function render(){
+    var k=phase(),el=document.getElementById('mwMoon');if(!el)return;
+    el.innerHTML=stars()+'<g transform="translate(0,15)"><circle cx="60" cy="60" r="44" fill="#17171b"/><path d="'+moonPath(k)+'" fill="#f2ecdf"/><circle cx="60" cy="60" r="43" fill="none" stroke="rgba(255,255,255,.14)" stroke-width=".8"/></g>';
+    var pn=document.getElementById('mwPhaseName'),pp=document.getElementById('mwPhasePct'),ps=document.getElementById('mwPhaseSub');
+    var il=Math.round((1-Math.cos(2*Math.PI*k))/2*100);
+    if(pn)pn.textContent=pName(k);if(pp)pp.textContent='· '+il+' %';if(ps)ps.textContent=(k<.06||k>.94)?'mesiac':'osvetlený';
+  }
+  window.hideMoonWidget=function(){var w=document.getElementById('moonWidget');if(w)w.classList.add('hidden');try{localStorage.setItem('selene_moon_hidden','1');}catch(e){}};
+  try{if(localStorage.getItem('selene_moon_hidden')==='1'){var w=document.getElementById('moonWidget');if(w)w.classList.add('hidden');}}catch(e){}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',render);else render();
+})();
+</script>
+
+</body>
+</html>

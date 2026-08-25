@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SELÉNÉ Jewelry — Slnko pre zlato. Mesiac pre striebro.</title>
+<meta name="description" content="Jemné šperky zo striebra 925 a pozláteného striebra. Kolekcie Sun Gold a Moon Silver. Čoskoro na selene.sk">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── Tokens ─── */
+:root{
+  --ivory:#FAF6F0; --pearl:#F4EFE6; --champagne:#EDE3D2;
+  --sand:#E2D3BC; --gold:#A98A57; --gold-lt:#C9A96E;
+  --ink:#2B2723; --ink2:#1A1714; --muted:#7C7266; --line:#E5DCCC;
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost','Segoe UI',sans-serif;
+  --pad:clamp(24px,6vw,80px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--ink2);color:var(--ivory);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--gold);color:#fff}
+
+/* ─── Scroll fade-in ─── */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ─── Hero ─── */
+.hero{position:relative;height:100svh;min-height:540px;display:grid;place-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,23,20,.55) 0%,rgba(26,23,20,.72) 60%,rgba(26,23,20,.92) 100%)}
+.hero-inner{position:relative;z-index:2;text-align:center;padding:0 var(--pad)}
+.hero-logo{display:flex;justify-content:center;margin-bottom:28px}
+.hero-logo img{height:clamp(80px,10vw,120px);width:auto;filter:drop-shadow(0 0 28px rgba(169,138,87,.3))}
+.hero-tagline{font-family:var(--serif);font-weight:300;font-size:clamp(28px,5vw,62px);letter-spacing:.08em;line-height:1.15;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.4)}
+.hero-tagline em{font-style:italic;color:var(--gold-lt)}
+.hero-sub{font-size:clamp(11px,1.4vw,14px);letter-spacing:.32em;text-transform:uppercase;color:rgba(237,227,210,.75);margin-top:22px;font-weight:400}
+.hero-cta{margin-top:44px;display:inline-flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer;opacity:.85;transition:opacity .2s}
+.hero-cta:hover{opacity:1}
+.hero-cta span{font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.hero-cta svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.5;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@media (prefers-reduced-motion:reduce){@keyframes bob{to{transform:none}}}
+
+/* ─── Announcement bar ─── */
+.bar{background:var(--gold);color:#fff;text-align:center;font-size:11px;letter-spacing:.26em;text-transform:uppercase;padding:11px 16px;font-weight:500}
+
+/* ─── Sections wrapper ─── */
+section{background:var(--ivory);color:var(--ink)}
+.dark-sec{background:var(--ink2);color:var(--ivory)}
+
+/* ─── Editorial split ─── */
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:72vh}
+.split.rev{direction:rtl}
+.split.rev>*{direction:ltr}
+.split-img{position:relative;overflow:hidden;min-height:340px}
+.split-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
+.split-img:hover img{transform:scale(1.04)}
+.split-body{padding:clamp(48px,7vw,110px) clamp(28px,5vw,80px);display:flex;flex-direction:column;justify-content:center;gap:20px}
+.split-eyebrow{font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.split-hed{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4vw,54px);line-height:1.07;letter-spacing:.02em}
+.split-body.on-dark .split-hed{color:var(--champagne)}
+.split-body.on-dark .split-eyebrow{color:var(--gold-lt)}
+.split-copy{font-size:clamp(14px,1.5vw,16px);line-height:1.8;color:var(--muted);max-width:46ch}
+.split-body.on-dark .split-copy{color:rgba(237,227,210,.72)}
+.split-link{font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;display:inline-flex;align-items:center;gap:8px;padding-bottom:4px;border-bottom:1px solid var(--gold);color:var(--gold);transition:gap .2s}
+.split-link:hover{gap:14px}
+
+/* ─── Brand story ─── */
+.story{padding:clamp(80px,11vw,140px) var(--pad);text-align:center}
+.story-mark{display:flex;justify-content:center;margin-bottom:32px}
+.story-mark img{height:64px;opacity:.72}
+.story-hed{font-family:var(--serif);font-weight:300;font-size:clamp(28px,3.6vw,48px);letter-spacing:.04em;line-height:1.2;max-width:22ch;margin:0 auto}
+.story-hed em{font-style:italic;color:var(--gold-lt)}
+.story-divider{width:48px;height:1px;background:var(--gold);margin:36px auto}
+.story-copy{font-size:clamp(14px,1.4vw,16px);line-height:1.9;color:rgba(237,227,210,.72);max-width:56ch;margin:0 auto}
+
+/* ─── Product strip ─── */
+.strip{padding:clamp(56px,7vw,100px) var(--pad);background:var(--pearl);color:var(--ink)}
+.strip-head{max-width:1280px;margin:0 auto 40px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px}
+.strip-title{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3vw,38px)}
+.strip-all{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--gold);padding-bottom:3px}
+.prods{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.prod{overflow:hidden}
+.prod-ph{aspect-ratio:3/4;overflow:hidden;background:var(--champagne)}
+.prod-ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.prod:hover .prod-ph img{transform:scale(1.05)}
+.prod-info{padding:16px 4px 8px}
+.prod-name{font-family:var(--serif);font-weight:500;font-size:18px;letter-spacing:.03em}
+.prod-coll{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.prod-price{font-size:14px;margin-top:8px;letter-spacing:.04em}
+.prod-label{display:inline-block;background:var(--ink);color:var(--ivory);font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;padding:4px 9px;margin-top:12px;vertical-align:middle}
+
+/* ─── Traits ─── */
+.traits{display:grid;grid-template-columns:repeat(3,1fr);background:var(--ink)}
+.trait{padding:clamp(44px,6vw,80px) clamp(28px,4vw,60px);border-right:1px solid rgba(237,227,210,.1);display:flex;flex-direction:column;gap:14px}
+.trait:last-child{border-right:none}
+.trait-num{font-family:var(--serif);font-size:clamp(42px,5vw,64px);font-weight:300;color:var(--gold);line-height:1}
+.trait-title{font-family:var(--serif);font-size:clamp(18px,2vw,24px);color:var(--champagne);font-weight:400;letter-spacing:.04em}
+.trait-copy{font-size:13px;color:rgba(237,227,210,.62);line-height:1.8;max-width:28ch}
+
+/* ─── Email capture ─── */
+.capture{padding:clamp(80px,11vw,140px) var(--pad);text-align:center;background:var(--ink2)}
+.capture-logo{display:flex;justify-content:center;margin-bottom:36px}
+.capture-logo img{height:90px;opacity:.88}
+.capture-hed{font-family:var(--serif);font-weight:300;font-size:clamp(26px,3.6vw,46px);letter-spacing:.06em;line-height:1.2;color:var(--champagne)}
+.capture-sub{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:rgba(237,227,210,.5);margin-top:14px}
+.capture-form{max-width:480px;margin:42px auto 0;display:flex;border-bottom:1px solid rgba(169,138,87,.6)}
+.capture-form input{flex:1;background:transparent;border:none;padding:16px 6px;font-family:var(--sans);font-size:14px;color:var(--ivory);outline:none;letter-spacing:.04em}
+.capture-form input::placeholder{color:rgba(237,227,210,.35)}
+.capture-form button{background:none;border:none;font-family:var(--sans);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-lt);padding:16px 8px;font-weight:500;cursor:pointer;transition:color .2s;white-space:nowrap}
+.capture-form button:hover{color:#fff}
+.capture-note{font-size:11px;color:rgba(237,227,210,.35);margin-top:16px;letter-spacing:.06em}
+.capture-done{display:none;font-family:var(--serif);font-style:italic;font-size:20px;color:var(--gold-lt);margin-top:20px}
+
+/* ─── Footer ─── */
+footer{background:var(--ink2);border-top:1px solid rgba(237,227,210,.1);padding:36px var(--pad)}
+.foot-in{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.foot-in img{height:42px;opacity:.6}
+.foot-copy{font-size:11px;color:rgba(237,227,210,.35);letter-spacing:.1em;text-align:right}
+.foot-copy a{color:rgba(237,227,210,.5);border-bottom:1px solid transparent;transition:color .2s}
+.foot-copy a:hover{color:var(--champagne)}
+
+/* ─── Live sky widget ─── */
+.sky-widget{position:absolute;right:clamp(18px,4vw,60px);bottom:clamp(18px,5vh,56px);width:196px;z-index:3;border:1px solid rgba(237,227,210,.24);border-radius:4px;overflow:hidden;background:rgba(26,23,20,.42);backdrop-filter:blur(7px);box-shadow:0 18px 44px rgba(0,0,0,.35)}
+.sky-widget svg{display:block;width:100%;height:auto}
+.sky-cap{display:flex;flex-direction:column;gap:3px;padding:11px 13px;border-top:1px solid rgba(237,227,210,.14);background:rgba(26,23,20,.62)}
+.sky-cap .st{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--champagne);line-height:1.25}
+.sky-cap .sub{font-size:8px;letter-spacing:.3em;text-transform:uppercase;color:rgba(237,227,210,.45)}
+.sky-live{position:absolute;top:8px;right:8px;font-size:7.5px;letter-spacing:.22em;color:rgba(237,227,210,.85);background:rgba(26,23,20,.65);padding:3px 8px;border-radius:20px;display:flex;align-items:center;gap:5px;z-index:2}
+.sky-live::before{content:'';width:5px;height:5px;border-radius:50%;background:#8FBF7E;animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+@media(prefers-reduced-motion:reduce){@keyframes pulse{to{opacity:1}}}
+@media(max-width:700px){.sky-widget{width:164px}}
+@media(max-width:560px){.sky-widget{width:140px;right:14px;bottom:14px}.sky-cap{padding:8px 10px}.sky-cap .st{font-size:12.5px}.sky-cap .sub{font-size:7px}}
+
+/* ─── Responsive ─── */
+@media(max-width:900px){
+  .split{grid-template-columns:1fr;min-height:0}
+  .split.rev{direction:ltr}
+  .split-img{min-height:55vw;max-height:400px}
+  .prods{grid-template-columns:repeat(2,1fr)}
+  .traits{grid-template-columns:1fr}
+  .trait{border-right:none;border-bottom:1px solid rgba(237,227,210,.1)}
+  .trait:last-child{border-bottom:none}
+}
+@media(max-width:480px){
+  .prods{grid-template-columns:1fr 1fr}
+  .capture-form{flex-direction:column;border-bottom:none;gap:0}
+  .capture-form input{border-bottom:1px solid rgba(169,138,87,.5);padding:14px 0}
+  .capture-form button{border:1px solid var(--gold);color:var(--gold);padding:14px;margin-top:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- Announcement -->
+<div class="bar">Čoskoro na selene.sk · Zaregistrujte sa a získajte 10 % na prvý nákup</div>
+
+<!-- ① HERO -->
+<section class="hero dark-sec" style="background:none">
+  <div class="hero-bg">
+    <img src="img/hero_silver.jpg" alt="">
+  </div>
+  <div class="hero-inner reveal">
+    <div class="hero-logo">
+      <img src="img/logo_selene.png" alt="SELÉNÉ Jewelry">
+    </div>
+    <div class="hero-tagline">
+      Slnko pre zlato.<br>
+      <em>Mesiac pre striebro.</em>
+    </div>
+    <div class="hero-sub">Jemné šperky zo striebra 925 a pozláteného striebra</div>
+    <a class="hero-cta" href="#sun-gold">
+      <span>Objaviť</span>
+      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
+  </div>
+
+  <!-- Živé nebo: aktuálna poloha slnka a fáza mesiaca -->
+  <div class="sky-widget" aria-label="Aktuálna poloha slnka a mesiaca">
+    <svg viewBox="0 0 220 220" role="img">
+      <defs>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop id="skyTop" offset="0" stop-color="#14110E"/>
+          <stop id="skyMid" offset=".55" stop-color="#201A14"/>
+          <stop id="skyHor" offset="1" stop-color="#33291C"/>
+        </linearGradient>
+        <radialGradient id="moonGlowG">
+          <stop offset="0" stop-color="rgba(232,226,216,.4)"/>
+          <stop offset="1" stop-color="rgba(232,226,216,0)"/>
+        </radialGradient>
+      </defs>
+      <rect width="220" height="220" fill="url(#skyGrad)"/>
+      <g id="stars" opacity="0">
+        <path d="M30 40 q1.5 5 6.5 6.5 q-5 1.5 -6.5 6.5 q-1.5 -5 -6.5 -6.5 q5 -1.5 6.5 -6.5 Z" fill="#EDE3D2"/>
+        <path d="M55 72 q1.2 4 5.2 5.2 q-4 1.2 -5.2 5.2 q-1.2 -4 -5.2 -5.2 q4 -1.2 5.2 -5.2 Z" fill="#EDE3D2"/>
+        <path d="M180 46 q1.4 4.6 6 6 q-4.6 1.4 -6 6 q-1.4 -4.6 -6 -6 q4.6 -1.4 6 -6 Z" fill="#EDE3D2"/>
+        <path d="M166 92 q1 3.2 4.2 4.2 q-3.2 1 -4.2 4.2 q-1 -3.2 -4.2 -4.2 q3.2 -1 4.2 -4.2 Z" fill="#EDE3D2"/>
+        <path d="M76 32 q1 3.4 4.4 4.4 q-3.4 1 -4.4 4.4 q-1 -3.4 -4.4 -4.4 q3.4 -1 4.4 -4.4 Z" fill="#EDE3D2"/>
+        <path d="M198 124 q1.1 3.6 4.7 4.7 q-3.6 1.1 -4.7 4.7 q-1.1 -3.6 -4.7 -4.7 q3.6 -1.1 4.7 -4.7 Z" fill="#EDE3D2"/>
+      </g>
+      <path id="horizon" d="M0 176 Q55 166 110 174 T220 170 L220 220 L0 220 Z" fill="rgba(16,13,11,.85)"/>
+      <g id="moonG">
+        <circle id="moonGlow" cx="0" cy="0" r="34" fill="url(#moonGlowG)"/>
+        <path id="moonPath" d="" fill="#E8E2D8"/>
+      </g>
+      <g id="sunG">
+        <g id="sunRays" opacity="0" stroke="#E8C98A" stroke-width="2" stroke-linecap="round">
+          <line x1="13" y1="0" x2="20" y2="0"/><line x1="-13" y1="0" x2="-20" y2="0"/>
+          <line x1="0" y1="13" x2="0" y2="20"/><line x1="0" y1="-13" x2="0" y2="-20"/>
+          <line x1="9.2" y1="9.2" x2="14.1" y2="14.1"/><line x1="-9.2" y1="-9.2" x2="-14.1" y2="-14.1"/>
+          <line x1="9.2" y1="-9.2" x2="14.1" y2="-14.1"/><line x1="-9.2" y1="9.2" x2="-14.1" y2="14.1"/>
+        </g>
+        <circle id="sunDisc" cx="0" cy="0" r="10" fill="#E8C98A"/>
+      </g>
+    </svg>
+    <div class="sky-live">ŽIVÉ</div>
+    <div class="sky-cap"><span class="st" id="skyStatus">Spln · Mesiac práve vychádza</span><span class="sub" id="skySub">Selene · živé nebo</span></div>
+  </div>
+</section>
+
+<!-- ② SUN GOLD split -->
+<section id="sun-gold">
+  <div class="split reveal">
+    <div class="split-img">
+      <img src="img/hero_gold.jpg" alt="Kolekcia Sun Gold">
+    </div>
+    <div class="split-body">
+      <div class="split-eyebrow">Kolekcia · Sun Gold</div>
+      <h2 class="split-hed">Champagne zlato,<br>ktoré svieti celý deň.</h2>
+      <p class="split-copy">Pozlátené striebro 925 s teplým európskym odtieňom. Žiadne krikľavé žlté — len jemný champagne lesk, ktorý lichotí každej pokožke od rána po večer.</p>
+      <a class="split-link" href="#">Zobraziť Sun Gold <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10h12M10 4l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ③ MOON SILVER split -->
+<section id="moon-silver" class="dark-sec">
+  <div class="split rev reveal">
+    <div class="split-img">
+      <img src="img/hero_silver.jpg" alt="Kolekcia Moon Silver" style="object-position:50% 20%">
+    </div>
+    <div class="split-body on-dark">
+      <div class="split-eyebrow">Kolekcia · Moon Silver</div>
+      <h2 class="split-hed" style="color:var(--champagne)">Striebro 925<br>a riečne perly.</h2>
+      <p class="split-copy">Čisté striebro so satinovým leskom mesiaca. Minimalistické tvary, riečne perly a jemné fázy — šperky, ktoré sa nosia každý deň a nosia sa vedome.</p>
+      <a class="split-link" href="#" style="color:var(--gold-lt);border-color:var(--gold-lt)">Zobraziť Moon Silver <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10h12M10 4l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ④ PRÍBEH ZNAČKY -->
+<section class="story dark-sec reveal">
+  <div class="story-mark">
+    <img src="img/logo_selene_mark.png" alt="">
+  </div>
+  <h2 class="story-hed">Dva svety. <em>Jedna jemná značka.</em></h2>
+  <div class="story-divider"></div>
+  <p class="story-copy">SELÉNÉ vznikla z presvedčenia, že šperky majú byť krásne bez okázalosti. Európsky tichý luxus — overené materiály, transparentné zloženie, darčekové balenie ako štandard. Za každým kúskom stojí tím s dlhoročnou klenotníckou skúsenosťou.</p>
+</section>
+
+<!-- ⑤ PRODUKTOVÝ STRIP -->
+<div class="strip">
+  <div class="strip-head reveal">
+    <h2 class="strip-title">Prvé kolekcie</h2>
+    <a class="strip-all" href="#">Celý výber →</a>
+  </div>
+  <div class="prods reveal">
+    <div class="prod">
+      <div class="prod-ph"><img src="img/pearl2.jpg" alt="Pearl Moon náhrdelník" style="filter:sepia(.2) saturate(.85)"></div>
+      <div class="prod-info">
+        <div class="prod-name">Pearl Moon náhrdelník</div>
+        <div class="prod-coll">Moon Silver</div>
+        <div class="prod-price">59 €</div>
+        <span class="prod-label">Bestseller</span>
+      </div>
+    </div>
+    <div class="prod">
+      <div class="prod-ph"><img src="img/earrings.jpg" alt="Celeste náušnice"></div>
+      <div class="prod-info">
+        <div class="prod-name">Celeste náušnice</div>
+        <div class="prod-coll">Moon Silver</div>
+        <div class="prod-price">39 €</div>
+      </div>
+    </div>
+    <div class="prod">
+      <div class="prod-ph"><img src="img/necklace_detail.jpg" alt="Solis náhrdelník"></div>
+      <div class="prod-info">
+        <div class="prod-name">Solis náhrdelník</div>
+        <div class="prod-coll">Sun Gold</div>
+        <div class="prod-price">59 €</div>
+        <span class="prod-label">Novinka</span>
+      </div>
+    </div>
+    <div class="prod">
+      <div class="prod-ph"><img src="img/bracelet2.jpg" alt="Sereia náramok"></div>
+      <div class="prod-info">
+        <div class="prod-name">Sereia náramok</div>
+        <div class="prod-coll">Sun Gold</div>
+        <div class="prod-price">45 €</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑥ TRAITS -->
+<section>
+  <div class="traits">
+    <div class="trait reveal">
+      <div class="trait-num">925</div>
+      <div class="trait-title">Overené materiály</div>
+      <p class="trait-copy">Výhradne striebro 925 a pozlátené striebro 925 s PVD povrchom. Každý materiál transparentne popísaný na produktovej stránke.</p>
+    </div>
+    <div class="trait reveal" style="transition-delay:.12s">
+      <div class="trait-num">∞</div>
+      <div class="trait-title">Darčekové balenie</div>
+      <p class="trait-copy">Vysúvacia krabička, textilné vrecúško a kartička s odkazom ku každej objednávke. Bez príplatku, ako štandard.</p>
+    </div>
+    <div class="trait reveal" style="transition-delay:.24s">
+      <div class="trait-num">30</div>
+      <div class="trait-title">Dní na výmenu</div>
+      <p class="trait-copy">Spokojnosť bez otázok. 30 dní na výmenu alebo vrátenie, 24 mesiacov záruka, poistená zásielka.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ EMAIL CAPTURE -->
+<section class="capture">
+  <div class="capture-logo reveal">
+    <img src="img/logo_selene.png" alt="SELÉNÉ Jewelry">
+  </div>
+  <h2 class="capture-hed reveal">Byť medzi prvými.</h2>
+  <div class="capture-sub reveal">Čoskoro spúšťame selene.sk</div>
+  <form class="capture-form reveal" onsubmit="submitForm(event)">
+    <input type="email" id="email" placeholder="Vaša e-mailová adresa" required autocomplete="email">
+    <button type="submit">Prihlásiť sa</button>
+  </form>
+  <div class="capture-done" id="capture-done">Ďakujeme — dostanete správu ako prví. ☽</div>
+  <div class="capture-note reveal">Prvá správa = 10 % zľava. Odhlásiť sa môžete kedykoľvek.</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <img src="img/logo_selene_mark.png" alt="SELÉNÉ">
+    <div class="foot-copy">
+      © 2026 Wil, s.r.o. · SELÉNÉ Jewelry<br>
+      <a href="#">Obchodné podmienky</a> · <a href="#">Ochrana osobných údajov</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+function checkReveal(){
+  const vh = window.innerHeight || document.documentElement.clientHeight;
+  document.querySelectorAll('.reveal:not(.in)').forEach(el=>{
+    const r = el.getBoundingClientRect();
+    if(r.top < vh*0.92 && r.bottom > 0) el.classList.add('in');
+  });
+}
+window.addEventListener('scroll', checkReveal, {passive:true});
+window.addEventListener('resize', checkReveal);
+checkReveal();
+setInterval(checkReveal, 500);
+
+// Email form
+function submitForm(e){
+  e.preventDefault();
+  const form=e.target;
+  form.style.opacity='0';form.style.pointerEvents='none';
+  const done=document.getElementById('capture-done');
+  done.style.display='block';
+  setTimeout(()=>{ done.style.opacity='1'; },100);
+  done.style.transition='opacity .6s';done.style.opacity='0';
+}
+
+// ─── Živé nebo: reálna poloha slnka + fáza mesiaca ───
+(function(){
+  const R=20, H=176, CX=110;
+  const $=id=>document.getElementById(id);
+  const sunG=$('sunG'), sunDisc=$('sunDisc'), sunRays=$('sunRays');
+  const moonG=$('moonG'), moonPath=$('moonPath');
+  const stars=$('stars');
+  const sky={top:$('skyTop'),mid:$('skyMid'),hor:$('skyHor')};
+  const st=$('skyStatus'), sub=$('skySub');
+  const LAT=48.15*Math.PI/180;
+  const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+  const lerp=(a,b,t)=>a+(b-a)*t;
+  function mix(c1,c2,t){
+    const p=s=>[parseInt(s.slice(1,3),16),parseInt(s.slice(3,5),16),parseInt(s.slice(5,7),16)];
+    const a=p(c1),b=p(c2);
+    return `rgb(${Math.round(lerp(a[0],b[0],t))},${Math.round(lerp(a[1],b[1],t))},${Math.round(lerp(a[2],b[2],t))})`;
+  }
+  // Fáza mesiaca: synodický mesiac 29,53058867 dní od známeho novu (6.1.2000 18:14 UTC)
+  function phaseInfo(){
+    const epoch=Date.UTC(2000,0,6,18,14), syn=29.53058867*86400000;
+    let p=((Date.now()-epoch)/syn)%1; if(p<0)p+=1;
+    const k=(1-Math.cos(2*Math.PI*p))/2;
+    let name;
+    if(p<0.02||p>=0.98) name='Nov';
+    else if(p<0.25) name='Dorastajúci kosáčik';
+    else if(p<0.48) name='Dorastajúci mesiac';
+    else if(p<0.52) name='Spln';
+    else if(p<0.75) name='Zubúci sa mesiac';
+    else name='Starý kosáčik';
+    return {p,k,name};
+  }
+  // Časy východu/západu slnka pre Bratislavu (48,15° s.š.)
+  function sunTimes(){
+    const d=new Date();
+    const start=Date.UTC(d.getUTCFullYear(),0,0);
+    const day=Math.floor((Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate())-start)/86400000);
+    const decl=23.44*Math.sin(2*Math.PI*(284+day)/365)*Math.PI/180;
+    const ha=Math.acos(clamp(-Math.tan(LAT)*Math.tan(decl),-1,1));
+    const len=2*ha*12/Math.PI;
+    const noon=13; // približné slnečné poludnie (letný čas)
+    return {rise:noon-len/2, set:noon+len/2, len};
+  }
+  // Tvar mesiaca podľa fázy (kosáčik / štvrť / spln / zubúci sa)
+  function moonPathD(p){
+    const t=Math.abs(Math.cos(2*Math.PI*p))*R;
+    const k=(1-Math.cos(2*Math.PI*p))/2;
+    if(k<0.02) return '';
+    const waxing=p<0.5, half=k<0.5;
+    const outer=waxing?'1':'0';
+    const term=(waxing===half)?'0':'1';
+    return `M 0 ${-R} A ${R} ${R} 0 0 ${outer} 0 ${R} A ${t.toFixed(2)} ${R} 0 0 ${term} 0 ${-R} Z`;
+  }
+  function render(){
+    const now=new Date();
+    const h=now.getHours()+now.getMinutes()/60+now.getSeconds()/3600;
+    const S=sunTimes(), ph=phaseInfo();
+    const day=h>=S.rise&&h<=S.set;
+    let sx,sy,mx,my,dark,status;
+    if(day){
+      const p=(h-S.rise)/(S.set-S.rise);
+      sx=CX-78*Math.cos(p*Math.PI);
+      sy=H-78*Math.sin(p*Math.PI)*0.92;
+      mx=CX; my=H+46;
+      dark=1-Math.sin(p*Math.PI);
+      if(p<0.06) status='Slnko práve vychádza';
+      else if(p>0.94) status='Slnko zapadá · dobrý večer';
+      else status=`Slnko na oblohe · ${Math.round(p*100)} % dňa`;
+      sub.textContent='Selene · živé nebo · deň';
+    }else{
+      const nightLen=24-S.len;
+      const q=h>S.set?(h-S.set)/nightLen:(h+24-S.set)/nightLen;
+      sx=CX; sy=H+46;
+      mx=CX-78*Math.cos(q*Math.PI);
+      my=H-78*Math.sin(q*Math.PI)*0.92;
+      dark=1;
+      if(q<0.06) status=`${ph.name} · práve vychádza`;
+      else if(q>0.94) status=`${ph.name} · zapadá`;
+      else status=`${ph.name} · ${Math.round(ph.k*100)} % osvetlený`;
+      sub.textContent='Selene · živé nebo · noc';
+    }
+    st.textContent=status;
+    // Obloha — deň/úsvit/noc
+    const darkS=clamp((dark-0.08)/0.82,0,1);
+    const dawn=Math.exp(-Math.pow((h-S.rise)/0.5,2))+Math.exp(-Math.pow((h-S.set)/0.5,2));
+    const gold=Math.min(1,dawn*1.4);
+    sky.top.setAttribute('stop-color', mix('#E9DFCC','#14110E',darkS));
+    sky.mid.setAttribute('stop-color', mix('#F1EADC','#201A14',darkS));
+    sky.hor.setAttribute('stop-color', mix(gold>0.05?'#D9A96B':'#F7F2E7', gold>0.05?'#4A3A26':'#33291C', darkS));
+    // Slnko
+    sunG.setAttribute('transform',`translate(${sx.toFixed(1)},${sy.toFixed(1)})`);
+    sunDisc.setAttribute('r', day?10:0);
+    sunRays.setAttribute('opacity', day?(0.35+0.65*Math.sin(((h-S.rise)/(S.set-S.rise))*Math.PI)).toFixed(2):0);
+    // Mesiac
+    const mp=moonPathD(ph.p);
+    moonG.setAttribute('transform',`translate(${mx.toFixed(1)},${my.toFixed(1)})`);
+    moonPath.setAttribute('d', mp||'');
+    moonPath.setAttribute('opacity', day?0:1);
+    // Hviezdy
+    stars.setAttribute('opacity', (darkS*0.85).toFixed(2));
+  }
+  render();
+  setInterval(render,30000);
+})();
+</script>
+
+</body>
+</html>

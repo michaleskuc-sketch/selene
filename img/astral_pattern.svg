@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none">
+  <!-- SELENÉ astral PATTERN – jemný, veľké konštelácie, tile-able
+       Champagne gold #A98A57, nízke opacity (0.18–0.35), scrolluje sa so stránkou -->
+  <g stroke="#A98A57" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Veľká konštelácia I – Cassiopeia (W), prechádza cez okraje -->
+    <path d="M-40 620 L110 470 L220 600 L330 430 L470 590 L590 440" stroke-width="1.4" opacity="0.30"/>
+    <!-- Veľká konštelácia II – Veľký voz, vpravo dole -->
+    <path d="M520 800 L620 700 L720 720 L790 660" stroke-width="1.4" opacity="0.26"/>
+    <path d="M790 660 L840 700" stroke-width="1.2" stroke-dasharray="3 7" opacity="0.22"/>
+    <!-- Konštelácia III – hore -->
+    <path d="M300 -20 L420 120 L540 40 L640 160" stroke-width="1.4" opacity="0.28"/>
+    <!-- Obežné dráhy (veľké oblúky cez okraje) -->
+    <ellipse cx="640" cy="180" rx="300" ry="110" transform="rotate(-14 640 180)" stroke-width="1.0" stroke-dasharray="2 10" opacity="0.22"/>
+    <ellipse cx="640" cy="180" rx="400" ry="150" transform="rotate(-14 640 180)" stroke-width="0.9" stroke-dasharray="1 12" opacity="0.16"/>
+    <!-- Mesačný kosák (veľký) -->
+    <path d="M120 300a70 70 0 0 0 0 140 56 56 0 0 1 0-140z" stroke-width="1.6" opacity="0.30"/>
+    <!-- Malý zodiakálny kruh -->
+    <circle cx="180" cy="620" r="120" stroke-width="1.0" stroke-dasharray="1 9" opacity="0.20"/>
+  </g>
+  <!-- Hviezdy (veľké body) -->
+  <g fill="#A98A57">
+    <circle cx="110" cy="470" r="3.0" opacity="0.34"/><circle cx="220" cy="600" r="3.6" opacity="0.30"/><circle cx="330" cy="430" r="3.0" opacity="0.34"/><circle cx="470" cy="590" r="3.4" opacity="0.30"/><circle cx="590" cy="440" r="3.0" opacity="0.32"/>
+    <circle cx="620" cy="700" r="3.2" opacity="0.30"/><circle cx="720" cy="720" r="2.8" opacity="0.30"/><circle cx="790" cy="660" r="3.4" opacity="0.30"/>
+    <circle cx="420" cy="120" r="3.2" opacity="0.32"/><circle cx="540" cy="40" r="2.8" opacity="0.30"/><circle cx="640" cy="160" r="3.4" opacity="0.30"/>
+    <circle cx="120" cy="370" r="2.6" opacity="0.30"/><circle cx="60" cy="660" r="2.8" opacity="0.26"/><circle cx="320" cy="760" r="3.0" opacity="0.28"/>
+  </g>
+  <!-- Hviezdice (jemné) -->
+  <g fill="#A98A57" stroke="none">
+    <path d="M760 320 l2.4 6.4 6.4 2.4 -6.4 2.4 -2.4 6.4 -2.4 -6.4 -6.4 -2.4 6.4 -2.4z" opacity="0.24"/>
+    <path d="M60 120 l2 5.4 5.4 2 -5.4 2 -2 5.4 -2 -5.4 -5.4 -2 5.4 -2z" opacity="0.22"/>
+    <path d="M400 300 l2.6 7 7 2.6 -7 2.6 -2.6 7 -2.6 -7 -7 -2.6 7 -2.6z" opacity="0.20"/>
+    <path d="M700 560 l2.2 6 6 2.2 -6 2.2 -2.2 6 -2.2 -6 -6 -2.2 6 -2.2z" opacity="0.24"/>
+  </g>
+</svg>

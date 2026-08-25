@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — SELÉNÉ Jewelry</title>
+<meta name="description" content="Príbehy o šperkov, materiáloch, štýle a starostlivosti. Slnko pre zlato, mesiac pre striebro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#FAF6F0; --pearl:#F4EFE6; --champagne:#EDE3D2;
+  --gold:#A98A57; --gold-deep:#8F7245; --ink:#2B2723; --muted:#7C7266;
+  --line:rgba(43,39,35,.12);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',system-ui,sans-serif;
+  --pad:clamp(20px,4vw,64px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-weight:300;color:var(--ink);background:var(--ivory);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 var(--pad)}
+
+/* ---------- Announcement ---------- */
+.ann{background:var(--ink);color:var(--ivory);text-align:center;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;padding:9px 16px}
+.ann em{font-style:normal;color:var(--champagne)}
+
+/* ---------- Header ---------- */
+header{border-bottom:1px solid var(--line);background:rgba(250,246,240,.94);backdrop-filter:blur(8px);position:sticky;top:0;z-index:50}
+.header-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:14px var(--pad)}
+.burger{grid-column:1;justify-self:start;display:none;background:none;border:none;font-size:22px;color:var(--ink);cursor:pointer}
+.logo{grid-column:2;justify-self:center;display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:24px;letter-spacing:.3em;color:var(--ink)}
+.logo svg{width:34px;height:34px;flex-shrink:0}
+.logo small{display:block;font-family:var(--sans);font-size:8px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold-deep);margin-top:4px;font-weight:400}
+.header-actions{grid-column:3;justify-self:end;display:flex;gap:18px;align-items:center}
+.header-actions button{background:none;border:none;cursor:pointer;color:var(--ink);padding:4px}
+.header-actions svg{width:19px;height:19px}
+nav.main{max-width:1280px;margin:0 auto;padding:0 var(--pad) 12px;display:flex;justify-content:center;gap:clamp(14px,2.4vw,38px);flex-wrap:wrap}
+nav.main a{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;color:var(--muted);padding:6px 2px;border-bottom:1px solid transparent;transition:all .25s}
+nav.main a:hover,nav.main a.active{color:var(--ink);border-color:var(--gold)}
+.dd{position:relative;display:flex;align-items:center;gap:4px}
+.dd-trigger{background:none;border:none;cursor:pointer;color:var(--gold-deep);font-size:11px;padding:4px;display:grid;place-items:center;border-radius:50%;transition:background .2s}
+.dd-trigger:hover{background:var(--champagne)}
+.dd-trigger svg{width:11px;height:11px;display:block}
+.dd-menu{position:absolute;top:100%;left:0;min-width:220px;background:var(--ivory);border:1px solid var(--line);box-shadow:0 18px 44px rgba(43,39,35,.12);padding:10px 0;border-radius:2px;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .22s ease,transform .22s ease,visibility .22s;z-index:80}
+.dd:hover .dd-menu,.dd:focus-within .dd-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.dd-menu .dd-head{display:block;font-family:var(--serif);font-style:italic;font-size:16px;letter-spacing:.03em;color:var(--gold-deep);padding:4px 20px 10px;text-transform:none}
+nav .dd-menu a{display:block;padding:9px 20px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:400;color:var(--ink);white-space:nowrap;border:none!important}
+nav .dd-menu a:hover{background:var(--pearl);color:var(--gold-deep);border:none!important}
+
+/* ---------- Blog Hero ---------- */
+.blog-hero{padding:clamp(48px,8vw,96px) var(--pad) clamp(32px,5vw,56px);text-align:center;border-bottom:1px solid var(--line)}
+.blog-hero .eyebrow{font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep)}
+.blog-hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(36px,5vw,62px);line-height:1.08;margin-top:14px}
+.blog-hero p{font-size:15px;color:var(--muted);max-width:54ch;margin:14px auto 0;line-height:1.7}
+
+/* ---------- Blog grid ---------- */
+.blog-section{padding:clamp(48px,7vw,90px) var(--pad)}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,40px)}
+
+/* Card */
+.card{display:flex;flex-direction:column;cursor:pointer}
+.card .thumb{aspect-ratio:3/2;overflow:hidden;border-radius:2px;background:var(--champagne);position:relative}
+.card .thumb img{width:100%;height:100%;object-fit:cover;transition:transform 1s ease}
+.card:hover .thumb img{transform:scale(1.04)}
+.card .thumb .cat-badge{position:absolute;top:12px;left:12px;background:var(--ivory);color:var(--gold-deep);font-size:9px;letter-spacing:.2em;text-transform:uppercase;padding:5px 10px}
+.card .body{padding:20px 0 0}
+.card .meta{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.card h2{font-family:var(--serif);font-weight:500;font-size:clamp(20px,2vw,26px);line-height:1.2;letter-spacing:.01em}
+.card p{font-size:14px;color:var(--muted);line-height:1.7;margin-top:10px}
+.card .read-more{display:inline-block;margin-top:14px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);border-bottom:1px solid var(--gold-deep);padding-bottom:2px;font-weight:400;transition:color .2s}
+.card:hover .read-more{color:var(--gold)}
+
+/* Featured (wide card) */
+.card.featured{grid-column:1/-1;display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
+.card.featured .thumb{aspect-ratio:16/9}
+.card.featured h2{font-size:clamp(26px,3vw,38px)}
+.card.featured p{font-size:15px;max-width:52ch}
+
+/* ---------- Categories filter ---------- */
+.filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:clamp(32px,4vw,52px)}
+.filter-bar button{background:none;border:1px solid var(--line);font-family:var(--sans);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;padding:9px 18px;cursor:pointer;color:var(--muted);transition:all .25s;border-radius:0}
+.filter-bar button:hover,.filter-bar button.active{background:var(--ink);color:var(--ivory);border-color:var(--ink)}
+
+/* ---------- Post view ---------- */
+.post-wrap{display:none;max-width:780px;margin:0 auto;padding:clamp(40px,7vw,90px) var(--pad)}
+.post-wrap.show{display:block}
+.post-back{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);cursor:pointer;display:inline-flex;gap:6px;align-items:center;margin-bottom:36px;border:none;background:none;font-family:var(--sans)}
+.post-back:hover{color:var(--ink)}
+.post-wrap .eyebrow{font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep)}
+.post-wrap h1{font-family:var(--serif);font-weight:500;font-size:clamp(28px,4vw,46px);line-height:1.1;margin-top:14px;letter-spacing:.01em}
+.post-meta{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:16px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.post-hero{border-radius:2px;overflow:hidden;margin:32px 0;aspect-ratio:16/9}
+.post-hero img{width:100%;height:100%;object-fit:cover}
+.post-body{font-size:16px;line-height:1.85;color:var(--ink)}
+.post-body h2{font-family:var(--serif);font-weight:500;font-size:clamp(22px,2.6vw,30px);line-height:1.1;margin:42px 0 16px;letter-spacing:.01em}
+.post-body h3{font-family:var(--serif);font-weight:500;font-size:clamp(18px,2vw,24px);margin:30px 0 12px}
+.post-body p{margin-bottom:22px;color:rgba(43,39,35,.88)}
+.post-body ul{margin:0 0 22px 20px}
+.post-body li{margin-bottom:8px;color:rgba(43,39,35,.88)}
+.post-body strong{font-weight:500;color:var(--ink)}
+.post-body blockquote{border-left:2px solid var(--gold);padding-left:24px;margin:32px 0;font-family:var(--serif);font-style:italic;font-size:clamp(18px,2vw,22px);color:var(--ink)}
+.post-body .tip{background:var(--pearl);padding:20px 24px;border-radius:2px;margin:28px 0;font-size:14.5px;color:var(--muted)}
+.post-body .tip strong{display:block;margin-bottom:6px;color:var(--gold-deep);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+
+/* ---------- Newsletter (inline) ---------- */
+.blog-news{background:var(--champagne);padding:clamp(40px,6vw,72px) var(--pad);text-align:center}
+.blog-news .eyebrow{font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep)}
+.blog-news h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.2vw,38px);margin-top:12px}
+.blog-news p{font-size:14px;color:var(--muted);margin-top:12px}
+.blog-news form{display:flex;gap:0;max-width:420px;margin:24px auto 0;border-bottom:1px solid var(--ink)}
+.blog-news input{flex:1;border:none;background:none;font-family:var(--sans);font-size:14px;padding:12px 4px;outline:none;color:var(--ink)}
+.blog-news button{border:none;background:none;font-family:var(--sans);font-size:11px;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;color:var(--ink);font-weight:400;padding:12px 6px}
+.blog-news button:hover{color:var(--gold-deep)}
+
+/* ---------- Footer ---------- */
+footer{background:var(--ivory);border-top:1px solid var(--line);padding:48px var(--pad) 28px}
+.foot-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:clamp(20px,4vw,52px)}
+.foot-brand .logo-txt{font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:.3em;color:var(--ink)}
+.foot-brand p{font-size:13px;color:var(--muted);margin-top:12px;line-height:1.65;max-width:30ch}
+.foot h4{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);font-weight:500;margin-bottom:14px}
+.foot a{display:block;font-size:13px;color:var(--muted);margin-bottom:9px;transition:color .2s}
+.foot a:hover{color:var(--gold-deep)}
+.foot-bottom{max-width:1280px;margin:28px auto 0;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:11px;color:var(--muted);flex-wrap:wrap;gap:10px}
+
+/* ---------- Mobile menu ---------- */
+.mmenu{display:none;position:fixed;inset:0;background:var(--ivory);z-index:100;flex-direction:column;padding:90px 34px 40px;overflow-y:auto}
+.mmenu.open{display:flex}
+.mmenu .close{position:absolute;top:24px;right:26px;background:none;border:none;font-size:26px;color:var(--ink);cursor:pointer}
+.mmenu a{font-family:var(--serif);font-size:26px;color:var(--ink);padding:13px 0;border-bottom:1px solid var(--line)}
+.mmenu a:hover{color:var(--gold-deep)}
+
+@media(max-width:960px){
+  .burger{display:block}
+  nav.main{display:none}
+  .header-in{grid-template-columns:auto 1fr auto}
+  .logo{justify-self:center;grid-column:2}
+  .blog-grid{grid-template-columns:1fr}
+  .card.featured{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  .foot-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="ann"><em>Darčekové balenie</em> ku každej objednávke · Doprava zdarma nad 59 €</div>
+
+<header>
+  <div class="header-in">
+    <button class="burger" onclick="document.getElementById('mmenu').classList.toggle('open')" aria-label="Menu">☰</button>
+    <a class="logo" href="selene_prototyp.html">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M42 8 C 30 12, 23 22, 23 32 C 23 42, 30 52, 42 56 C 36 50, 32 42, 32 32 C 32 22, 36 14, 42 8 Z" fill="#8F7245"/><path d="M15.4 15l1 2.3 2.3 1-2.3 1-1 2.3-1-2.3-2.3-1 2.3-1z" fill="currentColor" stroke="none"/></svg>
+      <span>SELÉNÉ<small>jewelry</small></span>
+    </a>
+    <div class="header-actions">
+      <button aria-label="Hľadať"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+      <button aria-label="Účet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.2-4 4.4-6 8-6s6.8 2 8 6"/></svg></button>
+      <button aria-label="Košík"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8h12l-1.2 12H7.2L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></button>
+    </div>
+  </div>
+  <nav class="main">
+    <a href="selene_cd_katalog.html?cat=nausnice">Náušnice</a>
+    <a href="selene_cd_katalog.html?cat=nahrdelniky">Náhrdelníky</a>
+    <a href="selene_cd_katalog.html?cat=prstene">Prstene</a>
+    <span class="dd">
+      <a href="selene_cd_katalog.html?cat=naramy">Náramky</a>
+      <button class="dd-trigger" aria-label="Ďalšie kategórie" tabindex="0">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4l4 4 4-4"/></svg>
+      </button>
+      <span class="dd-menu">
+        <span class="dd-head">Ďalšie kategórie</span>
+        <a href="selene_cd_katalog.html?cat=anklety">Retiazky na nohu</a>
+        <a href="selene_cd_katalog.html?cat=retiazky">Retiazky</a>
+      </span>
+    </span>
+    <a href="selene_cd_katalog.html?cat=all">Darčeky</a>
+    <a href="selene_blog.html" class="active">Blog</a>
+  </nav>
+</header>
+
+<!-- Blog listing -->
+<div id="blogList">
+  <div class="blog-hero">
+    <div class="eyebrow">Blog</div>
+    <h1>Príbehy o šperkov</h1>
+    <p>Starostlivosť, štýl, materiály a inšpirácia. Píšeme o veciach, ktoré sa nosí aj rozumie.</p>
+  </div>
+
+  <section class="blog-section">
+    <div class="wrap">
+      <div class="filter-bar">
+        <button class="active" onclick="setFilter(this,'vsetko')">Všetko</button>
+        <button onclick="setFilter(this,'starostlivost')">Starostlivosť</button>
+        <button onclick="setFilter(this,'styl')">Štýl &amp; inšpirácia</button>
+        <button onclick="setFilter(this,'materialy')">Materiály</button>
+        <button onclick="setFilter(this,'darceky')">Darčeky</button>
+      </div>
+
+      <div class="blog-grid" id="grid">
+
+        <!-- FEATURED -->
+        <a class="card featured" data-cat="styl" onclick="showPost('layering');return false" href="#">
+          <div class="thumb">
+            <span class="cat-badge">Štýl &amp; inšpirácia</span>
+            <img src="img/hero_gold.jpg" alt="Vrstvenie šperkov">
+          </div>
+          <div class="body">
+            <div class="meta">14. augusta 2026 · 6 min čítania</div>
+            <h2>Umenie vrstvenia — ako nosiť viac šperkov naraz bez chaosu</h2>
+            <p>Retiazky, prstene, náramky — vrstvenie je umenie, nie náhoda. Ukážeme vám jednoduché pravidlá, ktoré fungujú vždy, nech kombinujete čokoľvek.</p>
+            <span class="read-more">Čítať článok →</span>
+          </div>
+        </a>
+
+        <!-- CARD 2 -->
+        <a class="card" data-cat="starostlivost" onclick="showPost('cistenie');return false" href="#">
+          <div class="thumb">
+            <span class="cat-badge">Starostlivosť</span>
+            <img src="img/pearl2.jpg" alt="Čistenie šperkov">
+          </div>
+          <div class="body">
+            <div class="meta">7. augusta 2026 · 4 min čítania</div>
+            <h2>Ako čistiť pozlátené šperky doma</h2>
+            <p>Jemná handričkou alebo mydlová voda? Zistite, čo skutočne funguje a čo naopak škodí.</p>
+            <span class="read-more">Čítať článok →</span>
+          </div>
+        </a>
+
+        <!-- CARD 3 -->
+        <a class="card" data-cat="materialy" onclick="showPost('striebro');return false" href="#">
+          <div class="thumb">
+            <span class="cat-badge">Materiály</span>
+            <img src="img/necklace_detail.jpg" alt="Striebro 925">
+          </div>
+          <div class="body">
+            <div class="meta">28. júla 2026 · 5 min čítania</div>
+            <h2>Striebro 925 vs. chirurgická oceľ — čo zvoliť?</h2>
+            <p>Oba materiály sú odolné a hypoalergénne. Ale každý sa hodí na niečo iné. Tu je jednoduchý sprievodca.</p>
+            <span class="read-more">Čítať článok →</span>
+          </div>
+        </a>
+
+        <!-- CARD 4 -->
+        <a class="card" data-cat="darceky" onclick="showPost('darcek');return false" href="#">
+          <div class="thumb">
+            <span class="cat-badge">Darčeky</span>
+            <img src="img/bracelet2.jpg" alt="Darček šperky">
+          </div>
+          <div class="body">
+            <div class="meta">15. júla 2026 · 3 min čítania</div>
+            <h2>Ako vybrať šperk ako darček (aj keď neviete nič o šperkov)</h2>
+            <p>Narodeniny, meniny, výročie — s týmto návodom nevybehnete naprázdno ani raz.</p>
+            <span class="read-more">Čítať článok →</span>
+          </div>
+        </a>
+
+        <!-- CARD 5 -->
+        <a class="card" data-cat="styl" onclick="showPost('jesen');return false" href="#">
+          <div class="thumb">
+            <span class="cat-badge">Štýl &amp; inšpirácia</span>
+            <img src="img/autumn_hero.jpg" alt="Jesenné šperky">
+          </div>
+          <div class="body">
+            <div class="meta">5. júla 2026 · 4 min čítania</div>
+            <h2>Jeseň a šperky — teplé tóny, ktoré lichotia každej pleti</h2>
+            <p>Champagne zlato do okrových dní. Inšpirácia na sezónne kombinácie z kolekcie Sun Gold.</p>
+            <span class="read-more">Čítať článok →</span>
+          </div>
+        </a>
+
+        <!-- CARD 6 -->
+        <a class="card" data-cat="starostlivost" onclick="showPost('skladovanie');return false" href="#">
+          <div class="thumb">
+            <span class="cat-badge">Starostlivosť</span>
+            <img src="img/earrings.jpg" alt="Skladovanie šperkov">
+          </div>
+          <div class="body">
+            <div class="meta">20. júna 2026 · 3 min čítania</div>
+            <h2>Kde a ako skladovať šperky, aby dlho vydržali</h2>
+            <p>Väčšina šperkov sa poškodí nie nosením, ale zlým uložením. Malé zmeny, veľký rozdiel.</p>
+            <span class="read-more">Čítať článok →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ POST: Vrstvenie ============ -->
+<div class="post-wrap" id="post-layering">
+  <div class="wrap">
+    <button class="post-back" onclick="showList()">← Späť na blog</button>
+    <div class="eyebrow">Štýl &amp; inšpirácia</div>
+    <h1>Umenie vrstvenia — ako nosiť viac šperkov naraz bez chaosu</h1>
+    <div class="post-meta">14. augusta 2026 · 6 min čítania · Michal E.</div>
+    <div class="post-hero"><img src="img/hero_gold.jpg" alt="Vrstvenie šperkov"></div>
+    <div class="post-body">
+      <p>Vrstvenie šperkov — <strong>layering</strong> — je jeden z najpopulárnejších trendov posledných rokov. Problém je, že väčšine z nás to napriek najlepšej snahe vyzerá ako „príliš veľa". Nie preto, že by sme nemali vkus, ale preto, že nikto nám nevysvetlil základné pravidlá.</p>
+
+      <blockquote>„Menej nie je vždy viac — niekedy je viac viac. Len to treba vedieť riadiť."</blockquote>
+
+      <h2>Pravidlo č. 1 — Jeden dominantný kúsok</h2>
+      <p>Každá kombinácia potrebuje jeden <strong>statement kúsok</strong> — ten, na ktorý sa oko zastaví. Môže to byť výrazný náhrdelník, prsteň s kameňom alebo výrazné náušnice. Zvyšok ho len dopĺňa, nie súperí.</p>
+
+      <h2>Pravidlo č. 2 — Rôzne dĺžky retiazok</h2>
+      <p>Ak vrstvíte náhrdelníky, kľúčom sú <strong>rôzne dĺžky</strong>: krátky choker (38–42 cm), stredný náhrdelník (45–50 cm) a dlhý prívesok (55–65 cm). Každý má vlastný priestor, navzájom sa neprekrývajú.</p>
+
+      <div class="tip">
+        <strong>Tip SELÉNÉ</strong>
+        Zlaté retiazky z kolekcie Sun Gold sú navrhnuté na vrstvenie — jemné, rôznych dĺžok, nesplietajú sa. Pearl Moon náhrdelník funguje skvele ako stredná vrstva.
+      </div>
+
+      <h2>Pravidlo č. 3 — Zmiešavanie kovov (áno, ide to)</h2>
+      <p>Zlaté a strieborné šperky spolu? Funguje to lepšie, ako si myslíte — podmienkou je, aby aspoň jeden kúsok bol v každej farbe. Mixovanie sa stáva zámerným, nie náhodným.</p>
+
+      <h2>Pravidlo č. 4 — Prstene: od jemného k výraznému</h2>
+      <p>Na prstoch vrstvíte od <strong>malíčka k ukazováku</strong> — jemné bandy pri malíčku, výraznejší prsteň pri ukazováku. Prostredník a prsteňový prst dostávajú stredné varianty.</p>
+
+      <h2>Záver</h2>
+      <p>Vrstvenie šperkov nie je raketová veda — je to cvičenie. Začnite s dvoma retiazkami, pridajte jeden prsteň, a pozrite sa do zrkadla. Ak sa cítite dobre, máte to správne.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ POST: Čistenie ============ -->
+<div class="post-wrap" id="post-cistenie">
+  <div class="wrap">
+    <button class="post-back" onclick="showList()">← Späť na blog</button>
+    <div class="eyebrow">Starostlivosť</div>
+    <h1>Ako čistiť pozlátené šperky doma</h1>
+    <div class="post-meta">7. augusta 2026 · 4 min čítania · Michal E.</div>
+    <div class="post-hero"><img src="img/pearl2.jpg" alt="Čistenie šperkov"></div>
+    <div class="post-body">
+      <p>Pozlátené šperky sú krásne — a pri správnej starostlivosti môžu vydržať roky bez viditeľného opotrebovania. Problém nastáva, keď sa o nich snažíme starať <em>príliš</em> agresívne.</p>
+
+      <h2>Čo funguje</h2>
+      <ul>
+        <li><strong>Suchá mäkká handričková z mikrovlákna</strong> — po každom nosení jemne pretrieť. Odstráni pot, oleje z pokožky a drobné nečistoty.</li>
+        <li><strong>Vlažná voda + kúsok jemného mydla</strong> — pre hlbšie čistenie. Šperky ponorte na 20–30 sekúnd, jemne ometite mäkkým štetčekom (napr. starý zubná kefka) a opláchnite.</li>
+        <li><strong>Úplné osušenie</strong> — pred uložením vždy dosucha. Vlhkosť urýchľuje oxidáciu.</li>
+      </ul>
+
+      <h2>Čo nerobte</h2>
+      <ul>
+        <li>Ultrazvukové čističky — príliš agresívne na pokovenie</li>
+        <li>Bielidlá, ocot, sóda bikarbóna — narúšajú zlatú vrstvu</li>
+        <li>Papierové utierky — drhnú povrch a zanechávajú mikroškrabance</li>
+        <li>Dlhý kontakt s parfumom, krémom alebo chlorovanou vodou</li>
+      </ul>
+
+      <div class="tip">
+        <strong>Zlaté pravidlo SELÉNÉ</strong>
+        Šperky si obliekajte ako posledné a vyzliekajte ako prvé. Parfum, krém a lak na vlasy sú nepriateľmi pozlátenia.
+      </div>
+
+      <h2>Ako predĺžiť životnosť</h2>
+      <p>Ukladajte šperky oddelene v mäkkom vrecúšku alebo šperkovnici s priehradkami. Keď viaceré kúsky ležia spolu, škrabú sa navzájom — aj zlatá vrstva sa tak opotrebúva rýchlejšie.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Newsletter -->
+<div class="blog-news">
+  <div class="eyebrow">Newsletter</div>
+  <h2>Nové články priamo do schránky</h2>
+  <p>Každý mesiac jeden pekný mail — bez spamu, len to, čo stojí za prečítanie.</p>
+  <form onsubmit="return false">
+    <input type="email" placeholder="Váš e-mail" aria-label="E-mail">
+    <button type="submit">Prihlásiť</button>
+  </form>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="logo-txt">SELÉNÉ</div>
+      <p>Šperk, ktorý nosí svetlo dňa aj ticho noci. Slnko pre zlato, mesiac pre striebro.</p>
+    </div>
+    <div class="foot">
+      <h4>Obchod</h4>
+      <a href="selene_kategorie.html">Náušnice</a>
+      <a href="selene_kategorie.html">Náhrdelníky</a>
+      <a href="selene_kategorie.html">Prstene</a>
+      <a href="selene_kategorie.html">Náramky</a>
+    </div>
+    <div class="foot">
+      <h4>Blog</h4>
+      <a href="#">Štýl &amp; inšpirácia</a>
+      <a href="#">Starostlivosť</a>
+      <a href="#">Materiály</a>
+      <a href="#">Darčeky</a>
+    </div>
+    <div class="foot">
+      <h4>Kontakt</h4>
+      <a href="mailto:ahoj@selene.sk">ahoj@selene.sk</a>
+      <a href="#">Časté otázky</a>
+      <a href="#">Obchodné podmienky</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 SELÉNÉ · Wil, s.r.o.</span>
+    <span>Mesiac pre striebro. Slnko pre zlato. 🌙</span>
+  </div>
+</footer>
+
+<!-- Mobile menu -->
+<div class="mmenu" id="mmenu">
+  <button class="close" onclick="document.getElementById('mmenu').classList.remove('open')">✕</button>
+  <a href="selene_kategorie.html#nausnice">Náušnice</a>
+  <a href="selene_kategorie.html#nahrdelniky">Náhrdelníky</a>
+  <a href="selene_kategorie.html#prstene">Prstene</a>
+  <a href="selene_kategorie.html#naramy">Náramky</a>
+  <a href="selene_kategorie.html#darceky">Darčeky</a>
+  <a href="selene_blog.html">Blog</a>
+</div>
+
+<script>
+var currentFilter = 'vsetko';
+
+function setFilter(btn, cat){
+  currentFilter = cat;
+  document.querySelectorAll('.filter-bar button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#grid .card').forEach(c=>{
+    c.style.display = (cat==='vsetko' || c.dataset.cat===cat) ? '' : 'none';
+  });
+  // featured spans full width only when visible
+  const feat = document.querySelector('.card.featured');
+  if(feat) feat.style.gridColumn = feat.style.display==='' ? '1/-1' : '';
+}
+
+function showPost(id){
+  document.getElementById('blogList').style.display='none';
+  document.querySelectorAll('.post-wrap').forEach(p=>p.classList.remove('show'));
+  const p = document.getElementById('post-'+id);
+  if(p){ p.classList.add('show'); window.scrollTo({top:0,behavior:'smooth'}); }
+}
+
+function showList(){
+  document.getElementById('blogList').style.display='';
+  document.querySelectorAll('.post-wrap').forEach(p=>p.classList.remove('show'));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
