@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obsahový plán blogu — SELÉNÉ</title>
+<meta name="description" content="SELÉNÉ blog — obsahový plán a stratégia pre SEO a linkbuilding na slovenskom trhu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#FAF6F0; --pearl:#F4EFE6; --champagne:#EDE3D2;
+  --gold:#A98A57; --gold-deep:#8F7245; --ink:#2B2723; --muted:#7C7266;
+  --line:rgba(43,39,35,.12);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',system-ui,sans-serif;
+  --pad:clamp(20px,4vw,64px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-weight:300;color:var(--ink);background:var(--ivory);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+a{color:inherit}
+ul{list-style:none}
+
+/* ---------- Top identity strip ---------- */
+.identity{background:var(--ink);color:var(--ivory);padding:16px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.identity .mark{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:18px;letter-spacing:.28em}
+.identity .mark svg{width:22px;height:22px;flex-shrink:0}
+.identity .doc-tag{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--champagne)}
+
+/* ---------- Plan hero ---------- */
+.plan-hero{padding:clamp(48px,7vw,88px) var(--pad) clamp(32px,5vw,56px);border-bottom:1px solid var(--line)}
+.plan-hero .eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep)}
+.plan-hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(32px,4.6vw,54px);line-height:1.1;margin-top:14px;max-width:16ch}
+.plan-hero p.lead{font-size:15.5px;color:var(--muted);max-width:64ch;margin-top:18px;line-height:1.75}
+
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);margin-top:44px;border:1px solid var(--line)}
+.stat{background:var(--ivory);padding:24px 22px}
+.stat .num{font-family:var(--serif);font-weight:500;font-size:clamp(28px,3vw,40px);color:var(--gold-deep)}
+.stat .lbl{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+
+/* ---------- Section label ---------- */
+.section{padding:clamp(48px,6vw,80px) var(--pad);border-bottom:1px solid var(--line)}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+.section-head .eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep)}
+.section-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.2vw,38px);margin-top:10px}
+.section-head .count{font-size:12px;letter-spacing:.1em;color:var(--muted);text-align:right}
+
+/* ---------- Audit callout ---------- */
+.audit{background:var(--pearl);border:1px solid var(--line);border-radius:2px;padding:clamp(24px,3vw,36px);display:grid;grid-template-columns:1.1fr 1.4fr;gap:clamp(24px,3vw,44px)}
+.audit h3{font-family:var(--serif);font-weight:500;font-size:20px;margin-bottom:10px}
+.audit p{font-size:13.5px;color:var(--muted);line-height:1.7}
+.audit .existing-list{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.exist-item{display:flex;gap:12px;align-items:baseline;font-size:13.5px}
+.exist-item .tag{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);border:1px solid var(--gold-deep);padding:2px 8px;flex-shrink:0}
+.exist-item .tag.stub{color:var(--muted);border-color:var(--line)}
+.audit .stub-note{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+.audit .stub-note strong{color:var(--ink);font-weight:500}
+
+/* ---------- Category block ---------- */
+.cat-block{margin-bottom:clamp(56px,6vw,84px)}
+.cat-block:last-child{margin-bottom:0}
+.cat-title-row{display:flex;align-items:baseline;gap:16px;margin-bottom:26px;padding-bottom:14px;border-bottom:1px solid var(--ink)}
+.cat-title-row .cat-index{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--gold-deep)}
+.cat-title-row h3{font-family:var(--serif);font-weight:500;font-size:clamp(22px,2.4vw,28px)}
+.cat-title-row .cat-slug{margin-left:auto;font-size:11px;letter-spacing:.1em;color:var(--muted)}
+
+.art-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.4vw,28px)}
+.art-card{border:1px solid var(--line);background:var(--ivory);padding:26px 24px;display:flex;flex-direction:column;position:relative}
+.art-card.pillar{border-color:var(--gold);background:linear-gradient(180deg,var(--champagne),var(--ivory) 55%)}
+.art-card .top-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+.art-card .idx{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--muted)}
+.art-card.pillar .idx{color:var(--gold-deep)}
+.star{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);display:flex;align-items:center;gap:5px}
+.star svg{width:12px;height:12px}
+.art-card h4{font-family:var(--serif);font-weight:500;font-size:19px;line-height:1.28;margin-bottom:14px}
+.kw{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.kw strong{color:var(--gold-deep);font-weight:500;text-transform:none;letter-spacing:.01em}
+.outline{margin-bottom:16px;flex-grow:1}
+.outline li{font-size:13px;color:rgba(43,39,35,.82);line-height:1.6;padding-left:14px;position:relative;margin-bottom:6px}
+.outline li::before{content:'—';position:absolute;left:0;color:var(--gold)}
+.meta-row{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;margin-top:auto}
+.meta-row .url{font-family:'Jost',monospace;font-size:10.5px;color:var(--muted);word-break:break-all}
+.meta-row .len{white-space:nowrap;flex-shrink:0;margin-left:10px;color:var(--gold-deep)}
+.link-angle{margin-top:12px;font-size:12px;color:var(--muted);line-height:1.55;border-top:1px dashed var(--line);padding-top:12px}
+.link-angle strong{color:var(--ink);font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:5px;color:var(--gold-deep)}
+
+/* ---------- Linking guide ---------- */
+.link-guide{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,48px)}
+.link-col h4{font-family:var(--serif);font-weight:500;font-size:18px;margin-bottom:16px}
+.link-table{width:100%;border-collapse:collapse;font-size:13px}
+.link-table th{text-align:left;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:400;padding:0 0 10px;border-bottom:1px solid var(--ink)}
+.link-table td{padding:12px 10px 12px 0;border-bottom:1px solid var(--line);vertical-align:top;color:rgba(43,39,35,.85)}
+.link-table td:first-child{font-family:var(--serif);font-size:14.5px;font-weight:500;color:var(--ink);white-space:nowrap;padding-right:16px}
+.link-table td.arrow{color:var(--gold-deep);font-size:14px}
+.link-table .to-list{display:flex;flex-direction:column;gap:4px}
+.link-table .to-list span{font-size:12.5px}
+.link-table .to-list span.cat{color:var(--gold-deep);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase}
+
+.principles{margin-top:40px;background:var(--champagne);padding:clamp(24px,3vw,36px);border-radius:2px}
+.principles h4{font-family:var(--serif);font-weight:500;font-size:18px;margin-bottom:14px}
+.principles ol{list-style:none;counter-reset:p;display:grid;grid-template-columns:repeat(2,1fr);gap:16px 32px}
+.principles li{counter-increment:p;font-size:13.5px;color:rgba(43,39,35,.85);line-height:1.6;padding-left:30px;position:relative}
+.principles li::before{content:counter(p);position:absolute;left:0;top:0;font-family:var(--serif);font-style:italic;font-size:16px;color:var(--gold-deep)}
+
+/* ---------- Legend / footer note ---------- */
+.legend{display:flex;gap:28px;flex-wrap:wrap;margin-top:6px}
+.legend .item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+.legend .swatch{width:12px;height:12px;border:1px solid var(--gold)}
+.legend .swatch.filled{background:linear-gradient(180deg,var(--champagne),var(--ivory))}
+
+footer.doc-foot{padding:36px var(--pad) 44px;text-align:center;border-top:1px solid var(--line)}
+footer.doc-foot p{font-size:12px;color:var(--muted);letter-spacing:.04em}
+footer.doc-foot p.claim{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--ink);margin-bottom:10px}
+
+@media(max-width:960px){
+  .stat-row{grid-template-columns:1fr 1fr}
+  .art-grid{grid-template-columns:1fr}
+  .audit{grid-template-columns:1fr}
+  .link-guide{grid-template-columns:1fr}
+  .principles ol{grid-template-columns:1fr}
+  .cat-title-row .cat-slug{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="identity">
+  <div class="mark">
+    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M42 8 C 30 12, 23 22, 23 32 C 23 42, 30 52, 42 56 C 36 50, 32 42, 32 32 C 32 22, 36 14, 42 8 Z" fill="#A98A57"/></svg>
+    SELÉNÉ
+  </div>
+  <div class="doc-tag">Interný dokument · Obsahová stratégia blogu · SK trh</div>
+</div>
+
+<div class="plan-hero">
+  <div class="wrap">
+    <div class="eyebrow">Content plán · Design board</div>
+    <h1>Obsahový plán blogu SELÉNÉ</h1>
+    <p class="lead">Dvanásť nových článkov pre organické vyhľadávanie a linkbuilding na slovenskom trhu, rozdelených do štyroch tematických pilierov. Plán nadväzuje na dva existujúce publikované články a dopĺňa medzery v aktuálnom obsahu blogu.</p>
+
+    <div class="stat-row">
+      <div class="stat"><div class="num">12</div><div class="lbl">nových článkov</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">pilierové témy</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">kategórie</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">existujúce články</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= AUDIT EXISTUJÚCEHO OBSAHU ================= -->
+<div class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Audit</div>
+        <h2>Stav existujúceho blogu</h2>
+      </div>
+      <div class="count">selene_blog.html — 6 kariet v prehľade, 2 plné články</div>
+    </div>
+
+    <div class="audit">
+      <div>
+        <h3>Čo je publikované</h3>
+        <p>Blog aktuálne zobrazuje šesť kariet v mriežke, no reálne plné znenie (post-wrap) majú len dva články. Zvyšné štyri karty odkazujú na neexistujúce detaily — pre návštevníka aj pre vyhľadávače ide o slepú uličku.</p>
+        <div class="stub-note">Tento plán tieto <strong>štyri medzery vedome dopĺňa</strong> plnohodnotnými článkami (skladovanie, materiály, jesenné trendy, darčeky) namiesto duplicity — pozri značky nižšie.</div>
+      </div>
+      <div>
+        <h3>Existujúce publikované články</h3>
+        <div class="existing-list">
+          <div class="exist-item"><span class="tag">Plný článok</span><span>„Umenie vrstvenia — ako nosiť viac šperkov naraz bez chaosu" · kategória Štýl &amp; inšpirácia</span></div>
+          <div class="exist-item"><span class="tag">Plný článok</span><span>„Ako čistiť pozlátené šperky doma" · kategória Starostlivosť</span></div>
+        </div>
+        <h3 style="margin-top:22px">Karty bez plného obsahu (stub)</h3>
+        <div class="existing-list">
+          <div class="exist-item"><span class="tag stub">Stub</span><span>„Striebro 925 vs. chirurgická oceľ — čo zvoliť?" → nahrádza a rozširuje <strong>B1</strong> a <strong>B3</strong> nižšie</span></div>
+          <div class="exist-item"><span class="tag stub">Stub</span><span>„Ako vybrať šperk ako darček" → nahrádza <strong>D2</strong>, doplní budúcu kategóriu Darčeky</span></div>
+          <div class="exist-item"><span class="tag stub">Stub</span><span>„Jeseň a šperky — teplé tóny" → nahrádza <strong>C3</strong> nižšie</span></div>
+          <div class="exist-item"><span class="tag stub">Stub</span><span>„Kde a ako skladovať šperky" → totožná téma ako <strong>A2</strong> nižšie, priamo dopísať</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= KATEGÓRIE ČLÁNKOV ================= -->
+<div class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Plán obsahu</div>
+        <h2>12 nových článkov</h2>
+        <div class="legend">
+          <div class="item"><span class="swatch filled"></span> pilierový článok (★) — hlavný, publikovať prvý v kategórii</div>
+          <div class="item"><span class="swatch"></span> podporný článok — publikovať po pilieri, prelinkovaný naň</div>
+        </div>
+      </div>
+      <div class="count">Odhad dĺžky je počet slov hotového textu</div>
+    </div>
+
+    <!-- ============ A: STAROSTLIVOSŤ O ŠPERKY ============ -->
+    <div class="cat-block">
+      <div class="cat-title-row">
+        <span class="cat-index">01</span>
+        <h3>Starostlivosť o šperky</h3>
+        <span class="cat-slug">sk/blog/kategoria/starostlivost</span>
+      </div>
+      <div class="art-grid">
+
+        <div class="art-card pillar">
+          <div class="top-row"><span class="idx">A1</span><span class="star">★ Pilier<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 9.6l-5.5 4.8L18 22l-6-3.6L6 22l1.5-7.6L2 9.6l7.1-.7z"/></svg></span></div>
+          <h4>Starostlivosť o šperky: kompletný sprievodca pre pozlátené striebro, rhodiované striebro a chirurgickú oceľ</h4>
+          <div class="kw">Kľúčové slovo: <strong>starostlivosť o šperky</strong></div>
+          <ul class="outline">
+            <li>Spoločné zásady pre všetky tri materiály — voda, chémia, mechanické opotrebovanie</li>
+            <li>Rozdiely v starostlivosti: pozlátené striebro vs. rhodiované striebro vs. oceľ</li>
+            <li>Kedy zaniesť šperk klenotníkovi a kedy je čas na nový kúsok</li>
+            <li>Rozcestník na podrobné návody (čistenie, skladovanie, stmavnutie)</li>
+          </ul>
+          <div class="meta-row"><span class="url">/sk/blog/starostlivost-o-sperky-kompletny-sprievodca</span><span class="len">1 900–2 300 slov</span></div>
+          <div class="link-angle"><strong>Linkbuilding uhol</strong>Cornerstone stránka na citovanie — vhodná na PR výmenu s lifestyle magazínmi a poradňami (SME Ženy, Femina) ako „odborný zdroj o starostlivosti o šperky".</div>
+        </div>
+
+        <div class="art-card">
+          <div class="top-row"><span class="idx">A2</span></div>
+          <h4>Kde a ako skladovať šperky, aby dlho vydržali</h4>
+          <div class="kw">Kľúčové slovo: <strong>skladovanie šperkov</strong></div>
+          <ul class="outline">
+            <li>Prečo šperky ničí zlé uloženie viac než nosenie</li>
+            <li>Oddelené priehradky, mäkké vrecúška vs. voľná krabička</li>
+            <li>Vplyv vlhkosti, svetla a tepla (kúpeľňa = nepriateľ)</li>
+            <li>Ako baliť šperky na cestovanie</li>
+          </ul>
+          <div class="meta-row"><span class="url">/sk/blog/skladovanie-sperkov</span><span class="len">700–900 slov</span></div>
+        </div>
+
+        <div class="art-card">
+          <div class="top-row"><span class="idx">A3</span></div>
+          <h4>Prečo šperk stmavne alebo mení farbu — a ako tomu predísť</h4>
+          <div class="kw">Kľúčové slovo: <strong>prečo šperk stmavne</strong></div>
+          <ul class="outline">
+            <li>Oxidácia striebra vs. opotrebovanie pozlátenej vrstvy — rozdiel</li>
+            <li>Najčastejší vinníci: pot, parfum, chlórovaná voda, krémy</li>
+            <li>Ako situáciu zvrátiť a kedy je zmena už nezvratná</li>
+            <li>Prevencia — odkaz na skladovanie (A2) a čistenie</li>
+          </ul>
+          <div class="meta-row"><span class="url">/sk/blog/preco-sperk-stmavne</span><span class="len">900–1 100 slov</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============ B: SPRIEVODCA MATERIÁLMI ============ -->
+    <div class="cat-block">
+      <div class="cat-title-row">
+        <span class="cat-index">02</span>
+        <h3>Sprievodca materiálmi</h3>
+        <span class="cat-slug">sk/blog/kategoria/materialy</span>
+      </div>
+      <div class="art-grid">
+
+        <div class="art-card pillar">
+          <div class="top-row"><span class="idx">B1</span><span class="star">★ Pilier<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 9.6l-5.5 4.8L18 22l-6-3.6L6 22l1.5-7.6L2 9.6l7.1-.7z"/></svg></span></div>
+          <h4>Striebro 925 vs. rhodiované striebro vs. chirurgická oceľ — veľký sprievodca materiálmi</h4>
+          <div class="kw">Kľúčové slovo: <strong>aký materiál šperkov vybrať</strong></div>
+          <ul class="outline">
+            <li>Čo znamená označenie „925" a prečo je striebro zliatinou</li>
+            <li>Čo je rhódiovanie a prečo sa robí (lesk, odolnosť, hypoalergénnosť)</li>
+            <li>Výhody chirurgickej ocele — cena, odolnosť voči vode, citlivá pokožka</li>
+            <li>Porovnávacia tabuľka + odporúčanie podľa životného štýlu</li>
+          </ul>
+          <div class="meta-row"><span class="url">/sk/blog/sprievodca-materialmi-sperky</span><span class="len">2 000–2 400 slov</span></div>
+          <div class="link-angle"><strong>Linkbuilding uhol</strong>Nahrádza existujúci nefunkčný stub „Striebro vs. oceľ" — silný kandidát na odkazy z porovnávacích a nákupných poradní.</div>
+        </div>
+
+        <div class="art-card">
+          <div class="top-row"><span class="idx">B2</span></div>
+          <h4>Alergia na šperky: ako spoznať hypoalergénny materiál a nosiť šperky bez podráždenia</h4>
+          <div class="kw">Kľúčové slovo: <strong>hypoalergénne šperky</strong></div>
+          <ul class="outline">
+            <li>Čo spôsobuje alergickú reakciu na kov — nikel a jeho uvoľňovanie</li>
+            <li>Prečo sú rhodiované striebro a chirurgická oceľ bezpečnou voľbou</li>
+            <li>Príznaky podráždenia a čo robiť, ak sa objavia</li>
+            <li>Jednoduchý test citlivosti pred nosením na dlhší čas</li>
+          </ul>
+          <div class="meta-row"><span class="url">/sk/blog/hypoalergenne-sperky-alergia</span><span class="len">900–1 200 slov</span></div>
+        </div>
+
+        <div class="art-card">
+          <div class="top-row"><span class="idx">B3</span></div>
+          <h4>Pozlátené striebro 925: čo to vlastne je a ako dlho vydrží pozlátenie</h4>
+          <div class="kw">Kľúčové slovo: <strong>pozlátené striebro 925</strong></div>
+          <ul class="outline">
+            <li>Ako prebieha pozlacovanie a čo znamená hrúbka vrstvy v mikrónoch</li>
+            <li>Rozdiel oproti lacnej „gold plated" bižutérii</li>
+            <li>Reálna životnosť pri bežnom nosení</li>
+            <li>Ako predĺžiť životnosť — odkaz na starostlivosť (A1)</li>
+          </ul>
+          <div class="meta-row"><span class="url">/sk/blog/pozlatene-striebro-925-co-to-je</span><span class="len">1 000–1 300 slov</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============ C: TRENDY A ŠTÝL ============ -->
+    <div class="cat-block">
+      <div class="cat-title-row">
+        <span class="cat-index">03</span>
+        <h3>Trendy a štýl</h3>
+        <span class="cat-slug">sk/blog/kategoria/styl</span>
+      </div>
+      <div class="art-grid">
+
+        <div class="art-card pillar">
+          <div class="top-row"><span class="idx">C1</span><span class="star">★ Pilier<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 9.6l-5.5 4.8L18 22l-6-3.6L6 22l1.5-7.6L2 9.6l7.1-.7z"/></svg></span></div>
+          <h4>Ako kombinovať šperky podľa typu outfitu — sprievodca na každý deň</h4>
+          <div class="kw">Kľúčové slovo: <strong>ako kombinovať šperky</strong></div>
+          <ul class="outline">
+            <li>Kancelária, casual a večerné outfity — iná logika pre každý</li>
+            <li>Zlato vs. striebro podľa farby a strihu oblečenia</li>
+            <li>Pravidlo jedného statement kúsku — odkaz na existujúci článok o vrstvení</li>
+            <li>Sezónne tipy a rýchle kombinácie z kolekcií Sun Gold / Moon Silver</li>
+          </ul>
+          <div class="meta-row"><span class="url">/sk/blog/ako-kombinovat-sperky-outfit</span><span class="len">1 600–1 900 slov</span></div>
+          <div class="link-angle"><strong>Linkbuilding uhol</strong>Prirodzený kandidát na spoluprácu s módnymi a lifestylovými influencer(kami)/blogmi — obsah na zdieľanie a citovanie v „outfit guide" článkoch.</div>
+        </div>
+
+        <div class="art-card">
+          <div class="top-row"><span class="idx">C2</span></div>
+          <h4>Zlaté vs. strieborné šperky: aká farba kovu sedí vašej pleti</h4>
+          <div class="kw">Kľúčové slovo: <strong>zlaté alebo strieborné šperky</strong></div>
+          <ul class="outline">
+            <li>Test podtónu pleti podľa farby žíl na zápästí</li>
+            <li>Teplý vs. studený podtón — ktorý kov lichotí ktorému</li>
+            <li>Prečo SELÉNÉ ponúka duálnu kolekciu slnko/mesiac</li>
+            <li>Keď si nie ste istí — ako bezpečne miešať oba kovy</li>
+          </ul>
+          <div class="meta-row"><span class="url">/sk/blog/zlate-alebo-strieborne-sperky-farba-pleti</span><span class="len">900–1 100 slov</span></div>
+        </div>
+
+        <div class="art-card">
+          <div class="top-row"><span class="idx">C3</span></div>
+          <h4>Šperkové trendy na jeseň a zimu 2026: čo je in a ako to nosiť</h4>
+          <div class="kw">Kľúčové slovo: <strong>šperkové trendy jeseň zima 2026</strong></div>
+          <ul class="outline">
+            <li>Chunky retiazky a návrat výraznejších tvarov</li>
+            <li>Perly v modernom prevedení — renesancia klasiky</li>
+            <li>Vrstvenie prsteňov ako pokračovanie trendu vrstvenia náhrdelníkov</li>
+            <li>Champagne zlato ako farba sezóny — konkrétne kúsky z kolekcie</li>
+          </ul>
+          <div class="meta-row"><span class="url">/sk/blog/sperkove-trendy-jesen-zima-2026</span><span class="len">1 000–1 300 slov</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============ D: PRÍBEHY A ZNAČKA ============ -->
+    <div class="cat-block">
+      <div class="cat-title-row">
+        <span class="cat-index">04</span>
+        <h3>Príbehy a značka</h3>
+        <span class="cat-slug">sk/blog/kategoria/pribeh</span>
+      </div>
+      <div class="art-grid">
+
+        <div class="art-card pillar">
+          <div class="top-row"><span class="idx">D1</span><span class="star">★ Pilier<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9L22 9.6l-5.5 4.8L18 22l-6-3.6L6 22l1.5-7.6L2 9.6l7.1-.7z"/></svg></span></div>
+          <h4>Príbeh SELÉNÉ: prečo mesiac a slnko a čo znamená naša dualita</h4>
+          <div class="kw">Kľúčové slovo: <strong>SELÉNÉ značka šperky príbeh</strong></div>
+          <ul class="outline">
+            <li>Pôvod mena — bohyňa mesiaca a jej miesto v identite značky</li>
+            <li>Filozofia duality: slnko pre zlato, mesiac pre striebro</li>
+            <li>Remeslo a výber materiálov — prečo práve tieto tri</li>
+            <li>Hodnoty značky: dostupný luxus, darčekové balenie zdarma</li>
+          </ul>
+          <div class="meta-row"><span class="url">/sk/blog/pribeh-znacky-selene</span><span class="len">1 200–1 500 slov</span></div>
+          <div class="link-angle"><strong>Linkbuilding uhol</strong>„O značke" naratív vhodný pre PR výstupy, rozhovory a zaradenie do prehľadov „slovenské/české šperkové značky" — prirodzene získava spätné odkazy z médií.</div>
+        </div>
+
+        <div class="art-card">
+          <div class="top-row"><span class="idx">D2</span></div>
+          <h4>Ako vzniká šperk SELÉNÉ — od návrhu po darčekovú krabičku</h4>
+          <div class="kw">Kľúčové slovo: <strong>ako vznikajú šperky výroba</strong></div>
+          <ul class="outline">
+            <li>Proces návrhu a výber tvarov pre kolekcie Sun Gold a Moon Silver</li>
+            <li>Voľba materiálu — pozlátenie, rhódiovanie alebo oceľ</li>
+            <li>Kontrola kvality pred expedíciou</li>
+            <li>Darčekové balenie zdarma ako súčasť zážitku, nie doplnok</li>
+          </ul>
+          <div class="meta-row"><span class="url">/sk/blog/ako-vznika-sperk-selene</span><span class="len">1 000–1 300 slov</span></div>
+        </div>
+
+        <div class="art-card">
+          <div class="top-row"><span class="idx">D3</span></div>
+          <h4>Šperky s príbehom: čo znamenajú symboly mesiaca a slnka naprieč kultúrami</h4>
+          <div class="kw">Kľúčové slovo: <strong>symbolika mesiaca a slnka šperky</strong></div>
+          <ul class="outline">
+            <li>Mesiac ako symbol ženskosti, intuície a cyklickosti</li>
+            <li>Slnko ako symbol sily, vitality a jasnosti</li>
+            <li>Mytológia Selené a Hélios — inšpirácia pre názov značky</li>
+            <li>Ako vybrať symbolický šperk pre seba alebo ako darček s významom</li>
+          </ul>
+          <div class="meta-row"><span class="url">/sk/blog/symbolika-mesiac-slnko-sperky</span><span class="len">900–1 200 slov</span></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================= INTERNÉ LINKOVANIE ================= -->
+<div class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Návod</div>
+        <h2>Interné linkovanie</h2>
+      </div>
+      <div class="count">Piliere sú rozcestníky — každý podporný článok linkuje na svoj pilier a naspäť</div>
+    </div>
+
+    <div class="link-guide">
+      <div class="link-col">
+        <h4>Piliere → podporné články vo vlastnej kategórii</h4>
+        <table class="link-table">
+          <tr><th>Pilier</th><th></th><th>Linkuje na</th></tr>
+          <tr>
+            <td>A1 Starostlivosť</td><td class="arrow">→</td>
+            <td class="to-list"><span>A2 Skladovanie šperkov</span><span>A3 Prečo šperk stmavne</span><span>Existujúci: Ako čistiť pozlátené šperky</span></td>
+          </tr>
+          <tr>
+            <td>B1 Materiály</td><td class="arrow">→</td>
+            <td class="to-list"><span>B2 Hypoalergénne šperky</span><span>B3 Pozlátené striebro 925</span></td>
+          </tr>
+          <tr>
+            <td>C1 Kombinovanie</td><td class="arrow">→</td>
+            <td class="to-list"><span>C2 Zlato vs. striebro pre pleť</span><span>C3 Trendy jeseň/zima 2026</span><span>Existujúci: Umenie vrstvenia</span></td>
+          </tr>
+          <tr>
+            <td>D1 Príbeh značky</td><td class="arrow">→</td>
+            <td class="to-list"><span>D2 Ako vzniká šperk</span><span>D3 Symbolika mesiaca a slnka</span></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="link-col">
+        <h4>Krížové odkazy naprieč kategóriami</h4>
+        <table class="link-table">
+          <tr><th>Odkiaľ</th><th></th><th>Kam</th></tr>
+          <tr>
+            <td>B3 Pozlátené striebro</td><td class="arrow">→</td>
+            <td class="to-list"><span class="cat">Starostlivosť</span><span>A1 Kompletný sprievodca, A3 Prečo šperk stmavne</span></td>
+          </tr>
+          <tr>
+            <td>Existujúci: Čistenie</td><td class="arrow">→</td>
+            <td class="to-list"><span class="cat">Materiály</span><span>B1 Sprievodca materiálmi, B3 Pozlátené striebro</span></td>
+          </tr>
+          <tr>
+            <td>C2 Farba kovu pre pleť</td><td class="arrow">→</td>
+            <td class="to-list"><span class="cat">Materiály</span><span>B1 Sprievodca materiálmi (striebro vs. zlato)</span></td>
+          </tr>
+          <tr>
+            <td>Existujúci: Vrstvenie</td><td class="arrow">→</td>
+            <td class="to-list"><span class="cat">Trendy a štýl</span><span>C1 Ako kombinovať šperky, C3 Trendy jeseň/zima</span></td>
+          </tr>
+          <tr>
+            <td>D1 Príbeh značky</td><td class="arrow">→</td>
+            <td class="to-list"><span class="cat">Naprieč blogom</span><span>odkaz z pätičky/„o nás" na každom článku</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="principles">
+      <h4>Pravidlá linkovania</h4>
+      <ol>
+        <li>Publikovať vždy najprv pilier kategórie — podporné články naň odkazujú od prvého dňa, nie naopak.</li>
+        <li>Každý článok odkazuje aj na archív svojej kategórie (sk/blog/kategoria/…) pre lepšiu topickú štruktúru.</li>
+        <li>Existujúce dva články (Vrstvenie, Čistenie) sa pri najbližšej úprave doplnia o odkazy na príslušné nové piliere.</li>
+        <li>D1 (Príbeh značky) sa odkazuje zo všetkých kategórií ako emocionálny uzáver — patrí do pätičky blogu alebo boxu „O SELÉNÉ" na konci každého článku.</li>
+        <li>Maximálne 3–4 interné odkazy v tele článku, aby text zostal čitateľný a odkazy mali váhu.</li>
+        <li>Kotviaci text (anchor text) vždy s kľúčovým slovom cieľového článku, nikdy len „tu" alebo „viac".</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<footer class="doc-foot">
+  <p class="claim">Mesiac pre striebro. Slnko pre zlato.</p>
+  <p>SELÉNÉ · Obsahový plán blogu · pripravené pre SK trh · august 2026</p>
+</footer>
+
+</body>
+</html>
