@@ -111,6 +111,16 @@
   .reset-filters{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-deep);border-bottom:1px solid var(--gold-deep);padding-bottom:2px;display:inline-block;}
 
   .toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;gap:20px;flex-wrap:wrap;}
+  .hdr-search{position:relative;display:flex;align-items:center;gap:8px}
+  .hdr-search-input{width:0;opacity:0;border:none;border-bottom:1px solid rgba(43,39,35,.25);background:transparent;font:inherit;font-size:13px;letter-spacing:.04em;color:#2B2723;padding:4px 2px;transition:width .25s ease,opacity .25s ease;outline:none}
+  .hdr-search.open .hdr-search-input{width:180px;opacity:1}
+  .hdr-search-input::placeholder{color:#A98A57;opacity:.75}
+  .hdr-search-suggest{position:absolute;top:calc(100% + 10px);right:0;min-width:260px;max-height:280px;overflow:auto;background:#FAF6F0;border:1px solid #EDE3D2;box-shadow:0 8px 24px rgba(43,39,35,.08);display:none;z-index:60}
+  .hdr-search-suggest.show{display:block}
+  .hdr-search-suggest a{display:flex;justify-content:space-between;gap:14px;align-items:baseline;padding:10px 14px;text-decoration:none;color:#2B2723;border-bottom:1px solid #F4EFE6;font-size:13px;letter-spacing:.02em}
+  .hdr-search-suggest a:last-child{border-bottom:none}
+  .hdr-search-suggest a:hover{background:#F4EFE6}
+  .hdr-search-suggest .s-price{color:#8F7245;white-space:nowrap;font-size:12px}
   .result-count{font-size:13px;color:#8a8274;}
   .sort-wrap{display:flex;align-items:center;gap:10px;}
   .sort-wrap label{font-size:12px;letter-spacing:.06em;color:#8a8274;text-transform:uppercase;}
@@ -221,7 +231,11 @@
         <a href="#">Blog</a>
       </nav>
       <div class="icons">
-        <button aria-label="Hľadať" id="headerSearchBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg></button>
+        <div class="hdr-search" id="hdrSearch">
+          <input type="text" id="hdrSearchInput" class="hdr-search-input" placeholder="Hľadať šperky…" aria-label="Hľadať" autocomplete="off">
+          <div class="hdr-search-suggest" id="hdrSuggest"></div>
+          <button aria-label="Hľadať" id="headerSearchBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg></button>
+        </div>
         <button aria-label="Účet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></button>
         <a href="selene_cd_kosik.html" aria-label="Košík"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h12l-1.2 11.2a1 1 0 0 1-1 .8H8.2a1 1 0 0 1-1-.8L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="icon-badge" id="cartCount">0</span></a>
         <button class="burger" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.add('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
@@ -281,9 +295,6 @@
       <div>
         <div class="toolbar">
           <button class="btn btn-outline btn-sm filter-toggle" id="filterToggle">Filtre</button>
-          <div class="search-wrap">
-            <input type="text" id="searchInput" class="search-input" placeholder="Hľadať podľa názvu alebo SKU…" aria-label="Hľadať">
-          </div>
           <span class="result-count" id="resultCount">Zobrazených 9 z 72 produktov</span>
           <div class="sort-wrap">
             <label for="sortSelect">Zoradiť</label>
@@ -485,41 +496,42 @@
   }
 
   document.getElementById('sortSelect').addEventListener('change', function(e){ state.sort = e.target.value; render(); });
-  document.getElementById('searchInput').addEventListener('input', function(e){ state.q = e.target.value; state.visible = 9; render(); });
-  var hdrSearch = document.getElementById('headerSearchBtn');
-  if(hdrSearch) hdrSearch.addEventListener('click', function(){
-    var si = document.getElementById('searchInput');
-    si.scrollIntoView({behavior:'smooth', block:'center'});
-    si.focus();
+  var hdrSearch = document.getElementById('hdrSearch');
+  var hdrInput = document.getElementById('hdrSearchInput');
+  var hdrSuggest = document.getElementById('hdrSuggest');
+  function searchMatches(q){
+    q = q.trim().toLowerCase();
+    if(!q) return [];
+    return PRODUCTS.filter(function(p){
+      return p.n.toLowerCase().indexOf(q) > -1 || (p.sku && p.sku.toLowerCase().indexOf(q) > -1);
+    }).slice(0, 5);
+  }
+  function closeSuggest(){
+    hdrSuggest.classList.remove('show');
+    hdrSuggest.innerHTML = '';
+    if(!hdrInput.value) hdrSearch.classList.remove('open');
+  }
+  document.getElementById('headerSearchBtn').addEventListener('click', function(){
+    hdrSearch.classList.toggle('open');
+    if(hdrSearch.classList.contains('open')){ hdrInput.focus(); }
+    else closeSuggest();
+  });
+  hdrInput.addEventListener('input', function(e){
+    state.q = e.target.value; state.visible = 9; render();
+    var m = searchMatches(e.target.value);
+    if(m.length){
+      hdrSuggest.innerHTML = m.map(function(p){
+        return '<a href="selene_cd_produkt.html?id='+p.id+'"><span>'+p.n+'</span><span class="s-price">'+p.c+' €</span></a>';
+      }).join('');
+      hdrSuggest.classList.add('show');
+    } else closeSuggest();
+  });
+  hdrInput.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ closeSuggest(); hdrInput.value=''; state.q=''; render(); hdrInput.blur(); hdrSearch.classList.remove('open'); }
+  });
+  document.addEventListener('click', function(e){
+    if(!hdrSearch.contains(e.target)) closeSuggest();
   });
   document.getElementById('priceRange').addEventListener('input', function(e){
     state.priceMax = parseInt(e.target.value,10);
-    document.getElementById('priceVal').textContent = state.priceMax;
-    state.visible = 9; render();
-  });
-  document.getElementById('loadMoreBtn').addEventListener('click', function(){ state.visible += 9; render(); });
-  document.getElementById('resetFilters').addEventListener('click', function(e){
-    e.preventDefault();
-    state = { cat:'all', coll:[], mat:[], priceMax:65, sort:'odporucane', visible:9 };
-    document.getElementById('sortSelect').value = 'odporucane';
-    document.getElementById('priceRange').value = 65;
-    document.getElementById('priceVal').textContent = 65;
-    document.querySelectorAll('.coll-check, .mat-check').forEach(function(c){ c.checked = false; });
-    render();
-  });
-  document.getElementById('filterToggle').addEventListener('click', function(){
-    document.getElementById('sidebar').classList.toggle('open');
-  });
-
-  buildCollChecks();
-  buildMatChecks();
-  updateCartBadge();
-  render();
-
-  var header = document.querySelector('header');
-  window.addEventListener('scroll', function(){
-    header.style.boxShadow = window.scrollY > 10 ? '0 2px 18px rgba(43,39,35,.06)' : 'none';
-  });
-</script>
-</body>
-</html>
+    document.getElementById('priceVal').
