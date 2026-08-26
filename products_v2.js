@@ -29,7 +29,7 @@ var PRODUCTS = [
   {id:22, n:'Broskyňové mesačné náušnice s perlou', t:'nausnice', m:'ocel', pl:'bez', s:'perla', k:'moon-silver', c:32, img:'img/editorial/rosies_12.jpg', b:'bestseller'},
   {id:23, n:'Zlatá mašlička s perlou', t:'nahrdelniky', m:'striebro', pl:'zlata', s:'perla', k:'sun-gold', c:49, img:'img/prod_neck_3.jpg', b:'bestseller'},
   {id:24, n:'Strieborná perla na retiazke', t:'nahrdelniky', m:'striebro', pl:'rodio', s:'perla', k:'moon-silver', c:45, img:'img/prod_neck_5.jpg'},
-  {id:25, n:'Zlatý štvorlístok', t:'nahrdelniky', m:'striebro', pl:'zlata', s:'bez', k:'sun-gold', c:45, img:'img/gpt_shamrock_unifikovany.jpg'},
+  {id:25, n:'Zlatý štvorlístok', t:'nahrdelniky', m:'striebro', pl:'zlata', s:'bez', k:'sun-gold', c:45, sku:'SEL-NE-BB21B', img:'img/gpt_shamrock_unifikovany.jpg'},
   {id:26, n:'Dvojitý náhrdelník', t:'nahrdelniky', m:'striebro', pl:'zlata', s:'bez', k:'sun-gold', c:55, img:'img/prod_neck_2.jpg', b:'novinka'},
   {id:27, n:'Retiazka s filigránovým zirkónom', t:'nahrdelniky', m:'ocel', pl:'bez', s:'zirkon', k:'moon-silver', c:29, img:'img/produkty/necklaces_3.jpg'},
   {id:28, n:'Náhrdelník so zlatým diskom 40 cm', t:'nahrdelniky', m:'ocel', pl:'zlata', s:'bez', k:'sun-gold', c:31, img:'img/produkty/necklaces_6.jpg', b:'bestseller'},

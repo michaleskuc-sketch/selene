@@ -221,7 +221,7 @@
         <a href="#">Blog</a>
       </nav>
       <div class="icons">
-        <button aria-label="Hľadať"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg></button>
+        <button aria-label="Hľadať" id="headerSearchBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg></button>
         <button aria-label="Účet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></button>
         <a href="selene_cd_kosik.html" aria-label="Košík"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h12l-1.2 11.2a1 1 0 0 1-1 .8H8.2a1 1 0 0 1-1-.8L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="icon-badge" id="cartCount">0</span></a>
         <button class="burger" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.add('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
@@ -281,6 +281,9 @@
       <div>
         <div class="toolbar">
           <button class="btn btn-outline btn-sm filter-toggle" id="filterToggle">Filtre</button>
+          <div class="search-wrap">
+            <input type="text" id="searchInput" class="search-input" placeholder="Hľadať podľa názvu alebo SKU…" aria-label="Hľadať">
+          </div>
           <span class="result-count" id="resultCount">Zobrazených 9 z 72 produktov</span>
           <div class="sort-wrap">
             <label for="sortSelect">Zoradiť</label>
@@ -359,7 +362,7 @@
   };
 
   var params = new URLSearchParams(location.search);
-  var state = { cat: params.get('cat') || 'all', coll: [], mat: [], priceMax: 65, sort: 'odporucane', visible: 9 };
+  var state = { cat: params.get('cat') || 'all', coll: [], mat: [], priceMax: 65, sort: 'odporucane', visible: 9, q: '' };
 
   function getCart(){ try{ return JSON.parse(localStorage.getItem('selene_cart')||'[]'); }catch(e){ return []; } }
   function setCart(c){ localStorage.setItem('selene_cart', JSON.stringify(c)); }
@@ -419,11 +422,13 @@
   }
 
   function getFiltered(){
+    var q = state.q.trim().toLowerCase();
     return PRODUCTS.filter(function(p){
       if(state.cat !== 'all' && p.t !== state.cat) return false;
       if(state.coll.length && state.coll.indexOf(p.k) === -1) return false;
       if(state.mat.length && state.mat.indexOf(p.m) === -1) return false;
       if(p.c > state.priceMax) return false;
+      if(q && (p.n.toLowerCase().indexOf(q) === -1) && (!p.sku || p.sku.toLowerCase().indexOf(q) === -1)) return false;
       return true;
     });
   }
@@ -449,6 +454,7 @@
         '</a>' +
         '<div class="prod-info">' +
           '<div class="p-cat">'+COLLS[p.k]+'</div>' +
+          (p.sku ? '<div class="p-sku">'+p.sku+'</div>' : '') +
           '<a href="selene_cd_produkt.html?id='+p.id+'"><h3>'+p.n+'</h3></a>' +
           '<div class="price">'+p.c+' €</div>' +
           '<button class="btn btn-outline btn-sm btn-add" data-id="'+p.id+'">Pridať do košíka</button>' +
@@ -479,6 +485,13 @@
   }
 
   document.getElementById('sortSelect').addEventListener('change', function(e){ state.sort = e.target.value; render(); });
+  document.getElementById('searchInput').addEventListener('input', function(e){ state.q = e.target.value; state.visible = 9; render(); });
+  var hdrSearch = document.getElementById('headerSearchBtn');
+  if(hdrSearch) hdrSearch.addEventListener('click', function(){
+    var si = document.getElementById('searchInput');
+    si.scrollIntoView({behavior:'smooth', block:'center'});
+    si.focus();
+  });
   document.getElementById('priceRange').addEventListener('input', function(e){
     state.priceMax = parseInt(e.target.value,10);
     document.getElementById('priceVal').textContent = state.priceMax;
