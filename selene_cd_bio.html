@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SELÉNÉ — Bio texty pre profily · Design board</title>
+<meta name="description" content="SELÉNÉ — design board bio textov pre Instagram a Facebook (SK/EN), s highlightmi, hashtagmi a pravidlami použitia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#FAF6F0; --pearl:#F4EFE6; --champagne:#EDE3D2;
+  --gold:#A98A57; --gold-deep:#8F7245; --ink:#2B2723; --muted:#7C7266;
+  --line:rgba(43,39,35,.12);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',system-ui,sans-serif;
+  --pad:clamp(20px,4vw,64px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);font-weight:300;color:var(--ink);background:var(--ivory);-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12}
+
+/* ---------- Board header ---------- */
+.board-head{background:var(--ink);color:var(--ivory);padding:clamp(40px,6vw,68px) var(--pad) clamp(36px,5vw,56px);border-bottom:4px solid var(--gold)}
+.board-head .mark{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:17px;letter-spacing:.3em}
+.board-head .mark svg{width:24px;height:24px;flex-shrink:0}
+.board-head .eyebrow{margin-top:30px;font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.board-head h1{font-size:clamp(32px,4.6vw,54px);margin-top:14px;max-width:16ch}
+.board-head p.lead{font-size:14.5px;color:#C8BFB2;max-width:66ch;margin-top:16px;line-height:1.75}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.tag-pill{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ivory);border:1px solid rgba(169,138,87,.55);border-radius:20px;padding:7px 16px}
+
+/* ---------- Section shell ---------- */
+.section{padding:clamp(48px,7vw,84px) var(--pad);border-bottom:1px solid var(--line)}
+.section-head{max-width:1240px;margin:0 auto 16px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.section-head .vcode{font-family:var(--serif);font-size:15px;color:var(--gold-deep);letter-spacing:.06em}
+.section-head h2{font-size:clamp(22px,2.8vw,30px)}
+.section-head .tag{font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;padding:5px 12px;border-radius:12px;background:rgba(169,138,87,.16);color:var(--gold-deep)}
+.section-sub{max-width:1240px;margin:0 auto clamp(28px,3.5vw,40px);font-size:13.5px;color:var(--muted);line-height:1.75;max-width:74ch}
+.section-sub em{font-family:var(--serif);font-style:italic;color:var(--gold-deep)}
+
+.subhead{max-width:1240px;margin:44px auto 22px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep);border-top:1px solid var(--line);padding-top:26px}
+.subhead:first-of-type{margin-top:0;border-top:none;padding-top:0}
+
+/* ---------- Bio / FB cards grid ---------- */
+.bio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:1240px;margin:0 auto}
+.bio-card{background:#fff;border:1px solid var(--line);border-radius:3px;padding:26px 24px;display:flex;flex-direction:column;gap:16px;box-shadow:0 18px 36px -30px rgba(43,39,35,.35)}
+.bio-card-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.bio-card-top .vcode{font-family:var(--serif);font-size:17px;color:var(--gold-deep)}
+.bio-card-top h3{font-size:17px;font-weight:500}
+.bio-flavor{font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:10px;background:rgba(169,138,87,.14);color:var(--gold-deep)}
+.bio-desc{font-size:12px;color:var(--muted);line-height:1.6}
+.bio-desc strong{color:var(--ink);font-weight:500}
+
+/* IG mock */
+.ig-mock{background:var(--pearl);border:1px solid var(--line);border-radius:3px;padding:18px}
+.ig-mock-head{display:flex;gap:12px;align-items:center}
+.ig-avatar{width:48px;height:48px;border-radius:50%;background:var(--champagne);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ig-avatar svg{width:22px;height:22px}
+.ig-name{font-family:var(--serif);font-size:14.5px;color:var(--ink);line-height:1.3}
+.ig-handle{font-size:11.5px;color:var(--muted)}
+.ig-bio-text{margin-top:14px;font-size:12.5px;line-height:1.65;color:var(--ink);white-space:pre-line}
+.ig-link{margin-top:10px;display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--gold-deep)}
+.ig-link svg{width:12px;height:12px}
+
+.meta-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.char-badge{font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-deep);border:1px solid rgba(169,138,87,.4);border-radius:12px;padding:4px 10px;white-space:nowrap}
+
+.hashtag-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.hashtag-row{display:flex;flex-wrap:wrap;gap:6px}
+.hashtag{font-size:11px;color:var(--gold-deep);background:rgba(169,138,87,.1);padding:4px 9px;border-radius:10px}
+
+/* FB mock */
+.fb-mock{background:var(--pearl);border:1px solid var(--line);border-radius:3px;padding:18px}
+.fb-mock-head{display:flex;gap:12px;align-items:center}
+.fb-avatar{width:44px;height:44px;border-radius:8px;background:var(--ink);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.fb-avatar svg{width:20px;height:20px}
+.fb-name{font-family:var(--serif);font-size:14.5px;color:var(--ink);line-height:1.3}
+.fb-cat{font-size:11px;color:var(--muted)}
+.fb-bio-text{margin-top:14px;font-size:12.5px;line-height:1.7;color:var(--ink)}
+.fb-foot-row{margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.fb-link{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--gold-deep)}
+.fb-link svg{width:12px;height:12px}
+.fb-cta{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--ivory);padding:8px 14px;border-radius:2px;white-space:nowrap}
+
+/* ---------- Highlights ---------- */
+.highlights-row{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(18px,3vw,32px);max-width:1240px;margin:0 auto}
+.highlight-item{display:flex;flex-direction:column;align-items:center;gap:10px;width:82px;text-align:center}
+.highlight-circle{width:64px;height:64px;border-radius:50%;border:1.5px solid var(--gold);background:var(--pearl);display:flex;align-items:center;justify-content:center}
+.highlight-circle svg{width:26px;height:26px}
+.highlight-label{font-size:11px;color:var(--ink);letter-spacing:.02em}
+
+/* ---------- Tips ---------- */
+.tips-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 40px;max-width:1240px;margin:0 auto}
+.tip{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--line)}
+.tip-num{font-family:var(--serif);font-size:16px;color:var(--gold-deep);flex-shrink:0;width:26px}
+.tip p{font-size:13px;line-height:1.65;color:var(--ink)}
+.tip p strong{color:var(--gold-deep);font-weight:500}
+
+/* ---------- Footer ---------- */
+footer.doc-foot{padding:clamp(32px,5vw,48px) var(--pad);text-align:center;border-top:1px solid var(--line)}
+footer.doc-foot p{font-size:12px;color:var(--muted);letter-spacing:.04em}
+footer.doc-foot p.claim{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--ink);margin-bottom:10px}
+
+@media(max-width:900px){
+  .bio-grid{grid-template-columns:1fr}
+  .tips-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .section-head{flex-direction:column;align-items:flex-start;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= BOARD HEADER ================= -->
+<header class="board-head">
+  <div class="wrap">
+    <div class="mark">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#A98A57"/></svg>
+      SELÉNÉ
+    </div>
+    <div class="eyebrow">SELÉNÉ — Social Kit</div>
+    <h1>Bio texty pre profily</h1>
+    <p class="lead">Tri hotové varianty bio textu pre Instagram a Facebook (slovenčina) plus anglické verzie pre medzinárodné publikum. Každý blok je pripravený na priame kopírovanie — s odporúčaním pre koho sa hodí, orientačným počtom znakov a hashtagmi do popisu príspevkov.</p>
+    <div class="tags">
+      <span class="tag-pill">Instagram</span>
+      <span class="tag-pill">Facebook</span>
+      <span class="tag-pill">SK / EN</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 01 — INSTAGRAM (SK) ============ -->
+<section class="section">
+  <div class="section-head">
+    <span class="vcode">01</span>
+    <h2>Instagram — bio profilu</h2>
+    <span class="tag">SK</span>
+  </div>
+  <p class="section-sub">Tri tonálne varianty bio pre <strong>@selene.jewelry</strong> — od luxusného, cez príbehový (duálna symbolika mesiaca a slnka) až po stručný minimalistický. Bio pole má limit <em>150 znakov</em>, meno, handle a odkaz sa počítajú samostatne.</p>
+
+  <div class="bio-grid">
+
+    <!-- Variant A -->
+    <div class="bio-card">
+      <div class="bio-card-top">
+        <span class="vcode">A</span>
+        <h3>Luxusný / elegantný</h3>
+      </div>
+      <span class="bio-flavor" style="align-self:flex-start">Pre prémiové pozicionovanie</span>
+      <p class="bio-desc">Hodí sa ako <strong>predvolené bio</strong> — dôraz na materiály a remeselné spracovanie, cieli na zákazníčky hľadajúce kvalitu a darčekové balenie.</p>
+
+      <div class="ig-mock">
+        <div class="ig-mock-head">
+          <div class="ig-avatar">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#8F7245"/></svg>
+          </div>
+          <div>
+            <div class="ig-name">SELÉNÉ Jewelry</div>
+            <div class="ig-handle">@selene.jewelry</div>
+          </div>
+        </div>
+        <div class="ig-bio-text">Šperky s dušou mesiaca a slnka ✨
+Striebro 925 · pozlátené zlato · chirurgická oceľ
+Ručne vyberané, balené s láskou 🎁</div>
+        <div class="ig-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8F7245" stroke-width="2"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>
+          selene.sk
+        </div>
+      </div>
+
+      <div class="meta-row">
+        <span class="char-badge">≈ 116 / 150 znakov</span>
+      </div>
+      <div>
+        <div class="hashtag-label">Hashtagy k príspevku</div>
+        <div class="hashtag-row">
+          <span class="hashtag">#selene</span>
+          <span class="hashtag">#selenejewelry</span>
+          <span class="hashtag">#mesiaceslnka</span>
+          <span class="hashtag">#striebro925</span>
+          <span class="hashtag">#pozlátenéšperky</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Variant B -->
+    <div class="bio-card">
+      <div class="bio-card-top">
+        <span class="vcode">B</span>
+        <h3>Príbehový — mesiac a slnko</h3>
+      </div>
+      <span class="bio-flavor" style="align-self:flex-start">Pre budovanie značky</span>
+      <p class="bio-desc">Stavia na <strong>duálnom príbehu</strong> značky (Moon Silver / Sun Gold) — vhodné pri launchi profilu alebo keď chcete posilniť rozpoznateľnosť konceptu.</p>
+
+      <div class="ig-mock">
+        <div class="ig-mock-head">
+          <div class="ig-avatar">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#8F7245"/></svg>
+          </div>
+          <div>
+            <div class="ig-name">SELÉNÉ — Mesiac &amp; Slnko</div>
+            <div class="ig-handle">@selene.jewelry</div>
+          </div>
+        </div>
+        <div class="ig-bio-text">🌙 Mesiac pre striebro. ☀️ Slnko pre zlato.
+Šperky, ktoré nosia príbeh oboch svetiel.
+Objavte svoju stranu nižšie ↓</div>
+        <div class="ig-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8F7245" stroke-width="2"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>
+          selene.sk
+        </div>
+      </div>
+
+      <div class="meta-row">
+        <span class="char-badge">≈ 114 / 150 znakov</span>
+      </div>
+      <div>
+        <div class="hashtag-label">Hashtagy k príspevku</div>
+        <div class="hashtag-row">
+          <span class="hashtag">#selene</span>
+          <span class="hashtag">#mesiaceslnka</span>
+          <span class="hashtag">#moonandsun</span>
+          <span class="hashtag">#zlatéšperky</span>
+          <span class="hashtag">#striebro925</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Variant C -->
+    <div class="bio-card">
+      <div class="bio-card-top">
+        <span class="vcode">C</span>
+        <h3>Stručný / minimal</h3>
+      </div>
+      <span class="bio-flavor" style="align-self:flex-start">Pre rýchlu orientáciu</span>
+      <p class="bio-desc">Najkratšia verzia — <strong>fakty na prvý pohľad</strong> (materiál, doprava). Vhodná pre sezónne kampane, keď treba nechať priestor odkazu v highlight.</p>
+
+      <div class="ig-mock">
+        <div class="ig-mock-head">
+          <div class="ig-avatar">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#8F7245"/></svg>
+          </div>
+          <div>
+            <div class="ig-name">SELÉNÉ</div>
+            <div class="ig-handle">@selene.jewelry</div>
+          </div>
+        </div>
+        <div class="ig-bio-text">Strieborné a pozlátené šperky 925
+Made with moon &amp; sun energy
+Doprava zdarma nad 59 €</div>
+        <div class="ig-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8F7245" stroke-width="2"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>
+          selene.sk
+        </div>
+      </div>
+
+      <div class="meta-row">
+        <span class="char-badge">≈ 85 / 150 znakov</span>
+      </div>
+      <div>
+        <div class="hashtag-label">Hashtagy k príspevku</div>
+        <div class="hashtag-row">
+          <span class="hashtag">#selene</span>
+          <span class="hashtag">#selenejewelry</span>
+          <span class="hashtag">#striebro925</span>
+          <span class="hashtag">#šperky</span>
+          <span class="hashtag">#slovenskýbrand</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Highlights -->
+  <div class="subhead">IG Highlights — návrh názvov</div>
+  <div class="highlights-row">
+    <div class="highlight-item">
+      <div class="highlight-circle"><svg viewBox="0 0 24 24" fill="#8F7245"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z"/></svg></div>
+      <div class="highlight-label">Novinky</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#8F7245" stroke-width="1.6"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
+      <div class="highlight-label">Sun Gold</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-circle"><svg viewBox="0 0 24 24" fill="#8F7245"><path d="M14 4C9 5 6 8.5 6 12C6 15.5 9 19 14 20C11 17.5 9.5 15 9.5 12C9.5 9 11 6.5 14 4Z"/></svg></div>
+      <div class="highlight-label">Moon Silver</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#8F7245" stroke-width="1.6"><path d="M12 3 L20 9 L12 21 L4 9 Z"/><path d="M4 9 L20 9M8.5 9 L12 3 L15.5 9M12 9 L9.5 21M12 9 L14.5 21"/></svg></div>
+      <div class="highlight-label">Materiály</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#8F7245" stroke-width="1.6"><path d="M12 4C12 4 5 10 5 15a7 7 0 0 0 14 0C19 10 12 4 12 4Z"/></svg></div>
+      <div class="highlight-label">Starostlivosť</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#8F7245" stroke-width="1.6"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6-4.5-4.2 6.1-.7Z"/></svg></div>
+      <div class="highlight-label">Recenzie</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#8F7245" stroke-width="1.6"><rect x="4" y="9" width="16" height="11" rx="1"/><rect x="2" y="5" width="20" height="4" rx="1"/><path d="M12 5v15M12 5C10 2 6 2.5 6.5 5.5S10 8 12 5ZM12 5c2-3 6-2.5 5.5.5S14 8 12 5Z"/></svg></div>
+      <div class="highlight-label">Darčeky</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#8F7245" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 6l9 7 9-7"/></svg></div>
+      <div class="highlight-label">Kontakt</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 — FACEBOOK (SK) ============ -->
+<section class="section">
+  <div class="section-head">
+    <span class="vcode">02</span>
+    <h2>Facebook — bio / popis stránky</h2>
+    <span class="tag">SK</span>
+  </div>
+  <p class="section-sub">Facebook dovoľuje dlhší text ako Instagram — tri varianty v <em>2–4 vetách</em> s jasným CTA, vhodné do poľa „Krátky popis“ alebo úvodného textu stránky.</p>
+
+  <div class="bio-grid">
+
+    <div class="bio-card">
+      <div class="bio-card-top">
+        <span class="vcode">A</span>
+        <h3>Predstavenie značky</h3>
+      </div>
+      <p class="bio-desc">Univerzálny popis stránky — vhodný ako trvalý „O nás“ text.</p>
+      <div class="fb-mock">
+        <div class="fb-mock-head">
+          <div class="fb-avatar"><svg viewBox="0 0 48 48" fill="none"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#A98A57"/></svg></div>
+          <div>
+            <div class="fb-name">SELÉNÉ Jewelry</div>
+            <div class="fb-cat">Šperky a doplnky · E-shop</div>
+          </div>
+        </div>
+        <p class="fb-bio-text">SELÉNÉ je značka strieborných a pozlátených šperkov, ktoré spájajú chlad mesiaca so svetlom slnka. Pracujeme so striebrom 925, pozláteným zlatom a chirurgickou oceľou — kvalitne, jemne, s dôrazom na detail. Doručujeme po celom Slovensku.</p>
+        <div class="fb-foot-row">
+          <span class="fb-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8F7245" stroke-width="2"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>
+            www.selene.sk
+          </span>
+          <span class="fb-cta">Nakúpiť</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bio-card">
+      <div class="bio-card-top">
+        <span class="vcode">B</span>
+        <h3>Príbeh mesiaca a slnka</h3>
+      </div>
+      <p class="bio-desc">Zdôrazňuje koncept dvoch kolekcií — dobré pre pripnutý príspevok alebo sekciu „Info“.</p>
+      <div class="fb-mock">
+        <div class="fb-mock-head">
+          <div class="fb-avatar"><svg viewBox="0 0 48 48" fill="none"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#A98A57"/></svg></div>
+          <div>
+            <div class="fb-name">SELÉNÉ Jewelry</div>
+            <div class="fb-cat">Šperky a doplnky · E-shop</div>
+          </div>
+        </div>
+        <p class="fb-bio-text">Mesiac pre striebro. Slnko pre zlato. SELÉNÉ vznikla z presvedčenia, že šperk môže niesť príbeh — dva protiklady svetla spojené v jednom kúsku. Vyberajte si z kolekcií Moon Silver a Sun Gold a nájdite si svoju stranu.</p>
+        <div class="fb-foot-row">
+          <span class="fb-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8F7245" stroke-width="2"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>
+            www.selene.sk
+          </span>
+          <span class="fb-cta">Zistiť viac</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bio-card">
+      <div class="bio-card-top">
+        <span class="vcode">C</span>
+        <h3>Akčný / darčekový</h3>
+      </div>
+      <p class="bio-desc">Silné CTA s dôrazom na darček a dopravu — vhodné pre sezónne kampane (Vianoce, Valentín).</p>
+      <div class="fb-mock">
+        <div class="fb-mock-head">
+          <div class="fb-avatar"><svg viewBox="0 0 48 48" fill="none"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#A98A57"/></svg></div>
+          <div>
+            <div class="fb-name">SELÉNÉ Jewelry</div>
+            <div class="fb-cat">Šperky a doplnky · E-shop</div>
+          </div>
+        </div>
+        <p class="fb-bio-text">Hľadáte darček, ktorý poteší? SELÉNÉ ponúka strieborné a pozlátené šperky 925 s darčekovým balením ku každej objednávke. Doprava zdarma nad 59 €. 🎁 Vyberte si obľúbený kúsok a nechajte hovoriť šperky namiesto slov.</p>
+        <div class="fb-foot-row">
+          <span class="fb-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8F7245" stroke-width="2"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>
+            www.selene.sk
+          </span>
+          <span class="fb-cta">Objednať s darčekom</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 03 — ENGLISH VERSIONS ============ -->
+<section class="section">
+  <div class="section-head">
+    <span class="vcode">03</span>
+    <h2>Anglické verzie</h2>
+    <span class="tag">EN</span>
+  </div>
+  <p class="section-sub">Rovnaká štruktúra a tón, preložené pre medzinárodné publikum (napr. sledovatelia mimo SK/CZ, expat komunity). Materiálové názvy podľa anglického štandardu — <em>sterling silver</em>, <em>gold-plated</em>, <em>surgical steel</em>.</p>
+
+  <div class="subhead">Instagram — EN</div>
+  <div class="bio-grid">
+
+    <div class="bio-card">
+      <div class="bio-card-top">
+        <span class="vcode">A</span>
+        <h3>Elegant / premium</h3>
+      </div>
+      <div class="ig-mock">
+        <div class="ig-mock-head">
+          <div class="ig-avatar"><svg viewBox="0 0 48 48" fill="none"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#8F7245"/></svg></div>
+          <div>
+            <div class="ig-name">SELENE Jewelry</div>
+            <div class="ig-handle">@selene.jewelry</div>
+          </div>
+        </div>
+        <div class="ig-bio-text">Jewelry carrying the story of moon &amp; sun ✨
+Sterling silver 925 · gold-plated · surgical steel
+Thoughtfully made, beautifully packaged</div>
+        <div class="ig-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8F7245" stroke-width="2"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>
+          selene.sk
+        </div>
+      </div>
+      <div class="meta-row"><span class="char-badge">≈ 133 / 150 chars</span></div>
+      <div>
+        <div class="hashtag-label">Hashtags</div>
+        <div class="hashtag-row">
+          <span class="hashtag">#selenejewelry</span>
+          <span class="hashtag">#moonandsun</span>
+          <span class="hashtag">#sterlingsilver</span>
+          <span class="hashtag">#goldplated</span>
+          <span class="hashtag">#jewelrybrand</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bio-card">
+      <div class="bio-card-top">
+        <span class="vcode">B</span>
+        <h3>Story — moon &amp; sun</h3>
+      </div>
+      <div class="ig-mock">
+        <div class="ig-mock-head">
+          <div class="ig-avatar"><svg viewBox="0 0 48 48" fill="none"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#8F7245"/></svg></div>
+          <div>
+            <div class="ig-name">SELENE — Moon &amp; Sun</div>
+            <div class="ig-handle">@selene.jewelry</div>
+          </div>
+        </div>
+        <div class="ig-bio-text">🌙 Moon for silver. ☀️ Sun for gold.
+Jewelry that carries both lights within.
+Find your side below ↓</div>
+        <div class="ig-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8F7245" stroke-width="2"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>
+          selene.sk
+        </div>
+      </div>
+      <div class="meta-row"><span class="char-badge">≈ 99 / 150 chars</span></div>
+      <div>
+        <div class="hashtag-label">Hashtags</div>
+        <div class="hashtag-row">
+          <span class="hashtag">#selenejewelry</span>
+          <span class="hashtag">#moonsilver</span>
+          <span class="hashtag">#sungold</span>
+          <span class="hashtag">#silverjewelry</span>
+          <span class="hashtag">#goldjewelry</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bio-card">
+      <div class="bio-card-top">
+        <span class="vcode">C</span>
+        <h3>Minimal</h3>
+      </div>
+      <div class="ig-mock">
+        <div class="ig-mock-head">
+          <div class="ig-avatar"><svg viewBox="0 0 48 48" fill="none"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#8F7245"/></svg></div>
+          <div>
+            <div class="ig-name">SELENE</div>
+            <div class="ig-handle">@selene.jewelry</div>
+          </div>
+        </div>
+        <div class="ig-bio-text">Silver &amp; gold-plated jewelry 925
+Made with moon &amp; sun energy
+Free shipping over €59</div>
+        <div class="ig-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8F7245" stroke-width="2"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>
+          selene.sk
+        </div>
+      </div>
+      <div class="meta-row"><span class="char-badge">≈ 83 / 150 chars</span></div>
+      <div>
+        <div class="hashtag-label">Hashtags</div>
+        <div class="hashtag-row">
+          <span class="hashtag">#selenejewelry</span>
+          <span class="hashtag">#moonsilver</span>
+          <span class="hashtag">#sungold</span>
+          <span class="hashtag">#sterlingsilver925</span>
+          <span class="hashtag">#jewelry</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="subhead">Facebook — EN</div>
+  <div class="bio-grid">
+
+    <div class="bio-card">
+      <div class="bio-card-top">
+        <span class="vcode">A</span>
+        <h3>Brand introduction</h3>
+      </div>
+      <div class="fb-mock">
+        <div class="fb-mock-head">
+          <div class="fb-avatar"><svg viewBox="0 0 48 48" fill="none"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#A98A57"/></svg></div>
+          <div>
+            <div class="fb-name">SELENE Jewelry</div>
+            <div class="fb-cat">Jewelry &amp; Accessories · Online Store</div>
+          </div>
+        </div>
+        <p class="fb-bio-text">SELENE is a jewelry brand uniting the cool light of the moon with the warmth of the sun. We craft with sterling silver 925, gold-plated details and surgical steel — refined, delicate, made to last. Worldwide shipping available.</p>
+        <div class="fb-foot-row">
+          <span class="fb-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8F7245" stroke-width="2"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>
+            www.selene.sk
+          </span>
+          <span class="fb-cta">Shop Now</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bio-card">
+      <div class="bio-card-top">
+        <span class="vcode">B</span>
+        <h3>Moon &amp; sun story</h3>
+      </div>
+      <div class="fb-mock">
+        <div class="fb-mock-head">
+          <div class="fb-avatar"><svg viewBox="0 0 48 48" fill="none"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#A98A57"/></svg></div>
+          <div>
+            <div class="fb-name">SELENE Jewelry</div>
+            <div class="fb-cat">Jewelry &amp; Accessories · Online Store</div>
+          </div>
+        </div>
+        <p class="fb-bio-text">Moon for silver. Sun for gold. SELENE was born from the belief that jewelry can carry a story — two opposites of light held in one piece. Discover the Moon Silver and Sun Gold collections and find the side that speaks to you.</p>
+        <div class="fb-foot-row">
+          <span class="fb-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8F7245" stroke-width="2"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>
+            www.selene.sk
+          </span>
+          <span class="fb-cta">Learn More</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bio-card">
+      <div class="bio-card-top">
+        <span class="vcode">C</span>
+        <h3>Gift / CTA</h3>
+      </div>
+      <div class="fb-mock">
+        <div class="fb-mock-head">
+          <div class="fb-avatar"><svg viewBox="0 0 48 48" fill="none"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#A98A57"/></svg></div>
+          <div>
+            <div class="fb-name">SELENE Jewelry</div>
+            <div class="fb-cat">Jewelry &amp; Accessories · Online Store</div>
+          </div>
+        </div>
+        <p class="fb-bio-text">Looking for a gift that truly shines? SELENE offers sterling silver and gold-plated jewelry 925 with gift packaging on every order. Free shipping over €59. 🎁 Pick your favorite piece and let the jewelry speak for you.</p>
+        <div class="fb-foot-row">
+          <span class="fb-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8F7245" stroke-width="2"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>
+            www.selene.sk
+          </span>
+          <span class="fb-cta">Order Now</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 04 — TIPY & PRAVIDLÁ ============ -->
+<section class="section">
+  <div class="section-head">
+    <span class="vcode">04</span>
+    <h2>Pravidlá a tipy na použitie</h2>
+    <span class="tag">Playbook</span>
+  </div>
+  <p class="section-sub">Krátky checklist, aby bio texty pôsobili konzistentne naprieč profilmi a nezastarali pri prvej sezónnej kampani.</p>
+
+  <div class="tips-grid">
+    <div class="tip">
+      <span class="tip-num">01</span>
+      <p><strong>IG bio má limit 150 znakov</strong> — počíta sa len samotný text bio, nie meno, handle ani odkaz. Kontroluj priamo v Instagrame pred publikovaním.</p>
+    </div>
+    <div class="tip">
+      <span class="tip-num">02</span>
+      <p><strong>Len jeden klikateľný odkaz v bio</strong> — ak treba viac (e-shop, blog, giftguide), použi jednu rozcestníkovú stránku a odkazuj na ňu.</p>
+    </div>
+    <div class="tip">
+      <span class="tip-num">03</span>
+      <p><strong>Emoji používaj striedmo</strong> — max 2–3 na bio, vždy z rovnakej sady (🌙 ☀️ 🎁 ✨), nikdy nie ako náhradu za text.</p>
+    </div>
+    <div class="tip">
+      <span class="tip-num">04</span>
+      <p><strong>Hashtagy patria do popisu príspevku</strong>, nie do bio poľa — v bio pôsobia neporiadne a zaberajú limit znakov.</p>
+    </div>
+    <div class="tip">
+      <span class="tip-num">05</span>
+      <p><strong>Konzistentný tón</strong> — elegantný a pokojný, bez CAPS LOCK a nadmerného počtu výkričníkov. Žiadne agresívne „predajné“ formulácie.</p>
+    </div>
+    <div class="tip">
+      <span class="tip-num">06</span>
+      <p><strong>Facebook krátky popis</strong> (pole „O nás“) má orientačný limit ~255 znakov — varianty vyššie sú v tomto rozsahu.</p>
+    </div>
+    <div class="tip">
+      <span class="tip-num">07</span>
+      <p><strong>Aktualizuj sezónne</strong> — pri Vianociach, Valentíne či výpredaji nahraď variant C alebo doplň CTA priamo v bio dočasne.</p>
+    </div>
+    <div class="tip">
+      <span class="tip-num">08</span>
+      <p><strong>Over odkaz pred publikovaním</strong> — ak sleduješ výkon kampane, pridaj do URL UTM parametre (napr. <em>?utm_source=instagram</em>).</p>
+    </div>
+  </div>
+</section>
+
+<footer class="doc-foot">
+  <p class="claim">Mesiac pre striebro. Slnko pre zlato.</p>
+  <p>Kopíruj priamo do IG/FB — emoji doplň podľa tónu príspevku. SELÉNÉ — Social Kit, design board 2026</p>
+</footer>
+
+</body>
+</html>
