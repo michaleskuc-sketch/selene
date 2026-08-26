@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Právne informácie — SELÉNÉ</title>
+<meta name="description" content="SELÉNÉ — obchodné podmienky, reklamačný poriadok a ochrana osobných údajov (GDPR) pre e-shop SELÉNÉ prevádzkovaný spoločnosťou Wil, s.r.o.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FAF6F0;
+    --pearl:#F4EFE6;
+    --champagne:#EDE3D2;
+    --gold:#A98A57;
+    --gold-deep:#8F7245;
+    --ink:#2B2723;
+    --serif:'Cormorant Garamond', serif;
+    --sans:'Jost', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--ivory);
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;height:auto;}
+  a{color:inherit;text-decoration:none;}
+  ul,ol{list-style:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+  .container{max-width:1320px;margin:0 auto;padding:0 32px;}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.15;}
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:12px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+    font-weight:500;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:16px 36px;
+    font-size:12.5px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-weight:500;
+    transition:all .35s ease;
+    white-space:nowrap;
+  }
+  .btn-outline{
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--ink);
+  }
+  .btn-outline:hover{background:var(--ink);color:var(--ivory);}
+
+  /* ---------- Back to shop ---------- */
+  .backbar{
+    background:var(--champagne);
+    text-align:center;
+    padding:9px 20px;
+  }
+  .backbar a{
+    font-size:11.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+    font-weight:500;
+  }
+  .backbar a:hover{text-decoration:underline;}
+
+  /* ---------- Header ---------- */
+  header{
+    background:var(--ivory);
+    border-bottom:1px solid rgba(43,39,35,.08);
+    position:sticky;
+    top:0;
+    z-index:100;
+  }
+  .header-inner{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    padding:22px 32px;
+    gap:20px;
+  }
+  .nav-left, .nav-right{
+    display:flex;
+    align-items:center;
+    gap:30px;
+  }
+  .nav-right{justify-content:flex-end;}
+  nav.nav-left a{
+    font-size:12.5px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    font-weight:400;
+    position:relative;
+    padding-bottom:4px;
+  }
+  nav.nav-left a::after{
+    content:'';
+    position:absolute;
+    left:0;bottom:0;
+    width:0;height:1px;
+    background:var(--gold);
+    transition:width .35s ease;
+  }
+  nav.nav-left a:hover::after{width:100%;}
+  .logo-block{
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:2px;
+  }
+  .logo-block .moon-icon{width:26px;height:26px;margin-bottom:2px;}
+  .logo-block .brand{
+    font-family:var(--serif);
+    font-size:26px;
+    letter-spacing:.32em;
+    padding-left:.32em;
+    font-weight:500;
+  }
+  .logo-block .tagline{
+    font-size:9.5px;
+    letter-spacing:.32em;
+    padding-left:.32em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+  }
+  .icons{
+    display:flex;
+    gap:22px;
+    align-items:center;
+  }
+  .icons button, .icons a{
+    display:flex;
+    align-items:center;
+    color:var(--ink);
+    transition:color .3s ease;
+  }
+  .icons button:hover, .icons a:hover{color:var(--gold-deep);}
+  .icons svg{width:19px;height:19px;}
+  .burger{display:none;}
+
+  /* ---------- Astro deliaci prvok ---------- */
+  .div-astro{display:flex;align-items:center;justify-content:center;gap:14px;max-width:320px;margin:0 auto;padding:clamp(24px,3.5vw,44px) 0}
+  .div-astro .da-l,.div-astro .da-r{flex:1;height:1px}
+  .div-astro .da-l{background:linear-gradient(90deg,transparent,var(--gold))}
+  .div-astro .da-r{background:linear-gradient(90deg,var(--gold),transparent)}
+  .div-astro .da-d{width:4px;height:4px;border-radius:50%;background:var(--gold-deep);opacity:.75}
+  .div-astro .da-d.mid{width:6px;height:6px;background:var(--gold)}
+
+  /* ---------- Legal hero ---------- */
+  .legal-hero{
+    position:relative;
+    padding:90px 0 56px;
+    text-align:center;
+    background:radial-gradient(70% 60% at 50% 0%, var(--champagne) 0%, var(--ivory) 68%);
+  }
+  .legal-hero .eyebrow{display:block;margin-bottom:24px;}
+  .legal-hero .moon-icon{width:40px;height:40px;margin:0 auto 24px;}
+  .legal-hero h1{
+    font-size:clamp(34px,5vw,54px);
+    color:var(--ink);
+  }
+  .legal-hero p{
+    margin:20px auto 0;
+    max-width:520px;
+    font-size:15.5px;
+    color:#7a7268;
+    line-height:1.7;
+  }
+
+  /* ---------- Legal sub-nav ---------- */
+  .legal-subnav{
+    position:sticky;
+    top:81px;
+    z-index:90;
+    background:var(--ivory);
+    border-bottom:1px solid rgba(43,39,35,.08);
+  }
+  .legal-subnav .container{
+    display:flex;
+    justify-content:center;
+    gap:44px;
+    flex-wrap:wrap;
+    padding-top:18px;
+    padding-bottom:18px;
+  }
+  .legal-subnav a{
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-weight:500;
+    color:#5c564c;
+    position:relative;
+    padding-bottom:4px;
+  }
+  .legal-subnav a::after{
+    content:'';
+    position:absolute;left:0;bottom:0;width:0;height:1px;
+    background:var(--gold);transition:width .3s ease;
+  }
+  .legal-subnav a:hover{color:var(--gold-deep);}
+  .legal-subnav a:hover::after{width:100%;}
+
+  /* ---------- Legal content ---------- */
+  .legal-section{padding:96px 0 40px;}
+  .legal-section:last-of-type{padding-bottom:100px;}
+  .legal-inner{max-width:760px;margin:0 auto;}
+  .legal-inner > .eyebrow{display:block;text-align:center;margin-bottom:14px;}
+  .legal-inner > h2{
+    text-align:center;
+    font-size:clamp(28px,4vw,40px);
+    margin-bottom:16px;
+  }
+  .legal-updated{
+    text-align:center;
+    font-size:12.5px;
+    color:#948b7d;
+    margin-bottom:56px;
+  }
+  .legal-inner h3{
+    font-size:21px;
+    font-weight:500;
+    margin:44px 0 14px;
+    color:var(--ink);
+  }
+  .legal-inner h3 .num{color:var(--gold-deep);margin-right:10px;}
+  .legal-inner p{
+    font-size:15.5px;
+    line-height:1.85;
+    color:#4a453e;
+    margin-bottom:16px;
+  }
+  .legal-inner ul, .legal-inner ol{
+    margin:0 0 16px 0;
+  }
+  .legal-inner ul li, .legal-inner ol li{
+    font-size:15.5px;
+    line-height:1.8;
+    color:#4a453e;
+    padding-left:22px;
+    position:relative;
+    margin-bottom:10px;
+  }
+  .legal-inner ul li::before{
+    content:'—';
+    position:absolute;left:0;top:0;
+    color:var(--gold-deep);
+  }
+  .legal-inner ol{counter-reset:legalcount;}
+  .legal-inner ol li{counter-increment:legalcount;padding-left:28px;}
+  .legal-inner ol li::before{
+    content:counter(legalcount)'.';
+    position:absolute;left:0;top:0;
+    color:var(--gold-deep);
+    font-weight:500;
+  }
+  .legal-inner a.inline-link{color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px;}
+  .legal-box{
+    background:var(--pearl);
+    border:1px solid rgba(43,39,35,.1);
+    padding:32px 34px;
+    margin:28px 0 32px;
+  }
+  .legal-box h4{
+    font-family:var(--serif);
+    font-size:19px;
+    font-weight:500;
+    margin-bottom:12px;
+    color:var(--gold-deep);
+  }
+  .legal-box p{font-size:14.5px;margin-bottom:10px;}
+  .legal-box p:last-child{margin-bottom:0;}
+  .highlight-band{
+    background:var(--ink);
+    color:var(--ivory);
+    padding:22px 30px;
+    margin:28px 0 32px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .highlight-band svg{width:26px;height:26px;flex-shrink:0;color:var(--gold);}
+  .highlight-band p{font-size:14.5px;color:#e9e3d8;margin:0;line-height:1.7;}
+  .highlight-band strong{color:var(--ivory);}
+  .legal-table{
+    width:100%;
+    border-collapse:collapse;
+    margin:8px 0 32px;
+    font-size:14.5px;
+  }
+  .legal-table th, .legal-table td{
+    text-align:left;
+    padding:12px 16px;
+    border-bottom:1px solid rgba(43,39,35,.1);
+    color:#4a453e;
+    line-height:1.6;
+  }
+  .legal-table th{
+    font-weight:500;
+    color:var(--ink);
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--pearl);
+    padding:80px 0 30px;
+  }
+  .footer-top{
+    display:grid;
+    grid-template-columns:1.4fr repeat(3,1fr);
+    gap:40px;
+    padding-bottom:60px;
+    border-bottom:1px solid rgba(43,39,35,.1);
+  }
+  .footer-brand .logo-block{align-items:flex-start;text-align:left;}
+  .footer-brand p{
+    margin-top:20px;
+    font-size:13.5px;
+    color:#6b6459;
+    line-height:1.7;
+    max-width:260px;
+  }
+  .footer-social{display:flex;gap:16px;margin-top:24px;}
+  .footer-social a{
+    width:34px;height:34px;
+    border:1px solid rgba(43,39,35,.2);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    transition:all .3s ease;
+  }
+  .footer-social a:hover{background:var(--ink);border-color:var(--ink);color:var(--ivory);}
+  .footer-social svg{width:15px;height:15px;}
+  .f-col h4{
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    margin-bottom:22px;
+    font-weight:500;
+    color:var(--ink);
+  }
+  .f-col ul li{margin-bottom:13px;}
+  .f-col ul li a{font-size:13.5px;color:#5c564c;transition:color .3s ease;}
+  .f-col ul li a:hover{color:var(--gold-deep);}
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:28px;
+    font-size:12px;
+    color:#948b7d;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .footer-bottom a{margin-left:20px;color:#948b7d;}
+  .footer-bottom a:hover{color:var(--gold-deep);}
+
+  /* ---------- Mobile menu ---------- */
+  .mobile-nav{
+    position:fixed;
+    inset:0;
+    background:var(--ivory);
+    z-index:200;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:30px;
+    transform:translateY(-100%);
+    transition:transform .45s ease;
+  }
+  .mobile-nav.open{transform:translateY(0);}
+  .mobile-nav a{font-family:var(--serif);font-size:26px;}
+  .mobile-close{position:absolute;top:26px;right:32px;font-size:28px;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:860px){
+    .nav-left{display:none;}
+    .burger{display:flex;}
+    .header-inner{grid-template-columns:auto 1fr auto;}
+    .legal-hero{padding:64px 0 44px;}
+    .legal-section{padding:64px 0 20px;}
+    .legal-subnav{top:73px;}
+    .legal-subnav .container{gap:26px;}
+    .footer-top{grid-template-columns:1fr 1fr;gap:40px 20px;}
+  }
+  @media (max-width:600px){
+    .container{padding:0 18px;}
+    .footer-top{grid-template-columns:1fr;gap:36px;}
+    .legal-box, .highlight-band{padding:22px;}
+    .legal-table{font-size:13px;}
+    .legal-table th, .legal-table td{padding:10px 8px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= BACK TO SHOP ================= -->
+<div class="backbar">
+  <a href="selene_cd_homepage.html">&larr; Späť do obchodu</a>
+</div>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="header-inner">
+    <nav class="nav-left">
+      <a href="selene_cd_giftguide.html">Darčeky</a>
+      <a href="selene_blog.html">Blog</a>
+      <a href="selene_cd_pribeh.html">Príbeh značky</a>
+    </nav>
+
+    <a href="selene_cd_homepage.html" class="logo-block" aria-label="SELÉNÉ — domov">
+      <svg class="moon-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M42 8 C 30 12, 23 22, 23 32 C 23 42, 30 52, 42 56 C 36 50, 32 42, 32 32 C 32 22, 36 14, 42 8 Z" fill="#8F7245"/>
+      </svg>
+      <span class="brand">SELÉNÉ</span>
+      <span class="tagline">jewelry</span>
+    </a>
+
+    <div class="nav-right">
+      <div class="icons">
+        <a href="selene_cd_kosik.html" aria-label="Košík">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h12l-1.2 11.2a1 1 0 0 1-1 .8H8.2a1 1 0 0 1-1-.8L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        </a>
+        <button class="burger" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.add('open')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <span class="mobile-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</span>
+  <a href="selene_cd_giftguide.html">Darčeky</a>
+  <a href="selene_blog.html">Blog</a>
+  <a href="selene_cd_pribeh.html">Príbeh značky</a>
+  <a href="#podmienky">Obchodné podmienky</a>
+  <a href="#reklamacie">Reklamačný poriadok</a>
+  <a href="#gdpr">Ochrana osobných údajov</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="legal-hero">
+  <div class="container">
+    <span class="eyebrow">Právne informácie</span>
+    <svg class="moon-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M42 8 C 30 12, 23 22, 23 32 C 23 42, 30 52, 42 56 C 36 50, 32 42, 32 32 C 32 22, 36 14, 42 8 Z" fill="#A98A57"/>
+    </svg>
+    <h1>Obchodné podmienky &amp; ochrana údajov</h1>
+    <p>Všetko, čo potrebujete vedieť o nákupe v e-shope SELÉNÉ — od objednávky cez dopravu až po vrátenie tovaru a ochranu vašich osobných údajov.</p>
+  </div>
+</section>
+
+<!-- ================= SUB-NAV ================= -->
+<nav class="legal-subnav" aria-label="Právne sekcie">
+  <div class="container">
+    <a href="#podmienky">Obchodné podmienky</a>
+    <a href="#reklamacie">Reklamačný poriadok</a>
+    <a href="#gdpr">Ochrana osobných údajov</a>
+  </div>
+</nav>
+
+<!-- ================= OBCHODNÉ PODMIENKY ================= -->
+<section class="legal-section" id="podmienky">
+  <div class="container">
+    <div class="legal-inner">
+      <span class="eyebrow">Právne informácie</span>
+      <h2>Obchodné podmienky</h2>
+      <p class="legal-updated">Platné od 1. januára 2026</p>
+
+      <h3><span class="num">1.</span>Identifikácia predávajúceho</h3>
+      <p>Prevádzkovateľom e-shopu SELÉNÉ (dostupného na doméne selene.sk) je spoločnosť <strong>Wil, s.r.o.</strong>, IČO: 46 364 919, DIČ: SK46364919, spoločnosť je platcom DPH. Kontaktný e-mail pre všetky otázky týkajúce sa objednávok, reklamácií a ochrany osobných údajov je <a class="inline-link" href="mailto:ahoj@selene.sk">ahoj@selene.sk</a>. Tieto obchodné podmienky upravujú vzájomné práva a povinnosti medzi spoločnosťou Wil, s.r.o. ako predávajúcim a zákazníkom ako kupujúcim, ktoré vznikajú v súvislosti alebo na základe kúpnej zmluvy uzatvorenej prostredníctvom e-shopu SELÉNÉ.</p>
+
+      <h3><span class="num">2.</span>Objednávka a uzavretie kúpnej zmluvy</h3>
+      <p>Kúpna zmluva medzi predávajúcim a kupujúcim vzniká odoslaním objednávky zo strany kupujúceho a jej následným potvrdením zo strany predávajúceho, ktoré prichádza automaticky e-mailom na adresu uvedenú v objednávke. Predávajúci si vyhradzuje právo objednávku odmietnuť alebo jej realizáciu potvrdiť dodatočne, napríklad v prípade vypredania konkrétneho šperku alebo zjavnej chyby v cene. Kupujúci pred odoslaním objednávky potvrdzuje, že sa oboznámil s týmito obchodnými podmienkami a že s nimi súhlasí.</p>
+
+      <h3><span class="num">3.</span>Ceny tovaru</h3>
+      <p>Všetky ceny uvedené v e-shope SELÉNÉ sú konečné, vrátane dane z pridanej hodnoty (DPH). Predávajúci si vyhradzuje právo na zmenu cien, pričom pre už odoslanú a potvrdenú objednávku platí cena platná v momente jej vytvorenia. Prípadné zľavy a akciové ponuky sú vždy zreteľne označené priamo pri danom produkte alebo v rámci propagačnej kampane a platia len počas uvedeného obdobia alebo do vypredania zásob.</p>
+
+      <h3><span class="num">4.</span>Doprava a platba</h3>
+      <p>Objednaný tovar doručujeme prostredníctvom kuriérskych spoločností <strong>Packeta</strong> a <strong>GLS</strong>, na výdajné miesto alebo priamo na adresu podľa výberu kupujúceho. Pri objednávke v hodnote nad <strong>59&nbsp;€</strong> je doprava po celom Slovensku aj do Českej republiky a Maďarska zdarma. Platba dobierkou nie je k dispozícii — objednávku je potrebné vopred uhradiť. Platiť môžete kartou, cez Google Pay alebo Apple Pay prostredníctvom platobnej brány <strong>Shoptet Pay</strong>, alebo klasickým bankovým prevodom na základe zaslaných platobných údajov. Tovar odosielame až po pripísaní platby na náš účet.</p>
+
+      <h3><span class="num">5.</span>Dodacia lehota a prevzatie tovaru</h3>
+      <p>Objednávky expedujeme spravidla do 2 pracovných dní od pripísania platby, samotné doručenie kuriérom trvá zvyčajne 1 až 3 pracovné dni na Slovensku a 2 až 5 pracovných dní v Českej republike a Maďarsku. Pri prevzatí tovaru odporúčame skontrolovať neporušenosť obalu. V prípade viditeľného poškodenia zásielky odporúčame spísať s kuriérom záznam o poškodení a bezodkladne nás kontaktovať na ahoj@selene.sk.</p>
+
+      <h3><span class="num">6.</span>Odstúpenie od kúpnej zmluvy</h3>
+      <div class="highlight-band">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+        <p><strong>30 dní na vrátenie</strong> namiesto zákonom stanovených 14 dní. Chceme, aby ste si svojím výberom boli naozaj istí.</p>
+      </div>
+      <p>V súlade so zákonom č. 102/2014 Z. z. má kupujúci — spotrebiteľ právo odstúpiť od kúpnej zmluvy bez uvedenia dôvodu do 14 dní odo dňa prevzatia tovaru. SELÉNÉ túto lehotu dobrovoľne predlžuje na <strong>30 dní</strong> odo dňa prevzatia tovaru. Na odstúpenie od zmluvy postačí zaslať jednoznačné vyhlásenie o odstúpení e-mailom na ahoj@selene.sk alebo vyplniť a odoslať nižšie uvedený vzorový formulár. Tovar je potrebné vrátiť nepoškodený, nenosený a pokiaľ možno v pôvodnom obale vrátane darčekového balenia. Peniaze za vrátený tovar, vrátane najlacnejšieho ponúkaného spôsobu dopravy, vrátime najneskôr do 14 dní odo dňa doručenia oznámenia o odstúpení od zmluvy, a to rovnakým spôsobom, akým bola platba prijatá, pokiaľ sa s kupujúcim nedohodneme inak.</p>
+
+      <div class="legal-box">
+        <h4>Vzorový formulár na odstúpenie od zmluvy</h4>
+        <p>Adresát: Wil, s.r.o., ahoj@selene.sk</p>
+        <p>Týmto oznamujem, že odstupujem od kúpnej zmluvy na tento tovar: ..................................................</p>
+        <p>Číslo objednávky: .................. Dátum objednania: .................. Dátum prijatia: ..................</p>
+        <p>Meno a priezvisko spotrebiteľa: .................................................. Adresa spotrebiteľa: ..................................................</p>
+        <p>Číslo účtu pre vrátenie platby (IBAN): .................................................. Dátum a podpis: ..................</p>
+      </div>
+
+      <h3><span class="num">7.</span>Zľavový kód SELENE10</h3>
+      <p>Zľavový kód <strong>SELENE10</strong> poskytuje 10&nbsp;% zľavu na prvú objednávku v e-shope SELÉNÉ. Kód je možné uplatniť jednorazovo pri dokončení objednávky, nevzťahuje sa na už zľavnený tovar a neplatí na darčekové balenia a poštovné. Kód nie je možné kombinovať s inými zľavovými kódmi ani spätne uplatniť na už dokončenú objednávku. Predávajúci si vyhradzuje právo platnosť kódu kedykoľvek ukončiť.</p>
+
+      <h3><span class="num">8.</span>Reklamácie</h3>
+      <p>Postup pri uplatnení reklamácie, záručné podmienky a práva kupujúceho zo zodpovednosti za vady upravuje samostatný <a class="inline-link" href="#reklamacie">Reklamačný poriadok</a> nižšie na tejto stránke.</p>
+
+      <h3><span class="num">9.</span>Záverečné ustanovenia</h3>
+      <p>Tieto obchodné podmienky nadobúdajú účinnosť dňom ich zverejnenia na stránke selene.sk. Predávajúci si vyhradzuje právo obchodné podmienky kedykoľvek zmeniť, pričom pre konkrétnu objednávku platí vždy znenie účinné v momente jej vytvorenia. Vzťahy neupravené týmito podmienkami sa riadia príslušnými ustanoveniami zákona č. 40/1964 Zb. Občiansky zákonník, zákona č. 250/2007 Z. z. o ochrane spotrebiteľa a zákona č. 102/2014 Z. z. o ochrane spotrebiteľa pri predaji tovaru na diaľku, v znení neskorších predpisov. Prípadné spory sa strany zaväzujú riešiť predovšetkým vzájomnou dohodou; spotrebiteľ má tiež možnosť obrátiť sa na príslušný orgán alternatívneho riešenia sporov.</p>
+    </div>
+  </div>
+</section>
+
+<div class="div-astro" aria-hidden="true"><span class="da-l"></span><span class="da-d"></span><span class="da-d mid"></span><span class="da-d"></span><span class="da-r"></span></div>
+
+<!-- ================= REKLAMAČNÝ PORIADOK ================= -->
+<section class="legal-section" id="reklamacie">
+  <div class="container">
+    <div class="legal-inner">
+      <span class="eyebrow">Právne informácie</span>
+      <h2>Reklamačný poriadok</h2>
+      <p class="legal-updated">Platné od 1. januára 2026</p>
+
+      <h3><span class="num">1.</span>Úvodné ustanovenia</h3>
+      <p>Tento reklamačný poriadok sa vzťahuje na tovar zakúpený v e-shope SELÉNÉ, prevádzkovanom spoločnosťou Wil, s.r.o., a upravuje postup pri uplatňovaní práv zo zodpovednosti za vady zakúpeného tovaru. Reklamácie vybavujeme osobne a s dôrazom na to, aby ste dostali šperk, ktorý vám bude slúžiť roky.</p>
+
+      <h3><span class="num">2.</span>Záručná doba</h3>
+      <p>Na všetok nový tovar zakúpený v e-shope SELÉNÉ poskytujeme záruku v dĺžke <strong>24 mesiacov</strong> odo dňa prevzatia tovaru. Záruka sa vzťahuje na vady materiálu a spracovania, ktoré sa prejavia pri bežnom, riadnom používaní šperku.</p>
+
+      <h3><span class="num">3.</span>Ako uplatniť reklamáciu</h3>
+      <p>Reklamáciu uplatníte jednoducho — napíšte nám na <a class="inline-link" href="mailto:ahoj@selene.sk">ahoj@selene.sk</a>, priložte fotografiu vady, číslo objednávky a stručný popis problému. Na základe fotografie vám čo najskôr navrhneme ďalší postup, prípadne vás požiadame o zaslanie šperku späť na posúdenie. Tovar odporúčame zasielať v pôvodnom alebo inak vhodnom obale, aby nedošlo k jeho ďalšiemu poškodeniu počas prepravy.</p>
+
+      <h3><span class="num">4.</span>Vybavenie reklamácie</h3>
+      <p>Reklamáciu vybavíme najneskôr do <strong>30 dní</strong> odo dňa jej uplatnenia. O výsledku reklamačného konania vás budeme informovať e-mailom na adresu, ktorú ste uviedli v objednávke, prípadne z ktorej ste nás kontaktovali.</p>
+
+      <h3><span class="num">5.</span>Práva zo zodpovednosti za vady</h3>
+      <p>V závislosti od charakteru vady má kupujúci právo na:</p>
+      <ul>
+        <li>bezplatnú opravu šperku, ak je vada odstrániteľná,</li>
+        <li>výmenu za nový kus, ak je vada neodstrániteľná alebo ak sa rovnaká vada vyskytne opakovane,</li>
+        <li>primeranú zľavu z kúpnej ceny, ak výmena ani oprava nie sú možné alebo účelné,</li>
+        <li>odstúpenie od zmluvy a vrátenie kúpnej ceny, ak ide o vadu, ktorá robí tovar neupotrebiteľným.</li>
+      </ul>
+
+      <h3><span class="num">6.</span>Čo reklamácia nekryje</h3>
+      <p>Záruka sa nevzťahuje na vady spôsobené bežným opotrebovaním, nesprávnym alebo nešetrným zaobchádzaním. Šperky zo striebra 925 s povrchovou úpravou pozlátenia alebo rhódiovania nie sú určené na nosenie v sprche, bazéne, mori ani pri iných činnostiach spojených s kontaktom s vodou, chemikáliami, kozmetikou či parfumom — takýto kontakt urýchľuje prirodzené opotrebovanie povrchovej úpravy a nepovažuje sa za vadu tovaru. Reklamáciu tiež nemožno uplatniť pri mechanickom poškodení spôsobenom pádom, nárazom, ohnutím alebo iným násilným zásahom, ani pri postupnom prirodzenom stmavnutí či obrusovaní pozlátenia v miestach bežného trenia (napríklad na vnútornej strane prsteňa).</p>
+
+      <h3><span class="num">7.</span>Odstúpenie od zmluvy do 30 dní</h3>
+      <p>Ak vám šperk jednoducho nesadol alebo ste si premysleli výber, nemusíte čakať na vadu tovaru — v súlade s našimi obchodnými podmienkami máte na vrátenie alebo výmenu <strong>30 dní</strong> odo dňa prevzatia. Postup a vzorový formulár nájdete v sekcii <a class="inline-link" href="#podmienky">Obchodné podmienky</a> vyššie.</p>
+    </div>
+  </div>
+</section>
+
+<div class="div-astro" aria-hidden="true"><span class="da-l"></span><span class="da-d"></span><span class="da-d mid"></span><span class="da-d"></span><span class="da-r"></span></div>
+
+<!-- ================= GDPR ================= -->
+<section class="legal-section" id="gdpr">
+  <div class="container">
+    <div class="legal-inner">
+      <span class="eyebrow">Právne informácie</span>
+      <h2>Ochrana osobných údajov</h2>
+      <p class="legal-updated">Platné od 1. januára 2026</p>
+
+      <h3><span class="num">1.</span>Kto je správcom vašich údajov</h3>
+      <p>Správcom osobných údajov spracúvaných v súvislosti s prevádzkou e-shopu SELÉNÉ je spoločnosť <strong>Wil, s.r.o.</strong>, IČO: 46 364 919. Vo všetkých otázkach týkajúcich sa spracúvania osobných údajov nás môžete kontaktovať na <a class="inline-link" href="mailto:ahoj@selene.sk">ahoj@selene.sk</a>.</p>
+
+      <h3><span class="num">2.</span>Aké údaje spracúvame</h3>
+      <p>V súvislosti s nákupom a prevádzkou e-shopu spracúvame predovšetkým tieto kategórie osobných údajov: meno a priezvisko, e-mailová adresa, doručovacia a fakturačná adresa, telefónne číslo a história objednávok. Pri registrácii zákazníckeho konta a prihlasovaní ďalej spracúvame prihlasovacie údaje potrebné na prevádzku konta.</p>
+
+      <h3><span class="num">3.</span>Účely a právne základy spracúvania</h3>
+      <table class="legal-table">
+        <thead>
+          <tr><th>Účel</th><th>Právny základ</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Vybavenie objednávky, doprava a fakturácia</td><td>Plnenie kúpnej zmluvy</td></tr>
+          <tr><td>Vedenie účtovníctva a daňová evidencia</td><td>Plnenie zákonnej povinnosti</td></tr>
+          <tr><td>Vybavenie reklamácie a odstúpenia od zmluvy</td><td>Plnenie zákonnej povinnosti / zmluvy</td></tr>
+          <tr><td>Zasielanie newslettera a marketingových ponúk</td><td>Súhlas dotknutej osoby</td></tr>
+          <tr><td>Zlepšovanie e-shopu, analytika a remarketing</td><td>Oprávnený záujem / súhlas (cookies)</td></tr>
+        </tbody>
+      </table>
+
+      <h3><span class="num">4.</span>Komu údaje poskytujeme</h3>
+      <p>Osobné údaje poskytujeme len v rozsahu nevyhnutnom na riadne vybavenie objednávky, a to najmä:</p>
+      <ul>
+        <li>dopravcom <strong>Packeta</strong> a <strong>GLS</strong> — za účelom doručenia zásielky,</li>
+        <li>poskytovateľovi platobnej brány <strong>Shoptet Pay</strong> — za účelom spracovania platby,</li>
+        <li>spoločnosti Shoptet, ktorá pre nás technicky prevádzkuje platformu e-shopu,</li>
+        <li>účtovníkovi a daňovému poradcovi za účelom vedenia účtovníctva.</li>
+      </ul>
+      <p>Vaše osobné údaje nepredávame ani neposkytujeme tretím stranám na ich vlastné marketingové účely.</p>
+
+      <h3><span class="num">5.</span>Ako dlho údaje uchovávame</h3>
+      <p>Údaje súvisiace s uzavretou kúpnou zmluvou uchovávame po dobu vyžadovanú príslušnými právnymi predpismi, najmä zákonom o účtovníctve a zákonom o DPH (spravidla 10 rokov od konca zdaňovacieho obdobia). Údaje spracúvané na základe súhlasu (napríklad newsletter) uchovávame do jeho odvolania.</p>
+
+      <h3><span class="num">6.</span>Práva dotknutej osoby</h3>
+      <p>V súvislosti so spracúvaním osobných údajov máte právo na:</p>
+      <ul>
+        <li>prístup k svojim osobným údajom a informáciu o ich spracúvaní,</li>
+        <li>opravu nepresných alebo neúplných údajov,</li>
+        <li>výmaz údajov, ak na to nie je zákonný dôvod na ďalšie spracúvanie,</li>
+        <li>obmedzenie spracúvania,</li>
+        <li>prenosnosť údajov k inému správcovi,</li>
+        <li>namietanie proti spracúvaniu, najmä na marketingové účely,</li>
+        <li>kedykoľvek odvolať udelený súhlas so spracovaním osobných údajov.</li>
+      </ul>
+      <p>Svoje práva môžete uplatniť e-mailom na ahoj@selene.sk. V prípade, že máte pocit, že vaše práva neboli dodržané, máte právo podať sťažnosť na Úrad na ochranu osobných údajov Slovenskej republiky.</p>
+
+      <h3><span class="num">7.</span>Cookies</h3>
+      <p>E-shop SELÉNÉ beží na platforme Shoptet, ktorá využíva technické cookies nevyhnutné pre fungovanie nákupného košíka a zákazníckeho konta. Okrem toho používame analytické cookies na meranie návštevnosti a remarketingové cookies na zobrazovanie relevantnej reklamy na iných weboch. Analytické a remarketingové cookies používame len na základe vášho súhlasu, ktorý môžete kedykoľvek zmeniť v nastaveniach cookies vášho prehliadača alebo v cookie lište na našom webe.</p>
+
+      <h3><span class="num">8.</span>Kontakt</h3>
+      <p>V prípade akýchkoľvek otázok týkajúcich sa ochrany osobných údajov nás kontaktujte na <a class="inline-link" href="mailto:ahoj@selene.sk">ahoj@selene.sk</a>. Radi vám pomôžeme.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="selene_cd_homepage.html" class="logo-block">
+          <svg class="moon-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M42 8 C 30 12, 23 22, 23 32 C 23 42, 30 52, 42 56 C 36 50, 32 42, 32 32 C 32 22, 36 14, 42 8 Z" fill="#8F7245"/>
+          </svg>
+          <span class="brand">SELÉNÉ</span>
+          <span class="tagline">jewelry</span>
+        </a>
+        <p>Slovenský šperkový ateliér inšpirovaný svetlom mesiaca a slnka. Pozlátené a rhodiované striebro 925, chirurgická oceľ.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M15 8h-2a2 2 0 0 0-2 2v10M8 13h5"/><circle cx="12" cy="12" r="9"/></svg></a>
+          <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M9 17c1-3 1.5-5 1.5-7a2.5 2.5 0 0 1 5 0c0 1.7-1 3-2.5 3"/></svg></a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h4>Obchod</h4>
+        <ul>
+          <li><a href="selene_cd_katalog.html?cat=nausnice">Náušnice</a></li>
+          <li><a href="selene_cd_katalog.html?cat=nahrdelniky">Náhrdelníky</a></li>
+          <li><a href="selene_cd_katalog.html?cat=prstene">Prstene</a></li>
+          <li><a href="selene_cd_katalog.html?cat=naramy">Náramky</a></li>
+          <li><a href="selene_cd_giftguide.html">Darčeky</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:ahoj@selene.sk">ahoj@selene.sk</a></li>
+          <li><a href="selene_blog.html">Blog</a></li>
+          <li><a href="selene_cd_pribeh.html">Príbeh značky</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Právne informácie</h4>
+        <ul>
+          <li><a href="selene_pravne.html#podmienky">Obchodné podmienky</a></li>
+          <li><a href="selene_pravne.html#reklamacie">Reklamačný poriadok</a></li>
+          <li><a href="selene_pravne.html#gdpr">Ochrana osobných údajov</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 SELÉNÉ · Wil, s.r.o. — Mesiac pre striebro. Slnko pre zlato. 🌙</span>
+      <div>
+        <a href="selene_pravne.html#podmienky">Obchodné podmienky</a>
+        <a href="selene_pravne.html#gdpr">Ochrana súkromia</a>
+        <a href="mailto:ahoj@selene.sk">Kontakt</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // header shadow on scroll
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      header.style.boxShadow = '0 2px 18px rgba(43,39,35,.06)';
+    } else {
+      header.style.boxShadow = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>
