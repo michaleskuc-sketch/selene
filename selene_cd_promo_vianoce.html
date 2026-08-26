@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SELÉNÉ — Vianočná promo kampaň 2026</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #faf6ef;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #2a1d10;
+    padding: 60px 24px 120px;
+  }
+  .page-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #3d2410;
+    margin-bottom: 8px;
+  }
+  .page-sub {
+    text-align: center;
+    font-size: 15px;
+    color: #8a7458;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 70px;
+  }
+  .section {
+    max-width: 1240px;
+    margin: 0 auto 100px;
+  }
+  .section-label {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: #6b3a00;
+    margin-bottom: 4px;
+  }
+  .section-format {
+    font-size: 13px;
+    color: #9a8264;
+    margin-bottom: 24px;
+    letter-spacing: 0.03em;
+  }
+  .board-frame {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .canvas-shadow {
+    box-shadow: 0 18px 50px rgba(60, 35, 10, 0.22), 0 2px 8px rgba(60,35,10,0.15);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .info-box {
+    max-width: 1240px;
+    margin: 18px auto 0;
+    background: #fffdf9;
+    border: 1px solid #e6dcc8;
+    border-radius: 6px;
+    padding: 16px 22px;
+    font-size: 13.5px;
+    color: #5c4a30;
+    display: flex;
+    gap: 34px;
+    flex-wrap: wrap;
+  }
+  .info-box b { color: #3d2410; }
+  .info-box .code-tag {
+    background: #6b3a00;
+    color: #f5e6c8;
+    padding: 2px 10px;
+    border-radius: 3px;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== FORMAT A — Web banner 16:9 1200x675 ===== */
+  .banner-a {
+    width: 1200px;
+    height: 675px;
+    position: relative;
+    background: radial-gradient(ellipse at 30% 25%, #6b3a00 0%, #3d1f00 45%, #1a0f00 100%);
+    overflow: hidden;
+  }
+  .safe-zone-a {
+    position: absolute;
+    top: 60px; left: 60px; right: 60px; bottom: 60px;
+    border: 1px dashed rgba(245, 230, 200, 0.18);
+    pointer-events: none;
+  }
+  .a-center-text {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -52%);
+    text-align: center;
+    width: 720px;
+  }
+  .a-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 48px;
+    color: #fdf9ef;
+    letter-spacing: 0.01em;
+    text-shadow: 0 2px 18px rgba(0,0,0,0.5);
+  }
+  .a-subtitle {
+    margin-top: 14px;
+    font-family: Georgia, serif;
+    font-size: 22px;
+    color: #e8d3a3;
+    letter-spacing: 0.02em;
+  }
+  .a-cta {
+    margin: 30px auto 0;
+    display: inline-block;
+    padding: 14px 34px;
+    border: 2px solid #c9302c;
+    border-radius: 4px;
+    background: linear-gradient(180deg, rgba(107,58,0,0.55), rgba(26,15,0,0.55));
+    box-shadow: 0 0 0 1px #d4af6a inset, 0 6px 22px rgba(0,0,0,0.4);
+  }
+  .a-cta .cta-code {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 22px;
+    color: #f5e6c8;
+    letter-spacing: 0.06em;
+  }
+  .a-cta .cta-off {
+    font-size: 14px;
+    color: #e8c9c9;
+    margin-top: 2px;
+    letter-spacing: 0.05em;
+  }
+  .a-logo {
+    position: absolute;
+    bottom: 60px; right: 60px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: 0.22em;
+    color: #f5e6c8;
+  }
+  .a-moon {
+    position: absolute;
+    left: 90px; top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* ===== FORMAT B — IG post 1:1 (rendered 540x540, actual 1080x1080) ===== */
+  .banner-b-wrap {
+    width: 540px; height: 540px;
+  }
+  .banner-b {
+    width: 1080px; height: 1080px;
+    transform: scale(0.5);
+    transform-origin: top left;
+    position: relative;
+    background: radial-gradient(ellipse at 50% 40%, #3a2000 0%, #1a0e06 65%);
+    overflow: hidden;
+  }
+  .b-moon {
+    position: absolute;
+    top: 210px; left: 50%;
+    transform: translateX(-50%);
+  }
+  .b-title {
+    position: absolute;
+    top: 600px; width: 100%;
+    text-align: center;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 68px;
+    color: #e8c15c;
+    letter-spacing: 0.03em;
+  }
+  .b-subtitle {
+    position: absolute;
+    top: 700px; width: 100%;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 32px;
+    color: #f8f2e6;
+    letter-spacing: 0.02em;
+  }
+  .b-badge {
+    position: absolute;
+    top: 790px; left: 50%;
+    transform: translateX(-50%);
+    padding: 18px 46px;
+    border: 3px solid #d4af6a;
+    border-radius: 8px;
+    background: rgba(107,58,0,0.35);
+  }
+  .b-badge-code {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 40px;
+    color: #f5e6c8;
+    letter-spacing: 0.06em;
+    text-align: center;
+  }
+  .b-handle {
+    position: absolute;
+    bottom: 40px; width: 100%;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 24px;
+    color: #a8905f;
+    letter-spacing: 0.04em;
+  }
+
+  /* ===== FORMAT C — IG Story 9:16 (rendered 270x480, actual 1080x1920) ===== */
+  .banner-c-wrap {
+    width: 270px; height: 480px;
+  }
+  .banner-c {
+    width: 1080px; height: 1920px;
+    transform: scale(0.25);
+    transform-origin: top left;
+    position: relative;
+    background: linear-gradient(180deg, #1a0f00 0%, #3d1f00 55%, #6b3a00 100%);
+    overflow: hidden;
+  }
+  .c-top {
+    position: absolute;
+    top: 130px; width: 100%;
+    text-align: center;
+    padding: 0 80px;
+  }
+  .c-top-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 76px;
+    color: #fdf9ef;
+    line-height: 1.15;
+  }
+  .c-moon-wrap {
+    position: absolute;
+    top: 720px; left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  .c-bottom {
+    position: absolute;
+    bottom: 140px; width: 100%;
+    text-align: center;
+  }
+  .c-badge {
+    display: inline-block;
+    padding: 26px 60px;
+    border: 4px solid #d4af6a;
+    border-radius: 10px;
+    background: rgba(26,15,0,0.4);
+    margin-bottom: 34px;
+  }
+  .c-badge-code {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 58px;
+    color: #f5e6c8;
+    letter-spacing: 0.05em;
+  }
+  .c-valid {
+    font-family: Georgia, serif;
+    font-size: 34px;
+    color: #e8d3a3;
+    margin-bottom: 46px;
+  }
+  .c-swipe {
+    font-family: Georgia, serif;
+    font-size: 36px;
+    color: #ffffff;
+    letter-spacing: 0.08em;
+  }
+  .c-arrow {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 8px;
+    animation: none;
+  }
+</style>
+</head>
+<body>
+
+<h1 class="page-title">SELÉNÉ — Vianočná promo kampaň 2026</h1>
+<p class="page-sub">Design board · 3 formáty · kód kampane VIANOCE15</p>
+
+<!-- ============ FORMAT A ============ -->
+<div class="section">
+  <div class="section-label">Formát A — Web banner</div>
+  <div class="section-format">Horizontálny hero banner pre e-shop / newsletter header</div>
+  <div class="board-frame">
+    <div class="canvas-shadow">
+      <div class="banner-a">
+        <!-- lights -->
+        <svg width="1200" height="675" style="position:absolute; top:0; left:0;">
+          <g fill="#f5e6c8">
+            <circle cx="120" cy="90" r="2.4" opacity="0.8"/>
+            <circle cx="200" cy="150" r="1.6" opacity="0.6"/>
+            <circle cx="260" cy="70" r="2" opacity="0.7"/>
+            <circle cx="340" cy="120" r="1.4" opacity="0.5"/>
+            <circle cx="410" cy="60" r="2.2" opacity="0.75"/>
+            <circle cx="500" cy="100" r="1.8" opacity="0.6"/>
+            <circle cx="620" cy="55" r="2" opacity="0.7"/>
+            <circle cx="700" cy="110" r="1.6" opacity="0.55"/>
+            <circle cx="790" cy="75" r="2.3" opacity="0.8"/>
+            <circle cx="870" cy="130" r="1.5" opacity="0.5"/>
+            <circle cx="950" cy="65" r="2" opacity="0.7"/>
+            <circle cx="1030" cy="110" r="1.7" opacity="0.6"/>
+            <circle cx="1100" cy="70" r="2.1" opacity="0.75"/>
+            <circle cx="150" cy="560" r="1.8" opacity="0.5"/>
+            <circle cx="280" cy="600" r="1.4" opacity="0.4"/>
+            <circle cx="900" cy="580" r="1.6" opacity="0.45"/>
+            <circle cx="1020" cy="610" r="1.9" opacity="0.5"/>
+            <circle cx="1150" cy="550" r="1.5" opacity="0.4"/>
+            <path d="M120 90 l3 3 M200 150 l2 2 M410 60 l3 3 M790 75 l3 3 M950 65 l3 3" stroke="#f5e6c8" stroke-width="0.6" opacity="0.5"/>
+          </g>
+        </svg>
+
+        <div class="a-moon">
+          <svg width="150" height="150" viewBox="0 0 150 150">
+            <defs>
+              <linearGradient id="moonGradA" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fdf6e3"/>
+                <stop offset="100%" stop-color="#d4af6a"/>
+              </linearGradient>
+            </defs>
+            <path d="M95 20 A55 55 0 1 0 95 130 A42 42 0 1 1 95 20 Z" fill="url(#moonGradA)"/>
+          </svg>
+        </div>
+
+        <div class="safe-zone-a"></div>
+
+        <div class="a-center-text">
+          <div class="a-title">Daruj svetlo mesiaca a slnka</div>
+          <div class="a-subtitle">Šperky SELÉNÉ – doručenie do Vianoc</div>
+          <div class="a-cta">
+            <div class="cta-code">VIANOCE15</div>
+            <div class="cta-off">15 % ZĽAVA NA CELÝ SORTIMENT</div>
+          </div>
+        </div>
+
+        <div class="a-logo">SELÉNÉ</div>
+      </div>
+    </div>
+  </div>
+  <div class="info-box">
+    <div><b>Rozmer:</b> 1200 × 675 px (16:9)</div>
+    <div><b>Formát:</b> Web hero banner / newsletter header</div>
+    <div><b>Kód kampane:</b> <span class="code-tag">VIANOCE15</span></div>
+    <div><b>Bezpečná zóna:</b> 60px od okraja</div>
+  </div>
+</div>
+
+<!-- ============ FORMAT B ============ -->
+<div class="section">
+  <div class="section-label">Formát B — Instagram post</div>
+  <div class="section-format">Štvorcový formát pre feed IG/FB (zobrazené 540×540, reálne 1080×1080)</div>
+  <div class="board-frame">
+    <div class="canvas-shadow banner-b-wrap">
+      <div class="banner-b">
+        <svg width="1080" height="1080" style="position:absolute; top:0; left:0;">
+          <g fill="#d4af6a">
+            <circle cx="120" cy="120" r="4" opacity="0.7"/>
+            <circle cx="240" cy="80" r="3" opacity="0.5"/>
+            <circle cx="380" cy="150" r="3.5" opacity="0.6"/>
+            <circle cx="820" cy="100" r="4" opacity="0.7"/>
+            <circle cx="940" cy="180" r="3" opacity="0.5"/>
+            <circle cx="960" cy="60" r="3.5" opacity="0.6"/>
+            <circle cx="100" cy="900" r="4" opacity="0.55"/>
+            <circle cx="200" cy="960" r="3" opacity="0.45"/>
+            <circle cx="900" cy="920" r="3.5" opacity="0.5"/>
+            <circle cx="980" cy="850" r="3" opacity="0.45"/>
+            <circle cx="150" cy="500" r="2.5" opacity="0.4"/>
+            <circle cx="930" cy="520" r="2.5" opacity="0.4"/>
+          </g>
+          <g stroke="#d4af6a" stroke-width="1.5" fill="none" opacity="0.35">
+            <path d="M0 980 Q 270 940 540 980 T 1080 980"/>
+            <path d="M0 1030 Q 270 1000 540 1030 T 1080 1030"/>
+          </g>
+        </svg>
+
+        <div class="b-moon">
+          <svg width="260" height="260" viewBox="0 0 260 260">
+            <defs>
+              <linearGradient id="moonGradB" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fdf6e3"/>
+                <stop offset="100%" stop-color="#c9962f"/>
+              </linearGradient>
+            </defs>
+            <path d="M165 35 A95 95 0 1 0 165 225 A72 72 0 1 1 165 35 Z" fill="url(#moonGradB)"/>
+            <path d="M205 40 l6 14 14 6 -14 6 -6 14 -6 -14 -14 -6 14 -6 z" fill="#f5e6c8" opacity="0.85"/>
+          </svg>
+        </div>
+
+        <div class="b-title">🌙 VIANOCE 2026</div>
+        <div class="b-subtitle">−15 % na celý sortiment</div>
+
+        <div class="b-badge">
+          <div class="b-badge-code">VIANOCE15</div>
+        </div>
+
+        <div class="b-handle">@selene.jewelry</div>
+      </div>
+    </div>
+  </div>
+  <div class="info-box">
+    <div><b>Rozmer:</b> 1080 × 1080 px (1:1)</div>
+    <div><b>Formát:</b> Instagram / Facebook feed post</div>
+    <div><b>Kód kampane:</b> <span class="code-tag">VIANOCE15</span></div>
+    <div><b>Handle:</b> @selene.jewelry</div>
+  </div>
+</div>
+
+<!-- ============ FORMAT C ============ -->
+<div class="section">
+  <div class="section-label">Formát C — Instagram Story</div>
+  <div class="section-format">Vertikálny formát pre Stories (zobrazené 270×480, reálne 1080×1920)</div>
+  <div class="board-frame">
+    <div class="canvas-shadow banner-c-wrap">
+      <div class="banner-c">
+        <svg width="1080" height="1920" style="position:absolute; top:0; left:0;">
+          <g fill="#f5e6c8">
+            <circle cx="150" cy="60" r="4" opacity="0.6"/>
+            <circle cx="900" cy="90" r="4" opacity="0.6"/>
+            <circle cx="220" cy="1550" r="4" opacity="0.5"/>
+            <circle cx="850" cy="1600" r="4" opacity="0.5"/>
+            <circle cx="100" cy="1400" r="3" opacity="0.4"/>
+            <circle cx="960" cy="1450" r="3" opacity="0.4"/>
+          </g>
+        </svg>
+
+        <div class="c-top">
+          <div class="c-top-text">Daruj niečo výnimočné</div>
+        </div>
+
+        <div class="c-moon-wrap">
+          <svg width="360" height="360" viewBox="0 0 360 360">
+            <defs>
+              <linearGradient id="moonGradC" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fdf6e3"/>
+                <stop offset="100%" stop-color="#d4af6a"/>
+              </linearGradient>
+            </defs>
+            <path d="M230 50 A130 130 0 1 0 230 310 A98 98 0 1 1 230 50 Z" fill="url(#moonGradC)"/>
+            <path d="M300 60 l9 20 20 9 -20 9 -9 20 -9 -20 -20 -9 20 -9 z" fill="#f5e6c8" opacity="0.9"/>
+            <circle cx="70" cy="280" r="6" fill="#f5e6c8" opacity="0.7"/>
+          </svg>
+        </div>
+
+        <div class="c-bottom">
+          <div class="c-badge">
+            <div class="c-badge-code">VIANOCE15</div>
+          </div>
+          <div class="c-valid">platí do 23. 12. 2026</div>
+          <div class="c-swipe">
+            <span class="c-arrow">↑</span>
+            Nakupovať
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="info-box">
+    <div><b>Rozmer:</b> 1080 × 1920 px (9:16)</div>
+    <div><b>Formát:</b> Instagram / Facebook Story</div>
+    <div><b>Kód kampane:</b> <span class="code-tag">VIANOCE15</span></div>
+    <div><b>Platnosť:</b> do 23. 12. 2026</div>
+  </div>
+</div>
+
+</body>
+</html>
