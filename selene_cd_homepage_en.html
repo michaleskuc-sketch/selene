@@ -1089,7 +1089,7 @@
     var r=44,cx=60,cy=60,n=26,pts=[],i,y,t,xb,xe;
     var s=Math.cos(Math.PI*(1-2*k));
     for(i=0;i<=n;i++){y=cy-r+2*r*i/n;t=Math.sqrt(Math.max(0,1-Math.pow((y-cy)/r,2)));xb=cx+s*r*t;pts.push([xb,y]);}
-    for(i=n;i>=0;i--){y=cy-r+2*r*i/n;t=Math.sqrt(Math.max(0,1-Math.pow((y-cy)/r,2)));xe=(k<.5)?cx+r*t:cx-r*t;pts.push([xe,y]);}
+    for(i=n;i>=0;i--){y=cy-r+2*r*i/n;t=Math.sqrt(Math.max(0,1-Math.pow((y-cy)/r,2)));xe=(k<.5)?cx-r*t:cx+r*t;pts.push([xe,y]);}
     return 'M'+pts.map(function(p){return p[0].toFixed(1)+' '+p[1].toFixed(1);}).join('L')+'Z';
   }
   function stars(){
