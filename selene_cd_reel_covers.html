@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SELÉNÉ — IG Reel Covers · Design board</title>
+<meta name="description" content="SELÉNÉ — tri šablóny obalových obrázkov pre Instagram Reels (1080×1350): Unboxing, Ako nosiť, Darček.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#FAF6F0; --pearl:#F4EFE6; --champagne:#EDE3D2; --champagne-deep:#DEC9A3;
+  --gold:#A98A57; --gold-deep:#8F7245; --ink:#2B2723; --muted:#7C7266;
+  --line:rgba(43,39,35,.12);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',system-ui,sans-serif;
+  --pad:clamp(20px,4vw,64px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);font-weight:300;color:var(--ink);background:var(--ivory);-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12}
+
+/* ---------- Board header ---------- */
+.board-head{background:var(--ink);color:var(--ivory);padding:clamp(40px,6vw,68px) var(--pad) clamp(36px,5vw,56px);border-bottom:4px solid var(--gold)}
+.board-head .mark{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:17px;letter-spacing:.3em}
+.board-head .mark svg{width:24px;height:24px;flex-shrink:0}
+.board-head .eyebrow{margin-top:30px;font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.board-head h1{font-size:clamp(32px,4.6vw,54px);margin-top:14px;max-width:16ch}
+.board-head p.lead{font-size:14.5px;color:#C8BFB2;max-width:66ch;margin-top:16px;line-height:1.75}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.tag-pill{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ivory);border:1px solid rgba(169,138,87,.55);border-radius:20px;padding:7px 16px}
+
+/* ---------- Section shell ---------- */
+.section{padding:clamp(48px,7vw,84px) var(--pad);border-bottom:1px solid var(--line)}
+.section-head{max-width:1240px;margin:0 auto 16px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.section-head .vcode{font-family:var(--serif);font-size:15px;color:var(--gold-deep);letter-spacing:.06em}
+.section-head h2{font-size:clamp(22px,2.8vw,30px)}
+.section-head .tag{font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;padding:5px 12px;border-radius:12px;background:rgba(169,138,87,.16);color:var(--gold-deep)}
+.section-sub{max-width:74ch;margin:0 auto clamp(28px,3.5vw,40px);font-size:13.5px;color:var(--muted);line-height:1.75}
+.section-sub em{font-family:var(--serif);font-style:italic;color:var(--gold-deep)}
+
+/* ---------- Reel cover cards ---------- */
+.reel-row{display:flex;flex-wrap:wrap;gap:clamp(24px,3vw,40px);justify-content:center;max-width:1240px;margin:0 auto}
+.reel-card{background:#fff;border:1px solid var(--line);border-radius:3px;padding:22px;width:300px;box-shadow:0 18px 36px -30px rgba(43,39,35,.35)}
+.reel-canvas{border-radius:2px;overflow:hidden;border:1px solid var(--line);aspect-ratio:1080/1350}
+.reel-canvas svg{width:100%;height:100%;display:block}
+.reel-label{margin-top:16px;display:flex;align-items:baseline;gap:9px}
+.reel-label .vcode{font-family:var(--serif);font-size:16px;color:var(--gold-deep)}
+.reel-label h3{font-size:15.5px;font-weight:500}
+.reel-desc{margin-top:8px;font-size:12px;color:var(--muted);line-height:1.65}
+.reel-meta{margin-top:12px;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-deep);border-top:1px solid var(--line);padding-top:10px}
+
+/* ---------- System description ---------- */
+.system-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 30px;max-width:1240px;margin:0 auto}
+.system-item{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--line)}
+.system-num{font-family:var(--serif);font-size:16px;color:var(--gold-deep);flex-shrink:0;width:26px}
+.system-item p{font-size:13px;line-height:1.65;color:var(--ink)}
+.system-item p strong{color:var(--gold-deep);font-weight:500}
+
+/* ---------- Profile grid preview ---------- */
+.phone-mock{max-width:420px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden;box-shadow:0 24px 48px -34px rgba(43,39,35,.4)}
+.phone-top{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.phone-avatar{width:56px;height:56px;border-radius:50%;background:var(--champagne);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--gold)}
+.phone-avatar svg{width:24px;height:24px}
+.phone-name{font-family:var(--serif);font-size:15px;color:var(--ink)}
+.phone-handle{font-size:11.5px;color:var(--muted);margin-top:1px}
+.phone-stats{padding:10px 18px 16px;font-size:11.5px;color:var(--muted);display:flex;gap:22px}
+.phone-stats b{color:var(--ink);font-weight:500}
+.reel-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line)}
+.reel-cell{position:relative;aspect-ratio:1080/1350;overflow:hidden}
+.reel-cell svg{width:100%;height:100%;display:block}
+.reel-cell .play{position:absolute;left:8px;bottom:8px;width:16px;height:16px}
+.reel-cell .cell-tag{position:absolute;right:6px;bottom:6px;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:rgba(43,39,35,.55);padding:3px 7px;border-radius:8px}
+
+/* ---------- Footer ---------- */
+footer.doc-foot{padding:clamp(32px,5vw,48px) var(--pad);text-align:center;border-top:1px solid var(--line)}
+footer.doc-foot p{font-size:12px;color:var(--muted);letter-spacing:.04em}
+footer.doc-foot p.claim{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--ink);margin-bottom:10px}
+
+@media(max-width:980px){
+  .system-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  .section-head{flex-direction:column;align-items:flex-start;gap:8px}
+  .system-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= BOARD HEADER ================= -->
+<header class="board-head">
+  <div class="wrap">
+    <div class="mark">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#A98A57"/></svg>
+      SELÉNÉ
+    </div>
+    <div class="eyebrow">SELÉNÉ — Social Kit</div>
+    <h1>IG Reel Covers</h1>
+    <p class="lead">Tri obalové šablóny (cover) pre spustenie série Reels na @selene.jewelry — Unboxing, Ako nosiť, Darček. Formát 1080×1350 (portrait 4:5), rovnaký vizuálny systém ako feed a stories: rovnaké fonty, farby, logo prvok a spodná lišta pre wordmark.</p>
+    <div class="tags">
+      <span class="tag-pill">Instagram Reels</span>
+      <span class="tag-pill">1080×1350</span>
+      <span class="tag-pill">Cover / Thumbnail</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 01 — TRI REEL COVER ŠABLÓNY ============ -->
+<section class="section">
+  <div class="wrap">
+  <div class="section-head">
+    <span class="vcode">01</span>
+    <h2>Tri šablóny — 1080 × 1350 px</h2>
+    <span class="tag">Reel cover</span>
+  </div>
+  <p class="section-sub">Tri opakovateľné obálky pre tri typy obsahu. Spoločná spodná ivory lišta (1/6 výšky) nesie wordmark SELÉNÉ vo všetkých troch — oko si ju zapamätá ako podpis série bez ohľadu na to, aký Reel práve beží.</p>
+
+  <div class="reel-row">
+
+    <!-- Cover 1 — Unboxing -->
+    <div class="reel-card">
+      <div class="reel-canvas">
+        <svg viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg">
+          <rect width="1080" height="1125" fill="#EDE3D2"/>
+          <rect x="60" y="60" width="960" height="1005" fill="none" stroke="#A98A57" stroke-width="2"/>
+
+          <g transform="translate(540,220) scale(2.6)">
+            <path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#8F7245" transform="translate(-22,-22)"/>
+            <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="#8F7245" transform="translate(-4,-2)"/>
+          </g>
+
+          <text x="540" y="640" text-anchor="middle" font-family="Jost" font-weight="700" font-size="112" letter-spacing="5" fill="#2B2723">UNBOXING</text>
+          <line x1="440" y1="682" x2="640" y2="682" stroke="#A98A57" stroke-width="1"/>
+          <text x="540" y="762" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-weight="500" font-size="46" letter-spacing="12" fill="#8F7245">SELÉNÉ</text>
+
+          <!-- spodná lišta -->
+          <rect x="0" y="1125" width="1080" height="225" fill="#FAF6F0"/>
+          <line x1="0" y1="1125" x2="1080" y2="1125" stroke="#A98A57" stroke-width="1.5"/>
+          <g transform="translate(540,1178) scale(1.1)">
+            <path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#2B2723" transform="translate(-22,-22)"/>
+            <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="#2B2723" transform="translate(-4,-2)"/>
+          </g>
+          <text x="540" y="1240" text-anchor="middle" font-family="Jost" font-weight="500" font-size="24" letter-spacing="8" fill="#2B2723">SELÉNÉ</text>
+          <text x="540" y="1278" text-anchor="middle" font-family="Jost" font-weight="300" font-size="13" letter-spacing="3" fill="#7C7266">REEL · UNBOXING</text>
+        </svg>
+      </div>
+      <div class="reel-label"><span class="vcode">A</span><h3>Unboxing</h3></div>
+      <p class="reel-desc">Champagne pozadie, kosák+hviezda hore, veľký titulok Jost Bold, jemný gold rámik — pôsobí ako luxusné balenie.</p>
+      <div class="reel-meta">1080 × 1350 px · champagne #EDE3D2</div>
+    </div>
+
+    <!-- Cover 2 — Ako nosiť -->
+    <div class="reel-card">
+      <div class="reel-canvas">
+        <svg viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg">
+          <rect width="1080" height="1125" fill="#FAF6F0"/>
+
+          <!-- silueta šperku (náhrdelník placeholder) -->
+          <path d="M240 210 C240 430 400 580 540 580 C680 580 840 430 840 210" fill="none" stroke="#2B2723" stroke-width="3"/>
+          <g transform="translate(540,580) scale(2.1)">
+            <path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#2B2723" transform="translate(-22,-6)"/>
+            <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="#2B2723" transform="translate(-4,16)"/>
+          </g>
+          <text x="540" y="760" text-anchor="middle" font-family="Jost" font-size="13" letter-spacing="4" fill="#A98A57">PLACEHOLDER ŠPERKU</text>
+
+          <line x1="440" y1="852" x2="640" y2="852" stroke="#A98A57" stroke-width="1"/>
+          <text x="540" y="950" text-anchor="middle" font-family="Jost" font-weight="700" font-size="88" letter-spacing="4" fill="#2B2723">AKO NOSIŤ</text>
+          <text x="540" y="1018" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-weight="500" font-size="36" letter-spacing="2" fill="#8F7245">styling tipy</text>
+
+          <!-- spodná lišta -->
+          <rect x="0" y="1125" width="1080" height="225" fill="#FAF6F0"/>
+          <line x1="0" y1="1125" x2="1080" y2="1125" stroke="#A98A57" stroke-width="1.5"/>
+          <g transform="translate(540,1178) scale(1.1)">
+            <path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#2B2723" transform="translate(-22,-22)"/>
+            <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="#2B2723" transform="translate(-4,-2)"/>
+          </g>
+          <text x="540" y="1240" text-anchor="middle" font-family="Jost" font-weight="500" font-size="24" letter-spacing="8" fill="#2B2723">SELÉNÉ</text>
+          <text x="540" y="1278" text-anchor="middle" font-family="Jost" font-weight="300" font-size="13" letter-spacing="3" fill="#7C7266">REEL · AKO NOSIŤ</text>
+        </svg>
+      </div>
+      <div class="reel-label"><span class="vcode">B</span><h3>Ako nosiť</h3></div>
+      <p class="reel-desc">Ivory pozadie, silueta šperku v hornej 2/3, dekoratívna gold linka nad titulkom, diskrétny wordmark v spodnej lište.</p>
+      <div class="reel-meta">1080 × 1350 px · ivory #FAF6F0</div>
+    </div>
+
+    <!-- Cover 3 — Darček -->
+    <div class="reel-card">
+      <div class="reel-canvas">
+        <svg viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg">
+          <rect width="1080" height="1125" fill="#DEC9A3"/>
+
+          <!-- mašľa (SVG ikona) -->
+          <g transform="translate(540,300)">
+            <path d="M0,0 L-100,-44 C-124,-56 -136,-22 -112,0 C-136,22 -124,56 -100,44 Z" fill="#8F7245"/>
+            <path d="M0,0 L100,-44 C124,-56 136,-22 112,0 C136,22 124,56 100,44 Z" fill="#8F7245"/>
+            <circle cx="0" cy="0" r="16" fill="#2B2723"/>
+            <path d="M-11,11 L-25,78 L-4,60 Z" fill="#8F7245"/>
+            <path d="M11,11 L25,78 L4,60 Z" fill="#8F7245"/>
+          </g>
+
+          <text x="540" y="620" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-weight="600" font-size="138" fill="#2B2723">Darček</text>
+          <line x1="420" y1="672" x2="660" y2="672" stroke="#8F7245" stroke-width="1"/>
+          <text x="540" y="742" text-anchor="middle" font-family="Jost" font-weight="300" font-size="30" letter-spacing="3" fill="#5b4e3a">pre každú príležitosť</text>
+
+          <!-- spodná lišta -->
+          <rect x="0" y="1125" width="1080" height="225" fill="#FAF6F0"/>
+          <line x1="0" y1="1125" x2="1080" y2="1125" stroke="#A98A57" stroke-width="1.5"/>
+          <g transform="translate(540,1178) scale(1.1)">
+            <path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#2B2723" transform="translate(-22,-22)"/>
+            <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="#2B2723" transform="translate(-4,-2)"/>
+          </g>
+          <text x="540" y="1240" text-anchor="middle" font-family="Jost" font-weight="500" font-size="24" letter-spacing="8" fill="#2B2723">SELÉNÉ</text>
+          <text x="540" y="1278" text-anchor="middle" font-family="Jost" font-weight="300" font-size="13" letter-spacing="3" fill="#7C7266">REEL · DARČEK</text>
+        </svg>
+      </div>
+      <div class="reel-label"><span class="vcode">C</span><h3>Darček</h3></div>
+      <p class="reel-desc">Hlbší tón champagne, veľký kurzívny titulok Cormorant, mašľa ako gold SVG ikona, podtitulok Jost Light.</p>
+      <div class="reel-meta">1080 × 1350 px · champagne (hlbší) #DEC9A3</div>
+    </div>
+
+  </div>
+  </div>
+</section>
+
+<!-- ============ 02 — SYSTÉM KONZISTENCIE ============ -->
+<section class="section">
+  <div class="wrap">
+  <div class="section-head">
+    <span class="vcode">02</span>
+    <h2>Systém konzistencie</h2>
+    <span class="tag">Playbook</span>
+  </div>
+  <p class="section-sub">Tri covery majú rôzny obsah, ale rovnakú kostru — v profile aj vo vygenerovanom zozname Reels tak fungujú ako jedna séria, nie tri náhodné grafiky.</p>
+
+  <div class="system-grid">
+    <div class="system-item">
+      <span class="system-num">01</span>
+      <p><strong>Fontový pár</strong> — Cormorant Garamond (kurzíva) pre claim a jemné podtitulky, Jost (Bold caps) pre hlavný titulok. Rovnaká dvojica ako v celom vizuálnom systéme SELÉNÉ.</p>
+    </div>
+    <div class="system-item">
+      <span class="system-num">02</span>
+      <p><strong>Farebná paleta</strong> — ivory, champagne (v dvoch tónoch) a gold ako jediné plošné farby, ink na text. Žiadny gradient ani nová farba mimo existujúcej palety.</p>
+    </div>
+    <div class="system-item">
+      <span class="system-num">03</span>
+      <p><strong>Logo element</strong> — kosák + hviezda sa objavuje na každej obálke aspoň raz, buď ako hlavný motív (Unboxing), súčasť ilustrácie (Ako nosiť), alebo len v spodnej lište (Darček).</p>
+    </div>
+    <div class="system-item">
+      <span class="system-num">04</span>
+      <p><strong>Spodná lišta</strong> — 1/6 výšky (225 px), vždy ivory, vždy s wordmarkom SELÉNÉ a typom obsahu. Toto je jediný prvok, ktorý sa v layoute nikdy nemení.</p>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ============ 03 — UKÁŽKA V PROFILE ============ -->
+<section class="section">
+  <div class="wrap">
+  <div class="section-head">
+    <span class="vcode">03</span>
+    <h2>Ukážka — tri covery v profile vedľa seba</h2>
+    <span class="tag">Preview</span>
+  </div>
+  <p class="section-sub">Simulácia toho, ako tri Reels vyzerajú v rade v profile @selene.jewelry — spoločná spodná lišta drží riadok pokope aj bez zjednoteného pozadia.</p>
+
+  <div class="phone-mock">
+    <div class="phone-top">
+      <div class="phone-avatar"><svg viewBox="0 0 48 48" fill="none"><path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#8F7245"/></svg></div>
+      <div>
+        <div class="phone-name">SELÉNÉ Jewelry</div>
+        <div class="phone-handle">@selene.jewelry</div>
+      </div>
+    </div>
+    <div class="phone-stats"><span><b>3</b> Reels</span><span><b>0</b> sledovateľov</span><span><b>0</b> sledovaní</span></div>
+
+    <div class="reel-strip">
+
+      <div class="reel-cell">
+        <svg viewBox="0 0 1080 1350"><rect width="1080" height="1125" fill="#EDE3D2"/>
+          <g transform="translate(540,300) scale(2.4)">
+            <path d="M30 6C19 9 12 18.5 12 24C12 29.5 19 39 30 42C24.6 38.5 21 32 21 24C21 16 24.6 9.5 30 6Z" fill="#8F7245" transform="translate(-22,-22)"/>
+            <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="#8F7245" transform="translate(-4,-2)"/>
+          </g>
+          <text x="540" y="720" text-anchor="middle" font-family="Jost" font-weight="700" font-size="100" letter-spacing="4" fill="#2B2723">UNBOXING</text>
+          <rect x="0" y="1125" width="1080" height="225" fill="#FAF6F0"/>
+          <line x1="0" y1="1125" x2="1080" y2="1125" stroke="#A98A57" stroke-width="1.5"/>
+          <text x="540" y="1250" text-anchor="middle" font-family="Jost" font-weight="500" font-size="26" letter-spacing="8" fill="#2B2723">SELÉNÉ</text>
+        </svg>
+        <svg class="play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="rgba(43,39,35,.55)"/><path d="M9 7 L18 12 L9 17 Z" fill="#FAF6F0"/></svg>
+        <span class="cell-tag">Unboxing</span>
+      </div>
+
+      <div class="reel-cell">
+        <svg viewBox="0 0 1080 1350"><rect width="1080" height="1125" fill="#FAF6F0"/>
+          <path d="M280 260 C280 460 420 590 540 590 C660 590 800 460 800 260" fill="none" stroke="#2B2723" stroke-width="4"/>
+          <text x="540" y="880" text-anchor="middle" font-family="Jost" font-weight="700" font-size="78" letter-spacing="3" fill="#2B2723">AKO NOSIŤ</text>
+          <rect x="0" y="1125" width="1080" height="225" fill="#FAF6F0"/>
+          <line x1="0" y1="1125" x2="1080" y2="1125" stroke="#A98A57" stroke-width="1.5"/>
+          <text x="540" y="1250" text-anchor="middle" font-family="Jost" font-weight="500" font-size="26" letter-spacing="8" fill="#2B2723">SELÉNÉ</text>
+        </svg>
+        <svg class="play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="rgba(43,39,35,.55)"/><path d="M9 7 L18 12 L9 17 Z" fill="#FAF6F0"/></svg>
+        <span class="cell-tag">Ako nosiť</span>
+      </div>
+
+      <div class="reel-cell">
+        <svg viewBox="0 0 1080 1350"><rect width="1080" height="1125" fill="#DEC9A3"/>
+          <g transform="translate(540,270)">
+            <path d="M0,0 L-90,-40 C-112,-50 -122,-20 -100,0 C-122,20 -112,50 -90,40 Z" fill="#8F7245"/>
+            <path d="M0,0 L90,-40 C112,-50 122,-20 100,0 C122,20 112,50 90,40 Z" fill="#8F7245"/>
+            <circle cx="0" cy="0" r="14" fill="#2B2723"/>
+          </g>
+          <text x="540" y="640" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-weight="600" font-size="120" fill="#2B2723">Darček</text>
+          <rect x="0" y="1125" width="1080" height="225" fill="#FAF6F0"/>
+          <line x1="0" y1="1125" x2="1080" y2="1125" stroke="#A98A57" stroke-width="1.5"/>
+          <text x="540" y="1250" text-anchor="middle" font-family="Jost" font-weight="500" font-size="26" letter-spacing="8" fill="#2B2723">SELÉNÉ</text>
+        </svg>
+        <svg class="play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="rgba(43,39,35,.55)"/><path d="M9 7 L18 12 L9 17 Z" fill="#FAF6F0"/></svg>
+        <span class="cell-tag">Darček</span>
+      </div>
+
+    </div>
+  </div>
+  </div>
+</section>
+
+<footer class="doc-foot">
+  <p class="claim">Mesiac pre striebro. Slnko pre zlato.</p>
+  <p>Interné podklady pre spustenie série Reels — texty a placeholder ilustrácie nahraď finálnym videom/fotografiou pred publikovaním. SELÉNÉ — Social Kit, design board 2026</p>
+</footer>
+
+</body>
+</html>
