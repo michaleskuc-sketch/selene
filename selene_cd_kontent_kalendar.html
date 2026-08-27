@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SELÉNÉ — Kontent kalendár 30 dní · IG + FB</title>
+<meta name="description" content="SELÉNÉ — 30-denný obsahový kalendár pre Instagram a Facebook: produkty, citáty, editoriál, story a FB kampane so slovenskými a anglickými hashtagmi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#FAF6F0; --pearl:#F4EFE6; --champagne:#EDE3D2;
+  --gold:#A98A57; --gold-deep:#8F7245; --ink:#2B2723; --muted:#7C7266;
+  --line:rgba(43,39,35,.12);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',system-ui,sans-serif;
+  --pad:clamp(20px,4vw,64px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-weight:300;color:var(--ink);background:var(--ivory);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1360px;margin:0 auto;padding:0 var(--pad)}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12}
+
+/* ---------- Identity strip ---------- */
+.identity{background:var(--ink);color:var(--ivory);padding:16px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.identity .mark{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:18px;letter-spacing:.28em}
+.identity .mark svg{width:22px;height:22px;flex-shrink:0}
+.identity .doc-tag{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--champagne)}
+
+/* ---------- Hero ---------- */
+.hero{padding:clamp(48px,7vw,88px) var(--pad) clamp(32px,5vw,56px);border-bottom:1px solid var(--line)}
+.hero .eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep)}
+.hero h1{font-size:clamp(32px,4.6vw,54px);margin-top:14px;max-width:18ch}
+.hero p.lead{font-size:15.5px;color:var(--muted);max-width:70ch;margin-top:18px;line-height:1.75}
+
+.stat-row{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);margin-top:44px;border:1px solid var(--line)}
+.stat{background:var(--ivory);padding:20px 16px}
+.stat .num{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.6vw,34px);color:var(--gold-deep)}
+.stat .lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:6px;line-height:1.4}
+
+/* ---------- Week nav ---------- */
+.week-nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.week-nav a{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);border:1px solid var(--gold);border-radius:20px;padding:8px 18px;transition:background .15s}
+.week-nav a:hover{background:var(--champagne)}
+
+/* ---------- Section shell ---------- */
+.section{padding:clamp(40px,6vw,72px) var(--pad);border-bottom:1px solid var(--line)}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:32px;flex-wrap:wrap}
+.section-head .eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep)}
+.section-head h2{font-size:clamp(24px,3vw,34px);margin-top:10px}
+.section-head .count{font-size:12px;letter-spacing:.06em;color:var(--muted);text-align:right;max-width:34ch}
+
+/* ---------- Legend ---------- */
+.legend{display:flex;flex-wrap:wrap;gap:22px;margin-bottom:32px}
+.legend .item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+.badge{display:inline-block;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:3px;white-space:nowrap;font-family:var(--sans)}
+.badge-produkt{background:#EDE3D2;color:#8F7245}
+.badge-citat{background:#FAF6F0;color:#8F7245;border:1px solid #A98A57}
+.badge-editorial{background:#F4EFE6;color:#6E6559;border:1px solid rgba(43,39,35,.14)}
+.badge-story{background:#fff;color:#8F7245;border:1px dashed #A98A57}
+.badge-reel{background:#2B2723;color:#EDE3D2}
+.badge-fborg{background:#EDE3D2;color:#2B2723;border:1px solid #8F7245}
+.badge-fbpromo{background:#2B2723;color:#C9AE7C}
+
+/* ---------- Table ---------- */
+.table-scroll{overflow-x:auto;border:1px solid var(--line);background:var(--ivory)}
+table.cal{border-collapse:collapse;width:100%;min-width:1280px;font-size:12.5px}
+table.cal thead th{position:sticky;top:0;z-index:2;background:var(--ink);color:var(--ivory);text-align:left;font-family:var(--sans);font-weight:400;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:12px 14px;white-space:nowrap}
+table.cal tbody td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;color:rgba(43,39,35,.88)}
+table.cal tbody tr{border-left:3px solid transparent}
+table.cal td.day-num{font-family:var(--serif);font-weight:500;font-size:16px;color:var(--gold-deep);white-space:nowrap}
+table.cal td.date{font-size:11.5px;color:var(--muted);white-space:nowrap}
+table.cal td.plat{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+table.cal td.caption{max-width:280px;line-height:1.55}
+table.cal td.tags{font-size:11px;color:var(--gold-deep);line-height:1.7;max-width:230px}
+table.cal td.tags.en{color:var(--muted)}
+table.cal td.note{font-size:11px;color:var(--muted);max-width:190px;font-style:italic;font-family:var(--serif)}
+
+tr.row-produkt{background:rgba(237,227,210,.4);border-left-color:var(--gold-deep)}
+tr.row-citat{background:rgba(250,246,240,.7);border-left-color:var(--gold)}
+tr.row-editorial{background:rgba(244,239,230,.5);border-left-color:#7C7266}
+tr.row-story{background:rgba(169,138,87,.06);border-left-color:var(--gold)}
+tr.row-reel{background:rgba(43,39,35,.05);border-left-color:var(--ink)}
+tr.row-fb{background:rgba(143,114,69,.1);border-left-color:var(--gold-deep)}
+
+tr.week-divider td{background:var(--ink);color:var(--ivory);padding:14px 16px;border:none}
+tr.week-divider .wk-eyebrow{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:3px}
+tr.week-divider .wk-title{font-family:var(--serif);font-size:16px}
+
+/* ---------- Hashtag bank ---------- */
+.bank-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,48px)}
+.bank-col h3{font-size:18px;margin-bottom:6px}
+.bank-col .sub{font-size:12px;color:var(--muted);margin-bottom:18px}
+.pill-row{display:flex;flex-wrap:wrap;gap:9px}
+.pill{font-size:11.5px;letter-spacing:.02em;color:var(--gold-deep);background:var(--champagne);border-radius:20px;padding:7px 14px}
+.pill.en{color:var(--muted);background:var(--pearl);border:1px solid var(--line)}
+.bank-note{margin-top:32px;background:var(--champagne);padding:clamp(20px,2.6vw,30px);border-radius:2px;font-size:13px;color:rgba(43,39,35,.85);line-height:1.7}
+.bank-note strong{color:var(--gold-deep);font-weight:500}
+
+/* ---------- Footer ---------- */
+footer.doc-foot{padding:clamp(32px,5vw,48px) var(--pad);text-align:center;border-top:1px solid var(--line)}
+footer.doc-foot p{font-size:12px;color:var(--muted);letter-spacing:.04em}
+footer.doc-foot p.claim{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--ink);margin-bottom:10px}
+
+@media print{
+  .identity{background:none;color:var(--ink);border-bottom:2px solid var(--ink)}
+  .identity .doc-tag{color:var(--muted)}
+  table.cal thead th{background:#EDE3D2;color:var(--ink);position:static}
+  .week-nav{display:none}
+  .section{padding:24px 12px;border-bottom:none}
+  body{background:#fff}
+}
+@media(max-width:900px){
+  .stat-row{grid-template-columns:repeat(3,1fr)}
+  .bank-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="identity">
+  <div class="mark">
+    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M42 8 C 30 12, 23 22, 23 32 C 23 42, 30 52, 42 56 C 36 50, 32 42, 32 32 C 32 22, 36 14, 42 8 Z" fill="#A98A57"/></svg>
+    SELÉNÉ
+  </div>
+  <div class="doc-tag">Interný dokument · Kontent kalendár IG + FB · September 2026</div>
+</div>
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Content plán · Design board</div>
+    <h1>Kontent kalendár SELÉNÉ — 30 dní</h1>
+    <p class="lead">Kompletný 30-denný plán príspevkov pre Instagram a Facebook od 1. 9. 2026, rozdelený do štyroch tematických týždňov — od predstavenia jesennej kolekcie cez štýlové inšpirácie a zákaznícke príbehy až po jesennú sériu a darčekové promo. Každý deň obsahuje platformu, typ postu, caption nápad, hashtagy v SK a EN a poznámku pre grafiku.</p>
+
+    <div class="stat-row">
+      <div class="stat"><div class="num">30</div><div class="lbl">dní obsahu</div></div>
+      <div class="stat"><div class="num">12</div><div class="lbl">produktové karty</div></div>
+      <div class="stat"><div class="num">8</div><div class="lbl">citáty / estetika</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">editoriál / BTS</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">IG story</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">FB-špecifické</div></div>
+    </div>
+
+    <div class="week-nav">
+      <a href="#tyzden1">Týždeň 1 · Predstavenie kolekcie</a>
+      <a href="#tyzden2">Týždeň 2 · Štýl a inšpirácia</a>
+      <a href="#tyzden3">Týždeň 3 · Zákazníčky a estetika</a>
+      <a href="#tyzden4">Týždeň 4 · Jeseň a darčeky</a>
+      <a href="#hashtag-banka">Banka hashtagov</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= LEGENDA ================= -->
+<div class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Legenda</div>
+        <h2>Typy postov</h2>
+      </div>
+      <div class="count">Farba ľavého okraja riadku v tabuľke zodpovedá typu postu</div>
+    </div>
+    <div class="legend">
+      <div class="item"><span class="badge badge-produkt">Produktová karta</span> 1080×1080</div>
+      <div class="item"><span class="badge badge-citat">Citát</span> estetická karta</div>
+      <div class="item"><span class="badge badge-editorial">Editoriál</span> behind the scenes</div>
+      <div class="item"><span class="badge badge-story">Story</span> 1080×1920</div>
+      <div class="item"><span class="badge badge-reel">Reel</span> video 9:16</div>
+      <div class="item"><span class="badge badge-fborg">FB organický</span> 1200×630</div>
+      <div class="item"><span class="badge badge-fbpromo">FB promo</span> 1200×630</div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= KALENDÁR ================= -->
+<div class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Kalendár</div>
+        <h2>30 dní · 1. 9. — 30. 9. 2026</h2>
+      </div>
+      <div class="count">Rolujte tabuľku vodorovne na menších obrazovkách</div>
+    </div>
+
+    <div class="table-scroll">
+      <table class="cal">
+        <thead>
+          <tr>
+            <th>Deň</th>
+            <th>Dátum</th>
+            <th>Platforma</th>
+            <th>Typ postu</th>
+            <th>Téma / Caption idea</th>
+            <th>Hashtagy SK</th>
+            <th>Hashtagy EN</th>
+            <th>Poznámka pre grafiku</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr id="tyzden1" class="week-divider"><td colspan="8"><span class="wk-eyebrow">Týždeň 1 · Dni 1–7</span><span class="wk-title">Predstavenie kolekcie, produkty, brand story</span></td></tr>
+
+          <tr class="row-produkt">
+            <td class="day-num">01</td><td class="date">Ut 1. 9.</td><td class="plat">IG + FB</td>
+            <td><span class="badge badge-produkt">Produktová karta</span></td>
+            <td class="caption">Jeseň sa začína jemne. Predstavujeme jesennú kolekciu SELÉNÉ — kosák mesiaca a prvá hviezda novej sezóny.</td>
+            <td class="tags">#handmadešperky #bižutéria #mesačnáestetika #jeseň2026 #novákolekcia #slovenskýbrand #jemnéšperky</td>
+            <td class="tags en">#handmadejewelry #moonjewelry #celestialjewelry #newcollection #autumnjewelry #jewelrygram #handcrafted</td>
+            <td class="note">Produktová šablóna — Studio foto, champagne pozadie</td>
+          </tr>
+
+          <tr class="row-citat">
+            <td class="day-num">02</td><td class="date">St 2. 9.</td><td class="plat">IG</td>
+            <td><span class="badge badge-citat">Citát</span></td>
+            <td class="caption">Mesiac nikdy nesvieti rovnako dvakrát. Ani my by sme nemali.</td>
+            <td class="tags">#mesačnáestetika #citátdňa #ženskásila #jemnosť #symbolikamesiaca</td>
+            <td class="tags en">#moonjewelry #quoteoftheday #celestialjewelry #innerstrength #moonchild</td>
+            <td class="note">Citátová karta — ivory pozadie, kosák motív</td>
+          </tr>
+
+          <tr class="row-produkt">
+            <td class="day-num">03</td><td class="date">Št 3. 9.</td><td class="plat">IG</td>
+            <td><span class="badge badge-produkt">Produktová karta</span></td>
+            <td class="caption">Náhrdelník Dva kvety — jemný detail, ktorý nosíte každý deň.</td>
+            <td class="tags">#handmadešperky #náhrdelník #jemnéšperky #ručnávýroba #dennýoutfit #bižutéria</td>
+            <td class="tags en">#handmadejewelry #necklace #minimaljewelry #dailyjewelry #handcrafted</td>
+            <td class="note">Produktová šablóna — Detail + Modelka fotka</td>
+          </tr>
+
+          <tr class="row-editorial">
+            <td class="day-num">04</td><td class="date">Pi 4. 9.</td><td class="plat">IG + FB</td>
+            <td><span class="badge badge-editorial">Editoriál</span></td>
+            <td class="caption">Prečo mesiac a slnko? Nahliadnite do príbehu značky SELÉNÉ a filozofie duality striebra a zlata.</td>
+            <td class="tags">#príbehznačky #slovenskýbrand #mesačnáestetika #remeslo #ručnávýroba</td>
+            <td class="tags en">#brandstory #smallbusiness #celestialjewelry #handcrafted #jewelrydesign</td>
+            <td class="note">Editoriálna karta — text + BTS foto ateliéru</td>
+          </tr>
+
+          <tr class="row-produkt">
+            <td class="day-num">05</td><td class="date">So 5. 9.</td><td class="plat">IG</td>
+            <td><span class="badge badge-produkt">Produktová karta</span></td>
+            <td class="caption">Náramok Kvet — pre chvíle, keď si chcete pripomenúť jemnosť.</td>
+            <td class="tags">#náramok #handmadešperky #bižutéria #darčekprežena #jemnéšperky</td>
+            <td class="tags en">#bracelet #handmadejewelry #giftforher #minimaljewelry #jewelrylovers</td>
+            <td class="note">Produktová šablóna — Modelka 1+2</td>
+          </tr>
+
+          <tr class="row-story">
+            <td class="day-num">06</td><td class="date">Ne 6. 9.</td><td class="plat">IG</td>
+            <td><span class="badge badge-story">Story</span></td>
+            <td class="caption">Nedeľná otázka: zlato alebo striebro? Hlasujte v Story.</td>
+            <td class="tags">#nedeľa #anketavstory #zlatéšperky #mesačnáestetika</td>
+            <td class="tags en">#sundaypoll #goldjewelry #silverjewelry #instastory</td>
+            <td class="note">IG Story — poll sticker, 1080×1920</td>
+          </tr>
+
+          <tr class="row-fb">
+            <td class="day-num">07</td><td class="date">Po 7. 9.</td><td class="plat">FB</td>
+            <td><span class="badge badge-fborg">FB organický</span></td>
+            <td class="caption">Vitajte na facebookovej stránke SELÉNÉ — sledujte nás pre novinky, inšpirácie a darčekové tipy.</td>
+            <td class="tags">#slovenskýbrand #handmadešperky #bižutéria #vitajte</td>
+            <td class="tags en">#smallbusiness #handmadejewelry #welcome #jewelrybrand</td>
+            <td class="note">FB šablóna B (Príbeh značky), 1200×630</td>
+          </tr>
+
+          <tr id="tyzden2" class="week-divider"><td colspan="8"><span class="wk-eyebrow">Týždeň 2 · Dni 8–14</span><span class="wk-title">Štýlové inšpirácie, „ako nosiť", gift guide</span></td></tr>
+
+          <tr class="row-produkt">
+            <td class="day-num">08</td><td class="date">Ut 8. 9.</td><td class="plat">IG</td>
+            <td><span class="badge badge-produkt">Produktová karta</span></td>
+            <td class="caption">Prsteň s perlami — kombinujte s jemnou retiazkou pre vrstvený look.</td>
+            <td class="tags">#prsteň #akonosiť #štýlovýkúsok #handmadešperky #vrstvenie</td>
+            <td class="tags en">#ringstyle #howtowear #layeredjewelry #handmadejewelry #jewelrystyle</td>
+            <td class="note">Produktová šablóna — Modelka detail</td>
+          </tr>
+
+          <tr class="row-citat">
+            <td class="day-num">09</td><td class="date">St 9. 9.</td><td class="plat">IG</td>
+            <td><span class="badge badge-citat">Citát</span></td>
+            <td class="caption">Štýl nie je o tom mať viac. Je o tom vybrať si to pravé.</td>
+            <td class="tags">#štýlovýkúsok #minimalistickéšperky #citátdňa #jemnosť</td>
+            <td class="tags en">#minimaljewelry #quoteoftheday #lessismore #jewelrystyle</td>
+            <td class="note">Citátová karta — pearl pozadie</td>
+          </tr>
+
+          <tr class="row-editorial">
+            <td class="day-num">10</td><td class="date">Št 10. 9.</td><td class="plat">IG</td>
+            <td><span class="badge badge-editorial">Editoriál</span></td>
+            <td class="caption">Ako kombinovať šperky podľa outfitu — tri jednoduché pravidlá na každý deň.</td>
+            <td class="tags">#akonosiť #štýlovýkúsok #dennýoutfit #vrstvenie #jemnéšperky</td>
+            <td class="tags en">#howtowear #jewelrystyling #ootdjewelry #layeredjewelry #stylingtips</td>
+            <td class="note">Editoriál — carousel 3 slajdy s tipmi</td>
+          </tr>
+
+          <tr class="row-produkt">
+            <td class="day-num">11</td><td class="date">Pi 11. 9.</td><td class="plat">IG + FB</td>
+            <td><span class="badge badge-produkt">Produktová karta</span></td>
+            <td class="caption">Náhrdelník Dva kvety v zlatom prevedení — pre kanceláriu aj večer.</td>
+            <td class="tags">#náhrdelník #zlatéšperky #handmadešperky #štýlovýkúsok #darčekprežena</td>
+            <td class="tags en">#necklace #goldjewelry #handmadejewelry #eveningstyle #giftforher</td>
+            <td class="note">Produktová šablóna — Mockup + Studio</td>
+          </tr>
+
+          <tr class="row-story">
+            <td class="day-num">12</td><td class="date">So 12. 9.</td><td class="plat">IG</td>
+            <td><span class="badge badge-story">Story</span></td>
+            <td class="caption">Nakuknite do balenia objednávky — darčeková krabička zdarma ku každému šperku.</td>
+            <td class="tags">#balenieobjednávky #darčekovékrabička #handmadešperky</td>
+            <td class="tags en">#unboxing #giftpackaging #handmadejewelry</td>
+            <td class="note">IG Story — sekvencia 3 snímky, balenie</td>
+          </tr>
+
+          <tr class="row-citat">
+            <td class="day-num">13</td><td class="date">Ne 13. 9.</td><td class="plat">IG</td>
+            <td><span class="badge badge-citat">Citát</span></td>
+            <td class="caption">Nedeľa je na pomalé rána a jemné šperky, ktoré nezaťažujú.</td>
+            <td class="tags">#nedeľa #jemnéšperky #mesačnáestetika #pomalédni</td>
+            <td class="tags en">#sundaymood #minimaljewelry #slowliving #moonjewelry</td>
+            <td class="note">Citátová karta — champagne pozadie</td>
+          </tr>
+
+          <tr class="row-fb">
+            <td class="day-num">14</td><td class="date">Po 14. 9.</td><td class="plat">FB</td>
+            <td><span class="badge badge-fbpromo">FB promo</span></td>
+            <td class="caption">Gift Guide je tu — vyberte darček podľa príležitosti s -10 % na prvú objednávku.</td>
+            <td class="tags">#darčekovýsprievodca #zľava #darčekprežena #handmadešperky</td>
+            <td class="tags en">#giftguide #discount #giftideas #handmadejewelry</td>
+            <td class="note">FB šablóna D (Promo kód SELENE10), 1200×630</td>
+          </tr>
+
+          <tr id="tyzden3" class="week-divider"><td colspan="8"><span class="wk-eyebrow">Týždeň 3 · Dni 15–21</span><span class="wk-title">Zákazníčky, citáty, mesačná estetika, behind the scenes</span></td></tr>
+
+          <tr class="row-citat">
+            <td class="day-num">15</td><td class="date">Ut 15. 9.</td><td class="plat">IG</td>
+            <td><span class="badge badge-citat">Citát</span></td>
+            <td class="caption">Splnok pripomína, že aj úplnosť je len jedna fáza z mnohých.</td>
+            <td class="tags">#mesačnáestetika #splnok #symbolikamesiaca #citátdňa</td>
+            <td class="tags en">#moonphase #fullmoon #celestialjewelry #quoteoftheday</td>
+            <td class="note">Citátová karta — ilustrácia mesačných fáz</td>
+          </tr>
+
+          <tr class="row-produkt">
+            <td class="day-num">16</td><td class="date">St 16. 9.</td><td class="plat">IG</td>
+            <td><span class="badge badge-produkt">Produktová karta</span></td>
+            <td class="caption">Náramok Kvet v striebornom prevedení — jemný detail na zápästí.</td>
+            <td class="tags">#náramok #striebornéšperky #handmadešperky #jemnéšperky</td>
+            <td class="tags en">#bracelet #silverjewelry #handmadejewelry #minimaljewelry</td>
+            <td class="note">Produktová šablóna — Detail foto</td>
+          </tr>
+
+          <tr class="row-reel">
+            <td class="day-num">17</td><td class="date">Št 17. 9.</td><td class="plat">IG + FB</td>
+            <td><span class="badge badge-reel">Reel</span></td>
+            <td class="caption">Ako vzniká šperk SELÉNÉ — od návrhu po darčekovú krabičku. Pozrite si celý proces v Reeli.</td>
+            <td class="tags">#ručnávýroba #remeslo #behindthescenes #slovenskýbrand</td>
+            <td class="tags en">#handcrafted #behindthescenes #jewelrymaking #smallbusiness</td>
+            <td class="note">Reel Cover šablóna — BTS video, 9:16</td>
+          </tr>
+
+          <tr class="row-produkt">
+            <td class="day-num">18</td><td class="date">Pi 18. 9.</td><td class="plat">IG</td>
+            <td><span class="badge badge-produkt">Produktová karta</span></td>
+            <td class="caption">Prsteň s perlami — jemná klasika, ktorá sa nikdy neomrzí.</td>
+            <td class="tags">#prsteň #perly #handmadešperky #klasickýštýl #darčekprežena</td>
+            <td class="tags en">#ring #pearljewelry #handmadejewelry #classicstyle #giftforher</td>
+            <td class="note">Produktová šablóna — Modelka 1+2</td>
+          </tr>
+
+          <tr class="row-citat">
+            <td class="day-num">19</td><td class="date">So 19. 9.</td><td class="plat">IG</td>
+            <td><span class="badge badge-citat">Citát</span></td>
+            <td class="caption">Nosiť šperk s príbehom znamená nosiť kúsok seba.</td>
+            <td class="tags">#šperksdopríbehom #symbolikamesiaca #jemnéšperky #citátdňa</td>
+            <td class="tags en">#jewelrywithmeaning #symbolism #quoteoftheday #moonjewelry</td>
+            <td class="note">Citátová karta — ivory pozadie, hviezda motív</td>
+          </tr>
+
+          <tr class="row-story">
+            <td class="day-num">20</td><td class="date">Ne 20. 9.</td><td class="plat">IG</td>
+            <td><span class="badge badge-story">Story</span></td>
+            <td class="caption">Otázky a odpovede — pýtajte sa nás na materiály, starostlivosť či doručenie.</td>
+            <td class="tags">#otázkyaodpovede #starostlivosťošperky #handmadešperky</td>
+            <td class="tags en">#qanda #jewelrycare #handmadejewelry</td>
+            <td class="note">IG Story — Q&amp;A sticker</td>
+          </tr>
+
+          <tr class="row-citat">
+            <td class="day-num">21</td><td class="date">Po 21. 9.</td><td class="plat">IG</td>
+            <td><span class="badge badge-citat">Citát</span></td>
+            <td class="caption">Nový mesiac je pripomienkou, že každý začiatok je jemný, nie náhly.</td>
+            <td class="tags">#novýmesiac #mesačnáestetika #novýzačiatok #symbolikamesiaca</td>
+            <td class="tags en">#newmoon #moonphase #newbeginnings #celestialjewelry</td>
+            <td class="note">Citátová karta — pearl pozadie, novmesiac ilustrácia</td>
+          </tr>
+
+          <tr id="tyzden4" class="week-divider"><td colspan="8"><span class="wk-eyebrow">Týždeň 4 · Dni 22–30</span><span class="wk-title">Jesenná séria, darčeky, promo, výzva k nákupu</span></td></tr>
+
+          <tr class="row-reel">
+            <td class="day-num">22</td><td class="date">Ut 22. 9.</td><td class="plat">IG + FB</td>
+            <td><span class="badge badge-reel">Reel</span></td>
+            <td class="caption">Jesenná séria SELÉNÉ je tu — champagne zlato a teplé tóny na chladnejšie dni.</td>
+            <td class="tags">#jeseň2026 #jesennákolekcia #champagnezlato #handmadešperky #novákolekcia</td>
+            <td class="tags en">#autumncollection #autumnjewelry #champagnegold #handmadejewelry #newcollection</td>
+            <td class="note">Reel Cover šablóna — jesenná séria launch, 9:16</td>
+          </tr>
+
+          <tr class="row-produkt">
+            <td class="day-num">23</td><td class="date">St 23. 9.</td><td class="plat">IG</td>
+            <td><span class="badge badge-produkt">Produktová karta</span></td>
+            <td class="caption">Náhrdelník z jesennej série — teplé tóny zlata pre chladnejšie dni.</td>
+            <td class="tags">#jesennákolekcia #náhrdelník #zlatéšperky #handmadešperky</td>
+            <td class="tags en">#autumnjewelry #necklace #goldjewelry #handmadejewelry</td>
+            <td class="note">Produktová šablóna — Studio jesenná paleta</td>
+          </tr>
+
+          <tr class="row-citat">
+            <td class="day-num">24</td><td class="date">Št 24. 9.</td><td class="plat">IG</td>
+            <td><span class="badge badge-citat">Citát</span></td>
+            <td class="caption">Jeseň učí, že aj odchádzanie môže byť krásne.</td>
+            <td class="tags">#jeseň2026 #citátdňa #mesačnáestetika #jemnosť</td>
+            <td class="tags en">#autumnvibes #quoteoftheday #falljewelry #minimaljewelry</td>
+            <td class="note">Citátová karta — champagne pozadie, jesenné listy</td>
+          </tr>
+
+          <tr class="row-produkt">
+            <td class="day-num">25</td><td class="date">Pi 25. 9.</td><td class="plat">IG + FB</td>
+            <td><span class="badge badge-produkt">Produktová karta</span></td>
+            <td class="caption">Náramok z jesennej série — darček, ktorý poteší na prvý pohľad.</td>
+            <td class="tags">#jesennákolekcia #náramok #darčekprežena #handmadešperky</td>
+            <td class="tags en">#autumnjewelry #bracelet #giftforher #handmadejewelry</td>
+            <td class="note">Produktová šablóna — Mockup + Modelka</td>
+          </tr>
+
+          <tr class="row-editorial">
+            <td class="day-num">26</td><td class="date">So 26. 9.</td><td class="plat">IG</td>
+            <td><span class="badge badge-editorial">Editoriál</span></td>
+            <td class="caption">Nahliadnite, ako balíme každú objednávku do darčekovej krabičky zdarma.</td>
+            <td class="tags">#darčekovékrabička #balenieobjednávky #ručnávýroba #behindthescenes</td>
+            <td class="tags en">#giftpackaging #behindthescenes #handcrafted #unboxing</td>
+            <td class="note">Editoriálna karta — BTS foto balenia</td>
+          </tr>
+
+          <tr class="row-citat">
+            <td class="day-num">27</td><td class="date">Ne 27. 9.</td><td class="plat">IG</td>
+            <td><span class="badge badge-citat">Citát</span></td>
+            <td class="caption">Darček nemusí byť veľký, aby bol úprimný.</td>
+            <td class="tags">#darčekprežena #citátdňa #jemnéšperky #mesačnáestetika</td>
+            <td class="tags en">#giftideas #quoteoftheday #minimaljewelry #thoughtfulgifts</td>
+            <td class="note">Citátová karta — ivory pozadie</td>
+          </tr>
+
+          <tr class="row-fb">
+            <td class="day-num">28</td><td class="date">Po 28. 9.</td><td class="plat">FB</td>
+            <td><span class="badge badge-fbpromo">FB promo</span></td>
+            <td class="caption">Posledné dni septembra — darčekový sprievodca a -10 % na prvú objednávku s kódom SELENE10.</td>
+            <td class="tags">#darčekovýsprievodca #zľava #promo #handmadešperky</td>
+            <td class="tags en">#giftguide #discount #promo #handmadejewelry</td>
+            <td class="note">FB šablóna D (Promo kód), 1200×630</td>
+          </tr>
+
+          <tr class="row-produkt">
+            <td class="day-num">29</td><td class="date">Ut 29. 9.</td><td class="plat">IG + FB</td>
+            <td><span class="badge badge-produkt">Produktová karta</span></td>
+            <td class="caption">Posledná šanca na jesenné novinky tento mesiac — vyberte si svoj obľúbený kúsok.</td>
+            <td class="tags">#jesennákolekcia #výzvaknákupu #handmadešperky #darčekprežena</td>
+            <td class="tags en">#autumnjewelry #shopnow #handmadejewelry #giftforher</td>
+            <td class="note">Produktová šablóna — Studio + CTA</td>
+          </tr>
+
+          <tr class="row-produkt">
+            <td class="day-num">30</td><td class="date">St 30. 9.</td><td class="plat">IG + FB</td>
+            <td><span class="badge badge-produkt">Produktová karta</span></td>
+            <td class="caption">Ďakujeme, že ste s nami prežili september. Október prináša nové kúsky pod mesačným svetlom.</td>
+            <td class="tags">#ďakujeme #mesačnáestetika #slovenskýbrand #handmadešperky</td>
+            <td class="tags en">#thankyou #moonjewelry #smallbusiness #handmadejewelry</td>
+            <td class="note">Produktová šablóna — rekapitulácia mesiaca</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ================= HASHTAG BANKA ================= -->
+<div class="section" id="hashtag-banka">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Banka tagov</div>
+        <h2>Opakované hashtagy</h2>
+      </div>
+      <div class="count">Spoločné jadro tagov naprieč kalendárom — kombinujte s dennými špecifickými tagmi vyššie</div>
+    </div>
+
+    <div class="bank-grid">
+      <div class="bank-col">
+        <h3>SK — slovenské hashtagy</h3>
+        <div class="sub">Jadro pre každý post, doplňte 1–3 tagy podľa témy dňa</div>
+        <div class="pill-row">
+          <span class="pill">#handmadešperky</span>
+          <span class="pill">#bižutéria</span>
+          <span class="pill">#mesačnáestetika</span>
+          <span class="pill">#jemnéšperky</span>
+          <span class="pill">#darčekprežena</span>
+          <span class="pill">#ručnávýroba</span>
+          <span class="pill">#šperkynadarček</span>
+          <span class="pill">#slovenskýbrand</span>
+          <span class="pill">#zlatéšperky</span>
+          <span class="pill">#minimalistickéšperky</span>
+          <span class="pill">#dennýoutfit</span>
+          <span class="pill">#štýlovýkúsok</span>
+          <span class="pill">#jeseň2026</span>
+          <span class="pill">#pozlátenéstriebro</span>
+          <span class="pill">#symbolikamesiaca</span>
+        </div>
+      </div>
+      <div class="bank-col">
+        <h3>EN — anglické hashtagy</h3>
+        <div class="sub">Pre dosah mimo SK/CZ trhu — mix niche a stredných tagov</div>
+        <div class="pill-row">
+          <span class="pill en">#handmadejewelry</span>
+          <span class="pill en">#moonjewelry</span>
+          <span class="pill en">#celestialjewelry</span>
+          <span class="pill en">#handcrafted</span>
+          <span class="pill en">#minimaljewelry</span>
+          <span class="pill en">#giftforher</span>
+          <span class="pill en">#jewelrygram</span>
+          <span class="pill en">#dailyjewelry</span>
+          <span class="pill en">#goldjewelry</span>
+          <span class="pill en">#jewelrylovers</span>
+          <span class="pill en">#smallbusiness</span>
+          <span class="pill en">#ootdjewelry</span>
+          <span class="pill en">#autumnjewelry</span>
+          <span class="pill en">#giftideas</span>
+          <span class="pill en">#jewelrydesign</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bank-note">
+      <strong>Pravidlo mixu:</strong> ku každému postu použite 5–8 hashtagov — 2–3 z tejto banky (stredné, 10 tis.–500 tis. postov) doplnené o 2–3 denné/tematické niche tagy z tabuľky vyššie a max. 1 veľký generický tag (#bižutéria, #handmadejewelry). Vyhnite sa opakovaniu identickej sady tagov viac ako 3-krát po sebe — algoritmus IG/FB penalizuje príliš repetitívne hashtag sety.
+    </div>
+  </div>
+</div>
+
+<footer class="doc-foot">
+  <p class="claim">Mesiac pre striebro. Slnko pre zlato.</p>
+  <p>SELÉNÉ · Kontent kalendár IG + FB · 30 dní · 1.–30. 9. 2026 · pripravené pre SK trh</p>
+</footer>
+
+</body>
+</html>
