@@ -99,7 +99,9 @@
   .sidebar h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px;font-weight:500;color:var(--ink);}
   .filter-group{margin-bottom:36px;}
   .chip-list{display:flex;flex-direction:column;gap:2px;}
-  .chip{display:flex;justify-content:space-between;padding:9px 0;font-size:13.5px;color:#5c564c;border-bottom:1px solid rgba(43,39,35,.06);transition:color .25s;}
+  .chip{display:flex;justify-content:space-between;padding:9px 0;font-size:13.5px;color:#5c564c;border-bottom:1px solid rgba(43,39,35,.06);transition:color .25s;cursor:pointer;}
+  .chip:hover{color:var(--gold-deep);}
+  .chip.active{color:var(--gold-deep);font-weight:500;}
   .chip span.n{color:#a89f90;font-size:11.5px;}
   .chip:hover{color:var(--ink);}
   .chip.active{color:var(--gold-deep);font-weight:500;}
