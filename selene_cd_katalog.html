@@ -454,7 +454,7 @@
     var tag = '';
     if(p.b === 'bestseller') tag = '<span class="prod-tag">Bestseller</span>';
     else if(p.b === 'novinka') tag = '<span class="prod-tag new">Novinka</span>';
-    var swap = CAT_MODEL_IMG[p.t] || p.img;
+    var swap = (p.gal && p.gal[1]) ? p.gal[1] : (CAT_MODEL_IMG[p.t] || p.img);
     return '' +
       '<div class="prod-card reveal in">' +
         '<a href="selene_cd_produkt.html?id='+p.id+'" class="prod-img-link">' +
