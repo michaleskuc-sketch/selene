@@ -1,5 +1,5 @@
 /* SELÉNÉ — reálne produkty (katalóg rastie postupne, SKU = reálne) */
-var CATS = {"nausnice": "Náušnice", "nahrdelniky": "Náhrdelníky", "prstene": "Prstene", "naramy": "Náramky", "anklety": "Retiazky na nohu", "retiazky": "Retiazky", "piercingy": "Piercingy", "privesky": "Prívesky", "privesky": "Prívesky"};
+var CATS = {"nausnice": "Náušnice", "nahrdelniky": "Náhrdelníky", "prstene": "Prstene", "naramy": "Náramky", "anklety": "Retiazky na nohu", "retiazky": "Retiazky", "piercingy": "Piercingy"};
 var COLLS = {"sun-gold": "Sun Gold", "moon-silver": "Moon Silver"};
 var MATS = {"striebro": "Striebro 925", "ocel": "Chirurgická oceľ", "pozlacene": "Pozlátené striebro"};
 var PLATS = {"zlata": "Zlatá", "rodio": "Ródiovaná", "bez": "Bez pokovenia"};
@@ -15,41 +15,4 @@ var PRODUCTS = [
   {id:8, n:'Prsteň s drobnými perlami 2 mm', t:'prstene', m:'ocel', pl:'zlata', s:'perla', k:'sun-gold', c:9.9, img:'img/SEL-RI-14337.jpg?v=2', sku:'SEL-RI-14337', b:'novinka', gal:["img/SEL-RI-14337.jpg?v=2", "img/SEL-RI-14337_modelka_1.jpg?v=2", "img/SEL-RI-14337_modelka_2.jpg?v=2", "img/SEL-RI-14337_mockup.jpg?v=2"]},
   {id:9, n:'Náramok 17 cm s kvetom a zirkónmi', t:'naramy', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:11.9, img:'img/SEL-BR-9DBC9.jpg?v=2', sku:'SEL-BR-9DBC9', b:'novinka', gal:["img/SEL-BR-9DBC9.jpg?v=2", "img/SEL-BR-9DBC9_modelka_1.jpg?v=2", "img/SEL-BR-9DBC9_modelka_2.jpg?v=2", "img/SEL-BR-9DBC9_mockup.jpg?v=2"]},
   {id:10, n:'Náhrdelník 40 cm s dvoma kvetmi zo zirkónov', t:'nahrdelniky', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:14.9, img:'img/SEL-NE-C6B45.jpg?v=2', sku:'SEL-NE-C6B45', b:'novinka', gal:["img/SEL-NE-C6B45.jpg?v=2", "img/SEL-NE-C6B45_modelka_1.jpg?v=2", "img/SEL-NE-C6B45_modelka_2.jpg?v=2", "img/SEL-NE-C6B45_mockup.jpg?v=2"]},
-,
-  {id:11, n:'Náhrdelník 40 cm s kvapkami z kryštálových zirkónov', t:'nahrdelniky', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:13.9, img:'img/SEL-NE-463FC.jpg?v=2', sku:'SEL-NE-463FC', b:'novinka', gal:["img/SEL-NE-463FC.jpg?v=2"]},
-  {id:12, n:'Piercing 4 mm s diamantom v srdci', t:'piercingy', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:4.9, img:'img/SEL-PI-C8070.jpg?v=2', sku:'SEL-PI-C8070', b:'novinka', gal:["img/SEL-PI-C8070.jpg?v=2"]},
-  {id:13, n:'Piercing 3 mm s jedným diamantom', t:'piercingy', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:5.9, img:'img/SEL-PI-80266.jpg?v=2', sku:'SEL-PI-80266', b:'novinka', gal:["img/SEL-PI-80266.jpg?v=2"]},
-  {id:14, n:'Náhrdelník 40 cm s ružovými a modrými diamantmi', t:'nahrdelniky', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:14.9, img:'img/SEL-NE-E555C.jpg?v=2', sku:'SEL-NE-E555C', b:'novinka', gal:["img/SEL-NE-E555C.jpg?v=2"]},
-  {id:15, n:'Náhrdelník 43 cm s kvetom z malých diamantov', t:'nahrdelniky', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:20.95, img:'img/SEL-NE-6487B.jpg?v=2', sku:'SEL-NE-6487B', b:'novinka', gal:["img/SEL-NE-6487B.jpg?v=2"]},
-  {id:16, n:'Náušnice 2 cm s jednoduchým diamantovým kruhom', t:'nausnice', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:18.95, img:'img/SEL-EA-31C71.jpg?v=2', sku:'SEL-EA-31C71', b:'novinka', gal:["img/SEL-EA-31C71.jpg?v=2"]},
-  {id:17, n:'Piercing 5 mm s dutým srdiečkom', t:'piercingy', m:'ocel', pl:'zlata', s:'bez', k:'sun-gold', c:5.9, img:'img/SEL-PI-D4C2F.jpg?v=2', sku:'SEL-PI-D4C2F', b:'novinka', gal:["img/SEL-PI-D4C2F.jpg?v=2"]},
-  {id:18, n:'Piercing 5 mm s tromi bodkami', t:'piercingy', m:'ocel', pl:'zlata', s:'bez', k:'sun-gold', c:7.9, img:'img/SEL-PI-36C36.jpg?v=2', sku:'SEL-PI-36C36', b:'novinka', gal:["img/SEL-PI-36C36.jpg?v=2"]},
-  {id:19, n:'Piercing 8 mm s diamantovým mesiačikom', t:'piercingy', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:5.9, img:'img/SEL-PI-6B5F7.jpg?v=2', sku:'SEL-PI-6B5F7', b:'novinka', gal:["img/SEL-PI-6B5F7.jpg?v=2"]},
-  {id:20, n:'Náušnice 13×17 mm s diamantovým oválnym kruhom', t:'nausnice', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:17.95, img:'img/SEL-EA-793F7.jpg?v=2', sku:'SEL-EA-793F7', b:'novinka', gal:["img/SEL-EA-793F7.jpg?v=2"]},
-  {id:21, n:'Náušnice 14 mm s diamantovým kruhom', t:'nausnice', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:13.9, img:'img/SEL-EA-9C379.jpg?v=2', sku:'SEL-EA-9C379', b:'novinka', gal:["img/SEL-EA-9C379.jpg?v=2"]},
-  {id:22, n:'Náramok 17 cm s bodkami a diamantmi', t:'naramy', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:16.95, img:'img/SEL-BR-E4337.jpg?v=2', sku:'SEL-BR-E4337', b:'novinka', gal:["img/SEL-BR-E4337.jpg?v=2"]},
-  {id:23, n:'Piercing 6 mm so srdiečkom', t:'piercingy', m:'ocel', pl:'zlata', s:'bez', k:'sun-gold', c:5.9, img:'img/SEL-PI-816ED.jpg?v=2', sku:'SEL-PI-816ED', b:'novinka', gal:["img/SEL-PI-816ED.jpg?v=2"]},
-  {id:24, n:'Náušnice 30 mm veľký kruh', t:'nausnice', m:'ocel', pl:'zlata', s:'bez', k:'sun-gold', c:11.9, img:'img/SEL-EA-02F95.jpg?v=2', sku:'SEL-EA-02F95', b:'novinka', gal:["img/SEL-EA-02F95.jpg?v=2"]},
-  {id:25, n:'Piercing s malým diamantovým hexagramom', t:'piercingy', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:5.9, img:'img/SEL-PI-40234.jpg?v=2', sku:'SEL-PI-40234', b:'novinka', gal:["img/SEL-PI-40234.jpg?v=2"]},
-  {id:26, n:'Piercing 4 mm s mini srdiečkom', t:'piercingy', m:'ocel', pl:'zlata', s:'bez', k:'sun-gold', c:5.9, img:'img/SEL-PI-8234F.jpg?v=2', sku:'SEL-PI-8234F', b:'novinka', gal:["img/SEL-PI-8234F.jpg?v=2"]},
-  {id:27, n:'Náhrdelník 43 cm s listami šťastia a diamantmi', t:'nahrdelniky', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:13.9, img:'img/SEL-NE-1814C.jpg?v=2', sku:'SEL-NE-1814C', b:'novinka', gal:["img/SEL-NE-1814C.jpg?v=2"]},
-  {id:28, n:'Náušnice s diamantovým kruhom', t:'nausnice', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:10.9, img:'img/SEL-EA-1C786.jpg?v=2', sku:'SEL-EA-1C786', b:'novinka', gal:["img/SEL-EA-1C786.jpg?v=2"]},
-  {id:29, n:'Piercing s diamantom v obdĺžniku', t:'piercingy', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:4.9, img:'img/SEL-PI-473EF.jpg?v=2', sku:'SEL-PI-473EF', b:'novinka', gal:["img/SEL-PI-473EF.jpg?v=2"]},
-  {id:30, n:'Náušnice s kvetom a diamantmi', t:'nausnice', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:11.9, img:'img/SEL-EA-E89EE.jpg?v=2', sku:'SEL-EA-E89EE', b:'novinka', gal:["img/SEL-EA-E89EE.jpg?v=2"]},
-  {id:31, n:'Náušnice s mini diamantmi a srdiečkom', t:'nausnice', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:11.9, img:'img/SEL-EA-E6885.jpg?v=2', sku:'SEL-EA-E6885', b:'novinka', gal:["img/SEL-EA-E6885.jpg?v=2"]},
-  {id:32, n:'Náušnice 8 mm so sladkovodnou perlou', t:'nausnice', m:'ocel', pl:'zlata', s:'perla', k:'sun-gold', c:8.9, img:'img/SEL-EA-65C2A.jpg?v=2', sku:'SEL-EA-65C2A', b:'novinka', gal:["img/SEL-EA-65C2A.jpg?v=2"]},
-  {id:33, n:'Náušnice s oválnym prírodným kameňom', t:'nausnice', m:'ocel', pl:'zlata', s:'kamen', k:'sun-gold', c:8.9, img:'img/SEL-EA-70A69.jpg?v=2', sku:'SEL-EA-70A69', b:'novinka', gal:["img/SEL-EA-70A69.jpg?v=2"]},
-  {id:34, n:'Prsteň Reaching Out 2.0', t:'prstene', m:'ocel', pl:'zlata', s:'bez', k:'sun-gold', c:11.9, img:'img/SEL-RI-ECE6C.jpg?v=2', sku:'SEL-RI-ECE6C', b:'novinka', gal:["img/SEL-RI-ECE6C.jpg?v=2"]},
-  {id:35, n:'Prsteň s tyrkysovým kameňom, dvojvrstvový', t:'prstene', m:'ocel', pl:'zlata', s:'kamen', k:'sun-gold', c:11.9, img:'img/SEL-RI-864BA.jpg?v=2', sku:'SEL-RI-864BA', b:'novinka', gal:["img/SEL-RI-864BA.jpg?v=2"]},
-  {id:36, n:'Piercing s malým bleskom', t:'piercingy', m:'ocel', pl:'zlata', s:'bez', k:'sun-gold', c:5.9, img:'img/SEL-PI-7C4ED.jpg?v=2', sku:'SEL-PI-7C4ED', b:'novinka', gal:["img/SEL-PI-7C4ED.jpg?v=2"]},
-  {id:37, n:'Náhrdelník 40 cm so sladkovodnými perlami', t:'nahrdelniky', m:'ocel', pl:'zlata', s:'perla', k:'sun-gold', c:32.95, img:'img/SEL-NE-76327.jpg?v=2', sku:'SEL-NE-76327', b:'novinka', gal:["img/SEL-NE-76327.jpg?v=2"]},
-  {id:38, n:'Prsteň 3,5 mm s malými perlami', t:'prstene', m:'ocel', pl:'zlata', s:'perla', k:'sun-gold', c:10.9, img:'img/SEL-RI-42C11.jpg?v=2', sku:'SEL-RI-42C11', b:'novinka', gal:["img/SEL-RI-42C11.jpg?v=2"]},
-  {id:39, n:'Retiazka na nohu so sladkovodnou perlou', t:'anklety', m:'ocel', pl:'zlata', s:'perla', k:'sun-gold', c:17.95, img:'img/SEL-AN-11A42.jpg?v=2', sku:'SEL-AN-11A42', b:'novinka', gal:["img/SEL-AN-11A42.jpg?v=2"]},
-  {id:40, n:'Náušnice Classic so 7 diamantmi', t:'nausnice', m:'ocel', pl:'rodio', s:'zirkon', k:'sun-gold', c:16.95, img:'img/SEL-EA-ED331.jpg?v=2', sku:'SEL-EA-ED331', b:'novinka', gal:["img/SEL-EA-ED331.jpg?v=2"]},
-  {id:41, n:'Náušnice s mini diamantovou kvapkou', t:'nausnice', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:8.9, img:'img/SEL-EA-A047A.jpg?v=2', sku:'SEL-EA-A047A', b:'novinka', gal:["img/SEL-EA-A047A.jpg?v=2"]},
-  {id:42, n:'Prsteň Sloane', t:'prstene', m:'ocel', pl:'zlata', s:'bez', k:'sun-gold', c:8.9, img:'img/SEL-RI-792EC.jpg?v=2', sku:'SEL-RI-792EC', b:'novinka', gal:["img/SEL-RI-792EC.jpg?v=2"]},
-  {id:43, n:'Prsteň s kvetom šťastia a mušľovým kvetom', t:'prstene', m:'ocel', pl:'zlata', s:'zirkon', k:'sun-gold', c:11.9, img:'img/SEL-RI-0C376.jpg?v=2', sku:'SEL-RI-0C376', b:'novinka', gal:["img/SEL-RI-0C376.jpg?v=2"]},
-  {id:44, n:'Náramok 17 cm s ružovým kvetom', t:'naramy', m:'ocel', pl:'zlata', s:'bez', k:'sun-gold', c:17.95, img:'img/SEL-BR-85F98.jpg?v=2', sku:'SEL-BR-85F98', b:'novinka', gal:["img/SEL-BR-85F98.jpg?v=2"]},
-  {id:45, n:'Náušnice 25 mm polkruh s kvetom šťastia', t:'nausnice', m:'ocel', pl:'zlata', s:'bez', k:'sun-gold', c:16.95, img:'img/SEL-EA-86971.jpg?v=2', sku:'SEL-EA-86971', b:'novinka', gal:["img/SEL-EA-86971.jpg?v=2"]},
-  {id:46, n:'Prívesok z chirurgickej ocele so zlatými hviezdami', t:'privesky', m:'ocel', pl:'zlata', s:'bez', k:'sun-gold', c:44.95, img:'img/SEL-XX-8551E.jpg?v=2', sku:'SEL-XX-8551E', b:'novinka', gal:["img/SEL-XX-8551E.jpg?v=2"]}
 ];
