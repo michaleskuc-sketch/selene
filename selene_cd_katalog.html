@@ -340,21 +340,21 @@
         <li><a href="selene_cd_giftguide.html">Darčeky</a></li>
       </ul></div>
       <div class="f-col"><h4>Blog</h4><ul>
-        <li><a href="#">Ako o šperk starať</a></li>
-        <li><a href="#">Sprievodca materiálmi</a></li>
-        <li><a href="#">Trendy sezóny</a></li>
-        <li><a href="#">Príbehy zákazníčok</a></li>
+        <li><a href="selene_blog.html">Ako o šperk starať</a></li>
+        <li><a href="selene_blog.html">Sprievodca materiálmi</a></li>
+        <li><a href="selene_blog.html">Trendy sezóny</a></li>
+        <li><a href="selene_blog.html">Príbehy zákazníčok</a></li>
       </ul></div>
       <div class="f-col"><h4>Kontakt</h4><ul>
         <li><a href="mailto:ahoj@selene.sk">ahoj@selene.sk</a></li>
         <li><a href="#">Po–Pi 9:00–17:00</a></li>
-        <li><a href="#">Doprava a platba</a></li>
-        <li><a href="#">Vrátenie a výmena</a></li>
+        <li><a href="selene_pravne.html">Doprava a platba</a></li>
+        <li><a href="selene_pravne.html">Vrátenie a výmena</a></li>
       </ul></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Wil, s.r.o. Všetky práva vyhradené.</span>
-      <div><a href="selene_cd_pribeh.html">Príbeh značky</a><a href="selene_cd_giftguide.html">Darčekový sprievodca</a><a href="#">Obchodné podmienky</a></div>
+      <div><a href="selene_cd_pribeh.html">Príbeh značky</a><a href="selene_cd_giftguide.html">Darčekový sprievodca</a><a href="selene_pravne.html">Obchodné podmienky</a></div>
     </div>
   </div>
 </footer>
@@ -375,7 +375,7 @@
   };
 
   var params = new URLSearchParams(location.search);
-  var state = { cat: params.get('cat') || 'all', coll: [], mat: [], priceMax: 65, sort: 'odporucane', visible: 9, q: '' };
+  var state = { cat: params.get('cat') || 'all', coll: params.get('coll') ? [params.get('coll')] : [], mat: [], priceMax: 65, sort: 'odporucane', visible: 9, q: '' };
 
   function getCart(){ try{ return JSON.parse(localStorage.getItem('selene_cart')||'[]'); }catch(e){ return []; } }
   function setCart(c){ localStorage.setItem('selene_cart', JSON.stringify(c)); }
@@ -554,6 +554,9 @@
   });
 
   buildCollChecks();
+  if(state.coll.length){
+    document.querySelectorAll('.coll-check').forEach(function(c){ if(state.coll.indexOf(c.value) > -1) c.checked = true; });
+  }
   buildMatChecks();
   updateCartBadge();
   render();
