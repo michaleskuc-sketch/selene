@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — SELÉNÉ Jewelry</title>
+<meta name="description" content="Geschichtey o šperkov, materiáloch, štýle a starostlivosti. Sonne pre zlato, mesiac pre striebro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#FAF6F0; --pearl:#F4EFE6; --champagne:#EDE3D2;
+  --gold:#A98A57; --gold-deep:#8F7245; --ink:#2B2723; --muted:#7C7266;
+  --line:rgba(43,39,35,.12);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',system-ui,sans-serif;
+  --pad:clamp(20px,4vw,64px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-weight:300;color:var(--ink);background:var(--ivory);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 var(--pad)}
+
+/* ---------- Announcement ---------- */
+.ann{background:var(--ink);color:var(--ivory);text-align:center;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;padding:9px 16px}
+.ann em{font-style:normal;color:var(--champagne)}
+
+/* ---------- Header ---------- */
+header{border-bottom:1px solid var(--line);background:rgba(250,246,240,.94);backdrop-filter:blur(8px);position:sticky;top:0;z-index:50}
+.header-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:14px var(--pad)}
+.burger{grid-column:1;justify-self:start;display:none;background:none;border:none;font-size:22px;color:var(--ink);cursor:pointer}
+.logo{grid-column:2;justify-self:center;display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:24px;letter-spacing:.3em;color:var(--ink)}
+.logo svg{width:34px;height:34px;flex-shrink:0}
+.logo small{display:block;font-family:var(--sans);font-size:8px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold-deep);margin-top:4px;font-weight:400;text-align:center;padding-right:.5em}
+.header-actions{grid-column:3;justify-self:end;display:flex;gap:18px;align-items:center}
+.header-actions button{background:none;border:none;cursor:pointer;color:var(--ink);padding:4px}
+.header-actions svg{width:19px;height:19px}
+nav.main{max-width:1280px;margin:0 auto;padding:0 var(--pad) 12px;display:flex;justify-content:center;gap:clamp(14px,2.4vw,38px);flex-wrap:wrap}
+nav.main a{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;color:var(--muted);padding:6px 2px;border-bottom:1px solid transparent;transition:all .25s}
+nav.main a:hover,nav.main a.active{color:var(--ink);border-color:var(--gold)}
+.dd{position:relative;display:flex;align-items:center;gap:4px}
+.dd-trigger{background:none;border:none;cursor:pointer;color:var(--gold-deep);font-size:11px;padding:4px;display:grid;place-items:center;border-radius:50%;transition:background .2s}
+.dd-trigger:hover{background:var(--champagne)}
+.dd-trigger svg{width:11px;height:11px;display:block}
+.dd-menu{position:absolute;top:100%;left:0;min-width:220px;background:var(--ivory);border:1px solid var(--line);box-shadow:0 18px 44px rgba(43,39,35,.12);padding:10px 0;border-radius:2px;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .22s ease,transform .22s ease,visibility .22s;z-index:80}
+.dd-trigger:hover + .dd-menu,.dd-menu:hover,.dd:focus-within .dd-menu{opacity:1;visibility:visible;transform:translateY(0);}
+.dd-menu .dd-head{display:block;font-family:var(--serif);font-style:italic;font-size:16px;letter-spacing:.03em;color:var(--gold-deep);padding:4px 20px 10px;text-transform:none}
+nav .dd-menu a{display:block;padding:9px 20px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:400;color:var(--ink);white-space:nowrap;border:none!important}
+nav .dd-menu a:hover{background:var(--pearl);color:var(--gold-deep);border:none!important}
+
+/* ---------- Blog Hero ---------- */
+.blog-hero{padding:clamp(48px,8vw,96px) var(--pad) clamp(32px,5vw,56px);text-align:center;border-bottom:1px solid var(--line)}
+.blog-hero .eyebrow{font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep)}
+.blog-hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(36px,5vw,62px);line-height:1.08;margin-top:14px}
+.blog-hero p{font-size:15px;color:var(--muted);max-width:54ch;margin:14px auto 0;line-height:1.7}
+
+/* ---------- Blog grid ---------- */
+.blog-section{padding:clamp(48px,7vw,90px) var(--pad)}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,40px)}
+
+/* Card */
+.card{display:flex;flex-direction:column;cursor:pointer}
+.card .thumb{aspect-ratio:3/2;overflow:hidden;border-radius:2px;background:var(--champagne);position:relative}
+.card .thumb img{width:100%;height:100%;object-fit:cover;transition:transform 1s ease}
+.card:hover .thumb img{transform:scale(1.04)}
+.card .thumb .cat-badge{position:absolute;top:12px;left:12px;background:var(--ivory);color:var(--gold-deep);font-size:9px;letter-spacing:.2em;text-transform:uppercase;padding:5px 10px}
+.card .body{padding:20px 0 0}
+.card .meta{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.card h2{font-family:var(--serif);font-weight:500;font-size:clamp(20px,2vw,26px);line-height:1.2;letter-spacing:.01em}
+.card p{font-size:14px;color:var(--muted);line-height:1.7;margin-top:10px}
+.card .read-more{display:inline-block;margin-top:14px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);border-bottom:1px solid var(--gold-deep);padding-bottom:2px;font-weight:400;transition:color .2s}
+.card:hover .read-more{color:var(--gold)}
+
+/* Featured (wide card) */
+.card.featured{grid-column:1/-1;display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
+.card.featured .thumb{aspect-ratio:16/9}
+.card.featured h2{font-size:clamp(26px,3vw,38px)}
+.card.featured p{font-size:15px;max-width:52ch}
+
+/* ---------- Categories filter ---------- */
+.filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:clamp(32px,4vw,52px)}
+.filter-bar button{background:none;border:1px solid var(--line);font-family:var(--sans);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;padding:9px 18px;cursor:pointer;color:var(--muted);transition:all .25s;border-radius:0}
+.filter-bar button:hover,.filter-bar button.active{background:var(--ink);color:var(--ivory);border-color:var(--ink)}
+
+/* ---------- Post view ---------- */
+.post-wrap{display:none;max-width:780px;margin:0 auto;padding:clamp(40px,7vw,90px) var(--pad)}
+.post-wrap.show{display:block}
+.post-back{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);cursor:pointer;display:inline-flex;gap:6px;align-items:center;margin-bottom:36px;border:none;background:none;font-family:var(--sans)}
+.post-back:hover{color:var(--ink)}
+.post-wrap .eyebrow{font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep)}
+.post-wrap h1{font-family:var(--serif);font-weight:500;font-size:clamp(28px,4vw,46px);line-height:1.1;margin-top:14px;letter-spacing:.01em}
+.post-meta{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:16px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.post-hero{border-radius:2px;overflow:hidden;margin:32px 0;aspect-ratio:16/9}
+.post-hero img{width:100%;height:100%;object-fit:cover}
+.post-body{font-size:16px;line-height:1.85;color:var(--ink)}
+.post-body h2{font-family:var(--serif);font-weight:500;font-size:clamp(22px,2.6vw,30px);line-height:1.1;margin:42px 0 16px;letter-spacing:.01em}
+.post-body h3{font-family:var(--serif);font-weight:500;font-size:clamp(18px,2vw,24px);margin:30px 0 12px}
+.post-body p{margin-bottom:22px;color:rgba(43,39,35,.88)}
+.post-body ul{margin:0 0 22px 20px}
+.post-body li{margin-bottom:8px;color:rgba(43,39,35,.88)}
+.post-body strong{font-weight:500;color:var(--ink)}
+.post-body blockquote{border-left:2px solid var(--gold);padding-left:24px;margin:32px 0;font-family:var(--serif);font-style:italic;font-size:clamp(18px,2vw,22px);color:var(--ink)}
+.post-body .tip{background:var(--pearl);padding:20px 24px;border-radius:2px;margin:28px 0;font-size:14.5px;color:var(--muted)}
+.post-body .tip strong{display:block;margin-bottom:6px;color:var(--gold-deep);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+
+/* ---------- Newsletter (inline) ---------- */
+.blog-news{background:var(--champagne);padding:clamp(40px,6vw,72px) var(--pad);text-align:center}
+.blog-news .eyebrow{font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep)}
+.blog-news h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.2vw,38px);margin-top:12px}
+.blog-news p{font-size:14px;color:var(--muted);margin-top:12px}
+.blog-news form{display:flex;gap:0;max-width:420px;margin:24px auto 0;border-bottom:1px solid var(--ink)}
+.blog-news input{flex:1;border:none;background:none;font-family:var(--sans);font-size:14px;padding:12px 4px;outline:none;color:var(--ink)}
+.blog-news button{border:none;background:none;font-family:var(--sans);font-size:11px;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;color:var(--ink);font-weight:400;padding:12px 6px}
+.blog-news button:hover{color:var(--gold-deep)}
+
+/* ---------- Footer ---------- */
+footer{background:var(--ivory);border-top:1px solid var(--line);padding:48px var(--pad) 28px}
+.foot-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:clamp(20px,4vw,52px)}
+.foot-brand .logo-txt{font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:.3em;color:var(--ink)}
+.foot-brand p{font-size:13px;color:var(--muted);margin-top:12px;line-height:1.65;max-width:30ch}
+.foot h4{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);font-weight:500;margin-bottom:14px}
+.foot a{display:block;font-size:13px;color:var(--muted);margin-bottom:9px;transition:color .2s}
+.foot a:hover{color:var(--gold-deep)}
+.foot-bottom{max-width:1280px;margin:28px auto 0;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:11px;color:var(--muted);flex-wrap:wrap;gap:10px}
+
+/* ---------- Mobile menu ---------- */
+.mmenu{display:none;position:fixed;inset:0;background:var(--ivory);z-index:100;flex-direction:column;padding:90px 34px 40px;overflow-y:auto}
+.mmenu.open{display:flex}
+.mmenu .close{position:absolute;top:24px;right:26px;background:none;border:none;font-size:26px;color:var(--ink);cursor:pointer}
+.mmenu a{font-family:var(--serif);font-size:26px;color:var(--ink);padding:13px 0;border-bottom:1px solid var(--line)}
+.mmenu a:hover{color:var(--gold-deep)}
+
+@media(max-width:960px){
+  .burger{display:block}
+  nav.main{display:none}
+  .header-in{grid-template-columns:auto 1fr auto}
+  .logo{justify-self:center;grid-column:2}
+  .blog-grid{grid-template-columns:1fr}
+  .card.featured{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  .foot-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<div style="position:fixed;top:0;left:0;right:0;z-index:9999;background:#2B2723;color:#EDE3D2;text-align:center;font:11px Jost,sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;">Demo-Version · nur bis 29. August 2026 verfügbar · <a href="https://michaleskuc-sketch.github.io/selene/" style="color:#A98A57;text-decoration:underline;">zur SK-Version</a></div><body>
+
+<div class="ann"><em>Geschenkverpackung</em> ku každej objednávke · Kostenloser Versand ab 59 €</div>
+
+<header>
+  <div class="header-in">
+    <button class="burger" onclick="document.getElementById('mmenu').classList.toggle('open')" aria-label="Menu">☰</button>
+    <a class="logo" href="selene_prototyp.html">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M42 8 C 30 12, 23 22, 23 32 C 23 42, 30 52, 42 56 C 36 50, 32 42, 32 32 C 32 22, 36 14, 42 8 Z" fill="#8F7245"/><path d="M15.4 15l1 2.3 2.3 1-2.3 1-1 2.3-1-2.3-2.3-1 2.3-1z" fill="#8F7245" stroke="none"/></svg>
+      <span>SELÉNÉ<small>jewelry</small></span>
+    </a>
+    <div class="header-actions">
+      <button aria-label="Hľadať"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+      <button aria-label="Účet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.2-4 4.4-6 8-6s6.8 2 8 6"/></svg></button>
+      <button aria-label="Warenkorb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8h12l-1.2 12H7.2L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></button>
+    </div>
+  </div>
+  <nav class="main">
+    <a href="selene_cd_katalog.html?cat=nausnice">Ohrringe</a>
+    <a href="selene_cd_katalog.html?cat=nahrdelniky">Halsketten</a>
+    <a href="selene_cd_katalog.html?cat=prstene">Ringe</a>
+    <span class="dd">
+      <a href="selene_cd_katalog.html?cat=naramy">Armbänder</a>
+      <button class="dd-trigger" aria-label="Ďalšie kategórie" tabindex="0">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4l4 4 4-4"/></svg>
+      </button>
+      <span class="dd-menu">
+        <span class="dd-head">Ďalšie kategórie</span>
+        <a href="selene_cd_katalog.html?cat=anklety">Fußkettchen</a>
+        <a href="selene_cd_katalog.html?cat=retiazky">Ketten</a>
+      </span>
+    </span>
+    <a href="selene_cd_giftguide.html">Geschenke</a>
+    <a href="selene_blog.html" class="active">Blog</a>
+  </nav>
+</header>
+
+<!-- Blog listing -->
+<div id="blogList">
+  <div class="blog-hero">
+    <div class="eyebrow">Blog</div>
+    <h1>Geschichtey šperkov</h1>
+    <p>Starostlivosť, štýl, materiály a inšpirácia. Píšeme o veciach, ktoré sa nosí aj rozumie.</p>
+  </div>
+
+  <section class="blog-section">
+    <div class="wrap">
+      <div class="filter-bar">
+        <button class="active" onclick="setFilter(this,'vsetko')">Všetko</button>
+        <button onclick="setFilter(this,'starostlivost')">Starostlivosť</button>
+        <button onclick="setFilter(this,'styl')">Štýl &amp; inšpirácia</button>
+        <button onclick="setFilter(this,'materialy')">Materialy</button>
+        <button onclick="setFilter(this,'darceky')">Geschenke</button>
+      </div>
+
+      <div class="blog-grid" id="grid">
+
+        <!-- FEATURED -->
+        <a class="card featured" data-cat="styl" onclick="showPost('layering');return false" href="#">
+          <div class="thumb">
+            <span class="cat-badge">Štýl &amp; inšpirácia</span>
+            <img src="../img/hero_gold_biela_kosela_backup.jpg" alt="Vrstvenie šperkov">
+          </div>
+          <div class="body">
+            <div class="meta">14. augusta 2026 · 6 min čítania</div>
+            <h2>Umenie vrstvenia — ako nosiť viac šperkov naraz bez chaosu</h2>
+            <p>Ketten, prstene, náramky — vrstvenie je umenie, nie náhoda. Ukážeme vám jednoduché pravidlá, ktoré fungujú vždy, nech kombinujete čokoľvek.</p>
+            <span class="read-more">Čítať článok →</span>
+          </div>
+        </a>
+
+        <!-- CARD 2 -->
+        <a class="card" data-cat="starostlivost" onclick="showPost('cistenie');return false" href="#">
+          <div class="thumb">
+            <span class="cat-badge">Starostlivosť</span>
+            <img src="../img/editorial/rosies_11.jpg" alt="Čistenie šperkov">
+          </div>
+          <div class="body">
+            <div class="meta">7. augusta 2026 · 4 min čítania</div>
+            <h2>Ako čistiť pozlátené šperky doma</h2>
+            <p>Jemná handričkou alebo mydlová voda? Zistite, čo skutočne funguje a čo naopak škodí.</p>
+            <span class="read-more">Čítať článok →</span>
+          </div>
+        </a>
+
+        <!-- CARD 3 -->
+        <a class="card" data-cat="materialy" onclick="showPost('striebro');return false" href="#">
+          <div class="thumb">
+            <span class="cat-badge">Materialy</span>
+            <img src="../img/hero_silver.jpg" alt="Sterlingsilber 925">
+          </div>
+          <div class="body">
+            <div class="meta">28. júla 2026 · 5 min čítania</div>
+            <h2>Sterlingsilber 925 vs. chirurgická oceľ — čo zvoliť?</h2>
+            <p>Oba materiály sú odolné a hypoalergénne. Ale každý sa hodí na niečo iné. Tu je jednoduchý sprievodca.</p>
+            <span class="read-more">Čítať článok →</span>
+          </div>
+        </a>
+
+        <!-- CARD 3b -->
+        <a class="card" data-cat="materialy" onclick="showPost('925');return false" href="#">
+          <div class="thumb">
+            <span class="cat-badge">Materialy</span>
+            <img src="../img/necklace_detail.jpg" alt="Vergoldetes Silber 925">
+          </div>
+          <div class="body">
+            <div class="meta">26. augusta 2026 · 5 min čítania</div>
+            <h2>Vergoldetes Silber 925 — čo to vlastne je a ako dlho vydrží</h2>
+            <p>Zlatý vzhľad, strieborné jadro. Ako vzniká pozlátenie, čo je rhodiovanie a čo reálne vydrží.</p>
+            <span class="read-more">Čítať článok →</span>
+          </div>
+        </a>
+
+        <!-- CARD 4 -->
+        <a class="card" data-cat="darceky" onclick="showPost('darcek');return false" href="#">
+          <div class="thumb">
+            <span class="cat-badge">Geschenke</span>
+            <img src="../img/editorial/rosies_9.jpg" alt="Darček šperky">
+          </div>
+          <div class="body">
+            <div class="meta">15. júla 2026 · 3 min čítania</div>
+            <h2>Ako vybrať šperk ako darček (aj keď neviete nič o šperkov)</h2>
+            <p>Narodeniny, meniny, výročie — s týmto návodom nevybehnete naprázdno ani raz.</p>
+            <span class="read-more">Čítať článok →</span>
+          </div>
+        </a>
+
+        <!-- CARD 5 -->
+        <a class="card" data-cat="styl" onclick="showPost('jesen');return false" href="#">
+          <div class="thumb">
+            <span class="cat-badge">Štýl &amp; inšpirácia</span>
+            <img src="../img/autumn_hero.jpg" alt="Jesenné šperky">
+          </div>
+          <div class="body">
+            <div class="meta">5. júla 2026 · 4 min čítania</div>
+            <h2>Jeseň a šperky — teplé tóny, ktoré lichotia každej pleti</h2>
+            <p>Champagne zlato do okrových dní. Inšpirácia na sezónne kombinácie z kolekcie Sun Gold.</p>
+            <span class="read-more">Čítať článok →</span>
+          </div>
+        </a>
+
+        <!-- CARD 6 -->
+        <a class="card" data-cat="starostlivost" onclick="showPost('skladovanie');return false" href="#">
+          <div class="thumb">
+            <span class="cat-badge">Starostlivosť</span>
+            <img src="../img/editorial/rosies_10.jpg" alt="Skladovanie šperkov">
+          </div>
+          <div class="body">
+            <div class="meta">20. júna 2026 · 3 min čítania</div>
+            <h2>Kde a ako skladovať šperky, aby dlho vydržali</h2>
+            <p>Väčšina šperkov sa poškodí nie nosením, ale zlým uložením. Malé zmeny, veľký rozdiel.</p>
+            <span class="read-more">Čítať článok →</span>
+          </div>
+        </a>
+
+        <!-- CARD 7 -->
+        <a class="card" data-cat="styl" onclick="showPost('simmel');return false" href="#">
+          <div class="thumb">
+            <span class="cat-badge">Štýl &amp; inšpirácia</span>
+            <img src="../img/hero_gold.jpg" alt="Filozofia šperku">
+          </div>
+          <div class="body">
+            <div class="meta">26. augusta 2026 · 6 min čítania</div>
+            <h2>Filozofia šperku — čo o nás hovoria šperky (Georg Simmel)</h2>
+            <p>Prečo si ľudia od pradávna zdobia telo? Sociológ Georg Simmel vedel, že šperk je viac než ozdoba — je rečou o nás samých.</p>
+            <span class="read-more">Čítať článok →</span>
+          </div>
+        </a>
+
+        <!-- CARD 8 -->
+        <a class="card" data-cat="styl" onclick="showPost('cassirer');return false" href="#">
+          <div class="thumb">
+            <span class="cat-badge">Štýl &amp; inšpirácia</span>
+            <img src="../img/ring2.jpg" alt="Homo symbolicus — prečo nosíme šperky">
+          </div>
+          <div class="body">
+            <div class="meta">26. augusta 2026 · 6 min čítania</div>
+            <h2>Homo symbolicus — prečo ľudia nosia šperky (Ernst Cassirer)</h2>
+            <p>Človek je symbolické zviera. Filozof Ernst Cassirer vysvetlil, prečo si od praveku vešiame na telo veci, ktoré nesú význam.</p>
+            <span class="read-more">Čítať článok →</span>
+          </div>
+        </a>
+
+        <!-- CARD 9 -->
+        <a class="card" data-cat="styl" onclick="showPost('pribeh');return false" href="#">
+          <div class="thumb">
+            <span class="cat-badge">Štýl &amp; inšpirácia</span>
+            <img src="../img/editorial/editorial_neck_3.jpg" alt="Geschichte SELÉNÉ — prečo mesiac a slnko">
+          </div>
+          <div class="body">
+            <div class="meta">26. augusta 2026 · 5 min čítania</div>
+            <h2>Geschichte SELÉNÉ — prečo práve mesiac a slnko</h2>
+            <p>Dve vety perexu — prečo sa šperkový ateliér volá po gréckej bohyni mesiaca a čo znamená dualita mesiaca a slnka.</p>
+            <span class="read-more">Čítať článok →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ POST: Vrstvenie ============ -->
+<div class="post-wrap" id="post-layering">
+  <div class="wrap">
+    <button class="post-back" onclick="showList()">← Späť na blog</button>
+    <div class="eyebrow">Štýl &amp; inšpirácia</div>
+    <h1>Umenie vrstvenia — ako nosiť viac šperkov naraz bez chaosu</h1>
+    <div class="post-meta">14. augusta 2026 · 6 min čítania · Michal E.</div>
+    <div class="post-hero"><img src="../img/hero_gold_biela_kosela_backup.jpg" alt="Vrstvenie šperkov"></div>
+    <div class="post-body">
+      <p>Vrstvenie šperkov — <strong>layering</strong> — je jeden z najpopulárnejších trendov posledných rokov. Problém je, že väčšine z nás to napriek najlepšej snahe vyzerá ako „príliš veľa". Nie preto, že by sme nemali vkus, ale preto, že nikto nám nevysvetlil základné pravidlá.</p>
+
+      <blockquote>„Menej nie je vždy viac — niekedy je viac viac. Len to treba vedieť riadiť."</blockquote>
+
+      <h2>Pravidlo č. 1 — Jeden dominantný kúsok</h2>
+      <p>Každá kombinácia potrebuje jeden <strong>statement kúsok</strong> — ten, na ktorý sa oko zastaví. Môže to byť výrazný náhrdelník, prsteň s kameňom alebo výrazné náušnice. Zvyšok ho len dopĺňa, nie súperí.</p>
+
+      <h2>Pravidlo č. 2 — Rôzne dĺžky retiazok</h2>
+      <p>Ak vrstvíte náhrdelníky, kľúčom sú <strong>rôzne dĺžky</strong>: krátky choker (38–42 cm), stredný náhrdelník (45–50 cm) a dlhý prívesok (55–65 cm). Každý má vlastný priestor, navzájom sa neprekrývajú.</p>
+
+      <div class="tip">
+        <strong>Tip SELÉNÉ</strong>
+        Zlaté retiazky z kolekcie Sun Gold sú navrhnuté na vrstvenie — jemné, rôznych dĺžok, nesplietajú sa. Pearl Moon náhrdelník funguje skvele ako stredná vrstva.
+      </div>
+
+      <h2>Pravidlo č. 3 — Zmiešavanie kovov (áno, ide to)</h2>
+      <p>Zlaté a strieborné šperky spolu? Funguje to lepšie, ako si myslíte — podmienkou je, aby aspoň jeden kúsok bol v každej farbe. Mixovanie sa stáva zámerným, nie náhodným.</p>
+
+      <h2>Pravidlo č. 4 — Ringe: od jemného k výraznému</h2>
+      <p>Na prstoch vrstvíte od <strong>malíčka k ukazováku</strong> — jemné bandy pri malíčku, výraznejší prsteň pri ukazováku. Prostredník a prsteňový prst dostávajú stredné varianty.</p>
+
+      <h2>Záver</h2>
+      <p>Vrstvenie šperkov nie je raketová veda — je to cvičenie. Začnite s dvoma retiazkami, pridajte jeden prsteň, a pozrite sa do zrkadla. Ak sa cítite dobre, máte to správne.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ POST: Čistenie ============ -->
+<div class="post-wrap" id="post-cistenie">
+  <div class="wrap">
+    <button class="post-back" onclick="showList()">← Späť na blog</button>
+    <div class="eyebrow">Starostlivosť</div>
+    <h1>Ako čistiť pozlátené šperky doma</h1>
+    <div class="post-meta">7. augusta 2026 · 4 min čítania · Michal E.</div>
+    <div class="post-hero"><img src="../img/editorial/rosies_11.jpg" alt="Čistenie šperkov"></div>
+    <div class="post-body">
+      <p>Pozlátené šperky sú krásne — a pri správnej starostlivosti môžu vydržať roky bez viditeľného opotrebovania. Problém nastáva, keď sa o nich snažíme starať <em>príliš</em> agresívne.</p>
+
+      <h2>Čo funguje</h2>
+      <ul>
+        <li><strong>Suchá mäkká handričková z mikrovlákna</strong> — po každom nosení jemne pretrieť. Odstráni pot, oleje z pokožky a drobné nečistoty.</li>
+        <li><strong>Vlažná voda + kúsok jemného mydla</strong> — pre hlbšie čistenie. Šperky ponorte na 20–30 sekúnd, jemne ometite mäkkým štetčekom (napr. starý zubná kefka) a opláchnite.</li>
+        <li><strong>Úplné osušenie</strong> — pred uložením vždy dosucha. Vlhkosť urýchľuje oxidáciu.</li>
+      </ul>
+
+      <h2>Čo nerobte</h2>
+      <ul>
+        <li>Ultrazvukové čističky — príliš agresívne na pokovenie</li>
+        <li>Bielidlá, ocot, sóda bikarbóna — narúšajú zlatú vrstvu</li>
+        <li>Papierové utierky — drhnú povrch a zanechávajú mikroškrabance</li>
+        <li>Dlhý kontakt s parfumom, krémom alebo chlorovanou vodou</li>
+      </ul>
+
+      <div class="tip">
+        <strong>Zlaté pravidlo SELÉNÉ</strong>
+        Šperky si obliekajte ako posledné a vyzliekajte ako prvé. Parfum, krém a lak na vlasy sú nepriateľmi pozlátenia.
+      </div>
+
+      <h2>Ako predĺžiť životnosť</h2>
+      <p>Ukladajte šperky oddelene v mäkkom vrecúšku alebo šperkovnici s priehradkami. Keď viaceré kúsky ležia spolu, škrabú sa navzájom — aj zlatá vrstva sa tak opotrebúva rýchlejšie.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ POST: Striebro vs. oceľ ============ -->
+<div class="post-wrap" id="post-striebro">
+  <div class="wrap">
+    <button class="post-back" onclick="showList()">← Späť na blog</button>
+    <div class="eyebrow">Materialy</div>
+    <h1>Sterlingsilber 925 vs. chirurgická oceľ — čo zvoliť?</h1>
+    <div class="post-meta">28. júla 2026 · 5 min čítania · Michal E.</div>
+    <div class="post-hero"><img src="../img/hero_silver.jpg" alt="Sterlingsilber 925"></div>
+    <div class="post-body">
+      <p>Pri výbere šperku sa skôr či neskôr každý pýta rovnakú otázku: <strong>striebro, alebo oceľ?</strong> Oba materiály sú dnes v šperkárstve bežné, oba pôsobia elegantne a oba si poradia aj s citlivejšou pokožkou. Rozdiely sú ale dôležité — a poznať ich znamená vybrať si šperk, ktorý bude sedieť nielen k outfitu, ale aj k spôsobu života.</p>
+
+      <p>V tomto článku si rozoberieme, čo presne znamená označenie <strong>striebro 925</strong>, čím je špecifická <strong>chirurgická oceľ</strong>, a kde do porovnania zapadá <strong>pozlátené striebro</strong> — tretia možnosť, ktorú si mnohé zákazníčky SELÉNÉ vyberajú najčastejšie.</p>
+
+      <h2>Čo je striebro 925</h2>
+      <p>Označenie „925" hovorí o rýdzosti kovu — znamená, že šperk obsahuje 92,5 % čistého striebra a zvyšných 7,5 % tvoria iné kovy, najčastejšie meď. Čisté striebro (999) je totiž príliš mäkké na to, aby vydržalo bežné nosenie — ohýbalo by sa a rýchlo strácalo tvar. Pridaním malého podielu medi vznikne zliatina, ktorá je pevnejšia, a pritom si zachováva charakteristický studený, jemne chladný lesk striebra.</p>
+      <p>Sterlingsilber 925 je materiál s dlhou tradíciou v šperkárstve — je ťažšie, má príjemnú váhu na koži a starne „ušľachtilo": pri dobrej starostlivosti vydrží celé roky. V ponuke SELÉNÉ nájdete striebro 925 aj v <strong>rhodiovanej úprave</strong> — tenká vrstva ródia navrch zvyšuje lesk, spomaľuje tmavnutie a robí povrch ešte hladším na dotyk.</p>
+      <p>Osobitnou kapitolou je <strong>pozlátené striebro</strong> — striebro 925 pokovené tenkou vrstvou 18k zlata. Spája teplý, zlatý vzhľad s pevnosťou striebra ako základového kovu. Je to spôsob, ako mať „zlatý" šperk za rozumnejšiu cenu, bez kompromisu v kvalite jadra.</p>
+
+      <h2>Čo je chirurgická oceľ</h2>
+      <p>Chirurgischer Stahl je zliatina používaná pôvodne v medicíne — práve preto, že je mimoriadne odolná, nekoroduje a telo ju vo väčšine prípadov dobre znáša. V šperkárstve sa cení najmä pre svoju <strong>tvrdosť</strong>: poškriabať ju je oveľa ťažšie než striebro alebo zlato, čo z nej robí ideálnu voľbu pre šperky nosené každý deň bez sundávania — vrátane sprchovania, plávania či športu.</p>
+      <p>Vizuálne pripomína rhodiované striebro alebo biele zlato — má chladný, sivostrieborný lesk, ktorý si dlho udržiava bez leštenia. Je tiež ľahšia než striebro, čo mnohé zákazníčky oceňujú pri väčších náušniciach alebo náramkoch, kde sa hmotnosť počas dňa cíti.</p>
+
+      <h2>Porovnanie: čo naozaj rozhoduje</h2>
+      <h3>Vzhľad</h3>
+      <p>Sterlingsilber 925 aj rhodiované striebro majú jemnejší, „šperkársky" lesk s teplejším odtieňom pod svetlom. Chirurgischer Stahl pôsobí chladnejšie a industriálnejšie, no v jemných dizajnoch — ako sú náušnice s mesiacom alebo tenké retiazky — je rozdiel na prvý pohľad takmer nebadateľný.</p>
+      <h3>Trvácnosť</h3>
+      <p>Tu vyhráva chirurgická oceľ — je tvrdšia a odolnejšia voči poškriabaniu aj vode. Sterlingsilber 925 je mäkší kov, ktorý sa pri nešetrnom zaobchádzaní môže ohnúť alebo poškriabať, no pri primeranej starostlivosti vydrží rovnako dlho.</p>
+      <h3>Alergénnosť</h3>
+      <p>Ak riešite <strong>alergiu na šperky</strong>, dobrá správa je, že oba materiály patria medzi bezpečnejšie voľby. Sterlingsilber 925 aj chirurgická oceľ neobsahujú prakticky žiadny voľný nikel, ktorý je najčastejším spúšťačom kontaktnej alergie. Rhodiovaná úprava striebra pridáva ešte jednu bariérovú vrstvu navyše. Ak máte v minulosti skúsenosť s podráždením od bižutérie, oba materiály sú výrazne bezpečnejšou alternatívou.</p>
+      <h3>Starostlivosť</h3>
+      <p>Striebro potrebuje o niečo viac pozornosti — chráňte ho pred vodou, parfumom a dlhým kontaktom s kozmetikou, aby si zachovalo lesk čo najdlhšie. Presný postup nájdete v našom článku <a href="#" onclick="showPost('cistenie');return false">Ako čistiť pozlátené šperky doma</a>. Chirurgischer Stahl je v tomto smere bezstarostná — znesie vodu, pot aj bazén bez väčšieho rizika.</p>
+      <h3>Preis</h3>
+      <p>Chirurgischer Stahl je spravidla dostupnejšia, striebro 925 a najmä pozlátené striebro majú vyššiu materiálovú hodnotu, ktorá sa odráža aj v cene. Pri SELÉNÉ nájdete oba materiály v podobnom, prístupnom cenovom pásme — rozdiel teda nerozhoduje o kvalite, ale o tom, aký pocit chcete na koži.</p>
+
+      <div class="tip">
+        <strong>Tip SELÉNÉ</strong>
+        Neviete sa rozhodnúť? Zvoľte chirurgickú oceľ na kúsky, ktoré nosíte non-stop (jemné retiazky, náušnice do ucha), a striebro 925 alebo pozlátené striebro na šperky, ktoré si vedome vyberáte k outfitu — prstene, náhrdelníky na výnimočné dni.
+      </div>
+
+      <h2>Pre koho čo</h2>
+      <ul>
+        <li><strong>Chirurgischer Stahl</strong> — pre aktívny životný štýl, šperky na každý deň bez sundávania, citlivú pokožku, jednoduchú údržbu.</li>
+        <li><strong>Sterlingsilber 925 / rhodiované striebro</strong> — pre klasický, „šperkársky" lesk, chladnejšiu farebnosť a šperky, ku ktorým sa chcete vracať roky.</li>
+        <li><strong>Vergoldetes Silber</strong> — pre teplý zlatý odtieň bez ceny masívneho zlata, s pevným strieborným jadrom.</li>
+      </ul>
+
+      <h2>Záver</h2>
+      <p>Neexistuje univerzálne „lepšie" — existuje len to, čo sedí vášmu dňu. Ak hľadáte šperk, ktorý si nesnímate ani v sprche, siahnite po chirurgickej oceli. Ak si vážite tradičný lesk a nosíte šperky vedomejšie, striebro 925 alebo pozlátené striebro budú vašou voľbou. Oba materiály v SELÉNÉ spĺňajú rovnaký štandard kvality — rozdiel je len vo výbere, nie v kompromise.</p>
+      <p>Celú ponuku oboch materiálov nájdete v <a href="selene_cd_katalog.html?cat=all">katalógu SELÉNÉ</a>, kde si viete filtrovať šperky presne podľa materiálu, ktorý vám sedí.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ POST: Darček ============ -->
+<div class="post-wrap" id="post-darcek">
+  <div class="wrap">
+    <button class="post-back" onclick="showList()">← Späť na blog</button>
+    <div class="eyebrow">Geschenke</div>
+    <h1>Ako vybrať šperk ako darček</h1>
+    <div class="post-meta">15. júla 2026 · 3 min čítania · Michal E.</div>
+    <div class="post-hero"><img src="../img/editorial/rosies_9.jpg" alt="Darček šperky"></div>
+    <div class="post-body">
+      <p>Šperk je jeden z mála darčekov, ktorý sa nosí roky po tom, čo je zabudnuté, kto ho vlastne kúpil na aké narodeniny. Práve preto vie byť výber taký stresujúci — chcete trafiť vkus, príležitosť aj rozpočet naraz. Tu je jednoduchý návod, ako na to.</p>
+
+      <h2>Podľa príležitosti</h2>
+      <h3>Narodeniny</h3>
+      <p>Pri narodeninách máte najviac voľnosti. Ak poznáte obdarovanú osobu dobre, siahnite po niečom výraznejšom — náhrdelníku alebo prsteni, ktorý bude nosiť ako „svoj" kúsok. Ak ide skôr o kolegyňu či vzdialenejšiu kamarátku, bezpečnejšou voľbou sú jemné náušnice.</p>
+      <h3>Meniny</h3>
+      <p>Meniny sú menej formálne než narodeniny — ideálny priestor pre menší, no premyslený darček. Jemný náramok alebo retiazka s drobným príveskom pôsobia pozorne, bez toho, aby vyzerali „veľkolepo".</p>
+      <h3>Výročie</h3>
+      <p>Pri výročí vzťahu funguje najlepšie symbolika — šperk s mesiacom a slnkom, ktorý odkazuje na dualitu dvoch ľudí, alebo súprava (náušnice + náhrdelník), ktorá pôsobí ako premyslený, ucelený darček, nie náhodný kúsok.</p>
+      <h3>Vianoce</h3>
+      <p>Vianoce sú príležitosťou na teplé, zimné tóny — pozlátené šperky zo Sun Gold kolekcie pôsobia sviatočne a dobre fungujú aj ako darček „na istotu", pretože sa hodia takmer ku každému outfitu.</p>
+
+      <h2>Podľa rozpočtu</h2>
+      <ul>
+        <li><strong>Do 30 €</strong> — jemné náušnice alebo tenký náramok, ideálne ako doplnkový darček.</li>
+        <li><strong>30–60 €</strong> — náhrdelník alebo prsteň so symbolikou, ktorý pôsobí ako hlavný darček.</li>
+        <li><strong>Nad 60 €</strong> — súprava viacerých kúskov alebo výraznejší náhrdelník, ktorý sa stane stálicou v šperkovnici.</li>
+      </ul>
+
+      <p>Ak si stále nie ste istí, kde presne v tomto rozpätí začať, náš <a href="selene_cd_giftguide.html">darčekový sprievodca</a> vás prevedie výberom podľa príležitosti aj typu osoby, ktorej šperk kupujete.</p>
+
+      <div class="tip">
+        <strong>Geschenkverpackung zdarma</strong>
+        Každá objednávka v SELÉNÉ príde v darčekovej krabičke bez príplatku — nemusíte teda riešiť balenie ani vtedy, keď kupujete darček na poslednú chvíľu.
+      </div>
+
+      <h2>Tipy, ktoré fungujú vždy</h2>
+      <ul>
+        <li>Pri neistote voľte <strong>jemnejší</strong>, univerzálnejší kúsok — skôr sa nosí, než výrazný, ktorý „buď sedí, alebo nie".</li>
+        <li>Všímajte si, aký kov obdarovaná osoba bežne nosí — zlato, alebo striebro. Ak neviete, dualita mesiac/slnko funguje ako bezpečná stredná cesta.</li>
+        <li>Priložená kartička s krátkym odkazom robí aj jednoduchý šperk osobným darčekom.</li>
+      </ul>
+
+      <h2>Záver</h2>
+      <p>Dobrý darček zo šperku nie je o tom, uhádnuť presne to, čo by si obdarovaná osoba kúpila sama — je o tom, ukázať, že ste nad výberom premýšľali. Príležitosť, rozpočet a trochu pozornosti k detailu stačia na to, aby šperk potešil aj o rok neskôr.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ POST: Jesenné trendy ============ -->
+<div class="post-wrap" id="post-jesen">
+  <div class="wrap">
+    <button class="post-back" onclick="showList()">← Späť na blog</button>
+    <div class="eyebrow">Štýl &amp; inšpirácia</div>
+    <h1>Šperkové trendy na jeseň a zimu 2026: čo je in a ako to nosiť</h1>
+    <div class="post-meta">5. júla 2026 · 4 min čítania · Michal E.</div>
+    <div class="post-hero"><img src="../img/autumn_hero.jpg" alt="Jesenné šperky"></div>
+    <div class="post-body">
+      <p>S príchodom jesene sa mení nielen šatník, ale aj to, po akých šperkoch siahame. Odchádzajú ľahké, letné kúsky a nastupuje sezóna, ktorá má rada teplo, textúru a trochu viac odvahy. Toto sú <strong>šperkové trendy na jeseň a zimu 2026</strong>, ktoré stojí za to poznať — a hlavne vedieť, ako ich reálne nosiť.</p>
+
+      <h2>Champagne zlato je farba sezóny</h2>
+      <p>Ak má jeseň 2026 jednu farbu kovu, je to <strong>champagne zlato</strong> — teplší, jemne pridymený odtieň zlata, ktorý pôsobí menej lesklo a viac „nosene" než klasické žlté zlato. Skvele ladí s okrovou, hnedou a burgundy paletou, ktorá dominuje jesenným kolekciám oblečenia, a na pokožke pôsobí prirodzene aj pri dennom nosení.</p>
+      <p>V SELÉNÉ nájdete tento odtieň naprieč kolekciou <strong>Sun Gold</strong> — od jemných retiazok cez náušnice až po prstene. Práve teraz je ideálny čas doplniť si do šperkovnice aspoň jeden kúsok, ktorý bude niesť celú jesennú paletu outfitov.</p>
+
+      <h2>Vrstvenie pokračuje — tento raz aj na prstoch</h2>
+      <p>Vrstvenie náhrdelníkov už nie je novinka, ale jeseň 2026 posúva trend ďalej — na <strong>vrstvenie prsteňov</strong>. Princíp je rovnaký ako pri retiazkach: jeden výraznejší kúsok, okolo ktorého sa skladajú jemnejšie bandy. Ak vrstvenie ešte len skúšate, prečítajte si náš článok <a href="#" onclick="showPost('layering');return false">Umenie vrstvenia — ako nosiť viac šperkov naraz bez chaosu</a>, kde nájdete presné pravidlá, ktoré fungujú aj mimo náhrdelníkov.</p>
+      <p>Na krku sa v chladnejších mesiacoch nosí kombinácia dĺžok, ktorá vyplní priestor okolo rolákov a golierov — krátky choker sa stráca pod látkou, preto v jeseni vyniká skôr stredná a dlhšia dĺžka.</p>
+
+      <h2>Statement prstene ako jeden hlavný kúsok</h2>
+      <p>Popri vrstvení sa vracia aj opačný extrém — <strong>jeden výrazný statement prsteň</strong>, ktorý nesie celý look sám. Hodí sa najmä k jednoduchším, jednofarebným jesenným outfitom, kde má priestor vyniknúť. Ak siahnete po statement prsteni, zvyšok ruky nechajte radšej voľný — nech sa dominantný kúsok nestráca vo vrstvách.</p>
+
+      <h2>Perly sa vracajú — ale inak</h2>
+      <p>Perly tento rok nepôsobia klasicky ani formálne. Namiesto tradičného náhrdelníka sa objavujú ako drobný detail — jedna Perle na tenkej retiazke, perlová aplikácia na náušniciach alebo prsteni. Táto „nová klasika" sa dobre kombinuje práve s champagne zlatom a dodáva jesennému outfitu jemný, no nečakaný akcent.</p>
+
+      <div class="tip">
+        <strong>Tip SELÉNÉ</strong>
+        Najrýchlejšia cesta k jesennému vzhľadu: jeden náhrdelník a jeden prsteň zo Sun Gold kolekcie, doplnené drobným perlovým detailom. Funguje s rolákom aj kabátom.
+      </div>
+
+      <h2>Ako to nosiť s jesenným outfitom</h2>
+      <ul>
+        <li><strong>Rolák + stredný náhrdelník</strong> — champagne zlato dopĺňa teplé farby vlny bez toho, aby sa strácalo pod látkou.</li>
+        <li><strong>Kabát + statement prsteň</strong> — keď je väčšina tela zakrytá, ruky sú miesto, kde môže šperk vyniknúť.</li>
+        <li><strong>Sveter s výstrihom + vrstvené retiazky</strong> — kombinácia dvoch-troch dĺžok vyplní priestor, ktorý v lete zaberal jeden výrazný kúsok.</li>
+      </ul>
+
+      <h2>Záver</h2>
+      <p>Jesenné trendy 2026 nie sú o tom, vymeniť celú šperkovnicu — stačí pridať jeden alebo dva kúsky v champagne zlate a vedieť ich skombinovať s tým, čo už máte. Celú kolekciu Sun Gold aj ďalšie jesenné novinky nájdete v <a href="selene_cd_katalog.html?cat=all">katalógu SELÉNÉ</a>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ POST: Skladovanie ============ -->
+<div class="post-wrap" id="post-skladovanie">
+  <div class="wrap">
+    <button class="post-back" onclick="showList()">← Späť na blog</button>
+    <div class="eyebrow">Starostlivosť</div>
+    <h1>Skladovanie šperkov: ako ich udržať ako nové</h1>
+    <div class="post-meta">20. júna 2026 · 3 min čítania · Michal E.</div>
+    <div class="post-hero"><img src="../img/editorial/rosies_10.jpg" alt="Skladovanie šperkov"></div>
+    <div class="post-body">
+      <p>Väčšina šperkov sa nepoškodí od nosenia — poškodí sa od toho, čo sa deje, keď ich máme dole. Poškriabania, zamotané retiazky aj strata lesku najčastejšie vznikajú v šperkovnici, nie na koži. Dobrá správa je, že <strong>správne skladovanie šperkov</strong> nestojí veľa času ani peňazí, len si vyžaduje pár návykov.</p>
+
+      <h2>Prečo záleží na tom, ako šperky skladujete</h2>
+      <p>Keď šperky ležia voľne pohodené v jednej krabičke alebo taštičke, neustále sa o seba trú a narážajú. Tvrdší kov alebo kameň dokáže poškriabať mäkší povrch — a to platí obzvlášť pre pozlátené striebro, kde stačí jemná ryha na to, aby sa spod zlatej vrstvy začalo prejavovať striebro pod ňou. Rovnako škodí aj vlhkosť a priamy vzduch, ktoré urýchľujú tmavnutie striebra.</p>
+
+      <h2>Krabičky a organizéry — čo si vybrať</h2>
+      <p>Ideálna šperkovnica má <strong>oddelené priehradky</strong> — každý kúsok vo vlastnom priestore, bez kontaktu s ostatnými. Ak nemáte klasickú šperkovnicu, poslúžia aj mäkké vrecúška z flanelu alebo zamatu, jedno pre každý šperk. Kľúčové je vyhnúť sa kovovým alebo drsným povrchom vo vnútri — tie škrabú rovnako ako iné šperky.</p>
+      <p>Halsketten a retiazky sa oplatí zavesiť alebo uložiť naplocho a rozložené — zamotaná retiazka sa síce dá rozmotať, ale opakované zauzlovanie kov namáha a časom oslabuje spájacie krúžky.</p>
+
+      <h2>Anti-tarnish pásiky — malá vec s veľkým efektom</h2>
+      <p><strong>Anti-tarnish</strong> pásiky (protikorózne prúžky) pohlcujú vlhkosť a sírne plyny vo vzduchu, ktoré spôsobujú tmavnutie striebra. Stačí jeden kúsok vložený do šperkovnice alebo priehradky, aby výrazne spomalil oxidáciu — najmä pri striebre 925, ktoré je na tento proces citlivejšie než pozlátené alebo rhodiované kúsky. Pásik vymeňte za nový približne raz za pol roka, keď stratí účinnosť.</p>
+
+      <h2>Jednotlivo, alebo spoločne?</h2>
+      <p>Zásada je jednoduchá: <strong>čo sa môže dotýkať, časom sa poškriabe.</strong> Jemné retiazky, prstene s kameňmi aj náušnice s ozdobnými prvkami by mali mať vlastný priestor. Výnimkou sú kúsky z rovnakého, hladkého materiálu bez kameňov — tie si navzájom ublížia menej, no aj tak je oddelené uloženie bezpečnejšie.</p>
+
+      <div class="tip">
+        <strong>Tip SELÉNÉ</strong>
+        Šperky, ktoré nosíte denne, nemusíte po každom sundaní ukladať do šperkovnice — stačí malý tanierik alebo miska pri zrkadle. Dôležité je, aby sa ani tam navzájom nedotýkali a neboli vystavené vlhkosti z kúpeľne.
+      </div>
+
+      <h2>Pravidlá podľa materiálu</h2>
+      <ul>
+        <li><strong>Vergoldetes Silber</strong> — ukladajte oddelene, mimo vlhkosti a priameho slnka, ideálne s anti-tarnish pásikom. Vyhnite sa kontaktu s inými kovmi, ktoré by mohli poškriabať tenkú zlatú vrstvu.</li>
+        <li><strong>Rhodiované striebro</strong> — podobne ako pozlátené, len o niečo odolnejšie voči poškriabaniu. Vlhkosť a sírne plyny sú aj tu hlavným nepriateľom lesku.</li>
+        <li><strong>Chirurgischer Stahl</strong> — najbezstarostnejšia voľba, znesie aj menej starostlivé uloženie, no oddelené priehradky jej lesk aj tak predĺžia.</li>
+      </ul>
+      <p>Podrobnejšie rozdiely medzi materiálmi a ich starostlivosťou nájdete v článku <a href="#" onclick="showPost('striebro');return false">Sterlingsilber 925 vs. chirurgická oceľ — čo zvoliť?</a>.</p>
+
+      <h2>Ako baliť šperky na cestovanie</h2>
+      <p>Na cesty sa oplatí investovať do malého cestovného puzdra s priehradkami alebo vreckami na zips. V núdzi poslúži aj slamka na nápoje — retiazku prevlečte cez ňu a zapnite, zabránite tak zamotaniu. Ohrringe pripnite do kúska plsti alebo mäkkej látky, aby sa počas prepravy nestrácali.</p>
+
+      <h2>Záver</h2>
+      <p>Pár minút navyše pri ukladaní šperkov sa vráti v podobe rokov, počas ktorých si zachovajú svoj pôvodný lesk. Ak chcete šperky nielen správne skladovať, ale aj čistiť, pozrite si náš návod <a href="#" onclick="showPost('cistenie');return false">Ako čistiť pozlátené šperky doma</a>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ POST: Vergoldetes Silber 925 ============ -->
+<div class="post-wrap" id="post-925">
+  <div class="wrap">
+    <button class="post-back" onclick="showList()">← Späť na blog</button>
+    <div class="eyebrow">Materialy</div>
+    <h1>Vergoldetes Silber 925 — čo to vlastne je a ako dlho vydrží</h1>
+    <div class="post-meta">26. augusta 2026 · 5 min čítania · Michal E.</div>
+    <div class="post-hero"><img src="../img/necklace_detail.jpg" alt="Vergoldetes Silber 925"></div>
+    <div class="post-body">
+      <p>Ak ste niekedy pri výbere šperku videli označenie <strong>pozlátené striebro 925</strong>, možno vás napadlo, čo presne to znamená — a najmä, či sa to oplatí. Odpoveď je jednoduchšia, než sa zdá: ide o striebro tej najbežnejšej klenotníckej rýdzosti, na ktoré je nanesená tenká vrstva zlata. Poďme sa pozrieť, čo sa za týmto pojmom skrýva, ako pozlátenie vzniká a čo od neho reálne môžete očakávať.</p>
+
+      <h2>Čo znamená „925"</h2>
+      <p>Číslo „925" hovorí o rýdzosti základového kovu — šperk obsahuje <strong>92,5 % čistého striebra</strong>, zvyšných 7,5 % tvorí zliatina, najčastejšie meď, ktorá striebru dodáva potrebnú pevnosť. Čisté striebro by bolo na bežné nosenie príliš mäkké, preto sa v šperkárstve takmer výhradne používa práve táto zliatina. Je to rovnaký materiál, o ktorom podrobnejšie píšeme aj v článku <a href="#" onclick="showPost('striebro');return false">Sterlingsilber 925 vs. chirurgická oceľ — čo zvoliť?</a> — len s jedným rozdielom navyše, zlatým povrchom.</p>
+
+      <h2>Ako vzniká pozlátenie</h2>
+      <p>Pozlátenie je proces, pri ktorom sa na povrch strieborného šperku nanesie extrémne tenká vrstva 18-karátového zlata pomocou elektrolytického pokovenia — galvanizácie. Šperk sa ponorí do roztoku obsahujúceho zlaté ióny a pod vplyvom elektrického prúdu sa tieto ióny rovnomerne usadia na jeho povrchu. Výsledná vrstva je hrubá len niekoľko mikrometrov — dostatočná na to, aby šperk pôsobil ako celozlatý, no stále postavená na strieborné jadro, ktoré mu dodáva pevnosť aj príjemnú váhu.</p>
+      <p>Práve preto je pozlátené striebro obľúbenou alternatívou k masívnemu zlatu — ponúka rovnaký teplý, žiarivý vzhľad, no za výrazne nižšiu cenu, keďže zlato tvorí len zlomok hmotnosti šperku.</p>
+
+      <h2>Pozlátenie vs. rhodiovanie — v čom je rozdiel</h2>
+      <p>Vo svete striebra sa často spomína aj <strong>rhodiovanie</strong> — a je dôležité tieto dva procesy nezamieňať. Kým pozlátenie nanáša na povrch vrstvu zlata a dáva šperku teplý, žltý tón, rhodiovanie funguje presne opačne: nanáša vrstvu ródia, ušľachtilého kovu z platinovej skupiny s chladným, bielym leskom. Ródiová vrstva sa používa najmä preto, aby striebro chránila pred tmavnutím a dodala mu extra hladký, zrkadlový povrch.</p>
+      <blockquote>„Gold vrstva dáva šperku teplo. Ródiová vrstva dáva šperku ochranu a chlad."</blockquote>
+      <p>Zjednodušene: ak chcete zlatý vzhľad, hľadáte pozlátenie. Ak chcete, aby vaše striebro vyzeralo čo najdlhšie ako čerstvo vyleštené a netmavlo, je to práve rhodiovanie.</p>
+
+      <h2>Ako dlho vydrží pozlátenie — realistický pohľad</h2>
+      <p>Toto je otázka, ktorú dostávame najčastejšie — a odpoveď, žiaľ, nie je jedno číslo platné pre každého. To, <strong>ako dlho vydrží pozlátenie</strong>, závisí od niekoľkých faktorov naraz: od pH pokožky, množstva potu, kontaktu s kozmetikou a parfumami, aj od toho, koľko trenia šperk denne zažíva.</p>
+      <ul>
+        <li><strong>Každodenné nosenie bez prestávky</strong> — pri kontakte s pokožkou, potom aj oblečením každý deň vydrží pozlátenie spravidla <strong>6 až 12 mesiacov</strong>, kým sa začne miestami stenčovať, najmä na miestach s najväčším trením (vnútro prsteňa, zapínanie náramku).</li>
+        <li><strong>Striedme nosenie a dobrá starostlivosť</strong> — ak si šperk obliekate len príležitostne, sundávate ho pred sprchou, športom a nanášaním kozmetiky, pozlátenie vie vydržať <strong>1 až 3 roky, niekedy aj dlhšie</strong>.</li>
+        <li><strong>Citlivejšia pokožka</strong> — u niektorých ľudí prirodzené pH pokožky alebo zloženie potu spôsobujú rýchlejšie opotrebovanie pozlátenia, aj pri opatrnom nosení.</li>
+      </ul>
+      <p>Dobrá správa je, že aj keď sa pozlátenie časom stenčí, strieborné jadro pod ním ostáva neporušené. Šperk teda nezanikne — len potrebuje obnoviť povrch. Klenotníci vedia šperk znovu pozlátiť a vrátiť mu pôvodný vzhľad „ako nový", spravidla za zlomok ceny nového kúsku. Ako sa o pozlátené šperky starať medzi jednotlivými pozláteniami, nájdete v článku <a href="#" onclick="showPost('cistenie');return false">Ako čistiť pozlátené šperky doma</a>.</p>
+
+      <div class="tip">
+        <strong>Tip SELÉNÉ</strong>
+        Pozlátenie si predĺžite už len tým, že šperk sundáte pred sprchou, plávaním a nanášaním krému či parfumu. Vlhkosť a chemikálie sú hlavným dôvodom, prečo zlatá vrstva stráca lesk rýchlejšie, než by musela.
+      </div>
+
+      <h2>Ako spoznať kvalitné pozlátenie</h2>
+      <p>Nie každé „pozlátenie" je rovnaké — a práve v tom je najväčší rozdiel medzi šperkom, ktorý vydrží roky, a bižutériou, ktorá stratí lesk po pár týždňoch. Pri výbere sa oplatí sledovať tri veci.</p>
+      <ul>
+        <li><strong>Spôsob pokovenia</strong> — kvalitné šperky sa pozlacujú galvanicky, teda elektrolytickým nanesením skutočnej vrstvy zlata. Lacná bižutéria sa často iba natiera zlatým pigmentom, ktorý zotrie už bežné nosenie.</li>
+        <li><strong>Základný kov</strong> — označenie „pozlátené striebro 925" je zárukou, že pod zlatou vrstvou je skutočné striebro. Pozlátená neznáma zliatina či oceľ nie je to isté — nemá hodnotu striebra a inak sa aj nosí.</li>
+        <li><strong>Rovnomernosť povrchu</strong> — kvalitná vrstva je na celom šperku rovnaká, bez škvŕn, prechodov a miest, kde by presvital spodný kov.</li>
+      </ul>
+
+      <h2>Oplatí sa pozlátené striebro 925?</h2>
+      <p>V porovnaní s inými materiálmi — napríklad s chirurgickou oceľou, ktorá je tvrdšia a odolnejšia voči poškriabaniu, no neponúkne rovnaký teplý zlatý tón — je pozlátené striebro 925 kompromisom, ktorý funguje pre väčšinu bežného nosenia. Nie je to voľba pre niekoho, kto šperk nikdy nesníma, no pre kúsky, ktoré si vedome vyberáte k outfitu a viete sa o ne postarať, ide o elegantné a cenovo dostupné riešenie.</p>
+      <p>Celú ponuku pozláteného striebra, rhodiovaného striebra aj ďalších materiálov nájdete v <a href="selene_cd_katalog.html?cat=all">katalógu SELÉNÉ</a>, kde si viete filtrovať šperky presne podľa toho, čo vášmu životnému štýlu sedí najlepšie.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ POST: Filozofia šperku (Simmel) ============ -->
+<div class="post-wrap" id="post-simmel">
+  <div class="wrap">
+    <button class="post-back" onclick="showList()">← Späť na blog</button>
+    <div class="eyebrow">Štýl &amp; inšpirácia</div>
+    <h1>Filozofia šperku — čo o nás hovoria šperky</h1>
+    <div class="post-meta">26. augusta 2026 · 6 min čítania · Michal E.</div>
+    <div class="post-hero"><img src="../img/hero_gold.jpg" alt="Filozofia šperku"></div>
+    <div class="post-body">
+      <p>Prečo si človek už tisíce rokov niečo zavesí na krk, navlečie na prst alebo pripne k uchu? Odpoveď nie je len o kráse. Nemecký sociológ <strong>Georg Simmel</strong> sa touto otázkou zaoberal na prelome 19. a 20. storočia a v roku 1908 jej venoval krátku, no mimoriadne vplyvnú esej s názvom <strong>„Psychológia ozdoby"</strong>. Jeho postrehy sú dnes, viac než sto rokov od vydania, prekvapivo aktuálne — a stojí za to sa k nim vrátiť aj vtedy, keď hovoríme o modernom šperku, nie o dobových ozdobách.</p>
+
+      <h2>Majetok, ktorý nič nestráca</h2>
+      <p>Simmel si všimol jednu vec, ktorú predtým nikto takto jasne nepomenoval: takmer všetko, čo vlastníme, sa <strong>opotrebúva</strong>. Oblečenie sa nosí, nábytok starne, dom vyžaduje údržbu. Šperk je v tomto zmysle výnimka. Nielenže sa jeho hodnota nosením neznižuje — podľa Simmela sa deje presný opak: <strong>šperk zvyšuje hodnotu toho, kto ho nosí.</strong> Nepatrí medzi veci, ktoré si od nás niečo berú. Patrí medzi tie zriedkavé, ktoré nám niečo pridávajú, a pritom si samy nič neuberajú.</p>
+      <p>Je to nezvyčajný druh vlastníctva — také, ktoré nefunguje smerom dovnútra, k úžitku, ale smerom von, k dojmu, ktorý zanechávame. Šperk nekŕmi, nehreje, nechráni pred dažďom. A predsa je vzácny, pretože robí niečo, čo žiadna iná vec spravidla nedokáže: <strong>povyšuje</strong> svojho nositeľa, dodáva mu žiaru, ktorú by sám od seba nemal.</p>
+
+      <blockquote>„Šperk je jediný druh majetku, ktorý zošľachťuje toho, kto ho vlastní — namiesto toho, aby ho opotrebovával."</blockquote>
+
+      <h2>Žiara, ktorá sa vracia cez pohľad druhých</h2>
+      <p>Druhá Simmelova myšlienka je jemnejšia, no možno ešte dôležitejšia. Lesk šperku nie je určený len nositeľovi — je určený predovšetkým <strong>tým, ktorí sa naň pozerajú</strong>. Vy sami svoj náhrdelník na vlastnom krku takmer nevidíte. Vidia ho ostatní. A práve cez ich pohľad, cez ich všimnutie si, sa žiara šperku vracia späť k vám ako pocit vlastnej hodnoty.</p>
+      <p>Simmel v tomto zmysle chápal ozdobu ako čosi, čo existuje výhradne v <strong>spoločenskom priestore</strong> — medzi ľuďmi, nie v izolácii. Šperk nosený absolútne samotným človekom v prázdnej miestnosti stráca časť svojej podstaty. Jeho zmysel sa napĺňa až vo chvíli, keď ho niekto iný zbadá. Je to tichá reč, ktorou hovoríme bez toho, aby sme čokoľvek povedali — a súčasne reč, na ktorú vždy niekto odpovedá aspoň pohľadom.</p>
+
+      <h2>Sociológia ozdoby: od kmeňov po jemné retiazky</h2>
+      <p>Práve preto Simmela zaraďujeme medzi sociológov, nie len medzi estetikov. Ozdobu skúmal ako <strong>spoločenský jav</strong> — nástroj, ktorým sa ľudia odpradávna prezentujú a komunikujú. Kmeňové ozdoby označovali postavenie, vek či príslušnosť k skupine. Kráľovské klenoty deklarovali moc, ktorú by inak bolo treba dokazovať slovami alebo silou. A dnešná jemná retiazka na krku, hoci nesie úplne iný jazyk než zlatá koruna, robí v princípe to isté — hovorí niečo o tom, kto sme, alebo kým sa chceme v danej chvíli stať.</p>
+      <p>Zdobiť sa teda neznamená len „vyzerať pekne". Znamená to povedať: <em>toto som ja, takto sa chcem vidieť, a takto ma vidia ostatní.</em> Šperk je jedným z mála predmetov, ktoré dokážu túto správu odovzdať bez jediného slova — a napriek tomu úplne jasne.</p>
+
+      <div class="tip">
+        <strong>Tip SELÉNÉ</strong>
+        Skôr než siahnete po šperku ráno, položte si Simmelovu otázku naopak: nie „čo sa hodí k outfitu", ale „čo dnes chcem, aby o mne hovorilo". Odpoveď sa mení deň čo deň — a práve preto sa oplatí mať v šperkovnici viac než jeden hlas.
+      </div>
+
+      <h2>Mesiac a slnko — dva hlasy jednej identity</h2>
+      <p>Simmelova filozofia nám dáva jazyk, ktorým vieme pomenovať, prečo je dualita mesiaca a slnka takým prirodzeným základom značky SELÉNÉ. Ak je šperk skutočne tichou rečou o tom, kým chceme byť, potom je celkom prirodzené, že táto reč nemá len jednu polohu. <strong>Mesiac</strong> — striebro, chlad, ticho, introspektívna, nočná žiara — hovorí niečo iné než <strong>slnko</strong> — zlato, energia, extroverzia, jasné denné svetlo. Oba tóny sú súčasťou tej istej osoby, len sa striedajú podľa dňa, nálady a chvíle.</p>
+      <p>Šperky SELÉNÉ preto vedome nesú oba póly tejto dvojice. Nie sú tu na to, aby vás definovali raz a navždy jedným kovom, jedným tónom, jedným posolstvom. Sú tu na to, aby ste si každé ráno mohli vybrať, <strong>ktorú časť seba dnes ukážete svetu</strong> — introvertný, tichý lesk mesiaca, alebo otvorenú, žiarivú energiu slnka. V tomto zmysle je šperk skutočne spoločníkom identity, nie len dekoráciou navrch outfitu.</p>
+      <p>Ak vás táto myšlienka zaujala, dobrým ďalším krokom je pozrieť sa na to, ako viacero hlasov skladať dokopy — teda ako nosiť viac šperkov naraz, aby spolu tvorili jednu súvislú vetu, nie chaos. Venuje sa tomu náš článok <a href="#" onclick="showPost('layering');return false">Umenie vrstvenia — ako nosiť viac šperkov naraz bez chaosu</a>, ktorý na Simmelovu myšlienku nadväzuje z praktickej stránky.</p>
+
+      <h2>Záver</h2>
+      <p>Georg Simmel písal o ozdobe v čase, keď o sociológii šperku takmer nikto neuvažoval — a predsa dodnes presne pomenúva to, čo cítime, keď si niečo obliekame na seba s úmyslom, nie len z návyku. Šperk nás nezaťažuje, ale povyšuje. Nehovorí len k nám, ale k ostatným, a ich pohľad nám ho vracia späť ako pocit vlastnej hodnoty. A práve preto stojí za to vyberať si ho vedome — nielen podľa toho, čo sa momentálne nosí, ale podľa toho, čo chcete, aby o vás hovoril. Inšpiráciu, ktorý hlas — mesačný alebo slnečný — si dnes vyberiete, nájdete v celom <a href="selene_cd_katalog.html?cat=all">katalógu SELÉNÉ</a>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ POST: Homo symbolicus (Cassirer) ============ -->
+<div class="post-wrap" id="post-cassirer">
+  <div class="wrap">
+    <button class="post-back" onclick="showList()">← Späť na blog</button>
+    <div class="eyebrow">Štýl &amp; inšpirácia</div>
+    <h1>Homo symbolicus — prečo ľudia nosia šperky (Ernst Cassirer)</h1>
+    <div class="post-meta">26. augusta 2026 · 6 min čítania · Michal E.</div>
+    <div class="post-hero"><img src="../img/ring2.jpg" alt="Homo symbolicus — prečo nosíme šperky"></div>
+    <div class="post-body">
+      <p>Zviera sa nezdobí. Pes si na krk nedáva obojok preto, že by mu niečo hovoril o jeho identite, a vták si pierko nevyberá podľa toho, čo by ním chcel iným vtákom „povedať". Zdobenie je vec, ktorú robí — pokiaľ vieme — len jeden druh na tejto planéte. A práve táto jednoduchá pozorovacia otázka stála pri zrode jednej z najvplyvnejších filozofických odpovedí na to, čím je vlastne človek.</p>
+
+      <p>Nemecký filozof <strong>Ernst Cassirer</strong> ju sformuloval v roku 1944 v knihe <strong>„Esej o človeku"</strong>, ktorú napísal krátko pred svojou smrťou ako akýsi filozofický testament. Namiesto starých definícií — človek ako „rozumné zviera" alebo „politické zviera" — navrhol novú: človek je <strong>animal symbolicum</strong>, symbolické zviera. Nie preto, že by mal rozum a iné zvieratá nie, ale preto, že medzi seba a svet vkladá čosi, čo žiadne iné zviera nevkladá — sieť <strong>symbolov</strong>.</p>
+
+      <h2>Zviera, ktoré si vytvára vlastný svet</h2>
+      <p>Zvieratá reagujú na svet priamo — na hlad, na nebezpečenstvo, na teplo a chlad. Človek medzi tento fyzický svet a seba samého stavia druhý svet, ktorý Cassirer nazýva <strong>symbolickým vesmírom</strong>. Nežijeme len medzi vecami, žijeme aj medzi <em>významami</em> vecí. Jazyk, mýtus, náboženstvo a umenie nie sú podľa Cassirera len „výtvory" ľudskej mysle — sú to <strong>symbolické formy</strong>, cez ktoré si človek vôbec dokáže usporiadať a pochopiť skúsenosť. Bez jazyka by sme nemysleli v pojmoch. Bez mýtu by sme neusporiadali chaos sveta do príbehu. Bez umenia by sme nevedeli premeniť pocit na tvar, ktorý prežije dlhšie než chvíľa, v ktorej vznikol.</p>
+
+      <blockquote>„Namiesto toho, aby sme definovali človeka ako animal rationale, mali by sme ho definovať ako animal symbolicum."</blockquote>
+
+      <p>Táto schopnosť nie je okrajová vlastnosť — je to podľa Cassirera to, čo človeka najvýstižnejšie odlišuje od zvyšku prírody. A práve tu sa otvára miesto pre šperk, ktorý sa na prvý pohľad medzi „veľké" symbolické formy ako jazyk či náboženstvo možno ani nezmestí. A predsa robí presne to isté, len v miniatúre — nesie význam, ktorý presahuje svoj fyzický tvar.</p>
+
+      <h2>Šperk ako symbolická forma</h2>
+      <p>Archeologické nálezy datujú najstaršie šperky — navlečené mušle s vyvŕtanými otvormi — do obdobia viac než sto tisíc rokov dozadu. Prehistorický človek si na telo vešal zuby zvierat, farebné kamene, kosti. Tieto predmety nemali žiadnu úžitkovú hodnotu v zmysle prežitia — nezahrievali, nekŕmili, nechránili pred predátorom o nič lepšie než ich absencia. A predsa sa nachádzajú v hroboch naprieč kontinentmi a tisícročiami, čo znamená jediné: mali hodnotu, ktorá nebola fyzická, ale <strong>symbolická</strong>. Označovali príslušnosť ku skupine, dosiahnutý vek, spoločenské postavenie, alebo boli súčasťou rituálu, ktorý mal jedinca sprevádzať aj na druhú stranu.</p>
+
+      <p>V Cassirerovej logike je to presne ten okamih, keď sa človek stáva človekom — keď obyčajný predmet prestáva byť len predmetom a stáva sa <em>nositeľom významu</em>. Šperk je v tomto zmysle jedna z najstarších a najtrvalejších symbolických foriem, aké ľudstvo pozná. Prežil pád ríš, zmeny náboženstiev aj technológií, a stále robí to isté, čo pred sto tisíc rokmi — necháva nás niesť na tele niečo, čo je väčšie než materiál, z ktorého je vyrobené.</p>
+
+      <h2>Mesiac a slnko — symboly, ktoré prežili tisícročia</h2>
+      <p>Ak sú symbolické formy podľa Cassirera spôsobom, akým si ľudstvo vytvára spoločný jazyk významov, len málo symbolov je v tomto jazyku tak univerzálnych ako <strong>mesiac a slnko</strong>. Naprieč kultúrami, ktoré sa nikdy nestretli — od starovekého Egypta cez mezoamerické civilizácie až po slovanské mýty — sa mesiac spája s časom, cyklom, tichom a ženským princípom, zatiaľ čo slnko so životom, energiou a mužským princípom. Nie je to náhoda, ale dôkaz toho, čo Cassirer tvrdil o mytologickom myslení: je to univerzálna symbolická forma, cez ktorú si ľudstvo nezávisle na sebe usporadúva rovnaké skúsenosti — striedanie dňa a noci, svetla a tmy, aktivity a pokoja.</p>
+
+      <p>Práve v tomto zmysle je šperk SELÉNÉ symbolickou formou v presnom Cassirerovom význame slova. Nositeľka si naň nevešia len striebro alebo zlato — vešia si naň jeden z najstarších symbolických párov ľudských dejín. Túto myšlienku sme z inej strany — sociologickej — rozobrali aj v článku <a href="#" onclick="showPost('simmel');return false">Filozofia šperku — čo o nás hovoria šperky</a>, kde Georg Simmel vysvetľuje, prečo nás šperk v očiach druhých povyšuje. Cassirer dodáva doplňujúcu vrstvu: povyšuje nás preto, lebo nesie význam, ktorý sme si ako ľudský druh vytvárali tisícročia.</p>
+
+      <div class="tip">
+        <strong>Tip SELÉNÉ</strong>
+        Skôr než si nabudúce vyberiete šperk s mesiacom alebo slnkom, skúste si uvedomiť, že nesiahate len po ozdobe — siahate po symbole, ktorý používali ľudia stovky generácií pred vami. To je dôvod, prečo takéto motívy nikdy nevyjdú z módy.
+      </div>
+
+      <h2>Záver</h2>
+      <p>Ernst Cassirer nám nedal návod, ako sa obliekať — dal nám spôsob, ako rozumieť tomu, prečo sa vôbec zdobíme. Človek je zviera, ktoré nedokáže žiť len vo fyzickom svete — potrebuje svet významov, príbehov a symbolov, ktorý si sám vytvára a odovzdáva ďalej. Šperk je jednou z najstarších a najtrvácnejších foriem, akými to robíme. Ak hľadáte kúsok, ktorý nesie viac než len svoj tvar, pozrite si celý <a href="selene_cd_katalog.html?cat=all">katalóg SELÉNÉ</a>, kde mesačné aj slnečné motívy nájdete naprieč celou kolekciou.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ POST: Geschichte SELÉNÉ ============ -->
+<div class="post-wrap" id="post-pribeh">
+  <div class="wrap">
+    <button class="post-back" onclick="showList()">← Späť na blog</button>
+    <div class="eyebrow">Štýl &amp; inšpirácia</div>
+    <h1>Geschichte SELÉNÉ — prečo práve mesiac a slnko</h1>
+    <div class="post-meta">26. augusta 2026 · 5 min čítania · Michal E.</div>
+    <div class="post-hero"><img src="../img/editorial/editorial_neck_3.jpg" alt="Geschichte SELÉNÉ"></div>
+    <div class="post-body">
+      <p>Vorname šperkového ateliéru zvyčajne niečo prezradí o tom, čo od neho môžete čakať. Pri SELÉNÉ to platí doslova — meno je totiž priamou citáciou gréckej mytológie. <strong>Seléné</strong> je bohyňa mesiaca, ktorá podľa starých Grékov každú noc prechádza po oblohe v striebornom voze, ťahanom bielymi koňmi alebo volmi, a rozlieva po zemi jemné, chladné svetlo. Nie je to bohyňa, ktorá by chcela oslniť — jej svetlo je tiché, odrazené, no práve preto nezameniteľné.</p>
+
+      <p>Seléné pritom nie je sama. Má brata — <strong>Hélia</strong>, boha slnka, ktorý po oblohe prechádza cez deň vo svojom ohnivom voze a prináša svetlo, teplo a energiu. Súrodenecká dvojica mesiaca a slnka, noci a dňa, striebra a zlata, je presne tým obrazom, z ktorého sa zrodil celý dizajnový jazyk značky. Viac o tom, ako táto mytológia formovala značku od základov, nájdete na stránke <a href="selene_cd_pribeh.html">Unsere Geschichte</a>.</p>
+
+      <blockquote>„Kým Seléné vládne nočnej oblohe striebrom, Hélios cez deň zalieva svet zlatom. Jedna bohyňa, jeden boh, jedno nebo — dve svetlá."</blockquote>
+
+      <h2>Prečo práve mesiac a slnko</h2>
+      <p>Nešlo o náhodný výber peknej metafory. Dualita mesiaca a slnka je pre šperkársku značku prakticky ideálnym základom — pretože presne kopíruje to, ako reálne fungujú kovy, z ktorých šperky vznikajú. <strong>Mesiac patrí striebru.</strong> Rhodiované striebro 925 má chladný, tichý lesk, ktorý pripomína mesačný svit na vode — jemný, trochu introspektívny, nikdy nekričí. Je to farba nocí, kedy chcete pôsobiť sústredene, elegantne, bez zbytočného hluku.</p>
+      <p><strong>Sonne patrí zlatu.</strong> Vergoldetes Silber 925 nesie teplú, žiarivú farbu, ktorá pripomína slnečné svetlo dopadajúce na kožu za jasného dňa. Je to farba energie, sebavedomia, dní, keď chcete byť viditeľná a chcete, aby sa svetlo od vás odrážalo, nie len prijímalo.</p>
+      <p>Dve svetlá, dve nálady, jedna značka — to je princíp, ktorý sa v SELÉNÉ opakuje naprieč celou kolekciou. Nejde o to vybrať si raz navždy, či ste „strieborný" alebo „zlatý" typ. Ide o to mať k dispozícii oba jazyky a použiť ten, ktorý sedí danému dňu.</p>
+
+      <h2>Žena nie je len jedna vec</h2>
+      <p>Práve v tomto bode sa mytológia stretáva s niečím veľmi praktickým a ľudským. Žena — rovnako ako obloha — nie je jedna nemenná vec. Niekedy je tichá, sústredená, potrebuje si vystačiť sama so sebou — presne ako mesačný svit, ktorý neosvetľuje násilne, len jemne obkresľuje kontúry. Inokedy je žiarivá, extrovertná, plná energie, ktorú chce rozdávať ďalej — presne ako slnko uprostred dňa.</p>
+      <p>SELÉNÉ nevyžaduje, aby ste si vybrali jednu tvár a pri nej ostali. Ponúka obe — podľa nálady, príležitosti, ročného obdobia či jednoducho toho, ako sa dnes cítite. Táto myšlienka nie je len poetická skratka — rozoberáme ju hlbšie aj z pohľadu filozofie šperku v článku <a href="#" onclick="showPost('simmel');return false">Filozofia šperku — čo o nás hovoria šperky</a>, kde sociológ Georg Simmel vysvetľuje, prečo šperk vôbec dokáže niesť takú správu o tom, kým sme.</p>
+
+      <div class="tip">
+        <strong>Tip SELÉNÉ</strong>
+        Ak neviete, ktorý kov si vybrať, nevyberajte — doplňte si šperkovnicu o oba. Rhodiované striebro na tiché, sústredené dni, pozlátené striebro na dni, keď chcete žiariť. Mesiac a slnko sa navzájom nevylučujú, dopĺňajú sa.
+      </div>
+
+      <h2>Remeslo a materiály, ktoré stoja za mytológiou</h2>
+      <p>Krásny príbeh by bol prázdny, keby za ním nestáli kvalitné materiály. Šperky SELÉNÉ sú navrhované v Bratislave pre nositeľky na Slovensku, v Česku a v Maďarsku, a stoja na overenej trojici materiálov: <strong>striebro 925</strong> ako základ, <strong>galvanické pozlátenie</strong> tam, kde chceme teplý, slnečný tón, a <strong>rhodiovanie</strong> tam, kde chceme chladný, mesačný lesk, ktorý navyše chráni striebro pred tmavnutím. Pre šperky na každodenné nosenie bez sundávania siahame aj po <strong>chirurgickej oceli</strong> — materiáli, ktorý je mimoriadne odolný a zároveň hypoalergénny.</p>
+      <p>Alle tri materiály sú zvolené s ohľadom na citlivejšiu pokožku — bez zbytočného obsahu niklu, ktorý najčastejšie spôsobuje podráždenie. Rozdiely medzi nimi, aj to, ktorý sa hodí na aký typ nosenia, podrobne rozoberáme v článku <a href="#" onclick="showPost('striebro');return false">Sterlingsilber 925 vs. chirurgická oceľ — čo zvoliť?</a>.</p>
+
+      <h2>Záver</h2>
+      <p>Vorname SELÉNÉ nie je len ozdobný nápis na krabičke — je to program. Pripomienka, že svetlo má dve podoby a obe sú rovnako hodnotné: tiché aj žiarivé, nočné aj denné, strieborné aj zlaté. Ak vás tento príbeh oslovil, najprirodzenejším ďalším krokom je pozrieť si, ako sa premieta do konkrétnych kúskov — celú ponuku mesačných aj slnečných šperkov nájdete v <a href="selene_cd_katalog.html?cat=all">katalógu SELÉNÉ</a>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Newsletter -->
+<div class="blog-news">
+  <div class="eyebrow">Newsletter</div>
+  <h2>Nové články priamo do schránky</h2>
+  <p>Každý mesiac jeden pekný mail — bez spamu, len to, čo stojí za prečítanie.</p>
+  <form onsubmit="return false">
+    <input type="email" placeholder="Váš e-mail" aria-label="E-Mail">
+    <button type="submit">Prihlásiť</button>
+  </form>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="logo-txt">SELÉNÉ</div>
+      <p>Šperk, ktorý nosí svetlo dňa aj ticho noci. Sonne pre zlato, mesiac pre striebro.</p>
+    </div>
+    <div class="foot">
+      <h4>Shop</h4>
+      <a href="selene_kategorie.html">Ohrringe</a>
+      <a href="selene_kategorie.html">Halsketten</a>
+      <a href="selene_kategorie.html">Ringe</a>
+      <a href="selene_kategorie.html">Armbänder</a>
+      <a href="selene_cd_giftguide.html">Geschenkführer</a>
+    </div>
+    <div class="foot">
+      <h4>Blog</h4>
+      <a href="#">Štýl &amp; inšpirácia</a>
+      <a href="#">Starostlivosť</a>
+      <a href="#">Materialy</a>
+      <a href="selene_cd_giftguide.html">Geschenke</a>
+    </div>
+    <div class="foot">
+      <h4>Marke</h4>
+      <a href="selene_cd_pribeh.html">Unsere Geschichte</a>
+    </div>
+    <div class="foot">
+      <h4>Kontakt</h4>
+      <a href="mailto:ahoj@selene.sk">ahoj@selene.sk</a>
+      <a href="#">Časté otázky</a>
+      <a href="selene_pravne.html">AGB</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 SELÉNÉ · Wil, s.r.o.</span>
+    <span>Ein Mond für Silber. Sonne für Gold. 🌙</span>
+  </div>
+</footer>
+
+<!-- Mobile menu -->
+<div class="mmenu" id="mmenu">
+  <button class="close" onclick="document.getElementById('mmenu').classList.remove('open')">✕</button>
+  <a href="selene_kategorie.html#nausnice">Ohrringe</a>
+  <a href="selene_kategorie.html#nahrdelniky">Halsketten</a>
+  <a href="selene_kategorie.html#prstene">Ringe</a>
+  <a href="selene_kategorie.html#naramy">Armbänder</a>
+  <a href="selene_cd_giftguide.html">Geschenke</a>
+  <a href="selene_blog.html">Blog</a>
+</div>
+
+<script>
+var currentFilter = 'vsetko';
+
+function setFilter(btn, cat){
+  currentFilter = cat;
+  document.querySelectorAll('.filter-bar button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#grid .card').forEach(c=>{
+    c.style.display = (cat==='vsetko' || c.dataset.cat===cat) ? '' : 'none';
+  });
+  // featured spans full width only when visible
+  const feat = document.querySelector('.card.featured');
+  if(feat) feat.style.gridColumn = feat.style.display==='' ? '1/-1' : '';
+}
+
+function showPost(id){
+  document.getElementById('blogList').style.display='none';
+  document.querySelectorAll('.post-wrap').forEach(p=>p.classList.remove('show'));
+  const p = document.getElementById('post-'+id);
+  if(p){ p.classList.add('show'); window.scrollTo({top:0,behavior:'smooth'}); }
+}
+
+function showList(){
+  document.getElementById('blogList').style.display='';
+  document.querySelectorAll('.post-wrap').forEach(p=>p.classList.remove('show'));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
