@@ -600,6 +600,9 @@
     .footer-top{grid-template-columns:1fr 1fr;gap:40px 20px;}
   }
   @media (max-width:860px){
+    .header-inner{position:relative;}
+    .logo-block{position:absolute;left:50%;transform:translateX(-50%);z-index:5;}
+    .icons{position:relative;z-index:6;margin-left:auto;}
     .nav-right-links{display:none;}
     .nav-left{display:none;}
     .burger{display:flex;}
@@ -669,7 +672,6 @@
         <a href="selene_blog.html">Blog</a>
       </nav>
       <div class="icons">
-        <a href="de/index.html" style="font-size:12px;letter-spacing:.1em;color:#8F7245;text-decoration:none;border-bottom:1px solid rgba(143,114,69,.4);padding-bottom:2px;" title="Deutsche Version">DE</a>
         <button aria-label="Hľadať">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
         </button>
