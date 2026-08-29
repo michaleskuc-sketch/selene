@@ -104,9 +104,11 @@
   .qty-spin button:hover{background:var(--pearl);}
   .qty-spin span{width:40px;text-align:center;font-size:14px;}
   .qty-add-row .btn-primary{flex:1;height:56px;}
-  .p-wishlist{display:flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:.06em;color:#5c564c;margin-bottom:36px;}
-  .p-wishlist svg{width:17px;height:17px;color:var(--gold-deep);}
+  .p-wishlist{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#948b7d;margin-bottom:36px;background:none;border:none;cursor:pointer;padding:0;font-family:inherit;}
+  .p-wishlist svg{width:16px;height:16px;stroke:var(--gold);transition:fill .2s;}
   .p-wishlist:hover{color:var(--ink);}
+  .p-wishlist:hover svg{fill:var(--gold);}
+  .p-wishlist.active svg{fill:var(--gold);stroke:var(--gold);}
 
   .accordions{border-top:1px solid rgba(43,39,35,.12);}
   .acc{border-bottom:1px solid rgba(43,39,35,.12);}
