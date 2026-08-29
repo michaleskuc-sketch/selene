@@ -1159,7 +1159,7 @@
   }
   function render(){
     var k=phase(),el=document.getElementById('mwMoon');if(!el)return;
-    el.innerHTML=stars()+'<g transform="translate(0,15)"><circle cx="60" cy="60" r="44" fill="#17171b"/><path d="'+moonPath(k)+'" fill="#f2ecdf"/><circle cx="60" cy="60" r="43" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/></g>';
+    el.innerHTML=stars()+'<g transform="translate(0,15)"><circle cx="60" cy="60" r="44" fill="#17171b"/><path d="'+moonPath(k)+'" fill="#f2ecdf"/><circle cx="60" cy="60" r="43" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="2.5"/></g>';
     var pn=document.getElementById('mwPhaseName'),pp=document.getElementById('mwPhasePct'),ps=document.getElementById('mwPhaseSub');
     var il=Math.round((1-Math.cos(2*Math.PI*k))/2*100);
     if(pn)pn.textContent=pName(k);if(pp)pp.textContent='· '+il+' %';if(ps)ps.textContent=(k<.06||k>.94)?'mesiac':'osvetlený';
