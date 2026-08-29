@@ -78,7 +78,7 @@
   .icons button:hover,.icons a:hover{color:var(--gold-deep);}
   .icons svg{width:19px;height:19px;}
   .icon-badge{position:absolute;top:-7px;right:-9px;background:var(--gold-deep);color:var(--ivory);font-size:9px;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:500;}
-  .burger{display:none;order:-1;}
+  .burger{display:none;order:-1;background:none;border:none;cursor:pointer;color:var(--ink);padding:0;line-height:1;}
 
   /* Breadcrumb */
   .breadcrumb{padding:18px 0;font-size:12px;letter-spacing:.04em;color:#8a8274;}
@@ -219,7 +219,7 @@
 
 <header>
   <div class="header-inner">
-    <button class="burger" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.add('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    <button class="burger" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.add('open')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--ink)"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
     <nav class="nav-left">
       <a href="selene_cd_katalog.html?cat=nausnice" data-cat="nausnice">Náušnice</a>
       <a href="selene_cd_katalog.html?cat=nahrdelniky" data-cat="nahrdelniky">Náhrdelníky</a>

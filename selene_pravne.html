@@ -153,7 +153,7 @@
   }
   .icons button:hover, .icons a:hover{color:var(--gold-deep);}
   .icons svg{width:19px;height:19px;}
-  .burger{display:none;order:-1;}
+  .burger{display:none;order:-1;background:none;border:none;cursor:pointer;color:var(--ink);padding:0;line-height:1;}
 
   /* ---------- Astro deliaci prvok ---------- */
   .div-astro{display:flex;align-items:center;justify-content:center;gap:14px;max-width:320px;margin:0 auto;padding:clamp(24px,3.5vw,44px) 0}
@@ -394,7 +394,7 @@
   /* ---------- Responsive ---------- */
   @media (max-width:860px){
     .nav-left{display:none;}
-    .burger{display:flex;}
+    .burger{display:flex;align-items:center;color:var(--ink);}
     .header-inner{grid-template-columns:auto 1fr auto;}
     .legal-hero{padding:64px 0 44px;}
     .legal-section{padding:64px 0 20px;}
@@ -422,7 +422,7 @@
 <header>
   <div class="header-inner">
     <button class="burger" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.add('open')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--ink)"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
     <nav class="nav-left">
       <a href="selene_cd_giftguide.html">Darčeky</a>
