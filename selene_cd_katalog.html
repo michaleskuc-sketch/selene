@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
 <meta charset="UTF-8">
@@ -644,9 +647,17 @@
   if(state.coll.length){
     document.querySelectorAll('.coll-check').forEach(function(c){ if(state.coll.indexOf(c.value) > -1) c.checked = true; });
   }
-  buildMatChecks();
-  updateCartBadge();
-  render();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      buildMatChecks();
+      updateCartBadge();
+      render();
+    });
+  } else {
+    buildMatChecks();
+    updateCartBadge();
+    render();
+  }
 
   var header = document.querySelector('header');
   window.addEventListener('scroll', function(){
