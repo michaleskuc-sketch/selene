@@ -445,7 +445,7 @@
   };
   var CATS = {
     'nausnice':    'Náušnice',
-    'nahrdelniky': 'Náhrelníky',
+    'nahrdelniky': 'Náhrdelníky',
     'prstene':     'Prstene',
     'naramky':     'Náramky',
     'anklety':     'Retiazky na nohu',
@@ -488,7 +488,8 @@
     var order = ['all','nausnice','nahrdelniky','prstene','naramky','anklety','piercing','privesok'];
     order.forEach(function(key){
       var count = key === 'all' ? PRODUCTS.length : PRODUCTS.filter(function(p){ return p.t === key; }).length;
-      var label = key === 'all' ? 'Všetky' : CATS[key];
+      var label = key === 'all' ? 'Všetky' : (CATS[key] || null);
+      if(!label) return;
       html += '<div class="chip'+(state.cat===key?' active':'')+'" data-cat="'+key+'"><span>'+label+'</span><span class="n">'+count+'</span></div>';
     });
     wrap.innerHTML = html;
