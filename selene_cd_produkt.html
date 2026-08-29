@@ -320,6 +320,7 @@
       <div class="p-info">
         <span class="p-coll-badge" id="pColl">Sun Gold</span>
         <h1 id="pName">Názov produktu</h1>
+        <p id="pSku" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#b8af9e;margin:4px 0 12px;font-family:'Jost',sans-serif;"></p>
         <div class="p-rating">
           <span class="stars">★★★★★</span>
           <span class="num">4.9 · <span id="pReviews">128</span> hodnotení</span>
@@ -490,6 +491,7 @@
 
     document.getElementById('pColl').textContent = COLLS[product.k];
     document.getElementById('pName').textContent = product.n;
+    var _sku=document.getElementById('pSku'); if(_sku) _sku.textContent = product.sku ? 'SKU: '+product.sku : '';
     document.getElementById('pPrice').textContent = product.c + ' €';
     document.getElementById('pDesc').textContent = buildDesc(product);
     document.getElementById('pMatNote').textContent = MATS[product.m] + (product.pl !== 'bez' ? ' · ' + PLATS[product.pl] + ' pokovenie' : '');
