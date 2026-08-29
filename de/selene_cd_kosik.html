@@ -128,7 +128,7 @@
   @media (max-width:860px){
     .header-inner{display:flex;justify-content:space-between;align-items:center;}
     .logo-block{position:absolute;left:50%;transform:translateX(-50%);z-index:5;pointer-events:auto;}
-    .nav-right{display:none;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
     .nav-right-links{display:none;}
     .icons{gap:14px;z-index:6;}
     .nav-left{display:none;}
@@ -167,6 +167,7 @@
 
 <header>
   <div class="header-inner">
+    <button class="burger" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.add('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
     <nav class="nav-left">
       <a href="selene_cd_katalog.html?cat=nausnice">Ohrringe</a>
       <a href="selene_cd_katalog.html?cat=nahrdelniky">Halsketten</a>
@@ -200,7 +201,6 @@
         </div>
         <button aria-label="Účet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></button>
         <a href="selene_cd_kosik.html" aria-label="Warenkorb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h12l-1.2 11.2a1 1 0 0 1-1 .8H8.2a1 1 0 0 1-1-.8L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="icon-badge" id="cartCount">0</span></a>
-        <button class="burger" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.add('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
       </div>
     </div>
   </div>
