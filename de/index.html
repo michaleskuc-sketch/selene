@@ -600,6 +600,7 @@
     .footer-top{grid-template-columns:1fr 1fr;gap:40px 20px;}
   }
   @media (max-width:860px){
+    .nav-right-links{display:none;}
     .nav-left{display:none;}
     .burger{display:flex;}
     .header-inner{grid-template-columns:auto 1fr auto;}
@@ -614,6 +615,8 @@
     .section{padding:70px 0;}
   }
   @media (max-width:600px){
+    .icons{gap:14px;}
+    .icons svg{width:17px;height:17px;}
     .cat-grid, .prod-grid{grid-template-columns:1fr 1fr;gap:14px;}
     .container{padding:0 18px;}
     .perks .container{grid-template-columns:1fr;}
@@ -661,7 +664,7 @@
     </a>
 
     <div class="nav-right">
-      <nav class="nav-left" style="display:flex;">
+      <nav class="nav-right-links">
         <a href="selene_cd_giftguide.html">Geschenke</a>
         <a href="../selene_blog.html">Blog</a>
       </nav>
