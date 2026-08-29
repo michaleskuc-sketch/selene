@@ -153,6 +153,7 @@
   }
   .icons button:hover, .icons a:hover{color:var(--gold-deep);}
   .icons svg{width:19px;height:19px;}
+  .wish-left{display:none;}
   .burger{display:none;order:-1;background:none;border:none;cursor:pointer;color:var(--ink);padding:0;line-height:1;}
 
   /* ---------- Astro deliaci prvok ---------- */
@@ -395,6 +396,7 @@
   @media (max-width:860px){
     .nav-left{display:none;}
     .burger{display:flex;align-items:center;color:var(--ink);}
+    .wish-left{display:flex;align-items:center;}
     .header-inner{grid-template-columns:auto 1fr auto;}
     .legal-hero{padding:64px 0 44px;}
     .legal-section{padding:64px 0 20px;}
@@ -440,10 +442,6 @@
 
     <div class="nav-right">
       <div class="icons">
-        <button aria-label="Wishlist" id="wishlistBtn" onclick="location.href='wishlist.html'" style="position:relative">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          <span class="icon-badge" id="wishCount" style="display:none">0</span>
-        </button>
         <a href="selene_cd_kosik.html" aria-label="Košík">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h12l-1.2 11.2a1 1 0 0 1-1 .8H8.2a1 1 0 0 1-1-.8L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
         </a>
