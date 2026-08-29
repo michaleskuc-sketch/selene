@@ -909,7 +909,7 @@ function addCart(){cart++;document.querySelector('.cart .count').textContent=car
 /* SELÉNÉ — Živé nebo (moon phase widget) */
 (function(){
   function phase(){var jd=Date.now()/86400000+2440587.5;var d=(jd-2451550.1)%29.53058867;if(d<0)d+=29.53058867;return d/29.53058867;}
-  var PH=[['Nov',0,.06],['Dorastajúci kosáčik',.06,.19],['Prvá štvrť',.19,.31],['Dorastajúci mesiac',.31,.44],['Spln',.44,.56],['Zubujúci mesiac',.56,.69],['Posledná štvrť',.69,.81],['Zubujúci kosáčik',.81,.94],['Nov',.94,1.01]];
+  var PH=[['Nov',0,.06],['Pribúdajúci kosáčik',.06,.19],['Prvá štvrť',.19,.31],['Pribúdajúci mesiac',.31,.44],['Spln',.44,.56],['Ubúdajúci mesiac',.56,.69],['Posledná štvrť',.69,.81],['Ubúdajúci kosáčik',.81,.94],['Nov',.94,1.01]];
   function pName(k){for(var i=0;i<PH.length;i++){if(k>=PH[i][1]&&k<PH[i][2])return PH[i][0];}return 'Nov';}
   function moonPath(k){
     var r=44,cx=60,cy=60,n=26,pts=[],i,y,t,xb,xe;
@@ -926,7 +926,7 @@ function addCart(){cart++;document.querySelector('.cart .count').textContent=car
   }
   function render(){
     var k=phase(),el=document.getElementById('mwMoon');if(!el)return;
-    el.innerHTML=stars()+'<g transform="translate(0,15)"><circle cx="60" cy="60" r="44" fill="#17171b"/><path d="'+moonPath(k)+'" fill="#f2ecdf"/><circle cx="60" cy="60" r="43" fill="none" stroke="rgba(255,255,255,.14)" stroke-width=".8"/></g>';
+    el.innerHTML=stars()+'<g transform="translate(0,15)"><circle cx="60" cy="60" r="44" fill="#17171b"/><path d="'+moonPath(k)+'" fill="#f2ecdf"/><circle cx="60" cy="60" r="43" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.2"/></g>';
     var pn=document.getElementById('mwPhaseName'),pp=document.getElementById('mwPhasePct'),ps=document.getElementById('mwPhaseSub');
     var il=Math.round((1-Math.cos(2*Math.PI*k))/2*100);
     if(pn)pn.textContent=pName(k);if(pp)pp.textContent='· '+il+' %';if(ps)ps.textContent=(k<.06||k>.94)?'mesiac':'osvetlený';
