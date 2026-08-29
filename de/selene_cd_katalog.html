@@ -78,7 +78,7 @@
   .icons button:hover,.icons a:hover{color:var(--gold-deep);}
   .icons svg{width:19px;height:19px;}
   .icon-badge{position:absolute;top:-7px;right:-9px;background:var(--gold-deep);color:var(--ivory);font-size:9px;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:500;}
-  .burger{display:none;}
+  .burger{display:none;order:-1;}
 
   /* Breadcrumb */
   .breadcrumb{padding:18px 0;font-size:12px;letter-spacing:.04em;color:#8a8274;}
@@ -184,10 +184,11 @@
     .shop-layout{grid-template-columns:220px 1fr;gap:34px;}
   }
   @media (max-width:860px){
-    .header-inner{position:relative;}
-    .logo-block{position:absolute;left:50%;transform:translateX(-50%);z-index:5;}
-    .icons{position:relative;z-index:6;margin-left:auto;}
+    .header-inner{display:flex;justify-content:space-between;align-items:center;}
+    .logo-block{position:absolute;left:50%;transform:translateX(-50%);z-index:5;pointer-events:auto;}
+    .nav-right{display:none;}
     .nav-right-links{display:none;}
+    .icons{gap:14px;z-index:6;}
     .nav-left{display:none;}
     .burger{display:flex;}
     .header-inner{grid-template-columns:auto 1fr auto;}
