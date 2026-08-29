@@ -721,9 +721,11 @@
         <a href="selene_blog.html">Blog</a>
       </nav>
       <div class="icons">
-        <button aria-label="Hľadať">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
-        </button>
+        <div class="hdr-search" id="hdrSearch">
+          <input type="text" id="hdrSearchInput" class="hdr-search-input" placeholder="Hľadať šperky…" aria-label="Hľadať" autocomplete="off">
+          <div class="hdr-search-suggest" id="hdrSuggest"></div>
+          <button aria-label="Hľadať" id="headerSearchBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg></button>
+        </div>
         <button aria-label="Účet">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
         </button>
