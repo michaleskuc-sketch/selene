@@ -647,17 +647,9 @@
   if(state.coll.length){
     document.querySelectorAll('.coll-check').forEach(function(c){ if(state.coll.indexOf(c.value) > -1) c.checked = true; });
   }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-      buildMatChecks();
-      updateCartBadge();
-      render();
-    });
-  } else {
-    buildMatChecks();
-    updateCartBadge();
-    render();
-  }
+  buildMatChecks();
+  updateCartBadge();
+  render();
 
   var header = document.querySelector('header');
   window.addEventListener('scroll', function(){
@@ -672,6 +664,23 @@
     if(w.length){ wc.textContent = w.length; wc.style.display = ''; }
   })();
 
+</script>
+<script>
+  // Fallback: ak render() nezaberazil pri load, skus znova
+  (function(){
+    var tries = 0;
+    function tryRender(){
+      var g = document.getElementById('prodGrid');
+      if(g && g.children.length === 0 && typeof render === 'function') {
+        render();
+      }
+      if(g && g.children.length === 0 && tries < 5) {
+        tries++;
+        setTimeout(tryRender, 300);
+      }
+    }
+    setTimeout(tryRender, 100);
+  })();
 </script>
 </body>
 </html>
