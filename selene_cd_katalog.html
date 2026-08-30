@@ -541,7 +541,7 @@
     var swap = (p.gal && p.gal[1]) ? p.gal[1] : (CAT_MODEL_IMG[p.t] || p.img);
     return '' +
       '<div class="prod-card reveal in">' +
-        '<a href="selene_cd_produkt.html?id='+p.id+'" class="prod-img-link">' +
+        '<a href="selene_cd_produkt.html?sku='+p.sku+'" class="prod-img-link">' +
           '<div class="prod-img">'+tag+'<button class="wish-btn" data-id="'+p.id+'" onclick="toggleWish('+p.id+',this)" aria-label="Wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>'+
 
             '<img src="'+p.img+'" alt="'+p.n+'">' +
@@ -551,7 +551,7 @@
         '<div class="prod-info">' +
           '<div class="p-cat">'+COLLS[p.k]+'</div>' +
           (p.sku ? '<div class="p-sku">SKU: '+p.sku+'</div>' : '') +
-          '<a href="selene_cd_produkt.html?id='+p.id+'"><h3>'+p.n+'</h3></a>' +
+          '<a href="selene_cd_produkt.html?sku='+p.sku+'"><h3>'+p.n+'</h3></a>' +
           '<div class="price">'+p.c+' €</div>' +
           '<button class="btn btn-outline btn-sm btn-add" data-id="'+p.id+'">Pridať do košíka</button>' +
         '</div>' +
@@ -606,7 +606,7 @@
     var m = searchMatches(e.target.value);
     if(m.length){
       hdrSuggest.innerHTML = m.map(function(p){
-        return '<a href="selene_cd_produkt.html?id='+p.id+'"><span>'+p.n+'</span><span class="s-price">'+p.c+' €</span></a>';
+        return '<a href="selene_cd_produkt.html?sku='+p.sku+'"><span>'+p.n+'</span><span class="s-price">'+p.c+' €</span></a>';
       }).join('');
       hdrSuggest.classList.add('show');
     } else closeSuggest();

@@ -445,6 +445,10 @@
 
 <script src="products_v4.js"></script>
 <script>
+
+  var MATS = { 'ocel': 'Chirurgická oceľ', 'rhodiovane-striebro': 'Rhodiované striebro 925', 'striebro': 'Striebro 925', 'zlato': 'Pozlátená oceľ' };
+  var PLATS = { 'zlata': 'zlaté', 'strieborna': 'strieborné', 'ruzova': 'ružovozlaté', 'bez': '' };
+  var COLLS = { 'sun-gold': 'Sun Gold', 'silver': 'Strieborná', 'classic': 'Klasická', 'novinka': 'Novinka' };
   var CAT_MODEL_IMG = { nausnice:'img/model_earrings.jpg', nahrdelniky:'img/pearl2.jpg', prstene:'img/SEL-RI-9F4BA_modelka_2.jpg', naramy:'img/SEL-BR-673C2_modelka_2.jpg', anklety:'img/pearl2.jpg', retiazky:'img/pearl2.jpg' };
   var STONE_LABEL = { perla:'perlou', zirkon:'zirkónmi', opal:'opálom', kremen:'ružovým kremeňom', bez:null };
 
@@ -462,7 +466,8 @@
 
   var params = new URLSearchParams(location.search);
   var id = parseInt(params.get('id'), 10);
-  var product = PRODUCTS.find(function(p){ return p.id === id; }) || PRODUCTS[0];
+  var sku = params.get('sku') || '';
+  var product = PRODUCTS.find(function(p){ return p.id === id; }) || (sku ? PRODUCTS.find(function(p){ return p.sku === sku; }) : null) || PRODUCTS[0];
   var qty = 1;
   var selectedSize = null;
 
