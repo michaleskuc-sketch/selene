@@ -18,6 +18,15 @@
   .logo-block{display:flex;flex-direction:column;align-items:center;gap:2px;justify-self:center;}
   .brand{font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:.22em;font-weight:600;}
   .tagline{font-size:8px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);}
+  .hdr-search{position:relative;display:flex;align-items:center;}
+  .hdr-search-input{width:0;border:none;outline:none;background:transparent;font:inherit;font-size:13px;letter-spacing:.04em;color:var(--ink);transition:width .25s ease,opacity .25s ease;opacity:0;pointer-events:none;padding:0;border-bottom:1px solid transparent;}
+  .hdr-search.open .hdr-search-input{width:180px;opacity:1;pointer-events:auto;border-bottom:1px solid var(--gold-deep);padding:2px 6px;}
+  .hdr-search-suggest{position:absolute;top:calc(100% + 12px);right:0;min-width:260px;background:var(--ivory);border:1px solid rgba(43,39,35,.1);box-shadow:0 8px 24px rgba(43,39,35,.08);z-index:50;display:none;}
+  .hdr-search.open .hdr-search-suggest:not(:empty){display:block;}
+  .hdr-search-suggest a{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;font-size:13px;border-bottom:1px solid rgba(43,39,35,.06);transition:background .2s;text-decoration:none;color:var(--ink);}
+  .hdr-search-suggest a:last-child{border-bottom:none;}
+  .hdr-search-suggest a:hover{background:var(--pearl);}
+  .hdr-search-suggest .s-price{color:var(--gold-deep);white-space:nowrap;font-size:12px;margin-left:12px;}
   .icons{display:flex;gap:22px;align-items:center;justify-content:flex-end;}
   .icons svg{width:19px;height:19px;}
   .icon-badge{position:absolute;top:-6px;right:-8px;background:var(--gold-deep);color:#fff;font-size:9px;border-radius:50%;width:14px;height:14px;display:flex;align-items:center;justify-content:center;}
@@ -50,30 +59,59 @@
 <header>
   <div class="header-inner">
     <div class="hdr-left">
-      <button class="burger" style="display:none;order:-1" aria-label="Menu">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--ink)"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
-      <button class="wish-left" aria-label="Wishlist" onclick="location.href='wishlist.html'" style="position:relative;background:none;border:none;cursor:pointer;color:var(--ink);padding:0;display:none;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+      <button class="burger" aria-label="Menu" onclick="document.getElementById('mobileNav').classList.add('open')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--ink)"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <button class="wish-left" aria-label="Wishlist" onclick="location.href='wishlist.html'" style="position:relative;background:none;border:none;cursor:pointer;color:var(--ink);padding:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="icon-badge" id="wishCount" style="display:none">0</span></button>
     </div>
-    
+    <nav class="nav-left">
+      <a href="selene_cd_katalog.html?cat=nausnice">Náušnice</a>
+      <a href="selene_cd_katalog.html?cat=nahrdelniky">Náhrdelníky</a>
+      <a href="selene_cd_katalog.html?cat=prstene">Prstene</a>
+      <div class="dd">
+        <a href="selene_cd_katalog.html?cat=naramy">Náramky</a>
+        <button class="dd-trigger" aria-label="Ďalšie kategórie" tabindex="0">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4l4 4 4-4"/></svg>
+        </button>
+        <div class="dd-menu">
+          <span class="dd-head">Ďalšie kategórie</span>
+          <a href="selene_cd_katalog.html?cat=anklety">Retiazky na nohu</a>
+          <a href="selene_cd_katalog.html?cat=retiazky">Retiazky</a>
+        </div>
+      </div>
+    </nav>
     <a href="selene_cd_homepage.html" class="logo-block" aria-label="SELÉNÉ — domov">
-      <span class="brand">SELÉNÉ</span>
-      <span class="tagline">jewelry</span>
+      <svg class="moon-icon" width="26" height="26" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M42 8 C 30 12, 23 22, 23 32 C 23 42, 30 52, 42 56 C 36 50, 32 42, 32 32 C 32 22, 36 14, 42 8 Z" fill="#8F7245"/><path d="M15.4 15l1 2.3 2.3 1-2.3 1-1 2.3-1-2.3-2.3-1 2.3-1z" fill="#8F7245" stroke="none"/></svg>
+      <span class="brand">SELÉNÉ</span><span class="tagline">jewelry</span>
     </a>
-    <div class="header-right">
+    <div class="nav-right">
+      <nav class="nav-right-links">
+        <a href="selene_cd_giftguide.html">Darčeky</a>
+        <a href="selene_blog.html">Blog</a>
+      </nav>
       <div class="icons">
-      <button aria-label="Wishlist" style="position:relative;color:var(--gold-deep)">
-        <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.4"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      </button>
-    </div>
-    <div class="header-left">
-                  <a href="selene_cd_kosik.html" aria-label="Košík" style="position:relative">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h12l-1.2 11.2a1 1 0 0 1-1 .8H8.2a1 1 0 0 1-1-.8L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
-        <span class="icon-badge" id="cartCount">0</span>
-      </a>
+        <div class="hdr-search" id="hdrSearch">
+          <input type="text" id="hdrSearchInput" class="hdr-search-input" placeholder="Hľadať šperky…" aria-label="Hľadať" autocomplete="off">
+          <div class="hdr-search-suggest" id="hdrSuggest"></div>
+          <button aria-label="Hľadať" id="headerSearchBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg></button>
+        </div>
+        <button aria-label="Účet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></button>
+        <button aria-label="Wishlist" class="wish-desktop" onclick="location.href='wishlist.html'" style="position:relative;background:none;border:none;cursor:pointer;color:var(--ink);padding:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        <a href="selene_cd_kosik.html" aria-label="Košík"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h12l-1.2 11.2a1 1 0 0 1-1 .8H8.2a1 1 0 0 1-1-.8L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="icon-badge" id="cartCount">0</span></a>
+      </div>
     </div>
   </div>
 </header>
+<div class="mobile-nav" id="mobileNav">
+  <span class="mobile-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</span>
+  <a href="selene_cd_katalog.html?cat=nausnice">Náušnice</a>
+  <a href="selene_cd_katalog.html?cat=nahrdelniky">Náhrdelníky</a>
+  <a href="selene_cd_katalog.html?cat=prstene">Prstene</a>
+  <a href="selene_cd_katalog.html?cat=naramy">Náramky</a>
+  <a href="selene_cd_katalog.html?cat=anklety">Retiazky na nohu</a>
+  <a href="selene_cd_katalog.html?cat=retiazky">Retiazky</a>
+  <a href="selene_cd_katalog.html?cat=piercingy">Piercingy</a>
+  <a href="selene_cd_giftguide.html">Darčeky</a>
+  <a href="selene_blog.html">Blog</a>
+</div>
 
 <div class="container">
   <div class="page-title">Wishlist</div>
@@ -132,5 +170,71 @@
   }
   render();
 </script>
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="selene_cd_homepage.html" class="logo-block">
+          <svg class="moon-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M42 8 C 30 12, 23 22, 23 32 C 23 42, 30 52, 42 56 C 36 50, 32 42, 32 32 C 32 22, 36 14, 42 8 Z" fill="#8F7245"/><path d="M15.4 15l1 2.3 2.3 1-2.3 1-1 2.3-1-2.3-2.3-1 2.3-1z" fill="#8F7245" stroke="none"/>
+          </svg>
+          <span class="brand">SELÉNÉ</span>
+          <span class="tagline">jewelry</span>
+        </a>
+        <p>Slovenský šperkový ateliér inšpirovaný svetlom mesiaca a slnka. Pozlátené a rhodiované striebro 925, chirurgická oceľ.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M15 8h-2a2 2 0 0 0-2 2v10M8 13h5"/><circle cx="12" cy="12" r="9"/></svg></a>
+          <a href="#" aria-label="Pinterest"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M9 17c1-3 1.5-5 1.5-7a2.5 2.5 0 0 1 5 0c0 1.7-1 3-2.5 3"/></svg></a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h4>Obchod</h4>
+        <ul>
+          <li><a href="selene_cd_katalog.html?cat=nausnice">Náušnice</a></li>
+          <li><a href="selene_cd_katalog.html?cat=nahrdelniky">Náhrdelníky</a></li>
+          <li><a href="selene_cd_katalog.html?cat=prstene">Prstene</a></li>
+          <li><a href="selene_cd_katalog.html?cat=naramy">Náramky</a></li>
+          <li><a href="selene_cd_giftguide.html">Darčeky</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Blog</h4>
+        <ul>
+          <li><a href="selene_blog.html">Ako o šperk starať</a></li>
+          <li><a href="selene_blog.html">Sprievodca materiálmi</a></li>
+          <li><a href="selene_blog.html">Trendy sezóny</a></li>
+          <li><a href="selene_blog.html">Príbehy zákazníčok</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Značka</h4>
+        <ul>
+          <li><a href="selene_cd_pribeh.html">Príbeh značky</a></li>
+          <li><a href="selene_cd_pribeh.html">Remeslo</a></li>
+          <li><a href="selene_pravne.html">Obchodné podmienky</a></li>
+          <li><a href="selene_pravne.html">Ochrana súkromia</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:ahoj@selene.sk">ahoj@selene.sk</a></li>
+          <li><a href="#">Po–Pi 9:00–17:00</a></li>
+          <li><a href="selene_pravne.html">Doprava a platba</a></li>
+          <li><a href="selene_pravne.html">Vrátenie a výmena</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Wil, s.r.o. Všetky práva vyhradené.</span>
+      <div>
+        <a href="selene_pravne.html">Obchodné podmienky</a>
+        <a href="selene_pravne.html">Ochrana súkromia</a>
+        <a href="mailto:info@selene.sk">Kontakt</a>
+      </div>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
