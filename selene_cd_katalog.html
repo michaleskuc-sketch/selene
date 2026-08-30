@@ -486,7 +486,7 @@
     });
     wrap.innerHTML = html;
     wrap.querySelectorAll('.chip').forEach(function(el){
-      el.addEventListener('click', function(){ state.cat = el.getAttribute('data-cat'); state.visible = 9; render(); });
+      el.addEventListener('click', function(){ state.cat = el.getAttribute('data-cat'); state.visible = 9; var newUrl = state.cat === 'all' ? location.pathname : location.pathname + '?cat=' + state.cat; history.replaceState(null, '', newUrl); render(); });
     });
   }
   function buildCollChecks(){
