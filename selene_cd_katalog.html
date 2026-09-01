@@ -353,7 +353,7 @@
         </div>
         <div class="filter-group">
           <h4>Cena</h4>
-          <input type="range" min="19" max="65" value="65" class="price-range" id="priceRange">
+          <input type="range" min="5" max="100" value="100" class="price-range" id="priceRange">
           <div class="price-value">do <span id="priceVal">65</span> €</div>
         </div>
         <a href="#" class="reset-filters" id="resetFilters">Zrušiť filtre</a>
@@ -459,7 +459,7 @@
   };
 
   var params = new URLSearchParams(location.search);
-  var state = { cat: params.get('cat') || 'all', coll: params.get('coll') ? [params.get('coll')] : [], mat: [], priceMax: 65, sort: 'odporucane', visible: 9, q: '' };
+  var state = { cat: params.get('cat') || 'all', coll: params.get('coll') ? [params.get('coll')] : [], mat: [], priceMax: 100, sort: 'odporucane', visible: 9, q: '' };
 
   function getCart(){ try{ return JSON.parse(localStorage.getItem('selene_cart')||'[]'); }catch(e){ return []; } }
   function setCart(c){ localStorage.setItem('selene_cart', JSON.stringify(c)); }
@@ -628,7 +628,7 @@
   document.getElementById('loadMoreBtn').addEventListener('click', function(){ state.visible += 9; render(); });
   document.getElementById('resetFilters').addEventListener('click', function(e){
     e.preventDefault();
-    state = { cat:'all', coll:[], mat:[], priceMax:65, sort:'odporucane', visible:9 };
+    state = { cat:'all', coll:[], mat:[], priceMax:100, sort:'odporucane', visible:9 };
     document.getElementById('sortSelect').value = 'odporucane';
     document.getElementById('priceRange').value = 65;
     document.getElementById('priceVal').textContent = 65;
